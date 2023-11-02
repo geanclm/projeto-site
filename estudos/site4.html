@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data e Hora Local</title>
+</head>
+<body>
+    <h1>Data e Hora Local</h1>
+    <p id="data-hora"></p>
+
+    <script>
+        // Função para atualizar a data e hora a cada segundo
+        function atualizarDataHora() {
+            const elementoDataHora = document.getElementById("data-hora");
+            const agora = new Date();
+            const dataHoraFormatada = agora.toLocaleString("pt-BR");
+            elementoDataHora.textContent = "Data e Hora Local: " + dataHoraFormatada;
+        }
+
+        // Chama a função inicialmente e depois a cada segundo
+        atualizarDataHora();
+        setInterval(atualizarDataHora, 1000);
+    </script>
+</body>
+</html>

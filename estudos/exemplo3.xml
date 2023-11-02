@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+ <exclamation>Olá, mundo!</exclamation>
+ <paragraph>XML é
+  <emphasis>divertido</emphasis>e
+  <emphasis>fácil</emphasis>de usar.
+  <graphic fileref="smiley_face.pict" />
+ </paragraph>
+</message>

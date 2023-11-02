@@ -1,0 +1,3 @@
+db.minhaColecao.insertOne({"nome": "João APóstolo", "idade": 28, "disciplinas": ["Matemática", "História", "Ciências"], "endereço": {"rua": "Rua das Flores", "cidade": "Cidade A", "CEP": "12345-678"}})
+
+db.minhaColecao.insertMany([{"nome": "Pedro Apóstolo", "idade": 32, "disciplinas": ["Matemática", "História", "Ciências"], "endereço": {"rua": "Rua das Flores", "cidade": "Cidade A", "CEP": "12345-678"}}, { "nome": "Maria Madalena", "idade": 25, "disciplinas": ["Artes", "Inglês"], "endereço": {"rua": "Avenida Principal", "cidade": "Cidade B", "CEP": "54321-987"}}, { "nome": "Thiago Apóstolo", "idade": 51, "disciplinas": ["Artes", "Inglês"], "endereço": {"rua": "Avenida das Nações", "cidade": "Cidade C", "CEP": "11321-987"}}])

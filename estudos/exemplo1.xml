@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tasks>
+  <task>
+    <id>1</id>
+    <title>Comprar mantimentos</title>
+    <description>Ir ao supermercado e comprar leite, pão e ovos.</description>
+    <priority>Alta</priority>
+  </task>
+  <task>
+    <id>2</id>
+    <title>Reunião de equipe</title>
+    <description>Participar da reunião semanal da equipe de projeto.</description>
+    <priority>Média</priority>
+  </task>
+  <task>
+    <id>3</id>
+    <title>Estudar para o exame</title>
+    <description>Revisar os apontamentos para o exame de matemática.</description>
+    <priority>Alta</priority>
+  </task>
+</tasks>
