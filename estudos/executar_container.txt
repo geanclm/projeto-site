@@ -1,0 +1,7 @@
+sudo docker exec -it gclm-http bash
+
+sudo docker exec -it gclm-mysql bash
+
+sudo docker exec -it gclm-nginx bash
+
+sudo docker exec -it gclm-mongo mongosh -u admin -p s145

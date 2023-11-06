@@ -6,6 +6,6 @@
 echo " "
 echo "Iniciando o container apache-php..."
 echo " "
-sudo docker run --rm -dit --name gclm-http -p 8080:80 -v /var/www/html:/var/www/html docker-apache-php-gclm
+sudo docker run --rm -dit --name gclm-http -p 8080:80 -v /var/www/html:/var/www/html gclm-apache-php
 echo " "
 sudo docker container ls
