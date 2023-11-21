@@ -7,5 +7,8 @@ echo " "
 echo "Iniciando o container apache-php..."
 echo " "
 sudo docker run --rm -dit --name gclm-http -p 8080:80 -v /var/www/html:/var/www/html gclm-apache-php
-echo " "
-sudo docker container ls
+# echo " "
+# sudo docker container ls
+
+# se precisar executar o container e acessar as pastas
+# sudo docker exec -it gclm-http bash
