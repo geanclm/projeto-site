@@ -1,0 +1,115 @@
+<!-- by ChatGPT on 27/11/2023 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da Velha</title>
+    <style>
+        /* Estilos CSS para o jogo */
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 2px;
+            margin-bottom: 10px;
+        }
+        .board div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        .message {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho com o título do jogo -->
+    <h1>Jogo da Velha</h1>
+
+    <!-- Div que representa o tabuleiro do jogo -->
+    <div class="board">
+        <!-- Nove quadrados para o jogo -->
+        <div onclick="handleMove(event)"></div>
+        <div onclick="handleMove(event)"></div>
+        <div onclick="handleMove(event)"></div>
+        <div onclick="handleMove(event)"></div>
+        <div onclick="handleMove(event)"></div>
+        <div onclick="handleMove(event)"></div>
+        <div onclick="handleMove(event)"></div>
+        <div onclick="handleMove(event)"></div>
+        <div onclick="handleMove(event)"></div>
+    </div>
+
+    <!-- Elemento para exibir mensagens de vitória ou empate -->
+    <div class="message"></div>
+
+    <script>
+        // Seleciona todos os elementos <div> dentro da classe 'board'
+        const squares = document.querySelectorAll('.board div');
+
+        // Seleciona o elemento que exibirá as mensagens do jogo
+        const message = document.querySelector('.message');
+
+        // Variável que representa o jogador atual ('X' ou 'O')
+        let currentPlayer = 'X';
+
+        // Variável que controla se o jogo está ativo ou não
+        let gameActive = true;
+
+        // Possíveis combinações vencedoras no jogo
+        const winningCombos = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+
+        // Array que armazena o estado atual do tabuleiro
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+
+        // Função que é executada quando um quadrado do tabuleiro é clicado
+        function handleMove(event) {
+            const clickedSquare = event.target; // Quadrado clicado
+            const clickedSquareIndex = Array.from(squares).indexOf(clickedSquare); // Índice do quadrado clicado
+
+            // Verifica se o quadrado já foi preenchido ou se o jogo terminou
+            if (gameBoard[clickedSquareIndex] !== '' || !gameActive) return;
+
+            // Marca o quadrado com o símbolo do jogador atual
+            gameBoard[clickedSquareIndex] = currentPlayer;
+            clickedSquare.textContent = currentPlayer;
+
+            // Verifica se houve um vencedor ou empate
+            checkWinner();
+            checkTie();
+
+            // Troca para o próximo jogador
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        }
+
+        // Função para verificar se há um vencedor
+        function checkWinner() {
+            for (let i = 0; i < winningCombos.length; i++) {
+                const [a, b, c] = winningCombos[i];
+                if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+                    message.textContent = `${currentPlayer} venceu!`;
+                    gameActive = false;
+                    return;
+                }
+            }
+        }
+
+        // Função para verificar se houve um empate
+        function checkTie() {
+            if (!gameBoard.includes('') && gameActive) {
+                message.textContent = 'Empate!';
+                gameActive = false;
+            }
+        }
+    </script>
+</body>
+</html>

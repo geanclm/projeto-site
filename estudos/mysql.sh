@@ -15,4 +15,3 @@ sudo docker run --name gclm-mysql -v "volume-mysql:/var/lib/mysql" -p 3306:3306 
 
 # conta de root do MySQL
 # bash-4.4# mysql -uroot -ps145
-

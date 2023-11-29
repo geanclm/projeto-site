@@ -1,0 +1,56 @@
+# Ativar os containers a partir do arquivo docker-compose.yaml
+# docker-compose up -d
+
+# Parar os serviços definidos no arquivo docker-compose.yaml
+# Observação: executar na pasta onde está localizado o arquivo 'docker-compose.yaml'
+# docker-compose down
+
+version: '3.8'
+
+services:
+  gclm-mysql:
+    image: mysql
+    volumes:
+      - volume-mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: s145
+
+  gclm-nginx:
+    image: nginx:alpine3.18-slim
+    ports:
+      - "8181:80"
+    volumes:
+      - /mnt/c/Users/geanc/OneDrive/Documentos/GitHub/projeto-site/estudos/nginx:/usr/share/nginx/html:ro
+
+  gclm-mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: s145
+    volumes:
+      - volume-mongo:/data/db
+
+  gclm-apache:
+    image: gclm-apache-php
+    ports:
+      - "8080:80"
+    volumes:
+      - /mnt/c/Users/geanc/OneDrive/Documentos/GitHub/projeto-site/estudos:/var/www/html
+
+  gclm-node:
+    image: node:21-alpine3.18
+    ports:
+      - "8124:8124"
+    volumes:
+      - /mnt/c/Users/geanc/OneDrive/Documentos/GitHub/projeto-site/estudos:/usr/src/app
+    working_dir: /usr/src/app
+    command: "node olamundo.js"
+    # acesse no navegador http://127.0.0.1:8124/
+
+# volumes:
+  # volume-mysql:
