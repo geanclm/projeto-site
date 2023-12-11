@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # Este script inicializa o container mysql
 # by geanclm on 03/11/2023
 
