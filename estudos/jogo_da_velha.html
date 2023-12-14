@@ -110,6 +110,21 @@
                 gameActive = false;
             }
         }
+    
+    // Função para resetar o jogo
+    function resetGame() {
+        // Limpa o tabuleiro, mensagens e reativa o jogo
+        gameBoard = ['', '', '', '', '', '', '', '', ''];
+        squares.forEach(square => square.textContent = ''); // Limpa os quadrados do tabuleiro
+        message.textContent = ''; // Limpa a mensagem de vitória/empate
+        gameActive = true; // Ativa o jogo novamente
+        currentPlayer = 'X'; // Define o jogador inicial como 'X'
+    }    
+    
     </script>
+    
+    <!-- Botão de reset -->
+    <button onclick="resetGame()">Resetar Jogo</button>
+
 </body>
 </html>
