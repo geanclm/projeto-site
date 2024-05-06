@@ -1,0 +1,41 @@
+Prompt desafio para a IA:
+
+Crie um jogo de xadrez interativo em um navegador web usando HTML, CSS e JavaScript. O jogo deve permitir que duas pessoas joguem xadrez online, seguindo as regras convencionais do jogo. Certifique-se de incluir comentários detalhados no código para explicar as diferentes seções e funcionalidades.
+
+
+Requisitos:
+
+Tabuleiro Interativo:
+
+Implemente um tabuleiro visual utilizando HTML e CSS que represente um tabuleiro de xadrez.
+Cada quadrado do tabuleiro deve ser clicável para selecionar e movimentar as peças.
+Funcionalidades de Jogo:
+
+Permita que dois jogadores alternem turnos para fazer jogadas.
+Implemente a lógica para validar movimentos legais de acordo com as regras do xadrez.
+Atualize o estado do jogo no tabuleiro após cada jogada.
+Peças de Xadrez:
+
+Utilize símbolos ou imagens representativas para as peças de xadrez (rei, rainha, torre, bispo, cavalo, peão).
+As peças devem ser movidas de acordo com as regras do xadrez (por exemplo, movimento diagonal para o bispo, movimento em L para o cavalo).
+Comentários no Código:
+
+Adicione comentários explicativos em cada seção do código para descrever o propósito e funcionamento das funcionalidades implementadas.
+
+
+Exemplo de Saída:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuleiro de Xadrez Interativo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="board" id="board"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
