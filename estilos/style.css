@@ -26,3 +26,9 @@ main{
 .wtext {
   color: rgb(255, 255, 255);
 }
+
+footer {
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  text-align: center;
+}

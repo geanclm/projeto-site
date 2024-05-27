@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Science Projects</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         .project-image {
             max-width: 100%;
             height: auto;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .project-image {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .project-image:hover {
+            transform: scale(1.05);
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .navbar {
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .section-title {
+            margin-bottom: 3rem;
+        }
+
+        .skills .progress {
+            height: 1.5rem;
+        }
+
+        .testimonials .testimonial {
+            border-left: 5px solid #007bff;
+            margin-bottom: 2rem;
         }
     </style>
 </head>
@@ -329,9 +379,17 @@
     </div>
 
     <!-- Inclua os scripts do Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container-fluid">
+            <p class="mb-0">"A inteligência artificial é a nova eletricidade." - Andrew Ng</p>
+        </div>
+    </footer>    
 
 </body>
 </html>
