@@ -4,32 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Jogo da Velha</title>
-    <style>
-        /* Estilos CSS para o jogo */
-        .board {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-gap: 2px;
-            margin-bottom: 10px;
-        }
-        .board div {
-            width: 100px;
-            height: 100px;
-            border: 1px solid #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2em;
-            cursor: pointer;
-        }
-        .message {
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="jogo_da_velha_styles.css">   
 </head>
 <body>
-    <!-- Cabeçalho com o título do jogo -->
     <h1>Jogo da Velha</h1>
+
+    <!-- Elemento para exibir mensagens de vitória ou empate -->
+    <div class="message"></div>
 
     <!-- Div que representa o tabuleiro do jogo -->
     <div class="board">
@@ -46,7 +27,7 @@
     </div>
 
     <!-- Elemento para exibir mensagens de vitória ou empate -->
-    <div class="message"></div>
+    <!-- <div class="message"></div> -->
 
     <script>
         // Seleciona todos os elementos <div> dentro da classe 'board'
@@ -121,7 +102,7 @@
         currentPlayer = 'X'; // Define o jogador inicial como 'X'
     }    
     
-    </script>
+    </script> 
     
     <!-- Botão de reset -->
     <button onclick="resetGame()">Resetar Jogo</button>
