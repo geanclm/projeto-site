@@ -1,56 +1,86 @@
+<!-- arquivo de estudos html com estilos
+configurados em arquivo css separado -->
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-  <!-- estudando para o concurso 2023 da Câmara dos Deputados -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>estudando html 5</title>
-  <link rel="stylesheet" type="text/css" href="estilo.css">
+  
+  <link rel="stylesheet" type="text/css" href="./site1_style.css">
+
 </head>
 
 <body>
   <h1>ESTUDO DE <strong>HTML</strong>, CSS e JAVA SCRIPT</h1>
 
   <p>Antes do script</p>
-  <p class="texto large"> <b>
+  <p class="texto large">
+    <b>
       <script language="JavaScript" src="script.js"></script>
-    </b></p>
-  <p>Depois do script e final do pagágradoo</p>
+    </b>
+  </p>
+  <p>Depois do script e final do parágrafo</p>
 
   <p>Em HTML, você define um parágrafo usando o elemento &lt;p&gt;.</p>
 
   <p class="texto large"><b>Texto HTML 5 com estilos definidos no arquivo estilo.css</b></p>
 
   <p>Meu carro é o <strong>melhor</strong> da cidade.</p>
+  
   <img src="logo.png" alt="Minha imagem de teste">
-  <p class="descricao">O Brasil é o quinto maior país!</p>
+  
+  <p class="descricao">O Brasil é o quinto maior país do mundo!</p>
 
-  <a href="https://conhecimento.fgv.br/concursos/cdeputados23/1" target='_blank'>Concurso 2023 da Câmara dos
-    Deputados</a>
+  <a href="https://conhecimento.fgv.br/concursos/cdeputados23/1" target='_blank' title="Concurso 2023 da Câmara dos Deputados">
+    Concurso 2023 da Câmara dos Deputados
+  </a>
 
   <br>
-  <br>
-  <table border="1">
-    <tr>
-      <th>NOME</th>
-      <th>SOBRENOME</th>
-      <th>IDADE</th>
-    </tr>
-    <tr>
-      <td>João</td>
-      <td>J</td>
-      <td>100</td>
-    </tr>
-    <tr>
-      <td>Marcos</td>
-      <td>M</td>
-      <td>110</td>
-    </tr>
+  
+  <table border="1" id="exemplo-tabela">
+    <thead>
+      <tr>
+        <th>NOME</th>
+        <th>SOBRENOME</th>
+        <th>IDADE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>João</td>
+        <td>J</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td>Marcos</td>
+        <td>M</td>
+        <td>110</td>
+      </tr>
+    </tbody>
   </table>
+    
   <br>
 
-  <p>25/10/2023 - index.html rodando em container docker</p>
+  <div id="container">
+    <p>25/10/2023 - index.html rodando em container docker</p>
+  </div>
+
+  <div class="container">
+    <div>
+      <p>teste de cor com a classe container</p>
+    </div>
+    <p>teste de cor com a classe container</p>    
+  </div>
+
+  <p>Este é um <span style="color: red;">texto</span> com uma palavra destacada.</p>
+
+  
+  <button>botão</button>
+
 
   <p class="texto large">
     <b>

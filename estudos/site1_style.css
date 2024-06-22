@@ -1,7 +1,7 @@
 /* estilo.css */
 
 body {
-    background-color: #76b1b6;
+    background-color: #a5d8a1;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -9,7 +9,7 @@ body {
 
 h1 {
     color: #333;
-    /* Cor do texto do cabeçalho */
+    /* Cor do texto do cabeçalho h1 */
 }
 
 p {
@@ -31,4 +31,19 @@ table {
     margin-right: auto;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+/* estilo para um únivo elemento */
+#container {
+    background-color: #c6fac6;
+    padding: 20px;
+}
+
+.container > p{
+    color: blue;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
 }
