@@ -9,8 +9,14 @@ sudo docker run --name gclm-mysql -v "volume-mysql:/var/lib/mysql" -p 3306:3306 
 # echo " "
 # sudo docker container ls
 
-# se precisar executar o container e acessar as pastas
+
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# PASSO A PASSO PARA ACESSAR O BANCO DE DADOS MYSQL
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+# 1 - se precisar executar o container e acessar as pastas
 # sudo docker exec -it gclm-mysql bash
 
-# conta de root do MySQL
+# 2 - conta de root do MySQL
 # bash-4.4# mysql -uroot -ps145

@@ -47,3 +47,7 @@ button:hover {
     background-color: black;
     color: white;
 }
+
+.ctext {
+    color:#ff0000;
+}
