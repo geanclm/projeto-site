@@ -1,0 +1,114 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.datetime {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.board-container {
+    position: relative;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+}
+
+.square {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.white {
+    background-color: #f0d9b5;
+}
+
+.black {
+    background-color: #b58863;
+}
+
+.piece {
+    font-size: 45px;
+    z-index: 1;
+}
+
+.square:hover {
+    background-color: rgba(255, 255, 0, 0.3);
+}
+
+.selected {
+    outline: 3px solid rgba(255, 0, 0, 0.7);
+}
+
+.highlight {
+    box-shadow: inset 0 0 10px rgba(255, 255, 0, 0.7);
+}
+
+.piece.moving {
+    transition: transform 0.5s ease;
+}
+
+.captured-pieces {
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    height: 480px;
+    background-color: #d3d3d3;
+    padding: 10px;
+    margin: 0 20px;
+    overflow-y: auto;
+}
+
+.captured-piece {
+    font-size: 30px;
+    margin: 5px;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.notation {
+    position: absolute;
+    font-size: 12px;
+    color: #333;
+}
+
+.file-notation {
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rank-notation {
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%);
+}
