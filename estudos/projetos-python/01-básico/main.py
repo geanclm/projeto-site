@@ -1,8 +1,7 @@
 # AMBIENTE VIRTUAL
-# - - -
-# where python
-# - - -
 # Para evitar conflitos entre dependências de projetos diferentes é possível criar ambientes virtuais para cada projeto:
+
+# 0 - where python (comando para localizar o Python no computador)
 # 1 - python -m venv venv
 # 2 - definir a diretiva de execução para o computador local através do PowerShell:
 # Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
@@ -15,6 +14,5 @@
 print('arquivo principal do projeto Python.py')
 print('---')
 
-# print a text with color green 
 print("\033[92m Texto verde \033[0m")
-print("\033[92m Texto verde - GitHub \033[0m") # linha inserida no editor do GitHub em 31 de outubro de 2024 6:19h
+print("\033[92m Texto verde - linha adiionada pelo GitHub \033[0m") # linha inserida no editor do GitHub em 31 de outubro de 2024 6:19h
