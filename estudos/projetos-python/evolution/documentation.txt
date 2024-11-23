@@ -1,5 +1,8 @@
 Início de testes com 'uv'
 by geanclm on 22/11/2024
+
+Fontes de documentação
+https://docs.crewai.com/introduction
 https://docs.astral.sh/uv/getting-started/installation/#standalone-installer
 
 1 - pip install uv

@@ -645,10 +645,16 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "crewai" },
+    { name = "crewai-tools" },
+    { name = "python-dotenv" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "crewai", specifier = ">=0.80.0" }]
+requires-dist = [
+    { name = "crewai", specifier = ">=0.80.0" },
+    { name = "crewai-tools", specifier = ">=0.14.0" },
+    { name = "python-dotenv", specifier = ">=1.0.1" },
+]
 
 [[package]]
 name = "executing"
