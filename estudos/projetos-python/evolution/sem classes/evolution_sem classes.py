@@ -16,10 +16,50 @@ warnings.filterwarnings('ignore')
 import logging
 logging.getLogger('opentelemetry').setLevel(logging.ERROR)
 
-from crewai import Process
+from crewai import Agent, Task, Crew, Process
 from classes import Brain, Tool, Parameter
-from functions import create_agent, create_crew, create_task
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    
+def create_agent(role, goal, backstory, tools, model, max_iter, verbose, memory, allow_delegation):
+    try:
+        return Agent(
+            role=role,
+            goal=goal,
+            backstory=backstory,
+            tools=tools,
+            llm=model,
+            max_iter=max_iter,
+            verbose=verbose,
+            memory=memory,
+            allow_delegation=allow_delegation,
+        )
+    except Exception as e:
+        print(f"Erro ao criar agente: {e}")
+        return None
+
+def create_task(description, expected_output, agent, allow_delegation):
+    try:
+        return Task(
+            description=description,
+            expected_output=expected_output,
+            agent=agent,
+            allow_delegation=allow_delegation,
+            output_file= "search_result.md"
+        )
+    except Exception as e:
+        print(f"Erro ao criar tarefa: {e}")
+        return None
+
+def create_crew(agents, tasks):
+    try:
+        return Crew(
+            agents=agents,
+            tasks=tasks,
+            process=Process.sequential
+        )
+    except Exception as e:
+        print(f"Erro ao criar a equipe (crew): {e}")
+        return None
 
 def main():    
     pesquisador = create_agent(
@@ -38,12 +78,10 @@ def main():
         expected_output="Tabela clara e concisa em português do Brasil.",
         agent=pesquisador,
         allow_delegation=False,
-        output_file= Parameter.file_name
     )    
     crew = create_crew(
         agents=[pesquisador],
-        tasks=[pesquisador_task],
-        process=Process.sequential
+        tasks=[pesquisador_task]
     )
 
     if crew:
