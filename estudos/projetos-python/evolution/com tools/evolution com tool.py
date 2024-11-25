@@ -17,24 +17,27 @@ import logging
 logging.getLogger('opentelemetry').setLevel(logging.ERROR)
 
 from crewai import Agent, Task, Crew, Process
-from classes import Brain, Tool, Parameter, ProgramacaoLotecaTool
+from classes import Brain, Tool, Parameter
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 def main():    
     pesquisador = Agent(
-        role='Pesquisar dados acerca da Loteca e retornar um resumo em Markdown',
-        goal='Fornecer informação e previsão de resultado para cada jogo da Loteca',
-        backstory='Especialista em futebol que pesquisa a programação do concurso da Loteca e fornece informações e palpites',
-        tools=[Tool.scrape_ScrapeWebsiteTool, Tool.programacao_loteca_tool],
-        llm=Brain.llama32_90b_vision_preview,
+        role='Pesquisar dados acerca da Loteca e retornar uma tabela organizada em Markdown',
+        goal='Fornecer previsão de resultado de cada jogo do referido concurso',
+        backstory='Especialista em futebol que pesquisa a programação da Loteca e fornece previsões de resultados',
+        tools=[Tool.scrape_ScrapeWebsiteTool],
+        model=Brain.llama32_90b_vision_preview,
         max_iter=1,
         verbose=True,
         memory=True,
-        allow_delegation=False
+        allow_delegation=False,
     )    
     pesquisador_task = Task(
-        description="Buscar dados na URL: {urls} e organizar uma tabela Markdown com base no seguinte texto: {topic}",            
-        expected_output= Parameter.expected_output,
+        description="Buscar dados na URL: {urls} e organizar uma tabela Markdown com base no seguinte texto: {topic}",
+        expected_output= "Concurso (número, data e dia da semana) "
+        "Período de apostas: "
+        "Realização dos jogos de futebol: "
+        "Tabela Markdown com os jogos, clara e concisa em português do Brasil, e uma coluna extra com a previsão de resultado de cada jogo",
         agent=pesquisador,
         allow_delegation=False,
         output_file= Parameter.file_name
@@ -44,10 +47,10 @@ def main():
         tasks=[pesquisador_task],
         process=Process.sequential
     )
+
     if crew:
         result = crew.kickoff(inputs={'topic': Parameter.prompt, 'urls': Parameter.urls})
-        print(f'Arquivo "search_result.md" gerado com sucesso!')
-        # Markdown(result)
+        print(f'Arquivo "search_result.md" gerado com sucesso!')        
     else:
         print("A equipe (Crewai) não foi criada corretamente.")
 

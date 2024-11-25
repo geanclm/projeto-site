@@ -1,4 +1,5 @@
 from crewai import Agent, Task, Crew, LLM
+from crewai_tools import BaseTool
 
 from crewai_tools import (
     ScrapeElementFromWebsiteTool, # Para extração precisa de dados, como elementos HTML específicos, títulos, ou parágrafos
@@ -9,7 +10,7 @@ from crewai_tools import (
     SerperDevTool # search_tool
 )
 
-# classe com as LLMs
+# # classe com as LLMs
 class Brain:
     llama32_90b_vision_preview = LLM(model='groq/llama-3.2-90b-vision-preview')
     llama31_70b_versatile = LLM(model='groq/llama-3.1-70b-versatile')
@@ -28,14 +29,15 @@ class Tool:
     search_SerperDevTool = SerperDevTool() # com lmite de 2500 requisições no plano sem custo!
 
 class Parameter:    
-    prompt = 'Consulte a tabela do concurso da Loteca na url {urls} e retorne os jogos de forma organizada em uma tabela Markdown com uma previsão de resultado para cada jogo.',
-    # urls = ['https://loterias.caixa.gov.br/Paginas/Programacao-Loteca.aspx', 'https://www.romers.com.br/', 'https://blog.guiadaloteria.com.br/loteca/programacao', 'https://jornalheiros.blogspot.com/2024/11/loteca-programacao-do-concurso-1160.html', 'https://bnldata.com.br/confira-a-programacao-do-concurso-1160-da-loteca-com-premio-de-r-14-milhao/'],
-    urls = ['https://www.romers.com.br/'],
-    file_name = "search_result.md"
-    
-class Create_Agent:
+    prompt = 'Consulte a tabela do concurso da Loteca na url {urls} e retorne os jogos de forma organizada em uma tabela Markdown com uma previsão de resultado para cada jogo.'
+    urls = f'https://bnldata.com.br/confira-a-programacao-do-concurso-1160-da-loteca-com-premio-de-r-14-milhao/'
+
+
+class Create_Agent(BaseTool):
     """Classe para criação e gerenciamento de agentes."""
-    def __init__(self, role, goal, backstory, tools, model, max_iter, verbose, memory, allow_delegation):
+    name: str ="Create_Agent Tool"
+    description: str = "Agent class to flexibilize custom instances"    
+    def _run(self, role, goal, backstory, tools, model, max_iter, verbose, memory, allow_delegation, text: str) -> str:
         self.role = role
         self.goal = goal
         self.backstory = backstory
@@ -63,16 +65,18 @@ class Create_Agent:
             )
         except Exception as e:
             print(f"Erro ao criar agente: {e}")
-            return None        
+            return None
         
-class Create_Task:
+class Create_Task(BaseTool):
     """Classe para criação e gerenciamento de tarefas."""
-    def __init__(self, description, expected_output, agent, allow_delegation, output_file='result.md'):
-        self.description = description
-        self.expected_output = expected_output
-        self.agent = agent
-        self.allow_delegation = allow_delegation
-        self.output_file = output_file
+    name: str ="Create_Task Tool"
+    description: str = "Task class to flexibilize custom instances"    
+    def _run(self, description, expected_output, agent, allow_delegation, output_file, text: str) -> str:
+        self.description = description,
+        self.expected_output = expected_output,
+        self.agent = agent,
+        self.allow_delegation = allow_delegation,
+        self.output_file = output_file,
 
     @staticmethod
     def create(description, expected_output, agent, allow_delegation, output_file):
@@ -83,15 +87,17 @@ class Create_Task:
                 expected_output=expected_output,
                 agent=agent,
                 allow_delegation=allow_delegation,
-                output_file=output_file
+                output_file=output_file,
             )
         except Exception as e:
             print(f"Erro ao criar tarefa: {e}")
             return None
-              
-class Create_Crew:
+      
+class Create_Crew(BaseTool):
     """Classe para gerenciamento de equipes e tarefas."""
-    def __init__(self, agents, tasks, process):
+    name: str ="Create_Crew Tool"
+    description: str = "Crew class to flexibilize custom instances"
+    def _run(self, agents, tasks, process, text: str) -> str:
         self.agents = agents
         self.tasks = tasks
         self.process = process

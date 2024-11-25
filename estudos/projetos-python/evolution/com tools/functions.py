@@ -1,13 +1,13 @@
 from crewai import Agent, Task, Crew
 
-def create_agent(role, goal, backstory, tools, model, max_iter, verbose, memory, allow_delegation):
+def create_agent(role, goal, backstory, tools, llm, max_iter, verbose, memory, allow_delegation):
     try:
         return Agent(
             role=role,
             goal=goal,
             backstory=backstory,
             tools=tools,
-            llm=model,
+            llm=llm,
             max_iter=max_iter,
             verbose=verbose,
             memory=memory,

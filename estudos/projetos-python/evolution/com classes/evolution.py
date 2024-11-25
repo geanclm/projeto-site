@@ -17,12 +17,12 @@ import logging
 logging.getLogger('opentelemetry').setLevel(logging.ERROR)
 
 from crewai import Process
-from classes import Brain, Tool, Parameter
-from functions import create_agent, create_crew, create_task
+from classes import Brain, Tool, Parameter, Create_Agent, Create_Task, Create_Crew
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ 
 
 def main():    
-    pesquisador = create_agent(
+    pesquisador = Create_Agent.create(
         role='Pesquisar dados acerca da Loteca e retornar um resumo em Markdown',
         goal='Fornecer informações e palpites de resultado de cada jogo do concurso da Loteca',
         backstory='Um especialista em futebol que pesquisa a programação do concurso da Loteca e fornece informações e palpites',
@@ -33,22 +33,21 @@ def main():
         memory=True,
         allow_delegation=False,
     )    
-    pesquisador_task = create_task(
+    pesquisador_task = Create_Task.create(
         description="Buscar dados na URL: {urls} e organizar uma tabela Markdown com base no seguinte texto: {topic}",
         expected_output="Tabela clara e concisa em português do Brasil.",
         agent=pesquisador,
         allow_delegation=False,
-        output_file= Parameter.file_name
+        output_file="search_result.md",        
     )    
-    crew = create_crew(
+    crew = Create_Crew.create(
         agents=[pesquisador],
         tasks=[pesquisador_task],
-        process=Process.sequential
+        process=Process.sequential        
     )
-
     if crew:
         result = crew.kickoff(inputs={'topic': Parameter.prompt, 'urls': Parameter.urls})
-        print(f'Arquivo "search_result.md" gerado com sucesso!')
+        print("Arquivo 'search_result.md' criado com sucesso.")
         # Markdown(result)
     else:
         print("A equipe (Crewai) não foi criada corretamente.")

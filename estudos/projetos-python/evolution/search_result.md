@@ -1,16 +1,20 @@
-| Jogo | Casa | % | Visitante | % | Data | Previsão |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | Atlético GO | 4% | Palmeiras | 92% | Sábado | Palmeiras |
-| 2 | Botafogo RJ | 10% | Vitória BA | 10% | Sábado | Botafogo RJ |
-| 3 | Juventude | 76% | Cuiabá | 2% | Sábado | Juventude |
-| 4 | São Paulo | 54% | Atlético MG | 36% | Sábado | São Paulo |
-| 5 | Internacional | 96% | Bragantino | 2% | Domingo | Internacional |
-| 6 | Bahia | 66% | Athletico PR | 24% | Domingo | Bahia |
-| 7 | Corinthians | 66% | Vasco | 4% | Domingo | Corinthians |
-| 8 | Goiás | 42% | Novorizontino | 36% | Domingo | Goiás |
-| 9 | Mirassol | 86% | Chapecoense | 2% | Domingo | Mirassol |
-| 10 | América MG | 78% | Brusque | 6% | Domingo | América MG |
-| 11 | Sport | 76% | Santos | 12% | Domingo | Sport |
-| 12 | Guarani | 8% | Ceará | 86% | Domingo | Ceará |
-| 13 | CRB | 60% | Operário | 32% | Domingo | CRB |
-| 14 | Paysandu | 70% | Vila Nova | 20% | Domingo | Paysandu |
+**Concurso**: 1160 (23/11/2024, sábado)
+**Período de Apostas**: 20/11/2024 até as 15h do dia 23/11/2024
+**Realização dos jogos**: de 23/11/2024 a 24/11/2024
+
+| Jogo | UF1 | Mandante          | Visitante         | UF2 | Dia da semana | Data       | Previsão de resultado |
+|------|-----|-------------------|-------------------|-----|---------------|------------|-----------------------|
+| 1    | GO  | Atlético-GO       | Palmeiras-SP      | SP  | Sábado        | 23/11/2024 | m                     |
+| 2    | RJ  | Botafogo-RJ       | Vitória-BA        | BA  | Sábado        | 23/11/2024 | e                     |
+| 3    | RS  | Juventude-RS      | Cuiabá-MT         | MT  | Sábado        | 23/11/2024 | v                     |
+| 4    | SP  | São Paulo-SP      | Atlético-MG      | MG  | Sábado        | 23/11/2024 | m                     |
+| 5    | RS  | Internacional-RS | Bragantino-SP    | SP  | Domingo        | 24/11/2024 | m                     |
+| 6    | BA  | Bahia-BA          | Athletico-PR      | PR  | Domingo        | 24/11/2024 | v                     |
+| 7    | SP  | Corinthians-SP    | Vasco da Gama-RJ  | RJ  | Domingo        | 24/11/2024 | e                     |
+| 8    | GO  | Goiás-GO           | Novorizontino-SP  | SP  | Domingo        | 24/11/2024 | m                     |
+| 9    | SP  | Mirassol-SP        | Chapecoense-SC   | SC  | Domingo        | 24/11/2024 | v                     |
+| 10   | MG  | América-MG        | Brusque-SC        | SC  | Domingo        | 24/11/2024 | m                     |
+| 11   | PE  | Sport-PE           | Santos-SP         | SP  | Domingo        | 24/11/2024 | e                     |
+| 12   | SP  | Guarani-SP         | Ceará-CE          | CE  | Domingo        | 24/11/2024 | v                     |
+| 13   | SP  | Ituano-SP          | Amazonas-AM        | AM  | Domingo        | 24/11/2024 | m                     |
+| 14   | SC  | Avaí-SC            | Ponte Preta-SP    | SP  | Domingo        | 24/11/2024 | e                     |
