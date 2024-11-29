@@ -16,6 +16,7 @@ url ='https://loterias.caixa.gov.br/Paginas/Loteca.aspx'
 navegador = webdriver.Edge()
 navegador.get(url)
 navegador.maximize_window()
+time.sleep(5)
 
 # Localizando o elemento <a> dentro do <p class="description">
 navegador.find_element('xpath', '//p[@class="description"]/a').click()

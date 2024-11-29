@@ -1,20 +1,24 @@
-**Concurso**: 1160 (23/11/2024, sábado)
-**Período de Apostas**: 20/11/2024 até as 15h do dia 23/11/2024
-**Realização dos jogos**: de 23/11/2024 a 24/11/2024
+**Concurso**: Concurso 1161 (30/11/2024, sábado)
+
+**Período de apostas**: 25/11/2024 até as 15h do dia 30/11/2024
+
+**Realização dos jogos**: de 30/11/2024 a 01/12/2024
 
 | Jogo | UF1 | Mandante          | Visitante         | UF2 | Dia da semana | Data       | Previsão de resultado |
 |------|-----|-------------------|-------------------|-----|---------------|------------|-----------------------|
-| 1    | GO  | Atlético-GO       | Palmeiras-SP      | SP  | Sábado        | 23/11/2024 | m                     |
-| 2    | RJ  | Botafogo-RJ       | Vitória-BA        | BA  | Sábado        | 23/11/2024 | e                     |
-| 3    | RS  | Juventude-RS      | Cuiabá-MT         | MT  | Sábado        | 23/11/2024 | v                     |
-| 4    | SP  | São Paulo-SP      | Atlético-MG      | MG  | Sábado        | 23/11/2024 | m                     |
-| 5    | RS  | Internacional-RS | Bragantino-SP    | SP  | Domingo        | 24/11/2024 | m                     |
-| 6    | BA  | Bahia-BA          | Athletico-PR      | PR  | Domingo        | 24/11/2024 | v                     |
-| 7    | SP  | Corinthians-SP    | Vasco da Gama-RJ  | RJ  | Domingo        | 24/11/2024 | e                     |
-| 8    | GO  | Goiás-GO           | Novorizontino-SP  | SP  | Domingo        | 24/11/2024 | m                     |
-| 9    | SP  | Mirassol-SP        | Chapecoense-SC   | SC  | Domingo        | 24/11/2024 | v                     |
-| 10   | MG  | América-MG        | Brusque-SC        | SC  | Domingo        | 24/11/2024 | m                     |
-| 11   | PE  | Sport-PE           | Santos-SP         | SP  | Domingo        | 24/11/2024 | e                     |
-| 12   | SP  | Guarani-SP         | Ceará-CE          | CE  | Domingo        | 24/11/2024 | v                     |
-| 13   | SP  | Ituano-SP          | Amazonas-AM        | AM  | Domingo        | 24/11/2024 | m                     |
-| 14   | SC  | Avaí-SC            | Ponte Preta-SP    | SP  | Domingo        | 24/11/2024 | e                     |
+| 1    | MG  | Atlético-MG       | Botafogo-RJ      | RJ  | Sábado        | 30/11/2024 | v                     |
+| 2    | MT  | Cuiabá-MT         | Bahia-BA         | BA  | Sábado        | 30/11/2024 | m                     |
+| 3    | SC  | Criciúma-SC       | Corinthians-SP    | SP  | Sábado        | 30/11/2024 | e                     |
+| 4    |     | PSG               | Nantes           |     | Sábado        | 30/11/2024 | v                     |
+| 5    | RJ  | Vasco da Gama-RJ  | Atlético-GO      | GO  | Sábado        | 30/11/2024 | e                     |
+| 6    |     | Chelsea          | Aston Villa      |     | Domingo       | 01/12/2024 | v                     |
+| 7    |     | Torino           | Napoli           |     | Domingo       | 01/12/2024 | e                     |
+| 8    |     | Liverpool       | Manchester City  |     | Domingo       | 01/12/2024 | m                     |
+| 9    | RJ  | Flamengo-RJ      | Internacional-RS | RS  | Domingo       | 01/12/2024 | v                     |
+| 10   | RS  | Grêmio-RS        | São Paulo-SP     | SP  | Domingo       | 01/12/2024 | e                     |
+| 11   |     | Fiorentina       | Inter de Milão   |     | Domingo       | 01/12/2024 | m                     |
+| 12   | PR  | Athletico-PR     | Fluminense-RJ    | RJ  | Domingo       | 01/12/2024 | v                     |
+| 13   | BA  | Vitória-BA       | Fortaleza-CE     | CE  | Domingo       | 01/12/2024 | e                     |
+| 14   | SP  | Bragantino-SP    | Cruzeiro-MG      | MG  | Domingo       | 01/12/2024 | m                     |
+
+Observe que as previsões foram feitas com base na minha análise de desempenho recente das equipes, estatísticas históricas de confrontos e fatores externos que podem influenciar o resultado dos jogos.

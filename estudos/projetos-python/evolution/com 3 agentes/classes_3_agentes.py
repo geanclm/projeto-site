@@ -26,14 +26,15 @@ class Brain:
     gemini_pro = LLM(model='gemini/gemini-pro')
     gemini_15_pro = LLM(model='gemini/gemini-1.5-pro')    
 
-class Parameter:    
+class Parameter:
     loteca = '1161'
     separador = '_'
     hoje = str(datetime.datetime.today().date())    
     
-    urls = ['https://blog.guiadaloteria.com.br/loteca/programacao','# https://www.romers.com.br/']
-    
-    # prompt = f'Consulte informações sobre o próximo concurso da Loteca {loteca} em {urls} e retorne os jogos de forma organizada em uma tabela Markdown com uma previsão de resultado para cada jogo.',
+    # urls = ['https://clubedaposta.com/loterias/palpites-loteca/palpites-loteca-1161-palpites-loteca-semana/','https://www.uol.com.br/apostas/palpites/','https://blog.guiadaloteria.com.br/loteca/programacao','# https://www.romers.com.br/', 'https://jornalheiros.blogspot.com/2024/11/loteca-programacao-do-concurso-1161.html','https://bnldata.com.br/confira-a-programacao-do-concurso-1161-da-loteca-com-premio-de-r-200-mil/','https://clubedaposta.com/loterias/palpites-loteca/palpites-loteca-1161-palpites-loteca-semana/']
+
+    urls = ['https://clubedaposta.com/loterias/palpites-loteca/palpites-loteca-1161-palpites-loteca-semana/']
+        
     prompt = f'Programação Loteca - Concurso {loteca} - Caixa Economica Federal - Brasil'
         
     part1 = 'search_result'
@@ -59,7 +60,7 @@ class Parameter:
     Para a geração da tabela dos jogos da Loteca, siga rigorosamente as etapas abaixo, garantindo que o conteúdo seja claro e conciso, em português do Brasil:        
     1. **Criação de Tabela em Markdown**: Organize uma tabela em formato Markdown para fácil visualização e compreensão. A tabela deve ser clara e incluir uma coluna adicional com a previsão de resultado de cada jogo.
 
-    2. **Estrutura da Tabela**: A tabela deve conter as seguintes colunas:
+    2. **Estrutura da Tabela**: Tabela Markdown final com as previsões de cada jogo, organizada de forma clara e objetiva com as seguintes colunas:    
     - **Jogo**: Número sequencial do jogo (1 a 14).
     - **UF1**: Sigla da unidade federativa (estado) do time mandante.
     - **Mandante**: Nome completo do time mandante.

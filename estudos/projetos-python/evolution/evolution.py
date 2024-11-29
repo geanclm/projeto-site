@@ -1,6 +1,3 @@
-# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-# PROCEDIMENTO SEGURANÇA DAS CHAVES
-# https://pypi.org/project/python-dotenv/
 # pip install python-dotenv
 from dotenv import load_dotenv
 load_dotenv()
@@ -17,14 +14,16 @@ import logging
 logging.getLogger('opentelemetry').setLevel(logging.ERROR)
 
 from crewai import Agent, Task, Crew, Process
-from classes import Brain, Tool, Parameter, ProgramacaoLotecaTool
+from classes import Brain, Tool, Parameter
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 def main():    
     pesquisador = Agent(
-        role='Pesquisar dados acerca da Loteca e retornar um resumo em Markdown',
-        goal='Fornecer informação e previsão de resultado para cada jogo da Loteca',
-        backstory='Especialista em futebol que pesquisa a programação do concurso da Loteca e fornece informações e palpites',
+        # role='Pesquisar dados da Loteca e retornar uma tabela organizada em Markdown',
+        role='Pesquisador da programação de jogos da {topic}',        
+        # goal='Fornecer informação e previsão de resultado para cada jogo da Loteca',
+        goal='Buscar os dados via API e organizá-los em uma tabela clara e compreensível, no formato Markdown.',        
+        backstory='Especialista em futebol que pesquisa a programação do concurso da Loteca e fornece informações e palpites',                
         tools=[Tool.scrape_ScrapeWebsiteTool, Tool.programacao_loteca_tool],
         llm=Brain.llama32_90b_vision_preview,
         max_iter=1,
@@ -39,6 +38,7 @@ def main():
         allow_delegation=False,
         output_file= Parameter.file_name
     )    
+        
     crew = Crew(
         agents=[pesquisador],
         tasks=[pesquisador_task],
@@ -46,7 +46,7 @@ def main():
     )
     if crew:
         result = crew.kickoff(inputs={'topic': Parameter.prompt, 'urls': Parameter.urls})
-        print(f'Arquivo "search_result.md" gerado com sucesso!')
+        print(f'Arquivo "{Parameter.file_name}" gerado com sucesso!')
         # Markdown(result)
     else:
         print("A equipe (Crewai) não foi criada corretamente.")

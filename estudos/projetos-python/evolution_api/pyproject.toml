@@ -1,0 +1,20 @@
+[project]
+name = "evolution_api"
+version = "0.1.0"
+description = "evolution_api using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.80.0,<1.0.0"
+]
+
+[project.scripts]
+evolution_api = "evolution_api.main:run"
+run_crew = "evolution_api.main:run"
+train = "evolution_api.main:train"
+replay = "evolution_api.main:replay"
+test = "evolution_api.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
