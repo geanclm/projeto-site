@@ -242,7 +242,7 @@ class ProgramacaoLotecaTool(BaseTool):
 
 
 
-class Tool:
+class Tool:        
     scrape_ScrapeElementFromWebsiteTool = ScrapeElementFromWebsiteTool() # Ferramenta para scraping de elementos específicos de uma página web
     scrape_ScrapeWebsiteTool = ScrapeWebsiteTool() # Ferramenta para scraping de sites inteiros
     search_SerperDevTool = SerperDevTool() # com lmite de 2500 requisições no plano sem custo!
