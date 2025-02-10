@@ -1,6 +1,6 @@
 from flask import Flask, request
-from message_sandeco import MessageSandeco
 from classes import SendEvolution
+from classes import ReceiveEvolution
 
 app = Flask(__name__)
 
@@ -16,7 +16,7 @@ app = Flask(__name__)
 def webhook():
     try:
         data = request.get_json()        
-        msg = MessageSandeco(data)
+        msg = ReceiveEvolution(data)
         send = SendEvolution()
         send.textMessage(number=msg.phone,
                          msg=f'{msg.text_message} - resposta do servidor')

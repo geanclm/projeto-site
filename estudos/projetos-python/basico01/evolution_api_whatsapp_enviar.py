@@ -9,8 +9,8 @@
 import datetime
 from requests_toolbelt import MultipartEncoder # foi necessário instalar esse recurso para rodar o evolution_api
 from classes import SendEvolution
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 load_dotenv()
 import os
 
@@ -25,7 +25,8 @@ segundo_arredondado = (datahora.second + 1) if datahora.microsecond >= 500000 el
 datahora_arredondada = datahora.replace(second=segundo_arredondado, microsecond=0)
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-texto = f'{datahora_arredondada},\nOlá! Eu sou um agente IA criado por geanclm. Estamos em fase de teste. Em breve estarei disponível para atendimento. Obrigado! 🤖👨‍💻'
+texto = f'''{datahora_arredondada},\nOlá! Eu sou um agente IA criado por geanclm. Estamos em fase de teste. Em breve estarei disponível
+com outras funcionalidades. Obrigado pela compreensão! Ótimo dia e bom trabalho! 🤖👨‍💻'''
 
 enviar = SendEvolution()
 
