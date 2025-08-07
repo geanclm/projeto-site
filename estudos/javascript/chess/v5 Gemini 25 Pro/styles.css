@@ -1,0 +1,208 @@
+:root {
+    --board-bg-light: #f0d9b5;
+    --board-bg-dark: #b58863;
+    --piece-light: #ffffff; /* Cor interna das peças brancas (se usar fontes que não definem cor) */
+    --piece-dark: #000000;  /* Cor interna das peças pretas */
+    --selected-outline: rgba(255, 0, 0, 0.7);
+    --highlight-shadow: rgba(0, 255, 0, 0.4); /* Verde para movimentos válidos */
+    --hover-bg: rgba(255, 255, 0, 0.3);
+    --notation-color: #333;
+    --captured-bg: #d3d3d3;
+    --main-bg: #f0f0f0;
+    --text-color: #333;
+    --square-size: 60px;
+    --piece-size: 45px;
+    --captured-piece-size: 30px;
+    --notation-font-size: 12px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--main-bg);
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+}
+
+.datetime {
+    font-size: 16px; /* Ajustado */
+    margin-bottom: 10px; /* Ajustado */
+    color: #555;
+}
+
+.game-info {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px; /* Adicionado espaçamento entre elementos */
+}
+
+.board-container {
+    position: relative; /* Mantido para notação */
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, var(--square-size));
+    grid-template-rows: repeat(8, var(--square-size));
+    border: 2px solid #333; /* Adicionada borda ao tabuleiro */
+}
+
+.square {
+    width: var(--square-size);
+    height: var(--square-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease; /* Transição mais rápida */
+    position: relative; /* Necessário para notação */
+    box-sizing: border-box; /* Inclui padding/border no tamanho total */
+}
+
+.square.white {
+    background-color: var(--board-bg-light);
+}
+
+.square.black {
+    background-color: var(--board-bg-dark);
+}
+
+.piece {
+    font-size: var(--piece-size);
+    cursor: pointer; /* Indica que a peça é clicável */
+    z-index: 1;
+    /* Cores podem ser definidas aqui se os caracteres Unicode não tiverem cor própria */
+    /* &.white-piece { color: var(--piece-light); } */
+    /* &.black-piece { color: var(--piece-dark); } */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Leve sombra para destaque */
+}
+
+/* Remover hover padrão quando uma peça está selecionada para não confundir */
+.square:not(.selected):hover {
+    background-color: var(--hover-bg);
+}
+
+.selected {
+    /* Outline agora na peça, não no quadrado, para melhor visualização */
+    /* Se a peça for movida, o outline some. Se ficar no square, não */
+    /* outline: 3px solid var(--selected-outline); */
+    /* Alternativa: Mudar a cor de fundo do square selecionado */
+    background-color: #c3b091 !important; /* Cor de fundo para square selecionado */
+}
+.selected .piece {
+     /* Adiciona um efeito sutil na peça selecionada */
+    filter: drop-shadow(0 0 3px var(--selected-outline));
+}
+
+
+.highlight {
+    /* Usar um indicador dentro do quadrado, como um ponto ou círculo */
+    position: relative; /* Para posicionar o pseudo-elemento */
+}
+.highlight::after {
+    content: '';
+    position: absolute;
+    width: 20px; /* Tamanho do círculo indicador */
+    height: 20px; /* Tamanho do círculo indicador */
+    background-color: var(--highlight-shadow);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Fica atrás da peça, se houver */
+}
+.highlight.capture-possible::after {
+     /* Diferenciar visualmente captura de movimento */
+    box-shadow: 0 0 0 3px var(--highlight-shadow); /* Anel em vez de círculo */
+    background-color: transparent;
+}
+
+
+.captured-pieces {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza as peças capturadas */
+    width: calc(var(--square-size) * 1.5); /* Largura um pouco maior */
+    min-height: calc(var(--square-size) * 8 + 4px); /* Altura similar ao tabuleiro */
+    background-color: var(--captured-bg);
+    padding: 10px 5px; /* Ajustado padding */
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.captured-pieces h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.captured-piece-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as peças quebrem linha */
+    justify-content: center;
+    gap: 2px; /* Pequeno espaço entre peças capturadas */
+}
+
+.captured-piece {
+    font-size: var(--captured-piece-size);
+    width: calc(var(--captured-piece-size) * 1.1); /* Ajustar largura se necessário */
+    text-align: center;
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ddd;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+button:hover {
+    background-color: #ccc;
+}
+
+.notation {
+    position: absolute;
+    font-size: var(--notation-font-size);
+    color: var(--notation-color);
+    pointer-events: none; /* Evita que a notação interfira no clique */
+    font-weight: bold;
+    display: none; /* Começa escondido */
+}
+
+.file-notation {
+    bottom: 2px; /* Ajustado para dentro da casa */
+    right: 2px;  /* Ajustado para dentro da casa */
+}
+
+.rank-notation {
+    top: 2px;   /* Ajustado para dentro da casa */
+    left: 2px;  /* Ajustado para dentro da casa */
+}
+
+/* Mostra a notação se a classe for adicionada ao board-container */
+.show-notation .notation {
+    display: block;
+}
+
+/* Estilo para quando a notação estiver visível e a casa for escura */
+.square.black .notation {
+    color: #eee; /* Cor clara para contraste */
+}

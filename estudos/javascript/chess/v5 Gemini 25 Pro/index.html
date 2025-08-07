@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Xadrez Aprimorado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="datetime" class="datetime"></div>
+    <div class="game-info">
+        <p>Vez de: <span id="current-player">Brancas</span></p>
+    </div>
+    <div class="game-container">
+        <div id="captured-pieces-white" class="captured-pieces captured-white">
+            <h4>Capturadas (Brancas):</h4>
+        </div>
+        <div class="board-container">
+            <div id="board" class="board"></div>
+        </div>
+        <div id="captured-pieces-black" class="captured-pieces captured-black">
+            <h4>Capturadas (Pretas):</h4>
+        </div>
+    </div>
+    <div class="controls">
+        <button id="toggle-notation">Alternar Notação</button>
+        </div>
+    <script src="script.js"></script>
+</body>
+</html>

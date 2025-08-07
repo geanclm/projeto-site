@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Xadrez Aprimorado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-area">
+        <div class="left-panel">
+            <div id="datetime" class="datetime"></div>
+            <div class="game-info">
+                <p>Vez de: <span id="current-player">Brancas</span></p>
+                <p id="game-message" class="game-message"></p>
+            </div>
+            <div class="controls">
+                <button id="restart-button">Reiniciar Jogo</button>
+                <button id="toggle-notation">Alternar Notação</button>
+            </div>
+             <div class="move-history-container">
+                <h4>Histórico de Movimentos:</h4>
+                <ul id="move-history"></ul>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <div id="captured-pieces-white" class="captured-pieces captured-white">
+                <h4>Capturadas (Brancas):</h4>
+                <div class="captured-piece-container"></div>
+            </div>
+            <div class="board-container">
+                <div id="board" class="board"></div>
+            </div>
+            <div id="captured-pieces-black" class="captured-pieces captured-black">
+                <h4>Capturadas (Pretas):</h4>
+                <div class="captured-piece-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="promotion-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h4>Promover Peão para:</h4>
+            <button data-piece="queen">Rainha</button>
+            <button data-piece="rook">Torre</button>
+            <button data-piece="bishop">Bispo</button>
+            <button data-piece="knight">Cavalo</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
