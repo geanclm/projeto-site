@@ -1,0 +1,238 @@
+:root {
+    --board-bg-light: #f0d9b5;
+    --board-bg-dark: #b58863;
+    --selected-outline: rgba(20, 85, 30, 0.7); /* Verde escuro para contraste */
+    --highlight-shadow: rgba(0, 255, 0, 0.4);
+    --capture-highlight-shadow: rgba(255, 100, 100, 0.6);
+    --hover-bg: rgba(255, 255, 255, 0.2);
+    --notation-color: #b58863;
+    --notation-color-dark-square: #f0d9b5;
+    --captured-bg: #ffffff;
+    --main-bg: #e9e9e9;
+    --text-color: #333;
+    --square-size: 65px; /* Ligeiramente maior */
+    --king-check-bg: rgba(255, 0, 0, 0.6);
+    --last-move-highlight: rgba(255, 255, 0, 0.5); /* Amarelo translúcido */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--main-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    padding: 20px;
+    box-sizing: border-box;
+    user-select: none; /* Evita seleção de texto ao clicar rápido */
+}
+
+.game-area {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1300px;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 260px;
+}
+
+.main-panel {
+    display: flex;
+    flex-direction: column; /* Alterado para coluna para centralizar peças capturadas */
+    align-items: center;
+    gap: 10px;
+}
+
+.datetime, .game-info, .move-history-container {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.datetime { font-size: 0.9em; color: #666; }
+.game-info { font-size: 1.1em; font-weight: bold; }
+
+.game-message {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #d9534f;
+    font-weight: bold;
+    min-height: 20px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+button {
+    padding: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-weight: 600;
+}
+button:hover { background-color: #4cae4c; transform: translateY(-1px); }
+button:active { transform: translateY(0); }
+
+/* Estilos específicos para botões secundários */
+.btn-secondary { background-color: #337ab7; }
+.btn-secondary:hover { background-color: #286090; }
+
+button#toggle-notation { background-color: #777; }
+button#toggle-notation:hover { background-color: #555; }
+
+.board-container {
+    position: relative;
+    padding: 5px;
+    background: #333;
+    border-radius: 4px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, var(--square-size));
+    grid-template-rows: repeat(8, var(--square-size));
+}
+
+.square {
+    width: var(--square-size);
+    height: var(--square-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.square.white { background-color: var(--board-bg-light); color: var(--board-bg-dark); }
+.square.black { background-color: var(--board-bg-dark); color: var(--board-bg-light); }
+
+/* Configuração da Peça como Imagem */
+.piece {
+    width: 90%;
+    height: 90%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: grab;
+    z-index: 2;
+    transition: transform 0.15s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+.piece:active { cursor: grabbing; }
+
+.square:not(.selected):hover:not(.king-in-check) {
+    box-shadow: inset 0 0 0 4px rgba(255,255,255,0.4);
+}
+
+.selected { background-color: #bbc147 !important; }
+.selected .piece { transform: scale(1.15); }
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+}
+.square.black.highlight::after { background-color: rgba(0, 0, 0, 0.3); }
+
+.highlight.capture-possible::after {
+    background-color: transparent;
+    width: 85%;
+    height: 85%;
+    border: 5px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.king-in-check {
+    background: radial-gradient(circle at center, var(--king-check-bg) 0%, transparent 80%);
+}
+
+.last-move-highlight { background-color: var(--last-move-highlight) !important; }
+
+/* Áreas de Captura */
+.captured-pieces {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: calc(var(--square-size) * 8);
+    background-color: var(--captured-bg);
+    padding: 8px 15px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    min-height: 50px;
+}
+
+.captured-pieces h4 { margin: 0; font-size: 0.85em; color: #777; margin-right: 10px; }
+
+.captured-piece-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.captured-piece {
+    width: calc(var(--square-size) * 0.4);
+    height: calc(var(--square-size) * 0.4);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+}
+
+/* Notação */
+.notation {
+    position: absolute;
+    font-size: calc(var(--square-size) * 0.22);
+    font-weight: bold;
+    pointer-events: none;
+    opacity: 0; /* Oculto por padrão */
+    transition: opacity 0.2s;
+}
+.show-notation .notation { opacity: 1; }
+
+.file-notation { bottom: 2px; right: 3px; color: inherit; }
+.rank-notation { top: 2px; left: 3px; color: inherit; }
+
+/* Modal */
+.modal {
+    position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex; justify-content: center; align-items: center;
+}
+.modal-content {
+    background-color: #fff; padding: 25px; border-radius: 8px;
+    text-align: center; width: 90%; max-width: 300px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .game-area { flex-direction: column; align-items: center; }
+    .left-panel { width: 100%; order: 2; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .game-info, .datetime, .controls, .move-history-container { width: 45%; flex-grow: 1; }
+    .main-panel { order: 1; }
+}
+@media (max-width: 600px) {
+    :root { --square-size: 11vw; } /* Responsivo mobile */
+    .left-panel { flex-direction: column; }
+    .game-info, .datetime, .controls, .move-history-container { width: 100%; }
+}
