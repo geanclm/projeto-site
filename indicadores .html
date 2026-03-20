@@ -1,0 +1,550 @@
+
+        <!DOCTYPE html>
+        <html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+            <title>Indicadores</title>
+            <!-- Bootstrap CSS gratuito -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+            <style>
+                body {
+                    background-color: #f8f9fa;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                }
+                h1 {
+                    text-align: center;
+                    margin: 30px 0;
+                    color: #343a40;
+                }
+                #indicadores_table {
+                    width: 90%;
+                    margin: auto;
+                    border-collapse: collapse;
+                }
+                #indicadores_table th {
+                    text-align: center;
+                    background-color: #343a40;
+                    color: #ffffff;
+                    font-weight: bold;
+                }
+                #indicadores_table tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+                #indicadores_table tr:nth-child(odd) {
+                    background-color: #ffffff;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>📊 Indicadores</h1>
+        
+        <div class="mt-3 mb-3 p-3" style="border: 1px solid #ddd; border-radius: 6px; background-color: #fdfdfd;">
+
+            <!-- Abas -->
+            <ul class="nav nav-tabs" id="abasIA" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="aba1-tab" data-bs-toggle="tab"
+                        data-bs-target="#aba1" type="button" role="tab">
+                        OpenAI
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="aba2-tab" data-bs-toggle="tab"
+                        data-bs-target="#aba2" type="button" role="tab">
+                        Anthropic
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="aba3-tab" data-bs-toggle="tab"
+                        data-bs-target="#aba3" type="button" role="tab">
+                        Google
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Conteúdo das abas -->
+            <div class="tab-content pt-3" id="abasIAContent">
+
+                <div class="tab-pane fade show active" id="aba1" role="tabpanel">
+                    <p class="text-muted">O cenário atual combina uma transição de regime de política monetária no Brasil com um ambiente global ainda mais sensível a choques. A Selic em 14,75% e a inflação em 3,81% em 12 meses sustentam um processo de desinflação que, como indicado nas notícias, permitiu o primeiro corte em quase dois anos, mesmo com moderação da atividade e ressalvas de incerteza geopolítica. Ainda assim, o “núcleo duro” do retorno permanece elevado: os juros reais seguem positivos e em patamar relevante, o que tende a preservar um prêmio de risco financeiro e a manter seletividade na precificação de ativos.
+
+Nesse contexto, os mercados refletem tanto a reprecificação doméstica quanto a aversão global ao risco. A queda do Ibovespa no período recente, em paralelo a movimentos negativos em Dow Jones e Nasdaq, sugere que o canal externo segue dominante para o equity, enquanto a moeda (dólar em alta frente ao real) e a volatilidade (VIX elevado) reforçam a cautela. Para o Brasil, isso significa que o corte de juros abre janelas táticas — especialmente para prazos e segmentos mais sensíveis a condições financeiras —, mas a magnitude do repricing depende do ritmo de convergência macro e da tolerância ao risco internacional.
+
+Ao mesmo tempo, commodities e inflação de custos aparecem como fator de assimetria: o petróleo em baixa no dado contrasta com a narrativa de tensões que podem elevar energia e pressionar preços de insumos, aumentando a variância do caminho inflacionário. Nos ativos reais, a estabilidade do IMA-B e o desempenho de ouro e metais sugerem demanda por proteção em um quadro de retorno real ainda atrativo; já em crédito/bolsa e ativos de renda variável, a resposta parece mais “alavancada” por fluxo e risco global do que por melhora autônoma da atividade. Em cripto, a correção recente no Bitcoin/Ethereum e a persistência de volatilidade são consistentes com esse mesmo padrão: liquidez cautelosa, apetite reduzido e maior sensibilidade a eventos.
+
+Em síntese, a leitura macro integradora é de “descompressão monetária com risco ainda ativo”: o Brasil passa a oferecer gradiente de melhora em juros e inflação, mas a transmissão para ativos de maior duração depende de como o ambiente externo — volatilidade, câmbio e energia — evolui. A oportunidade estratégica, portanto, está em calibrar exposição para capturar o efeito do ciclo doméstico sem ignorar que o preço do risco global continua sendo a principal âncora do curto prazo.</p>
+                    <p class="text-start text-muted">
+                        <small>---<br>API: OpenAI | LLM: gpt-5.4-nano<br>TOKENS: user_prompt_tokens=1950 input_tokens=6392, output_tokens=546, total_tokens=6938<br>Tempo de execução (prompt + retorno LLM): 4.58 segundos</small>
+                    </p>
+                </div>
+
+                <div class="tab-pane fade" id="aba2" role="tabpanel">
+                    <p class="text-muted"># ANÁLISE MACROECONÔMICA INTEGRADA – MARÇO 2026
+
+O cenário econômico global e brasileiro apresenta-se em inflexão crítica, marcado pela transição entre pressões inflacionárias residuais e sinais de desaceleração da atividade. O Banco Central brasileiro, alinhado à moderação econômica evidenciada pelo crescimento do PIB em 1,8% no terceiro trimestre de 2025, iniciou seu ciclo de flexibilização monetária com a redução da Selic para 14,75% ao ano, enquanto mantém o juro real em patamares elevados de 10,44% anuais. Esta decisão reflete a convergência da inflação oficial para 3,81% em 12 meses, dentro da meta, apesar das ressalvas sobre incertezas geopolíticas que pressionam commodities e energia globalmente.
+
+A estrutura de risco-retorno do mercado brasileiro revela-se complexa. O Ibovespa recua 2,15% em sessão recente, impactado pela aversão global ao risco evidenciada pelo VIX elevado em 25,68 pontos, enquanto o dólar aprecia 0,5% frente ao real, atingindo R$ 5,29. Simultaneamente, a dívida líquida do setor público permanece estável em R$ 7,42 trilhões, sinalizando sustentabilidade fiscal relativa. A carteira acionária concentra-se em setores defensivos e de renda: Vale (10,80%), Petrobras (7,08%) e fundos imobiliários (6,97%), refletindo busca por fluxos de caixa em contexto de volatilidade. O minério de ferro, proxy de ciclo global, recua 1,67%, alinhado ao arrefecimento da demanda chinesa.
+
+A dinâmica de ativos alternativos e tecnologia revela desconexão com fundamentos. Bitcoin e Ethereum mantêm-se resilientes em USD, apesar da volatilidade macro, enquanto a capitalização de mercado da Nvidia permanece em níveis estratosféricos de USD 4,4 trilhões. Este contraste entre a moderação do crescimento global (3,3% segundo FMI) e a exuberância em ativos de risco sugere repricing ainda em curso. A implementação da reforma tributária brasileira, com alíquota teste de 1%, introduz novo fator de incerteza sobre margens corporativas e consumo doméstico.
+
+**Insight estratégico:** O Brasil encontra-se em janela de oportunidade limitada para ajuste de portfólio. A redução de juros reais, ainda que moderada, combinada com estabilidade fiscal e inflação controlada, oferece suporte a ativos locais; contudo, a volatilidade geopolítica global e a repricing de ativos tecnológicos exigem posicionamento defensivo e seletivo. O diferencial de juros reais brasileiros permanece atrativo globalmente, mas a qualidade do crescimento econômico doméstico permanece como variável crítica para sustentação de fluxos nos próximos trimestres.</p>
+                    <p class="text-start text-muted"><small>---<br>API: Anthropic | LLM: claude-haiku-4-5-20251001<br>TOKENS: user_prompt_tokens=1950 input_tokens=2353, output_tokens=776, total_tokens=3129<br>Tempo de execução (prompt + retorno LLM): 9.19 segundos</small>
+                    </p>
+                </div>
+
+                <div class="tab-pane fade" id="aba3" role="tabpanel">
+                    <p class="text-muted">O cenário macroeconômico global e doméstico apresenta uma complexa interação de forças, com o Fundo Monetário Internacional (FMI) elevando a projeção de crescimento do PIB global para 3,3% em 2026, impulsionado por investimentos em inteligência artificial, mas alertando para riscos geopolíticos e possíveis correções nesse setor. A inflação global, embora esperada para arrefecer para 3,7% pelo FMI ou 2,6% pelo Banco Mundial e BCE, permanece sob ameaça de alta devido às tensões no Oriente Médio, que impactam os preços de energia e commodities. Bancos centrais como o Federal Reserve e o Banco Central Europeu mantiveram suas taxas de juros estáveis, em 3,50%-3,75% e 2% respectivamente, adotando uma postura cautelosa e dependente de dados frente à volatilidade.
+
+No Brasil, o Comitê de Política Monetária (Copom) iniciou um ciclo de flexibilização monetária, reduzindo a taxa Selic para 14,75% ao ano em 18 de março de 2026, o primeiro corte em quase dois anos. Essa decisão ocorre em um contexto de moderação da atividade econômica, com o PIB brasileiro crescendo 2,3% em 2025, impulsionado pela agropecuária, mas com consumo e investimentos perdendo fôlego no segundo semestre. A inflação oficial, medida pelo IPCA, registrou 3,81% no acumulado de 12 meses até fevereiro de 2026, situando-se dentro da meta. Contudo, a taxa de juros real de 10,44% a.a. ainda reflete um ambiente monetário restritivo, e a Dívida Líquida do Setor Público (DLSP) do Governo Federal permanece em R$ 7,424 trilhões.
+
+O desempenho dos mercados financeiros reflete essa dualidade. Enquanto bolsas internacionais como Dow Jones, Nasdaq e S&P 500 registraram leves quedas, o Ibovespa, apesar de uma retração de 2,15% no dia, lidera os ganhos em dólar entre as bolsas mundiais no acumulado de 2026, indicando um fluxo de capital estrangeiro seletivo para o Brasil. O câmbio, por sua vez, mostra uma desvalorização do Real frente às principais moedas, com o Dólar apreciando 0,5% e o Euro 1,47% em relação à moeda brasileira. No mercado de commodities, o petróleo Brent e a VALE3 (proxy para minério de ferro) apresentaram quedas de 3,44% e 1,67% respectivamente, o que contrasta com a notícia de alta generalizada de commodities agrícolas devido às tensões geopolíticas, sugerindo dinâmicas de curto prazo ou seletividade nos movimentos. A volatilidade global, medida pelo VIX, encontra-se elevada em 25,68 pontos e em ascensão de 6,73%, corroborando a incerteza do cenário. A implementação da reforma tributária, que teve início em 2026 com uma alíquota teste de 1% sobre bens e serviços, adiciona um novo elemento de adaptação para o ambiente de negócios.
+
+Em síntese, a economia global navega entre o otimismo de crescimento impulsionado pela tecnologia e os riscos inflacionários e geopolíticos persistentes. O Brasil, ao iniciar seu ciclo de corte de juros com inflação controlada e crescimento do PIB em 2025, enfrenta o desafio de sustentar essa trajetória em um ambiente de juros reais ainda elevados, volatilidade cambial e incertezas externas, enquanto a reforma tributária demanda adaptação. O insight macro integrador reside na necessidade de uma gestão fiscal prudente e de reformas estruturais contínuas para capitalizar as oportunidades de um cenário global complexo, mitigando os riscos inerentes à elevada taxa de juros real e à instabilidade geopolítica.</p>
+                    <p class="text-start text-muted"><small>---<br>API: Google | LLM: gemini-2.5-flash<br>TOKENS: user_prompt_tokens=1950 input_tokens=2302, output_tokens=997, total_tokens=10386<br>Tempo de execução (prompt + retorno LLM): 22.00 segundos</small>
+                    </p>
+                </div>
+
+            </div>
+        </div><style type="text/css">
+#T_f03a3_row6_col3, #T_f03a3_row7_col3, #T_f03a3_row8_col3, #T_f03a3_row9_col3, #T_f03a3_row10_col3, #T_f03a3_row11_col3, #T_f03a3_row17_col3, #T_f03a3_row18_col3, #T_f03a3_row23_col3, #T_f03a3_row25_col3, #T_f03a3_row27_col3, #T_f03a3_row39_col3, #T_f03a3_row40_col3, #T_f03a3_row45_col3, #T_f03a3_row46_col3 {
+  color: #dc3545;
+  font-weight: bold;
+}
+#T_f03a3_row19_col3, #T_f03a3_row20_col3, #T_f03a3_row21_col3, #T_f03a3_row22_col3, #T_f03a3_row26_col3, #T_f03a3_row38_col3 {
+  color: #198754;
+  font-weight: bold;
+}
+</style>
+<table id="T_f03a3" id="indicadores_table" class="dataframe table table-striped table-hover text-center">
+  <thead>
+    <tr>
+      <th id="T_f03a3_level0_col0" class="col_heading level0 col0" >Indicador</th>
+      <th id="T_f03a3_level0_col1" class="col_heading level0 col1" >Valor</th>
+      <th id="T_f03a3_level0_col2" class="col_heading level0 col2" >Detalhe</th>
+      <th id="T_f03a3_level0_col3" class="col_heading level0 col3" >Variação (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_f03a3_row0_col0" class="data row0 col0" >SELIC</td>
+      <td id="T_f03a3_row0_col1" class="data row0 col1" >14.75</td>
+      <td id="T_f03a3_row0_col2" class="data row0 col2" >% a.a.</td>
+      <td id="T_f03a3_row0_col3" class="data row0 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row1_col0" class="data row1 col0" >CDI</td>
+      <td id="T_f03a3_row1_col1" class="data row1 col1" >14.65</td>
+      <td id="T_f03a3_row1_col2" class="data row1 col2" >% a.a.</td>
+      <td id="T_f03a3_row1_col3" class="data row1 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row2_col0" class="data row2 col0" >CDI (Eq.)</td>
+      <td id="T_f03a3_row2_col1" class="data row2 col1" >1.1458</td>
+      <td id="T_f03a3_row2_col2" class="data row2 col2" >% a.m.</td>
+      <td id="T_f03a3_row2_col3" class="data row2 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row3_col0" class="data row3 col0" >IPCA</td>
+      <td id="T_f03a3_row3_col1" class="data row3 col1" >3.81</td>
+      <td id="T_f03a3_row3_col2" class="data row3 col2" >% a.a.</td>
+      <td id="T_f03a3_row3_col3" class="data row3 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row4_col0" class="data row4 col0" >Juros Real</td>
+      <td id="T_f03a3_row4_col1" class="data row4 col1" >10.44</td>
+      <td id="T_f03a3_row4_col2" class="data row4 col2" >% a.a.</td>
+      <td id="T_f03a3_row4_col3" class="data row4 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row5_col0" class="data row5 col0" >Juros Real (Eq.)</td>
+      <td id="T_f03a3_row5_col1" class="data row5 col1" >0.83</td>
+      <td id="T_f03a3_row5_col2" class="data row5 col2" >% a.m.</td>
+      <td id="T_f03a3_row5_col3" class="data row5 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row6_col0" class="data row6 col0" >Índice de Títulos Públicos Atrelados à Inflação (IMA-B)</td>
+      <td id="T_f03a3_row6_col1" class="data row6 col1" >110.8</td>
+      <td id="T_f03a3_row6_col2" class="data row6 col2" >Stable Real Yield</td>
+      <td id="T_f03a3_row6_col3" class="data row6 col3" >-0.19</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row7_col0" class="data row7 col0" >PIB Brasil - IBGE</td>
+      <td id="T_f03a3_row7_col1" class="data row7 col1" >1.8</td>
+      <td id="T_f03a3_row7_col2" class="data row7 col2" >3º tri 2025</td>
+      <td id="T_f03a3_row7_col3" class="data row7 col3" >-25.00</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row8_col0" class="data row8 col0" >Dívida Líquida do Setor Público (DLSP) do Governo Federal (R$ milhões)</td>
+      <td id="T_f03a3_row8_col1" class="data row8 col1" >7424066.6</td>
+      <td id="T_f03a3_row8_col2" class="data row8 col2" >2026-01-01</td>
+      <td id="T_f03a3_row8_col3" class="data row8 col3" >-0.23</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row9_col0" class="data row9 col0" >Dow Jones</td>
+      <td id="T_f03a3_row9_col1" class="data row9 col1" >45866.3</td>
+      <td id="T_f03a3_row9_col2" class="data row9 col2" >pts</td>
+      <td id="T_f03a3_row9_col3" class="data row9 col3" >-0.34</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row10_col0" class="data row10 col0" >IBOVESPA</td>
+      <td id="T_f03a3_row10_col1" class="data row10 col1" >176394.03</td>
+      <td id="T_f03a3_row10_col2" class="data row10 col2" >pts</td>
+      <td id="T_f03a3_row10_col3" class="data row10 col3" >-2.15</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row11_col0" class="data row11 col0" >VALE3 (Proxy Minério de Ferro)</td>
+      <td id="T_f03a3_row11_col1" class="data row11 col1" >75.35</td>
+      <td id="T_f03a3_row11_col2" class="data row11 col2" >BRL/ação</td>
+      <td id="T_f03a3_row11_col3" class="data row11 col3" >-1.67</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row12_col0" class="data row12 col0" >B3 - Composição da carteira: VALE (VALE3)</td>
+      <td id="T_f03a3_row12_col1" class="data row12 col1" >10.80</td>
+      <td id="T_f03a3_row12_col2" class="data row12 col2" >Participação (%)</td>
+      <td id="T_f03a3_row12_col3" class="data row12 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row13_col0" class="data row13 col0" >B3 - Fundos Imobiliários: FII KINEA RI (KNCR11)</td>
+      <td id="T_f03a3_row13_col1" class="data row13 col1" >6.97</td>
+      <td id="T_f03a3_row13_col2" class="data row13 col2" >Participação (%)</td>
+      <td id="T_f03a3_row13_col3" class="data row13 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row14_col0" class="data row14 col0" >B3 - Small Caps: LOJAS RENNER (LREN3)</td>
+      <td id="T_f03a3_row14_col1" class="data row14 col1" >4.55</td>
+      <td id="T_f03a3_row14_col2" class="data row14 col2" >Participação (%)</td>
+      <td id="T_f03a3_row14_col3" class="data row14 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row15_col0" class="data row15 col0" >B3 - Dividendos: PETROBRAS (PETR4)</td>
+      <td id="T_f03a3_row15_col1" class="data row15 col1" >7.08</td>
+      <td id="T_f03a3_row15_col2" class="data row15 col2" >Participação (%)</td>
+      <td id="T_f03a3_row15_col3" class="data row15 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row16_col0" class="data row16 col0" >IFIX</td>
+      <td id="T_f03a3_row16_col1" class="data row16 col1" >3863.61</td>
+      <td id="T_f03a3_row16_col2" class="data row16 col2" >pts</td>
+      <td id="T_f03a3_row16_col3" class="data row16 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row17_col0" class="data row17 col0" >Nasdaq Composite</td>
+      <td id="T_f03a3_row17_col1" class="data row17 col1" >24281.75</td>
+      <td id="T_f03a3_row17_col2" class="data row17 col2" >pts</td>
+      <td id="T_f03a3_row17_col3" class="data row17 col3" >-0.34</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row18_col0" class="data row18 col0" >S&P 500</td>
+      <td id="T_f03a3_row18_col1" class="data row18 col1" >6553.68</td>
+      <td id="T_f03a3_row18_col2" class="data row18 col2" >pts</td>
+      <td id="T_f03a3_row18_col3" class="data row18 col3" >-0.80</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row19_col0" class="data row19 col0" >Dólar</td>
+      <td id="T_f03a3_row19_col1" class="data row19 col1" >5.29</td>
+      <td id="T_f03a3_row19_col2" class="data row19 col2" >R$</td>
+      <td id="T_f03a3_row19_col3" class="data row19 col3" >+0.50</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row20_col0" class="data row20 col0" >Euro</td>
+      <td id="T_f03a3_row20_col1" class="data row20 col1" >6.12</td>
+      <td id="T_f03a3_row20_col2" class="data row20 col2" >R$</td>
+      <td id="T_f03a3_row20_col3" class="data row20 col3" >+1.47</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row21_col0" class="data row21 col0" >Libra Esterlina</td>
+      <td id="T_f03a3_row21_col1" class="data row21 col1" >7.05</td>
+      <td id="T_f03a3_row21_col2" class="data row21 col2" >R$</td>
+      <td id="T_f03a3_row21_col3" class="data row21 col3" >+1.05</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row22_col0" class="data row22 col0" >Iene Japonês</td>
+      <td id="T_f03a3_row22_col1" class="data row22 col1" >0.0332</td>
+      <td id="T_f03a3_row22_col2" class="data row22 col2" >R$</td>
+      <td id="T_f03a3_row22_col3" class="data row22 col3" >+0.85</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row23_col0" class="data row23 col0" >Ouro</td>
+      <td id="T_f03a3_row23_col1" class="data row23 col1" >779.62</td>
+      <td id="T_f03a3_row23_col2" class="data row23 col2" >BRL/g</td>
+      <td id="T_f03a3_row23_col3" class="data row23 col3" >-0.34</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row24_col0" class="data row24 col0" >Ouro Barra LBMA</td>
+      <td id="T_f03a3_row24_col1" class="data row24 col1" >9699532.49</td>
+      <td id="T_f03a3_row24_col2" class="data row24 col2" >BRL/barra (400 oz t)</td>
+      <td id="T_f03a3_row24_col3" class="data row24 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row25_col0" class="data row25 col0" >Prata</td>
+      <td id="T_f03a3_row25_col1" class="data row25 col1" >11.87</td>
+      <td id="T_f03a3_row25_col2" class="data row25 col2" >BRL/g</td>
+      <td id="T_f03a3_row25_col3" class="data row25 col3" >-1.56</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row26_col0" class="data row26 col0" >Platina</td>
+      <td id="T_f03a3_row26_col1" class="data row26 col1" >335.57</td>
+      <td id="T_f03a3_row26_col2" class="data row26 col2" >BRL/g</td>
+      <td id="T_f03a3_row26_col3" class="data row26 col3" >+1.77</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row27_col0" class="data row27 col0" >Barril Petróleo Brent</td>
+      <td id="T_f03a3_row27_col1" class="data row27 col1" >104.91</td>
+      <td id="T_f03a3_row27_col2" class="data row27 col2" >USD/bbl (159 litros)</td>
+      <td id="T_f03a3_row27_col3" class="data row27 col3" >-3.44</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row28_col0" class="data row28 col0" >DB-Engines Ranking: Oracle</td>
+      <td id="T_f03a3_row28_col1" class="data row28 col1" >1182.46</td>
+      <td id="T_f03a3_row28_col2" class="data row28 col2" >-21.05</td>
+      <td id="T_f03a3_row28_col3" class="data row28 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row29_col0" class="data row29 col0" >Programming Languages R​anking: Python</td>
+      <td id="T_f03a3_row29_col1" class="data row29 col1" >21.25%</td>
+      <td id="T_f03a3_row29_col2" class="data row29 col2" >-2.59%</td>
+      <td id="T_f03a3_row29_col3" class="data row29 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row30_col0" class="data row30 col0" >Linux Ranking Distrowatch: CachyOS</td>
+      <td id="T_f03a3_row30_col1" class="data row30 col1" >3687</td>
+      <td id="T_f03a3_row30_col2" class="data row30 col2" ></td>
+      <td id="T_f03a3_row30_col3" class="data row30 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row31_col0" class="data row31 col0" >Movie: Avatar</td>
+      <td id="T_f03a3_row31_col1" class="data row31 col1" >2923710708</td>
+      <td id="T_f03a3_row31_col2" class="data row31 col2" >2009</td>
+      <td id="T_f03a3_row31_col3" class="data row31 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row32_col0" class="data row32 col0" >Billionaire: Elon Musk</td>
+      <td id="T_f03a3_row32_col1" class="data row32 col1" >839618.48</td>
+      <td id="T_f03a3_row32_col2" class="data row32 col2" >2026-03-02</td>
+      <td id="T_f03a3_row32_col3" class="data row32 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row33_col0" class="data row33 col0" >Company by Market Value: NVIDIA</td>
+      <td id="T_f03a3_row33_col1" class="data row33 col1" >4403458736128</td>
+      <td id="T_f03a3_row33_col2" class="data row33 col2" >United States</td>
+      <td id="T_f03a3_row33_col3" class="data row33 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row34_col0" class="data row34 col0" >Arena AI (Text): claude-opus-4-6-thinking</td>
+      <td id="T_f03a3_row34_col1" class="data row34 col1" >1502</td>
+      <td id="T_f03a3_row34_col2" class="data row34 col2" >11716</td>
+      <td id="T_f03a3_row34_col3" class="data row34 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row35_col0" class="data row35 col0" >Arena AI (Code): claude-opus-4-6</td>
+      <td id="T_f03a3_row35_col1" class="data row35 col1" >1547</td>
+      <td id="T_f03a3_row35_col2" class="data row35 col2" >4090</td>
+      <td id="T_f03a3_row35_col3" class="data row35 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row36_col0" class="data row36 col0" >Arena AI (Image): gemini-3.1-flash-image-preview (nano-banana-2) [web-search]</td>
+      <td id="T_f03a3_row36_col1" class="data row36 col1" >1266</td>
+      <td id="T_f03a3_row36_col2" class="data row36 col2" >15317</td>
+      <td id="T_f03a3_row36_col3" class="data row36 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row37_col0" class="data row37 col0" >Arena AI (Video): veo-3.1-audio-1080p</td>
+      <td id="T_f03a3_row37_col1" class="data row37 col1" >1381</td>
+      <td id="T_f03a3_row37_col2" class="data row37 col2" >5537</td>
+      <td id="T_f03a3_row37_col3" class="data row37 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row38_col0" class="data row38 col0" >Índice de Volatilidade (VIX)</td>
+      <td id="T_f03a3_row38_col1" class="data row38 col1" >25.68</td>
+      <td id="T_f03a3_row38_col2" class="data row38 col2" >Elevated Volatility</td>
+      <td id="T_f03a3_row38_col3" class="data row38 col3" >+6.73</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row39_col0" class="data row39 col0" >Ethereum</td>
+      <td id="T_f03a3_row39_col1" class="data row39 col1" >2132.02</td>
+      <td id="T_f03a3_row39_col2" class="data row39 col2" >USD</td>
+      <td id="T_f03a3_row39_col3" class="data row39 col3" >-0.25</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row40_col0" class="data row40 col0" >Ethereum</td>
+      <td id="T_f03a3_row40_col1" class="data row40 col1" >11275.20</td>
+      <td id="T_f03a3_row40_col2" class="data row40 col2" >BRL</td>
+      <td id="T_f03a3_row40_col3" class="data row40 col3" >-0.25</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row41_col0" class="data row41 col0" >Ethereum Máxima 2026 (USD)</td>
+      <td id="T_f03a3_row41_col1" class="data row41 col1" >3354.72</td>
+      <td id="T_f03a3_row41_col2" class="data row41 col2" >2026-01-14</td>
+      <td id="T_f03a3_row41_col3" class="data row41 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row42_col0" class="data row42 col0" >Ethereum Mínima 2026 (USD)</td>
+      <td id="T_f03a3_row42_col1" class="data row42 col1" >1821.68</td>
+      <td id="T_f03a3_row42_col2" class="data row42 col2" >2026-02-05</td>
+      <td id="T_f03a3_row42_col3" class="data row42 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row43_col0" class="data row43 col0" >Ethereum Máxima Histórica (USD)</td>
+      <td id="T_f03a3_row43_col1" class="data row43 col1" >4831.35</td>
+      <td id="T_f03a3_row43_col2" class="data row43 col2" >2025-08-22</td>
+      <td id="T_f03a3_row43_col3" class="data row43 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row44_col0" class="data row44 col0" >Ethereum Mínima Histórica (USD)</td>
+      <td id="T_f03a3_row44_col1" class="data row44 col1" >84.31</td>
+      <td id="T_f03a3_row44_col2" class="data row44 col2" >2018-12-14</td>
+      <td id="T_f03a3_row44_col3" class="data row44 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row45_col0" class="data row45 col0" >Bitcoin</td>
+      <td id="T_f03a3_row45_col1" class="data row45 col1" >69807.27</td>
+      <td id="T_f03a3_row45_col2" class="data row45 col2" >USD</td>
+      <td id="T_f03a3_row45_col3" class="data row45 col3" >-0.15</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row46_col0" class="data row46 col0" >Bitcoin</td>
+      <td id="T_f03a3_row46_col1" class="data row46 col1" >369175.77</td>
+      <td id="T_f03a3_row46_col2" class="data row46 col2" >BRL</td>
+      <td id="T_f03a3_row46_col3" class="data row46 col3" >-0.15</td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row47_col0" class="data row47 col0" >Bitcoin Máxima 2026 (USD)</td>
+      <td id="T_f03a3_row47_col1" class="data row47 col1" >96929.33</td>
+      <td id="T_f03a3_row47_col2" class="data row47 col2" >2026-01-14</td>
+      <td id="T_f03a3_row47_col3" class="data row47 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row48_col0" class="data row48 col0" >Bitcoin Mínima 2026 (USD)</td>
+      <td id="T_f03a3_row48_col1" class="data row48 col1" >62702.10</td>
+      <td id="T_f03a3_row48_col2" class="data row48 col2" >2026-02-05</td>
+      <td id="T_f03a3_row48_col3" class="data row48 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row49_col0" class="data row49 col0" >Bitcoin Máxima Histórica (USD)</td>
+      <td id="T_f03a3_row49_col1" class="data row49 col1" >124752.53</td>
+      <td id="T_f03a3_row49_col2" class="data row49 col2" >2025-10-06</td>
+      <td id="T_f03a3_row49_col3" class="data row49 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_f03a3_row50_col0" class="data row50 col0" >Bitcoin Mínima Histórica (USD)</td>
+      <td id="T_f03a3_row50_col1" class="data row50 col1" >178.10</td>
+      <td id="T_f03a3_row50_col2" class="data row50 col2" >2015-01-14</td>
+      <td id="T_f03a3_row50_col3" class="data row50 col3" ></td>
+    </tr>
+  </tbody>
+</table>
+
+            <!-- ======================================================== -->
+            <!--  RODAPÉ: LinkedIn + Chamada de Contribuição              -->
+            <!-- ======================================================== -->
+            <div class="container mt-5 pb-4 text-center">
+
+                <!-- LinkedIn -->
+                <p>
+                    <a href="https://www.linkedin.com/in/geanclm/" target="_blank">
+                        <img src="https://geanclm.github.io/projeto-site/img/linkedin.jpg"
+                             alt="LinkedIn" width="50px">
+                    </a>
+                </p>
+
+                <!-- Linha separadora suave -->
+                <hr class="mx-auto" style="max-width:400px; border-color:#dee2e6;">
+
+                <!-- Chamada de contribuição -->
+                <p class="text-muted mb-1" style="font-size:0.9rem;">
+                    Este projeto é independente e tem custo real de API para os modelos de IA.
+                </p>
+
+                <!-- ── <p style="font-size:1rem; font-weight:500; color:#343a40;"> ────────── -->
+                <!-- ──    Se o conteúdo foi útil, considere uma contribuição simbólica 🙏 ────────── -->
+                <!-- ── </p> ────────── -->
+
+                <!-- ── OPÇÃO A: botão que revela chave Pix ao clicar ────────── -->
+                <button
+                    onclick="document.getElementById('pix-msg').style.display='block';
+                        this.style.display='none';
+                        document.getElementById('pix-msg').scrollIntoView({behavior: 'smooth'});"
+                    class="btn btn-outline-success btn-sm px-4">
+                    ☕ Contribuir com o projeto
+                </button>
+
+                <div id="pix-msg" style="display:none; max-width:420px; margin:12px auto 0;">
+                    <div class="card border-success shadow-sm">
+                        <div class="card-body py-3 px-4 text-center">
+                            <p class="mb-1" style="font-size:1.3rem;">🙏</p>
+                            <p class="mb-2" style="font-size:0.95rem; color:#343a40;">
+                                Muitíssimo obrigado pela boa energia!<br>
+                                Ela é essencial para a continuidade<br>
+                                e evolução deste projeto.<br>
+                                Se o conteúdo foi útil,<br>
+                                considere uma contribuição simbólica via PIX:
+                            </p>
+                            <p class="mb-0">
+                                <code
+                                    style="font-size:1rem; background:#f0fff4; padding:6px 14px;
+                                        border-radius:6px; border:1px solid #c3e6cb;
+                                        color:#198754; font-weight:bold; cursor:pointer;"
+                                    onclick="navigator.clipboard.writeText('geanclm@yahoo.com').then(()=>{ this.innerText='✅ Copiado!'; });"
+                                    title="Clique para copiar">
+                                    geanclm@yahoo.com
+                                </code>
+                            </p>
+                            <p class="mt-2 mb-0 text-muted" style="font-size:0.75rem;">
+                                clique na chave para copiar
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Citação -->
+                <p class="text-muted mt-3 fst-italic" style="font-size:0.82rem;">
+                    "A inteligência artificial é a nova eletricidade." — Andrew Ng
+                </p>
+
+            </div>
+            </div>
+
+            <!-- ── BOTÃO VOLTAR AO TOPO ─────────────────────────────────────── -->
+            <a id="btn-topo" href="#" title="Voltar ao topo"
+            style="
+                display: none;
+                position: fixed;
+                bottom: 28px;
+                right: 28px;
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                background-color: #343a40;
+                color: #ffffff;
+                font-size: 1.2rem;
+                text-align: center;
+                line-height: 42px;
+                text-decoration: none;
+                box-shadow: 0 2px 8px rgba(0,0,0,.25);
+                opacity: 0.25;
+                transition: opacity .2s;
+                z-index: 9999;
+            "
+            onmouseover="this.style.opacity='1'"
+            onmouseout="this.style.opacity='0.5'"
+            onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">
+                &#8679;
+            </a>
+
+            <script>
+                // Exibe o botão após rolar 300 px; oculta quando está no topo
+                window.addEventListener('scroll', function () {
+                    var btn = document.getElementById('btn-topo');
+                    btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+                });
+            </script>
+            <!-- ─────────────────────────────────────────────────────────────── -->
+
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        </body>
+        </html>
+        <h6 class="text-center text-muted">Atualizado na sexta-feira, 20/03/2026, às 15h00. Em 2026, já decorreram 79 dias e restam 286.</h56
