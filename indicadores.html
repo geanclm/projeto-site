@@ -4,44 +4,83 @@
         <head>
             <meta charset="UTF-8">
             <title>Indicadores</title>
-            <!-- Bootstrap CSS gratuito -->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
             <style>
+                /* Paleta de cores baseada no Claude: Fundos escuros (#21201D), textos off-white (#E6E4DD) e bordas suaves (#403E3B) */
                 body {
-                    background-color: #f8f9fa;
+                    background-color: #21201D;
+                    color: #E6E4DD;
                     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                }
+                h1, h2, h3, h4, h5, h6 {
+                    color: #E6E4DD;
                 }
                 h1 {
                     text-align: center;
                     margin: 30px 0;
-                    color: #343a40;
                 }
+
+                /* Sobrescreve a classe text-muted do Bootstrap para leitura suave no dark mode */
+                .text-muted {
+                    color: #A09E98 !important;
+                }
+
+                /* --- Personalização da Tabela Pandas --- */
                 #indicadores_table {
                     width: 90%;
                     margin: auto;
                     border-collapse: collapse;
+                    color: #E6E4DD;
                 }
                 #indicadores_table th {
                     text-align: center;
-                    background-color: #343a40;
-                    color: #ffffff;
+                    background-color: #2D2C29; /* Cabeçalho mais destacado */
+                    color: #E6E4DD;
                     font-weight: bold;
+                    border-bottom: 1px solid #403E3B;
                 }
-                #indicadores_table tr:nth-child(even) {
-                    background-color: #f2f2f2;
+                #indicadores_table td {
+                    border-color: #403E3B;
+                    color: #E6E4DD;
                 }
-                #indicadores_table tr:nth-child(odd) {
-                    background-color: #ffffff;
+                #indicadores_table tbody tr:nth-child(even) {
+                    background-color: #262522; /* Efeito zebrado suave */
+                }
+                #indicadores_table tbody tr:nth-child(odd) {
+                    background-color: #21201D;
+                }
+                .table-hover tbody tr:hover {
+                    background-color: #32312D !important;
+                    color: #E6E4DD !important;
+                }
+
+                /* --- Personalização das Abas (Tabs) --- */
+                .nav-tabs {
+                    border-bottom: 1px solid #403E3B;
+                }
+                .nav-tabs .nav-link {
+                    color: #A09E98;
+                }
+                .nav-tabs .nav-link:hover {
+                    border-color: #403E3B #403E3B transparent;
+                    color: #E6E4DD;
+                }
+                .nav-tabs .nav-link.active {
+                    background-color: transparent;
+                    color: #E6E4DD;
+                    border-color: #403E3B #403E3B #2D2C29;
                 }
             </style>
         </head>
         <body>
             <div class="container">
-                <h1>📊 Indicadores</h1>
         
-        <div class="mt-3 mb-3 p-3" style="border: 1px solid #ddd; border-radius: 6px; background-color: #fdfdfd;">
+        <h1>📊 Indicadores |
+        <span class="badge bg-success" style="background-color: #198754 !important; color: #E6E4DD;" title="Quantidade de indicadores em alta">Altas: 20</span> |
+        <span class="badge bg-danger" style="background-color: #dc3545 !important; color: #E6E4DD;" title="Quantidade de indicadores em baixa">Baixas: 9</span>
+        </h1>
+        <div class="mt-3 mb-3 p-3" style="border: 1px solid #403E3B; border-radius: 6px; background-color: #2D2C29;">
 
-            <!-- Abas -->
             <ul class="nav nav-tabs" id="abasIA" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="aba1-tab" data-bs-toggle="tab"
@@ -62,97 +101,85 @@
                     </button>
                 </li>
 
-
-                <!-- Resumo Visual - Infográfico -->
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="aba4-tab" data-bs-toggle="tab"
                         data-bs-target="#aba4" type="button" role="tab">
                         Resumo Visual
                     </button>
                 </li>
-
-
             </ul>
 
-            <!-- Conteúdo das abas -->
             <div class="tab-content pt-3" id="abasIAContent">
 
                 <div class="tab-pane fade show active" id="aba1" role="tabpanel">
-                    <p class="text-muted">No atual cenário global, a economia enfrenta dinâmicas desafiadoras que moldam a trajetória dos mercados financeiros. O Federal Reserve mantém uma postura cautelosa em relação aos juros, refletindo uma estratégia de monitoramento da inflação para a meta de 2%, enquanto a economia da zona do euro apresenta crescimento moderado, com pressões inflacionárias diversas entre os países. No Brasil, o Banco Central ajustou a taxa Selic para 14,75% ao ano, um corte de 1,67%, sinalizando esforços para controlar a inflação, que atualmente se encontra em 4,14% ao ano.
+                    <p class="text-muted">No atual cenário econômico, a interação entre os dados financeiros e a realidade macroeconômica global demonstra um panorama desafiador, mas com nuances de oportunidade. A taxa Selic permanece elevada a 14,75% ao ano, refletindo a postura rigorosa do Banco Central do Brasil para conter a inflação, que se estabiliza em 4,14% ao ano. Esta estratégia visa ancorar as expectativas inflacionárias em um ambiente onde o IPCA sinaliza pressões persistentes, especialmente em serviços, enquanto o setor de agropecuária e serviços mantém resiliência no crescimento do PIB, que alcançou R$ 3,28 trilhões no quarto trimestre de 2025.
 
-Este ambiente de juros elevados e inflação moderada coloca o Produto Interno Bruto (PIB) em um crescimento de 1,3% no quarto trimestre de 2025, evidenciando resiliência, especialmente no agronegócio. No entanto, a indústria brasileira ainda enfrenta limitações impostas pelos altos custos de crédito, o que pode inibir expansões mais agressivas. A expectativa de taxas de juros internacionais, com os Treasuries dos EUA alcançando 4,28%, complicam a dinâmica cambial, onde o dólar está cotado a R$ 5,00, o que contribui para a volatilidade observada nas operações financeiras locais.
+O ambiente global, apesar da cautela do Federal Reserve em relação à redução de juros devido a um panorama inflacionário persistente nos EUA, apresenta complexidades adicionais. As tensões geopolíticas, particularmente no Oriente Médio, agravam a volatilidade no comércio internacional e afetam os preços da energia, que já experienciam flutuações com o Brent a US$ 98,95 por barril. Ao mesmo tempo, a OPEP desempenha um papel crucial na configuração dos preços, o que ressalta a interdependência entre os mercados de commodities e as políticas monetárias globais.
 
-No contexto das bolsas, o IBOVESPA apresentou uma leve queda de 0,43%, contrastando com a performance positiva do Nasdaq, que subiu 0,72%, refletindo um fortalecimento do setor de tecnologia impulsionado pela inovação em inteligência artificial. Commodities também seguem uma trajetória de pressão, com o petróleo Brent a US$ 95,50 o barril, sustentado por tensões geopolíticas.
+Em um contexto de incerteza, os investidores devem ficar atentos à volatilidade do IBOVESPA, que permanece em 197.132,77 pontos, sugerindo cautela frente a um crescimento moderado das economias mundiais e à normalização monetária nos EUA. Com o dólar ao redor de R$ 5,00, o mercado de moedas revela um ambiente de troca relativamente estável, mas suscetível a oscilações conforme avanços nas políticas fiscais e monetárias locais.
 
-Olhando para os riscos, a contínua incerteza fiscal e a dependência de demandas externas podem gerar volatilidade nos mercados financeiros brasileiros. Contudo, a integração da inteligência artificial promete ser um vetor significativo de produtividade e competitividade, tanto em nível global quanto local.
+O crescimento das empresas de tecnologia, especialmente na esfera de inteligência artificial, destaca uma área potencialmente promissora. A valorização das criptomoedas, embora recente e volátil, também contribui para a diversificação do portfólio dos investidores. Assim, mitigando riscos, recomenda-se um monitoramento próximo das pressões inflacionárias e das reações dos setores mais vulneráveis à instabilidade global.
 
-Em síntese, o cenário macroeconômico é de prudência; o Brasil deverá focar em equilibrar crescimento e controle inflacionário, ao passo que a adaptação às condições globais permanecerá crucial em suas estratégias. A interação entre política monetária e inovação tecnológica poderá servir não apenas para mitigar riscos, mas também para expandir oportunidades em um ambiente em constante mudança.</p>
+Em síntese, o Brasil enfrenta um equilíbrio delicado entre o controle da inflação e a manutenção do crescimento econômico, enquanto fatores externos, como o comportamento de preços de commodities e a instabilidade geopolítica, demandam vigilância e adaptação estratégicas. O insight crucial permanece: a resiliência na abordagem financeira, alinhada a investimentos em inovação e tecnologia, pode ser a chave para navegar a complexidade do ambiente econômico atual.</p>
                     <p class="text-start text-muted">
                         <small>---<br>
                         API: OpenAI | LLM: gpt-4o-mini<br>
-                        TOKENS (user prompt): 2093<br>
-                        TOKENS (llm): input_tokens=2394, output_tokens=486, total_tokens=2880<br>                        
-                        Tempo de execução (prompt + retorno LLM): 9.19 segundos
+                        TOKENS (user prompt): 2188<br>
+                        TOKENS (llm): input_tokens=2489, output_tokens=541, total_tokens=3030<br>
+                        Tempo de execução (prompt + retorno LLM): 10.76 segundos
                         </small>
                     </p>
                 </div>
 
                 <div class="tab-pane fade" id="aba2" role="tabpanel">
-                    <p class="text-muted">---
+                    <p class="text-muted">O cenário macroeconômico global atravessa uma transição delicada: com o Federal Reserve mantendo postura cautelosa ante a inflação persistente, os Treasuries de dez anos sustentam-se próximos a 4,3% ao ano, enquanto os yields de curto prazo recuam para 3,61%, refletindo a precificação de uma normalização monetária ainda gradual. O dólar em território neutro — DXY na casa de 98 pontos — e a volatilidade global controlada (VIX em 18,6) configuram um ambiente de apetite a risco moderado, que favorece seletivamente economias emergentes com prêmios de juros substanciais. No Brasil, a Selic a 14,75% ao ano produz um juro real superior a 10%, um dos mais expressivos do mundo em termos ex-ante, exigido pela necessidade de ancorar o IPCA — em 4,14% anualizado — sob pressão persistente de serviços, enquanto o DLSP próximo a R$ 7,52 trilhões evidencia o peso do passivo fiscal e limita a margem de manobra do governo. Ainda assim, o PIB do quarto trimestre de 2025 avançou 1,3%, sustentado por serviços e agropecuária, reafirmando uma economia capaz de crescer mesmo sob custo de capital elevado — tensão estrutural que define o caráter singular do ciclo doméstico atual.
 
-## ANÁLISE MACROECONÔMICA INTEGRADA — ABERTURA INSTITUCIONAL
+No espectro de ativos, a seletividade torna-se imperativa. O petróleo Brent acima de US$ 98 por barril — pressionado pelas tensões geopolíticas no Oriente Médio e pelas decisões de produção da OPEP — mantém viés altista para energia e amplifica os custos logísticos globais, com reflexos potenciais sobre a inflação de bens em cadeia. O cobre a US$ 6,08 por libra sinaliza expansão da atividade industrial em escala global, enquanto o ouro avança com moderação, reafirmando seu papel de reserva de valor em contexto de incerteza geopolítica. O Ibovespa próximo a 197 mil pontos e os principais índices norte-americanos — S&P 500 acima de 7.000 e Nasdaq em 26.400 — sustentam performance positiva, ao passo que Bitcoin e Ethereum recuam marginalmente, sugerindo rotação em direção a ativos com fundamentos mais tangíveis.
 
-O ambiente macroeconômico global navega uma transição delicada entre a manutenção de condições monetárias restritivas nas economias centrais e sinais incipientes de distensão seletiva. Nos Estados Unidos, a postura cautelosa do Federal Reserve convive com uma curva de juros que se inclina — o Treasury de dez anos a 4,28% avança enquanto os rendimentos curtos se estabilizam em 3,61% —, sugerindo que o mercado precifica resiliência inflacionária na ponta longa e normalização gradual na política monetária. O Dollar Index a 98,04 confirma um dólar estruturalmente mais brando, dinâmica que sustenta fluxos para emergentes e confere suporte a commodities: o Brent a USD 95,50 por barril incorpora o prêmio geopolítico persistente no Oriente Médio, enquanto o cobre a USD 6,07 por libra sinaliza expectativas de expansão industrial com pressão inflacionária latente.
-
-No Brasil, o Banco Central reduziu a Selic a 14,75%, iniciando a calibragem do ciclo monetário sob um juro real de 10,09% ao ano — patamar ainda amplamente contracionista que oferece margem de manobra diante da aceleração do IPCA a 4,14%. A divergência entre a inflação ao consumidor e o IGP-M acumulado em doze meses de −1,81% revela dinâmicas distintas entre preços finais e custos atacadistas, antecipando possível alívio na cadeia produtiva. O câmbio ancorado em R$ 5,00 atua como estabilizador complementar, enquanto a dívida líquida do setor público a R$ 7,52 trilhões exige que a disciplina do arcabouço fiscal seja executada sem concessões para preservar a credibilidade da trajetória de juros. O PIB do quarto trimestre de 2025, a R$ 3,28 trilhões em valores correntes, evidencia uma economia que sustenta tração pelo agronegócio e exportações de commodities, mesmo com o setor industrial pressionado pelo custo elevado de crédito.
-
-Os mercados de risco operam em compasso calibrado. O Ibovespa a 197.806 pontos consolida-se em faixa lateral, refletindo o embate entre o diferencial de juros atrativo e a incerteza fiscal doméstica, enquanto nos Estados Unidos o S&P 500 a 6.996 e o Nasdaq a 26.184 pontos renovam máximas, impulsionados pelo ciclo de inteligência artificial como motor de produtividade. O ouro a R$ 774 por grama e a soja a USD 11,68 por bushel reafirmam o apetite global por ativos reais, enquanto Bitcoin e Ethereum consolidam-se em faixas intermediárias do ciclo 2026, sinalizando maturação — confirmada pelo VIX a 18 pontos, em território de normalidade.
-
-A síntese aponta para uma janela tática favorável, porém condicionada: o início da flexibilização monetária brasileira, lastreado em juro real elevado e câmbio estável, abre espaço para posicionamento em ativos de duration e crédito local, mas a sustentabilidade depende da execução fiscal rigorosa e da estabilidade dos yields americanos longos — uma eventual reprecificação do Treasury acima de 4,5% redesenharia o custo de oportunidade global e comprimiria o espaço de cortes do Copom, convertendo a atual assimetria favorável em armadilha de posicionamento.</p>
+O insight macro integrador deste cenário é inequívoco: a janela de renda fixa brasileira, com juro real acima de 10% ao ano e IMA-B em trajetória de acumulação estável, representa um prêmio excepcionalmente atrativo para alocadores com horizonte de médio prazo — especialmente via instrumentos indexados à inflação —, e esse diferencial tende a se comprimir conforme o ciclo de afrouxamento monetário avance tanto no Brasil quanto globalmente. A combinação de câmbio estabilizado, commodities energéticas em alta e bolsas resilientes completa um mosaico que favorece portfólios equilibrados entre carry doméstico e exposição seletiva a ativos reais como a postura mais coerente com o presente momento.</p>
                     <p class="text-start text-muted">
                         <small>---<br>
-                        API: Anthropic | LLM (executor): claude-haiku-4-5-20251001 | LLM (advisor) claude-opus-4-6<br>
-                        TOKENS (user prompt): 2093<br>
-                        TOKENS (llm executor): input_tokens=8801, output_tokens=998, total_tokens=9799<br>
-                        TOKENS (llm advisor): chamadas=1, input=4377, output=5894, total=10271<br>                    
-                        Tempo de execução (prompt + retorno LLM): 115.81 segundos
+                        API: Anthropic | LLM (executor): claude-haiku-4-5-20251001 | LLM (advisor) claude-sonnet-4-6<br>
+                        TOKENS (user prompt): 2188<br>
+                        TOKENS (llm executor): input_tokens=8222, output_tokens=868, total_tokens=9090<br>
+                        TOKENS (llm advisor): chamadas=1, input=4528, output=7540, total=12068<br>
+                        Tempo de execução (prompt + retorno LLM): 114.63 segundos
                         </small>
                     </p>
                 </div>
 
                 <div class="tab-pane fade" id="aba3" role="tabpanel">
-                    <p class="text-muted">O cenário macroeconômico atual é definido por uma complexa confluência entre a resiliência da atividade econômica e a persistência de pressões inflacionárias, tanto no âmbito doméstico quanto global. No Brasil, a manutenção da Selic em 14,75% reflete a postura vigilante do Banco Central diante da aceleração do IPCA, que atingiu 4,14%, resultando em um juro real expressivo de 10,09% ao ano. Embora o PIB apresente crescimento, com o valor corrente trimestral em R$ 3,28 trilhões, o custo elevado do crédito impõe desafios à indústria, contrastando com a solidez do agronegócio e a busca do governo pela estabilidade via arcabouço fiscal.
+                    <p class="text-muted">O cenário macroeconômico global é atualmente definido por uma tensão persistente entre a resiliência do crescimento e a rigidez das políticas monetárias. Nos Estados Unidos, a manutenção de taxas elevadas, refletida no Treasury de 10 anos a 4,3%, espelha a cautela do Federal Reserve diante da inflação, exercendo pressão cambial que posiciona o dólar em R$ 5,00. No Brasil, essa dinâmica é contrabalançada por uma postura monetária rigorosa, com a Selic a 14,75% assegurando um juro real expressivo de 10,09%, ferramenta essencial para a convergência do IPCA, atualmente em 4,14%, enquanto o PIB de R$ 3,28 trilhões demonstra solidez nos setores de serviços e agropecuária.
 
-No plano externo, a ascensão dos títulos do Tesouro dos EUA (10Y Treasury a 4,28%) e a cautela do Federal Reserve sustentam a volatilidade cambial, mantendo o dólar em R$ 5,00. A dinâmica de commodities evidencia a dualidade do momento: enquanto o Brent a US$ 95,50 reflete tensões geopolíticas, o cobre a US$ 6,07 sinaliza pressões inflacionárias ligadas ao crescimento global. Simultaneamente, a dominância de empresas de tecnologia, exemplificada pelo valor de mercado da NVIDIA, e a estabilidade relativa de ativos digitais como Bitcoin e Ethereum, indicam que a inteligência artificial e a digitalização financeira permanecem como vetores centrais de produtividade e alocação de risco.
+No mercado de commodities, a volatilidade é acentuada por riscos geopolíticos no Oriente Médio e pelos estímulos chineses, elevando o Brent para US$ 98,95 e o Cobre para US$ 6,08, este último atuando como um proxy de pressão inflacionária e demanda global. Simultaneamente, o setor de tecnologia mantém-se como o principal motor de valorização de ativos de risco, evidenciado pela escala massiva da NVIDIA e a performance do S&P 500, que validam a tese de ganhos de produtividade via infraestrutura de IA. Embora criptoativos como Bitcoin e Ethereum operem em patamares de consolidação, a volatilidade do VIX em 18,62 indica um mercado em estado de normalidade vigilante.
 
-O insight estratégico reside na necessária gestão de Duration e liquidez: a combinação de juros reais elevados no Brasil com a volatilidade dos Treasuries americanos cria uma janela de oportunidade para ativos de renda fixa indexados à inflação, enquanto a exposição a commodities e tecnologia deve ser calibrada para mitigar os riscos de um aperto monetário global prolongado.</p>
+O insight estratégico central reside na coexistência de juros reais historicamente elevados com um ciclo de inovação tecnológica disruptiva. Para o investidor, a oportunidade reside na seletividade: a atratividade do carrego brasileiro permanece alta, mas a sustentabilidade desse fluxo dependerá da capacidade do governo em concretizar ajustes fiscais, mitigando o risco país frente ao custo de oportunidade global e à instabilidade nas cadeias de suprimentos internacionais.</p>
                     <p class="text-start text-muted">
                         <small>---<br>
                         API: Google | LLM: models/gemma-4-31b-it<br>
-                        TOKENS (user prompt): 2093<br>                    
-                        TOKENS (llm): input_tokens=2470, output_tokens=411, total_tokens=3903<br>                        
-                        Tempo de execução (prompt + retorno LLM): 40.20 segundos
+                        TOKENS (user prompt): 2188<br>
+                        TOKENS (llm): input_tokens=2578, output_tokens=443, total_tokens=4122<br>
+                        Tempo de execução (prompt + retorno LLM): 43.84 segundos
                         </small>
                     </p>
                 </div>
 
-
-                <!-- Resumo Visual - Infográfico -->
                 <div class="tab-pane fade" id="aba4" role="tabpanel">
                     <div style="text-align:center;">
                         <div style="
                             width: 100%;
                             max-width: 1000px;
-                            height: 537px;          /*520 altura visível */
-                            overflow: hidden;       /* faz o corte */
+                            height: 537px;
+                            overflow: hidden;
                             margin: auto;
                             border-radius: 10px;
-                            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+                            border: 1px solid #403E3B;
                         ">
                             <img src="img/unnamed.png"
                                 style="
                                     width: 100%;
-                                    transform: translateY(-10px); /*20 ajusta corte inferior */
+                                    transform: translateY(-10px);
                                 ">
                         </div>
                         <p class="text-muted mt-2" style="font-size:0.85rem;">
@@ -161,423 +188,431 @@ O insight estratégico reside na necessária gestão de Duration e liquidez: a c
                     </div>
                 </div>
 
-
             </div>
         </div><style type="text/css">
-#T_2ceac_row0_col3, #T_2ceac_row11_col3, #T_2ceac_row12_col3, #T_2ceac_row15_col3, #T_2ceac_row18_col3, #T_2ceac_row31_col3, #T_2ceac_row33_col3, #T_2ceac_row43_col3, #T_2ceac_row44_col3, #T_2ceac_row52_col3 {
+#T_bcc1c table {
+  background-color: #2b2b2b;
+  color: #d1d1d1;
+}
+#T_bcc1c th {
+  background-color: #343a40;
+  color: #ececf1;
+  border-color: #454d55;
+  font-weight: 600;
+}
+#T_bcc1c td {
+  background-color: #2b2b2b;
+  border-color: #454d55;
+}
+#T_bcc1c tr:hover td {
+  background-color: #383838;
+}
+#T_bcc1c_row0_col0, #T_bcc1c_row0_col1, #T_bcc1c_row0_col2, #T_bcc1c_row1_col0, #T_bcc1c_row1_col1, #T_bcc1c_row1_col2, #T_bcc1c_row2_col0, #T_bcc1c_row2_col1, #T_bcc1c_row2_col2, #T_bcc1c_row3_col0, #T_bcc1c_row3_col1, #T_bcc1c_row3_col2, #T_bcc1c_row4_col0, #T_bcc1c_row4_col1, #T_bcc1c_row4_col2, #T_bcc1c_row5_col0, #T_bcc1c_row5_col1, #T_bcc1c_row5_col2, #T_bcc1c_row6_col0, #T_bcc1c_row6_col1, #T_bcc1c_row6_col2, #T_bcc1c_row7_col0, #T_bcc1c_row7_col1, #T_bcc1c_row7_col2, #T_bcc1c_row8_col0, #T_bcc1c_row8_col1, #T_bcc1c_row8_col2, #T_bcc1c_row9_col0, #T_bcc1c_row9_col1, #T_bcc1c_row9_col2, #T_bcc1c_row10_col0, #T_bcc1c_row10_col1, #T_bcc1c_row10_col2, #T_bcc1c_row11_col0, #T_bcc1c_row11_col1, #T_bcc1c_row11_col2, #T_bcc1c_row12_col0, #T_bcc1c_row12_col1, #T_bcc1c_row12_col2, #T_bcc1c_row13_col0, #T_bcc1c_row13_col1, #T_bcc1c_row13_col2, #T_bcc1c_row14_col0, #T_bcc1c_row14_col1, #T_bcc1c_row14_col2, #T_bcc1c_row15_col0, #T_bcc1c_row15_col1, #T_bcc1c_row15_col2, #T_bcc1c_row16_col0, #T_bcc1c_row16_col1, #T_bcc1c_row16_col2, #T_bcc1c_row17_col0, #T_bcc1c_row17_col1, #T_bcc1c_row17_col2, #T_bcc1c_row18_col0, #T_bcc1c_row18_col1, #T_bcc1c_row18_col2, #T_bcc1c_row19_col0, #T_bcc1c_row19_col1, #T_bcc1c_row19_col2, #T_bcc1c_row20_col0, #T_bcc1c_row20_col1, #T_bcc1c_row20_col2, #T_bcc1c_row21_col0, #T_bcc1c_row21_col1, #T_bcc1c_row21_col2, #T_bcc1c_row22_col0, #T_bcc1c_row22_col1, #T_bcc1c_row22_col2, #T_bcc1c_row23_col0, #T_bcc1c_row23_col1, #T_bcc1c_row23_col2, #T_bcc1c_row24_col0, #T_bcc1c_row24_col1, #T_bcc1c_row24_col2, #T_bcc1c_row25_col0, #T_bcc1c_row25_col1, #T_bcc1c_row25_col2, #T_bcc1c_row26_col0, #T_bcc1c_row26_col1, #T_bcc1c_row26_col2, #T_bcc1c_row27_col0, #T_bcc1c_row27_col1, #T_bcc1c_row27_col2, #T_bcc1c_row28_col0, #T_bcc1c_row28_col1, #T_bcc1c_row28_col2, #T_bcc1c_row29_col0, #T_bcc1c_row29_col1, #T_bcc1c_row29_col2, #T_bcc1c_row30_col0, #T_bcc1c_row30_col1, #T_bcc1c_row30_col2, #T_bcc1c_row31_col0, #T_bcc1c_row31_col1, #T_bcc1c_row31_col2, #T_bcc1c_row32_col0, #T_bcc1c_row32_col1, #T_bcc1c_row32_col2, #T_bcc1c_row33_col0, #T_bcc1c_row33_col1, #T_bcc1c_row33_col2, #T_bcc1c_row34_col0, #T_bcc1c_row34_col1, #T_bcc1c_row34_col2, #T_bcc1c_row35_col0, #T_bcc1c_row35_col1, #T_bcc1c_row35_col2, #T_bcc1c_row36_col0, #T_bcc1c_row36_col1, #T_bcc1c_row36_col2, #T_bcc1c_row37_col0, #T_bcc1c_row37_col1, #T_bcc1c_row37_col2, #T_bcc1c_row38_col0, #T_bcc1c_row38_col1, #T_bcc1c_row38_col2, #T_bcc1c_row39_col0, #T_bcc1c_row39_col1, #T_bcc1c_row39_col2, #T_bcc1c_row40_col0, #T_bcc1c_row40_col1, #T_bcc1c_row40_col2, #T_bcc1c_row41_col0, #T_bcc1c_row41_col1, #T_bcc1c_row41_col2, #T_bcc1c_row42_col0, #T_bcc1c_row42_col1, #T_bcc1c_row42_col2, #T_bcc1c_row43_col0, #T_bcc1c_row43_col1, #T_bcc1c_row43_col2, #T_bcc1c_row44_col0, #T_bcc1c_row44_col1, #T_bcc1c_row44_col2, #T_bcc1c_row45_col0, #T_bcc1c_row45_col1, #T_bcc1c_row45_col2, #T_bcc1c_row46_col0, #T_bcc1c_row46_col1, #T_bcc1c_row46_col2, #T_bcc1c_row47_col0, #T_bcc1c_row47_col1, #T_bcc1c_row47_col2, #T_bcc1c_row48_col0, #T_bcc1c_row48_col1, #T_bcc1c_row48_col2, #T_bcc1c_row49_col0, #T_bcc1c_row49_col1, #T_bcc1c_row49_col2, #T_bcc1c_row50_col0, #T_bcc1c_row50_col1, #T_bcc1c_row50_col2, #T_bcc1c_row51_col0, #T_bcc1c_row51_col1, #T_bcc1c_row51_col2, #T_bcc1c_row52_col0, #T_bcc1c_row52_col1, #T_bcc1c_row52_col2, #T_bcc1c_row53_col0, #T_bcc1c_row53_col1, #T_bcc1c_row53_col2, #T_bcc1c_row54_col0, #T_bcc1c_row54_col1, #T_bcc1c_row54_col2, #T_bcc1c_row55_col0, #T_bcc1c_row55_col1, #T_bcc1c_row55_col2, #T_bcc1c_row56_col0, #T_bcc1c_row56_col1, #T_bcc1c_row56_col2, #T_bcc1c_row57_col0, #T_bcc1c_row57_col1, #T_bcc1c_row57_col2, #T_bcc1c_row58_col0, #T_bcc1c_row58_col1, #T_bcc1c_row58_col2, #T_bcc1c_row59_col0, #T_bcc1c_row59_col1, #T_bcc1c_row59_col2, #T_bcc1c_row60_col0, #T_bcc1c_row60_col1, #T_bcc1c_row60_col2 {
+  color: #d1d1d1;
+}
+#T_bcc1c_row0_col3, #T_bcc1c_row14_col3, #T_bcc1c_row15_col3, #T_bcc1c_row29_col3, #T_bcc1c_row33_col3, #T_bcc1c_row34_col3, #T_bcc1c_row37_col3, #T_bcc1c_row43_col3, #T_bcc1c_row52_col3 {
   color: #dc3545;
   font-weight: bold;
 }
-#T_2ceac_row3_col3, #T_2ceac_row4_col3, #T_2ceac_row8_col3, #T_2ceac_row9_col3, #T_2ceac_row10_col3, #T_2ceac_row13_col3, #T_2ceac_row17_col3, #T_2ceac_row19_col3, #T_2ceac_row20_col3, #T_2ceac_row25_col3, #T_2ceac_row26_col3, #T_2ceac_row27_col3, #T_2ceac_row28_col3, #T_2ceac_row29_col3, #T_2ceac_row30_col3, #T_2ceac_row34_col3, #T_2ceac_row35_col3, #T_2ceac_row36_col3, #T_2ceac_row37_col3, #T_2ceac_row38_col3 {
+#T_bcc1c_row3_col3, #T_bcc1c_row4_col3, #T_bcc1c_row8_col3, #T_bcc1c_row9_col3, #T_bcc1c_row10_col3, #T_bcc1c_row11_col3, #T_bcc1c_row12_col3, #T_bcc1c_row13_col3, #T_bcc1c_row17_col3, #T_bcc1c_row18_col3, #T_bcc1c_row19_col3, #T_bcc1c_row20_col3, #T_bcc1c_row25_col3, #T_bcc1c_row26_col3, #T_bcc1c_row27_col3, #T_bcc1c_row28_col3, #T_bcc1c_row30_col3, #T_bcc1c_row31_col3, #T_bcc1c_row35_col3, #T_bcc1c_row36_col3 {
   color: #198754;
   font-weight: bold;
 }
 </style>
-<table id="T_2ceac" id="indicadores_table" class="dataframe table table-striped table-hover text-center">
+<table id="T_bcc1c" id="indicadores_table" class="dataframe table table-striped table-hover text-center">
   <thead>
     <tr>
-      <th id="T_2ceac_level0_col0" class="col_heading level0 col0" >Indicador</th>
-      <th id="T_2ceac_level0_col1" class="col_heading level0 col1" >Valor</th>
-      <th id="T_2ceac_level0_col2" class="col_heading level0 col2" >Detalhe</th>
-      <th id="T_2ceac_level0_col3" class="col_heading level0 col3" >Variação (%)</th>
+      <th id="T_bcc1c_level0_col0" class="col_heading level0 col0" >Indicador</th>
+      <th id="T_bcc1c_level0_col1" class="col_heading level0 col1" >Valor</th>
+      <th id="T_bcc1c_level0_col2" class="col_heading level0 col2" >Detalhe</th>
+      <th id="T_bcc1c_level0_col3" class="col_heading level0 col3" >Variação (%)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_2ceac_row0_col0" class="data row0 col0" >SELIC (% a.a.)</td>
-      <td id="T_2ceac_row0_col1" class="data row0 col1" >14.75</td>
-      <td id="T_2ceac_row0_col2" class="data row0 col2" >2026-03-19</td>
-      <td id="T_2ceac_row0_col3" class="data row0 col3" >-1.67</td>
+      <td id="T_bcc1c_row0_col0" class="data row0 col0" >SELIC (% a.a.)</td>
+      <td id="T_bcc1c_row0_col1" class="data row0 col1" >14.75</td>
+      <td id="T_bcc1c_row0_col2" class="data row0 col2" >2026-03-19</td>
+      <td id="T_bcc1c_row0_col3" class="data row0 col3" >-1.67</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row1_col0" class="data row1 col0" >CDI</td>
-      <td id="T_2ceac_row1_col1" class="data row1 col1" >14.65</td>
-      <td id="T_2ceac_row1_col2" class="data row1 col2" >% a.a.</td>
-      <td id="T_2ceac_row1_col3" class="data row1 col3" ></td>
+      <td id="T_bcc1c_row1_col0" class="data row1 col0" >CDI</td>
+      <td id="T_bcc1c_row1_col1" class="data row1 col1" >14.65</td>
+      <td id="T_bcc1c_row1_col2" class="data row1 col2" >% a.a.</td>
+      <td id="T_bcc1c_row1_col3" class="data row1 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row2_col0" class="data row2 col0" >CDI (Eq.)</td>
-      <td id="T_2ceac_row2_col1" class="data row2 col1" >1.1458</td>
-      <td id="T_2ceac_row2_col2" class="data row2 col2" >% a.m.</td>
-      <td id="T_2ceac_row2_col3" class="data row2 col3" ></td>
+      <td id="T_bcc1c_row2_col0" class="data row2 col0" >CDI (Eq.)</td>
+      <td id="T_bcc1c_row2_col1" class="data row2 col1" >1.1458</td>
+      <td id="T_bcc1c_row2_col2" class="data row2 col2" >% a.m.</td>
+      <td id="T_bcc1c_row2_col3" class="data row2 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row3_col0" class="data row3 col0" >IPCA (% a.a.)</td>
-      <td id="T_2ceac_row3_col1" class="data row3 col1" >4.14</td>
-      <td id="T_2ceac_row3_col2" class="data row3 col2" >2026-03-01</td>
-      <td id="T_2ceac_row3_col3" class="data row3 col3" >+8.66</td>
+      <td id="T_bcc1c_row3_col0" class="data row3 col0" >IPCA (% a.a.)</td>
+      <td id="T_bcc1c_row3_col1" class="data row3 col1" >4.14</td>
+      <td id="T_bcc1c_row3_col2" class="data row3 col2" >2026-03-01</td>
+      <td id="T_bcc1c_row3_col3" class="data row3 col3" >+8.66</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row4_col0" class="data row4 col0" >IGP-M (% a.m.)</td>
-      <td id="T_2ceac_row4_col1" class="data row4 col1" >0.52</td>
-      <td id="T_2ceac_row4_col2" class="data row4 col2" >Moderate Inflation (2026-03)</td>
-      <td id="T_2ceac_row4_col3" class="data row4 col3" >+1.25</td>
+      <td id="T_bcc1c_row4_col0" class="data row4 col0" >IGP-M (% a.m.)</td>
+      <td id="T_bcc1c_row4_col1" class="data row4 col1" >0.52</td>
+      <td id="T_bcc1c_row4_col2" class="data row4 col2" >Moderate Inflation (2026-03)</td>
+      <td id="T_bcc1c_row4_col3" class="data row4 col3" >+1.25</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row5_col0" class="data row5 col0" >IGP-M Acumulado 12m (%)</td>
-      <td id="T_2ceac_row5_col1" class="data row5 col1" >-1.81</td>
-      <td id="T_2ceac_row5_col2" class="data row5 col2" >Acum. ano: 0.20%</td>
-      <td id="T_2ceac_row5_col3" class="data row5 col3" ></td>
+      <td id="T_bcc1c_row5_col0" class="data row5 col0" >IGP-M Acumulado 12m (%)</td>
+      <td id="T_bcc1c_row5_col1" class="data row5 col1" >-1.81</td>
+      <td id="T_bcc1c_row5_col2" class="data row5 col2" >Acum. ano: 0.20%</td>
+      <td id="T_bcc1c_row5_col3" class="data row5 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row6_col0" class="data row6 col0" >Juro Real</td>
-      <td id="T_2ceac_row6_col1" class="data row6 col1" >10.09</td>
-      <td id="T_2ceac_row6_col2" class="data row6 col2" >% a.a.</td>
-      <td id="T_2ceac_row6_col3" class="data row6 col3" ></td>
+      <td id="T_bcc1c_row6_col0" class="data row6 col0" >Juro Real</td>
+      <td id="T_bcc1c_row6_col1" class="data row6 col1" >10.09</td>
+      <td id="T_bcc1c_row6_col2" class="data row6 col2" >% a.a.</td>
+      <td id="T_bcc1c_row6_col3" class="data row6 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row7_col0" class="data row7 col0" >Juro Real (Eq.)</td>
-      <td id="T_2ceac_row7_col1" class="data row7 col1" >0.80</td>
-      <td id="T_2ceac_row7_col2" class="data row7 col2" >% a.m.</td>
-      <td id="T_2ceac_row7_col3" class="data row7 col3" ></td>
+      <td id="T_bcc1c_row7_col0" class="data row7 col0" >Juro Real (Eq.)</td>
+      <td id="T_bcc1c_row7_col1" class="data row7 col1" >0.80</td>
+      <td id="T_bcc1c_row7_col2" class="data row7 col2" >% a.m.</td>
+      <td id="T_bcc1c_row7_col3" class="data row7 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row8_col0" class="data row8 col0" >Índice de Títulos Públicos Atrelados à Inflação (IMA-B)</td>
-      <td id="T_2ceac_row8_col1" class="data row8 col1" >113.82</td>
-      <td id="T_2ceac_row8_col2" class="data row8 col2" >Stable Real Yield</td>
-      <td id="T_2ceac_row8_col3" class="data row8 col3" >+0.02</td>
+      <td id="T_bcc1c_row8_col0" class="data row8 col0" >Índice de Títulos Públicos Atrelados à Inflação (IMA-B)</td>
+      <td id="T_bcc1c_row8_col1" class="data row8 col1" >113.96</td>
+      <td id="T_bcc1c_row8_col2" class="data row8 col2" >Stable Real Yield</td>
+      <td id="T_bcc1c_row8_col3" class="data row8 col3" >+0.11</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row9_col0" class="data row9 col0" >Produto Interno Bruto (PIB) Brasil – Valores correntes trimestrais (R$ trilhões, IBGE)</td>
-      <td id="T_2ceac_row9_col1" class="data row9 col1" >3.28</td>
-      <td id="T_2ceac_row9_col2" class="data row9 col2" >4º trimestre 2025</td>
-      <td id="T_2ceac_row9_col3" class="data row9 col3" >+1.30</td>
+      <td id="T_bcc1c_row9_col0" class="data row9 col0" >Produto Interno Bruto (PIB) Brasil – Valores correntes trimestrais (R$ trilhões, IBGE)</td>
+      <td id="T_bcc1c_row9_col1" class="data row9 col1" >3.28</td>
+      <td id="T_bcc1c_row9_col2" class="data row9 col2" >4º trimestre 2025</td>
+      <td id="T_bcc1c_row9_col3" class="data row9 col3" >+1.30</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row10_col0" class="data row10 col0" >DLSP Brasil – Valor absoluto (R$ trilhões, BCB)</td>
-      <td id="T_2ceac_row10_col1" class="data row10 col1" >7.52</td>
-      <td id="T_2ceac_row10_col2" class="data row10 col2" >2026-02-01</td>
-      <td id="T_2ceac_row10_col3" class="data row10 col3" >+1.32</td>
+      <td id="T_bcc1c_row10_col0" class="data row10 col0" >DLSP Brasil – Valor absoluto (R$ trilhões, BCB)</td>
+      <td id="T_bcc1c_row10_col1" class="data row10 col1" >7.52</td>
+      <td id="T_bcc1c_row10_col2" class="data row10 col2" >2026-02-01</td>
+      <td id="T_bcc1c_row10_col3" class="data row10 col3" >+1.32</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row11_col0" class="data row11 col0" >Índice de Volatilidade (VIX)</td>
-      <td id="T_2ceac_row11_col1" class="data row11 col1" >18.02</td>
-      <td id="T_2ceac_row11_col2" class="data row11 col2" >Normal Volatility</td>
-      <td id="T_2ceac_row11_col3" class="data row11 col3" >-1.85</td>
+      <td id="T_bcc1c_row11_col0" class="data row11 col0" >Índice de Volatilidade (VIX)</td>
+      <td id="T_bcc1c_row11_col1" class="data row11 col1" >18.62</td>
+      <td id="T_bcc1c_row11_col2" class="data row11 col2" >Normal Volatility</td>
+      <td id="T_bcc1c_row11_col3" class="data row11 col3" >+2.48</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row12_col0" class="data row12 col0" >Dollar Index (DXY)</td>
-      <td id="T_2ceac_row12_col1" class="data row12 col1" >98.04</td>
-      <td id="T_2ceac_row12_col2" class="data row12 col2" >Neutral / Soft Dollar</td>
-      <td id="T_2ceac_row12_col3" class="data row12 col3" >-0.08</td>
+      <td id="T_bcc1c_row12_col0" class="data row12 col0" >Dollar Index (DXY)</td>
+      <td id="T_bcc1c_row12_col1" class="data row12 col1" >98.25</td>
+      <td id="T_bcc1c_row12_col2" class="data row12 col2" >Neutral / Soft Dollar</td>
+      <td id="T_bcc1c_row12_col3" class="data row12 col3" >+0.19</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row13_col0" class="data row13 col0" >US 10Y Treasury (% a.a.)</td>
-      <td id="T_2ceac_row13_col1" class="data row13 col1" >4.28</td>
-      <td id="T_2ceac_row13_col2" class="data row13 col2" >Monetary Tightening</td>
-      <td id="T_2ceac_row13_col3" class="data row13 col3" >+0.63</td>
+      <td id="T_bcc1c_row13_col0" class="data row13 col0" >US 10Y Treasury (% a.a.)</td>
+      <td id="T_bcc1c_row13_col1" class="data row13 col1" >4.3</td>
+      <td id="T_bcc1c_row13_col2" class="data row13 col2" >Monetary Tightening</td>
+      <td id="T_bcc1c_row13_col3" class="data row13 col3" >+0.30</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row14_col0" class="data row14 col0" >US Short-Term Yield (% a.a.)</td>
-      <td id="T_2ceac_row14_col1" class="data row14 col1" >3.61</td>
-      <td id="T_2ceac_row14_col2" class="data row14 col2" >Monetary Normalization (Fed Expectations)</td>
-      <td id="T_2ceac_row14_col3" class="data row14 col3" ></td>
+      <td id="T_bcc1c_row14_col0" class="data row14 col0" >US Short-Term Yield (% a.a.)</td>
+      <td id="T_bcc1c_row14_col1" class="data row14 col1" >3.61</td>
+      <td id="T_bcc1c_row14_col2" class="data row14 col2" >Monetary Normalization (Fed Expectations)</td>
+      <td id="T_bcc1c_row14_col3" class="data row14 col3" >-0.06</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row15_col0" class="data row15 col0" >IBOVESPA</td>
-      <td id="T_2ceac_row15_col1" class="data row15 col1" >197805.91</td>
-      <td id="T_2ceac_row15_col2" class="data row15 col2" >pts</td>
-      <td id="T_2ceac_row15_col3" class="data row15 col3" >-0.43</td>
+      <td id="T_bcc1c_row15_col0" class="data row15 col0" >IBOVESPA</td>
+      <td id="T_bcc1c_row15_col1" class="data row15 col1" >197132.77</td>
+      <td id="T_bcc1c_row15_col2" class="data row15 col2" >pts</td>
+      <td id="T_bcc1c_row15_col3" class="data row15 col3" >-0.31</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row16_col0" class="data row16 col0" >IFIX (Índice B3)</td>
-      <td id="T_2ceac_row16_col1" class="data row16 col1" >3908.98</td>
-      <td id="T_2ceac_row16_col2" class="data row16 col2" >pts</td>
-      <td id="T_2ceac_row16_col3" class="data row16 col3" ></td>
+      <td id="T_bcc1c_row16_col0" class="data row16 col0" >IFIX (Índice B3)</td>
+      <td id="T_bcc1c_row16_col1" class="data row16 col1" >3911.44</td>
+      <td id="T_bcc1c_row16_col2" class="data row16 col2" >pts</td>
+      <td id="T_bcc1c_row16_col3" class="data row16 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row17_col0" class="data row17 col0" >IFIX (ETF Proxy - XFIX11)</td>
-      <td id="T_2ceac_row17_col1" class="data row17 col1" >13.79</td>
-      <td id="T_2ceac_row17_col2" class="data row17 col2" >R$/cota (Replica IFIX)</td>
-      <td id="T_2ceac_row17_col3" class="data row17 col3" >+0.51</td>
+      <td id="T_bcc1c_row17_col0" class="data row17 col0" >IFIX (ETF Proxy - XFIX11)</td>
+      <td id="T_bcc1c_row17_col1" class="data row17 col1" >13.81</td>
+      <td id="T_bcc1c_row17_col2" class="data row17 col2" >R$/cota (Replica IFIX)</td>
+      <td id="T_bcc1c_row17_col3" class="data row17 col3" >+0.22</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row18_col0" class="data row18 col0" >Dow Jones</td>
-      <td id="T_2ceac_row18_col1" class="data row18 col1" >48341.9</td>
-      <td id="T_2ceac_row18_col2" class="data row18 col2" >pts</td>
-      <td id="T_2ceac_row18_col3" class="data row18 col3" >-0.40</td>
+      <td id="T_bcc1c_row18_col0" class="data row18 col0" >Dow Jones</td>
+      <td id="T_bcc1c_row18_col1" class="data row18 col1" >48526.4</td>
+      <td id="T_bcc1c_row18_col2" class="data row18 col2" >pts</td>
+      <td id="T_bcc1c_row18_col3" class="data row18 col3" >+0.13</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row19_col0" class="data row19 col0" >Nasdaq Composite</td>
-      <td id="T_2ceac_row19_col1" class="data row19 col1" >26184.0</td>
-      <td id="T_2ceac_row19_col2" class="data row19 col2" >pts</td>
-      <td id="T_2ceac_row19_col3" class="data row19 col3" >+0.72</td>
+      <td id="T_bcc1c_row19_col0" class="data row19 col0" >Nasdaq Composite</td>
+      <td id="T_bcc1c_row19_col1" class="data row19 col1" >26475.0</td>
+      <td id="T_bcc1c_row19_col2" class="data row19 col2" >pts</td>
+      <td id="T_bcc1c_row19_col3" class="data row19 col3" >+0.42</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row20_col0" class="data row20 col0" >S&P 500</td>
-      <td id="T_2ceac_row20_col1" class="data row20 col1" >6995.94</td>
-      <td id="T_2ceac_row20_col2" class="data row20 col2" >pts</td>
-      <td id="T_2ceac_row20_col3" class="data row20 col3" >+0.41</td>
+      <td id="T_bcc1c_row20_col0" class="data row20 col0" >S&P 500</td>
+      <td id="T_bcc1c_row20_col1" class="data row20 col1" >7038.24</td>
+      <td id="T_bcc1c_row20_col2" class="data row20 col2" >pts</td>
+      <td id="T_bcc1c_row20_col3" class="data row20 col3" >+0.22</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row21_col0" class="data row21 col0" >B3 - Composição da carteira: VALE (VALE3)</td>
-      <td id="T_2ceac_row21_col1" class="data row21 col1" >11.31</td>
-      <td id="T_2ceac_row21_col2" class="data row21 col2" >Participação (%)</td>
-      <td id="T_2ceac_row21_col3" class="data row21 col3" ></td>
+      <td id="T_bcc1c_row21_col0" class="data row21 col0" >B3 - Composição da carteira: VALE (VALE3)</td>
+      <td id="T_bcc1c_row21_col1" class="data row21 col1" >11.38</td>
+      <td id="T_bcc1c_row21_col2" class="data row21 col2" >Participação (%)</td>
+      <td id="T_bcc1c_row21_col3" class="data row21 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row22_col0" class="data row22 col0" >B3 - Fundos Imobiliários: FII KINEA RI (KNCR11)</td>
-      <td id="T_2ceac_row22_col1" class="data row22 col1" >7.13</td>
-      <td id="T_2ceac_row22_col2" class="data row22 col2" >Participação (%)</td>
-      <td id="T_2ceac_row22_col3" class="data row22 col3" ></td>
+      <td id="T_bcc1c_row22_col0" class="data row22 col0" >B3 - Fundos Imobiliários: FII KINEA RI (KNCR11)</td>
+      <td id="T_bcc1c_row22_col1" class="data row22 col1" >7.14</td>
+      <td id="T_bcc1c_row22_col2" class="data row22 col2" >Participação (%)</td>
+      <td id="T_bcc1c_row22_col3" class="data row22 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row23_col0" class="data row23 col0" >B3 - Small Caps: ALLOS (ALOS3)</td>
-      <td id="T_2ceac_row23_col1" class="data row23 col1" >4.33</td>
-      <td id="T_2ceac_row23_col2" class="data row23 col2" >Participação (%)</td>
-      <td id="T_2ceac_row23_col3" class="data row23 col3" ></td>
+      <td id="T_bcc1c_row23_col0" class="data row23 col0" >B3 - Small Caps: ALLOS (ALOS3)</td>
+      <td id="T_bcc1c_row23_col1" class="data row23 col1" >4.38</td>
+      <td id="T_bcc1c_row23_col2" class="data row23 col2" >Participação (%)</td>
+      <td id="T_bcc1c_row23_col3" class="data row23 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row24_col0" class="data row24 col0" >B3 - Dividendos: PETROBRAS (PETR4)</td>
-      <td id="T_2ceac_row24_col1" class="data row24 col1" >6.53</td>
-      <td id="T_2ceac_row24_col2" class="data row24 col2" >Participação (%)</td>
-      <td id="T_2ceac_row24_col3" class="data row24 col3" ></td>
+      <td id="T_bcc1c_row24_col0" class="data row24 col0" >B3 - Dividendos: PETROBRAS (PETR4)</td>
+      <td id="T_bcc1c_row24_col1" class="data row24 col1" >6.46</td>
+      <td id="T_bcc1c_row24_col2" class="data row24 col2" >Participação (%)</td>
+      <td id="T_bcc1c_row24_col3" class="data row24 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row25_col0" class="data row25 col0" >Dólar</td>
-      <td id="T_2ceac_row25_col1" class="data row25 col1" >5.00</td>
-      <td id="T_2ceac_row25_col2" class="data row25 col2" >BRL</td>
-      <td id="T_2ceac_row25_col3" class="data row25 col3" >+0.04</td>
+      <td id="T_bcc1c_row25_col0" class="data row25 col0" >Dólar</td>
+      <td id="T_bcc1c_row25_col1" class="data row25 col1" >5.00</td>
+      <td id="T_bcc1c_row25_col2" class="data row25 col2" >BRL</td>
+      <td id="T_bcc1c_row25_col3" class="data row25 col3" >+0.37</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row26_col0" class="data row26 col0" >Euro</td>
-      <td id="T_2ceac_row26_col1" class="data row26 col1" >5.9</td>
-      <td id="T_2ceac_row26_col2" class="data row26 col2" >BRL</td>
-      <td id="T_2ceac_row26_col3" class="data row26 col3" >+0.41</td>
+      <td id="T_bcc1c_row26_col0" class="data row26 col0" >Euro</td>
+      <td id="T_bcc1c_row26_col1" class="data row26 col1" >5.89</td>
+      <td id="T_bcc1c_row26_col2" class="data row26 col2" >BRL</td>
+      <td id="T_bcc1c_row26_col3" class="data row26 col3" >+0.26</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row27_col0" class="data row27 col0" >Libra Esterlina</td>
-      <td id="T_2ceac_row27_col1" class="data row27 col1" >6.78</td>
-      <td id="T_2ceac_row27_col2" class="data row27 col2" >BRL</td>
-      <td id="T_2ceac_row27_col3" class="data row27 col3" >+0.48</td>
+      <td id="T_bcc1c_row27_col0" class="data row27 col0" >Libra Esterlina</td>
+      <td id="T_bcc1c_row27_col1" class="data row27 col1" >6.77</td>
+      <td id="T_bcc1c_row27_col2" class="data row27 col2" >BRL</td>
+      <td id="T_bcc1c_row27_col3" class="data row27 col3" >+0.04</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row28_col0" class="data row28 col0" >Iene Japonês</td>
-      <td id="T_2ceac_row28_col1" class="data row28 col1" >0.0314</td>
-      <td id="T_2ceac_row28_col2" class="data row28 col2" >BRL</td>
-      <td id="T_2ceac_row28_col3" class="data row28 col3" >+0.20</td>
+      <td id="T_bcc1c_row28_col0" class="data row28 col0" >Iene Japonês</td>
+      <td id="T_bcc1c_row28_col1" class="data row28 col1" >0.0314</td>
+      <td id="T_bcc1c_row28_col2" class="data row28 col2" >BRL</td>
+      <td id="T_bcc1c_row28_col3" class="data row28 col3" >+0.10</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row29_col0" class="data row29 col0" >VALE3 (Proxy Minério de Ferro)</td>
-      <td id="T_2ceac_row29_col1" class="data row29 col1" >88.39</td>
-      <td id="T_2ceac_row29_col2" class="data row29 col2" >BRL/ação</td>
-      <td id="T_2ceac_row29_col3" class="data row29 col3" >+0.10</td>
+      <td id="T_bcc1c_row29_col0" class="data row29 col0" >VALE3 (Proxy Minério de Ferro)</td>
+      <td id="T_bcc1c_row29_col1" class="data row29 col1" >87.44</td>
+      <td id="T_bcc1c_row29_col2" class="data row29 col2" >BRL/ação</td>
+      <td id="T_bcc1c_row29_col3" class="data row29 col3" >-1.13</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row30_col0" class="data row30 col0" >Soja</td>
-      <td id="T_2ceac_row30_col1" class="data row30 col1" >11.68</td>
-      <td id="T_2ceac_row30_col2" class="data row30 col2" >USD/bushel (27,2 kg)</td>
-      <td id="T_2ceac_row30_col3" class="data row30 col3" >+0.86</td>
+      <td id="T_bcc1c_row30_col0" class="data row30 col0" >Soja</td>
+      <td id="T_bcc1c_row30_col1" class="data row30 col1" >11.69</td>
+      <td id="T_bcc1c_row30_col2" class="data row30 col2" >USD/bushel (27,2 kg)</td>
+      <td id="T_bcc1c_row30_col3" class="data row30 col3" >+0.15</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row31_col0" class="data row31 col0" >Ouro</td>
-      <td id="T_2ceac_row31_col1" class="data row31 col1" >774.26</td>
-      <td id="T_2ceac_row31_col2" class="data row31 col2" >BRL/g</td>
-      <td id="T_2ceac_row31_col3" class="data row31 col3" >-0.10</td>
+      <td id="T_bcc1c_row31_col0" class="data row31 col0" >Ouro</td>
+      <td id="T_bcc1c_row31_col1" class="data row31 col1" >774.64</td>
+      <td id="T_bcc1c_row31_col2" class="data row31 col2" >BRL/g</td>
+      <td id="T_bcc1c_row31_col3" class="data row31 col3" >+0.33</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row32_col0" class="data row32 col0" >Ouro Barra LBMA</td>
-      <td id="T_2ceac_row32_col1" class="data row32 col1" >9632873.64</td>
-      <td id="T_2ceac_row32_col2" class="data row32 col2" >BRL/barra (400 oz t)</td>
-      <td id="T_2ceac_row32_col3" class="data row32 col3" ></td>
+      <td id="T_bcc1c_row32_col0" class="data row32 col0" >Ouro Barra LBMA</td>
+      <td id="T_bcc1c_row32_col1" class="data row32 col1" >9637556.79</td>
+      <td id="T_bcc1c_row32_col2" class="data row32 col2" >BRL/barra (400 oz t)</td>
+      <td id="T_bcc1c_row32_col3" class="data row32 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row33_col0" class="data row33 col0" >Prata</td>
-      <td id="T_2ceac_row33_col1" class="data row33 col1" >12.74</td>
-      <td id="T_2ceac_row33_col2" class="data row33 col2" >BRL/g</td>
-      <td id="T_2ceac_row33_col3" class="data row33 col3" >-0.09</td>
+      <td id="T_bcc1c_row33_col0" class="data row33 col0" >Prata</td>
+      <td id="T_bcc1c_row33_col1" class="data row33 col1" >12.66</td>
+      <td id="T_bcc1c_row33_col2" class="data row33 col2" >BRL/g</td>
+      <td id="T_bcc1c_row33_col3" class="data row33 col3" >-1.01</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row34_col0" class="data row34 col0" >Platina</td>
-      <td id="T_2ceac_row34_col1" class="data row34 col1" >339.85</td>
-      <td id="T_2ceac_row34_col2" class="data row34 col2" >BRL/g</td>
-      <td id="T_2ceac_row34_col3" class="data row34 col3" >+1.49</td>
+      <td id="T_bcc1c_row34_col0" class="data row34 col0" >Platina</td>
+      <td id="T_bcc1c_row34_col1" class="data row34 col1" >339.66</td>
+      <td id="T_bcc1c_row34_col2" class="data row34 col2" >BRL/g</td>
+      <td id="T_bcc1c_row34_col3" class="data row34 col3" >-0.07</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row35_col0" class="data row35 col0" >Barril Petróleo Brent</td>
-      <td id="T_2ceac_row35_col1" class="data row35 col1" >95.50</td>
-      <td id="T_2ceac_row35_col2" class="data row35 col2" >USD/bbl (159 litros)</td>
-      <td id="T_2ceac_row35_col3" class="data row35 col3" >+0.75</td>
+      <td id="T_bcc1c_row35_col0" class="data row35 col0" >Barril Petróleo Brent</td>
+      <td id="T_bcc1c_row35_col1" class="data row35 col1" >98.95</td>
+      <td id="T_bcc1c_row35_col2" class="data row35 col2" >USD/bbl (159 litros)</td>
+      <td id="T_bcc1c_row35_col3" class="data row35 col3" >+4.23</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row36_col0" class="data row36 col0" >Copper (USD/lb – Global Growth Proxy)</td>
-      <td id="T_2ceac_row36_col1" class="data row36 col1" >6.07</td>
-      <td id="T_2ceac_row36_col2" class="data row36 col2" >Economic Boom / Inflation Pressure</td>
-      <td id="T_2ceac_row36_col3" class="data row36 col3" >+0.03</td>
+      <td id="T_bcc1c_row36_col0" class="data row36 col0" >Copper (USD/lb – Global Growth Proxy)</td>
+      <td id="T_bcc1c_row36_col1" class="data row36 col1" >6.08</td>
+      <td id="T_bcc1c_row36_col2" class="data row36 col2" >Economic Boom / Inflation Pressure</td>
+      <td id="T_bcc1c_row36_col3" class="data row36 col3" >+0.09</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row37_col0" class="data row37 col0" >Ethereum</td>
-      <td id="T_2ceac_row37_col1" class="data row37 col1" >2328.39</td>
-      <td id="T_2ceac_row37_col2" class="data row37 col2" >USD</td>
-      <td id="T_2ceac_row37_col3" class="data row37 col3" >+0.22</td>
+      <td id="T_bcc1c_row37_col0" class="data row37 col0" >Ethereum</td>
+      <td id="T_bcc1c_row37_col1" class="data row37 col1" >2323.53</td>
+      <td id="T_bcc1c_row37_col2" class="data row37 col2" >USD</td>
+      <td id="T_bcc1c_row37_col3" class="data row37 col3" >-1.52</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row38_col0" class="data row38 col0" >Ethereum</td>
-      <td id="T_2ceac_row38_col1" class="data row38 col1" >11633.10</td>
-      <td id="T_2ceac_row38_col2" class="data row38 col2" >BRL</td>
-      <td id="T_2ceac_row38_col3" class="data row38 col3" >+0.22</td>
+      <td id="T_bcc1c_row38_col0" class="data row38 col0" >Ethereum</td>
+      <td id="T_bcc1c_row38_col1" class="data row38 col1" >11625.32</td>
+      <td id="T_bcc1c_row38_col2" class="data row38 col2" >BRL</td>
+      <td id="T_bcc1c_row38_col3" class="data row38 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row39_col0" class="data row39 col0" >Ethereum Máxima 2026 (USD)</td>
-      <td id="T_2ceac_row39_col1" class="data row39 col1" >3354.72</td>
-      <td id="T_2ceac_row39_col2" class="data row39 col2" >2026-01-14</td>
-      <td id="T_2ceac_row39_col3" class="data row39 col3" ></td>
+      <td id="T_bcc1c_row39_col0" class="data row39 col0" >Ethereum Máxima 2026 (USD)</td>
+      <td id="T_bcc1c_row39_col1" class="data row39 col1" >3354.72</td>
+      <td id="T_bcc1c_row39_col2" class="data row39 col2" >2026-01-14</td>
+      <td id="T_bcc1c_row39_col3" class="data row39 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row40_col0" class="data row40 col0" >Ethereum Mínima 2026 (USD)</td>
-      <td id="T_2ceac_row40_col1" class="data row40 col1" >1821.68</td>
-      <td id="T_2ceac_row40_col2" class="data row40 col2" >2026-02-05</td>
-      <td id="T_2ceac_row40_col3" class="data row40 col3" ></td>
+      <td id="T_bcc1c_row40_col0" class="data row40 col0" >Ethereum Mínima 2026 (USD)</td>
+      <td id="T_bcc1c_row40_col1" class="data row40 col1" >1821.68</td>
+      <td id="T_bcc1c_row40_col2" class="data row40 col2" >2026-02-05</td>
+      <td id="T_bcc1c_row40_col3" class="data row40 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row41_col0" class="data row41 col0" >Ethereum Máxima Histórica (USD)</td>
-      <td id="T_2ceac_row41_col1" class="data row41 col1" >4831.35</td>
-      <td id="T_2ceac_row41_col2" class="data row41 col2" >2025-08-22</td>
-      <td id="T_2ceac_row41_col3" class="data row41 col3" ></td>
+      <td id="T_bcc1c_row41_col0" class="data row41 col0" >Ethereum Máxima Histórica (USD)</td>
+      <td id="T_bcc1c_row41_col1" class="data row41 col1" >4831.35</td>
+      <td id="T_bcc1c_row41_col2" class="data row41 col2" >2025-08-22</td>
+      <td id="T_bcc1c_row41_col3" class="data row41 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row42_col0" class="data row42 col0" >Ethereum Mínima Histórica (USD)</td>
-      <td id="T_2ceac_row42_col1" class="data row42 col1" >84.31</td>
-      <td id="T_2ceac_row42_col2" class="data row42 col2" >2018-12-14</td>
-      <td id="T_2ceac_row42_col3" class="data row42 col3" ></td>
+      <td id="T_bcc1c_row42_col0" class="data row42 col0" >Ethereum Mínima Histórica (USD)</td>
+      <td id="T_bcc1c_row42_col1" class="data row42 col1" >84.31</td>
+      <td id="T_bcc1c_row42_col2" class="data row42 col2" >2018-12-14</td>
+      <td id="T_bcc1c_row42_col3" class="data row42 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row43_col0" class="data row43 col0" >Bitcoin</td>
-      <td id="T_2ceac_row43_col1" class="data row43 col1" >73788.13</td>
-      <td id="T_2ceac_row43_col2" class="data row43 col2" >USD</td>
-      <td id="T_2ceac_row43_col3" class="data row43 col3" >-0.53</td>
+      <td id="T_bcc1c_row43_col0" class="data row43 col0" >Bitcoin</td>
+      <td id="T_bcc1c_row43_col1" class="data row43 col1" >74386.72</td>
+      <td id="T_bcc1c_row43_col2" class="data row43 col2" >USD</td>
+      <td id="T_bcc1c_row43_col3" class="data row43 col3" >-0.56</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row44_col0" class="data row44 col0" >Bitcoin</td>
-      <td id="T_2ceac_row44_col1" class="data row44 col1" >368660.27</td>
-      <td id="T_2ceac_row44_col2" class="data row44 col2" >BRL</td>
-      <td id="T_2ceac_row44_col3" class="data row44 col3" >-0.53</td>
+      <td id="T_bcc1c_row44_col0" class="data row44 col0" >Bitcoin</td>
+      <td id="T_bcc1c_row44_col1" class="data row44 col1" >372179.07</td>
+      <td id="T_bcc1c_row44_col2" class="data row44 col2" >BRL</td>
+      <td id="T_bcc1c_row44_col3" class="data row44 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row45_col0" class="data row45 col0" >Bitcoin Máxima 2026 (USD)</td>
-      <td id="T_2ceac_row45_col1" class="data row45 col1" >96929.33</td>
-      <td id="T_2ceac_row45_col2" class="data row45 col2" >2026-01-14</td>
-      <td id="T_2ceac_row45_col3" class="data row45 col3" ></td>
+      <td id="T_bcc1c_row45_col0" class="data row45 col0" >Bitcoin Máxima 2026 (USD)</td>
+      <td id="T_bcc1c_row45_col1" class="data row45 col1" >96929.33</td>
+      <td id="T_bcc1c_row45_col2" class="data row45 col2" >2026-01-14</td>
+      <td id="T_bcc1c_row45_col3" class="data row45 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row46_col0" class="data row46 col0" >Bitcoin Mínima 2026 (USD)</td>
-      <td id="T_2ceac_row46_col1" class="data row46 col1" >62702.10</td>
-      <td id="T_2ceac_row46_col2" class="data row46 col2" >2026-02-05</td>
-      <td id="T_2ceac_row46_col3" class="data row46 col3" ></td>
+      <td id="T_bcc1c_row46_col0" class="data row46 col0" >Bitcoin Mínima 2026 (USD)</td>
+      <td id="T_bcc1c_row46_col1" class="data row46 col1" >62702.10</td>
+      <td id="T_bcc1c_row46_col2" class="data row46 col2" >2026-02-05</td>
+      <td id="T_bcc1c_row46_col3" class="data row46 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row47_col0" class="data row47 col0" >Bitcoin Máxima Histórica (USD)</td>
-      <td id="T_2ceac_row47_col1" class="data row47 col1" >124752.53</td>
-      <td id="T_2ceac_row47_col2" class="data row47 col2" >2025-10-06</td>
-      <td id="T_2ceac_row47_col3" class="data row47 col3" ></td>
+      <td id="T_bcc1c_row47_col0" class="data row47 col0" >Bitcoin Máxima Histórica (USD)</td>
+      <td id="T_bcc1c_row47_col1" class="data row47 col1" >124752.53</td>
+      <td id="T_bcc1c_row47_col2" class="data row47 col2" >2025-10-06</td>
+      <td id="T_bcc1c_row47_col3" class="data row47 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row48_col0" class="data row48 col0" >Bitcoin Mínima Histórica (USD)</td>
-      <td id="T_2ceac_row48_col1" class="data row48 col1" >178.10</td>
-      <td id="T_2ceac_row48_col2" class="data row48 col2" >2015-01-14</td>
-      <td id="T_2ceac_row48_col3" class="data row48 col3" ></td>
+      <td id="T_bcc1c_row48_col0" class="data row48 col0" >Bitcoin Mínima Histórica (USD)</td>
+      <td id="T_bcc1c_row48_col1" class="data row48 col1" >178.10</td>
+      <td id="T_bcc1c_row48_col2" class="data row48 col2" >2015-01-14</td>
+      <td id="T_bcc1c_row48_col3" class="data row48 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row49_col0" class="data row49 col0" >Company by Market Value: NVIDIA</td>
-      <td id="T_2ceac_row49_col1" class="data row49 col1" >4851278282752</td>
-      <td id="T_2ceac_row49_col2" class="data row49 col2" >United States</td>
-      <td id="T_2ceac_row49_col3" class="data row49 col3" ></td>
+      <td id="T_bcc1c_row49_col0" class="data row49 col0" >Company by Market Value: NVIDIA</td>
+      <td id="T_bcc1c_row49_col1" class="data row49 col1" >4825028755456</td>
+      <td id="T_bcc1c_row49_col2" class="data row49 col2" >United States</td>
+      <td id="T_bcc1c_row49_col3" class="data row49 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row50_col0" class="data row50 col0" >Billionaire (networth): Elon Musk</td>
-      <td id="T_2ceac_row50_col1" class="data row50 col1" >816.98</td>
-      <td id="T_2ceac_row50_col2" class="data row50 col2" >2026-03-31</td>
-      <td id="T_2ceac_row50_col3" class="data row50 col3" ></td>
+      <td id="T_bcc1c_row50_col0" class="data row50 col0" >Billionaire (networth): Elon Musk</td>
+      <td id="T_bcc1c_row50_col1" class="data row50 col1" >816.98</td>
+      <td id="T_bcc1c_row50_col2" class="data row50 col2" >2026-03-31</td>
+      <td id="T_bcc1c_row50_col3" class="data row50 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row51_col0" class="data row51 col0" >DB-Engines Ranking: Oracle</td>
-      <td id="T_2ceac_row51_col1" class="data row51 col1" >1157.93</td>
-      <td id="T_2ceac_row51_col2" class="data row51 col2" >Multi-model Relational</td>
-      <td id="T_2ceac_row51_col3" class="data row51 col3" ></td>
+      <td id="T_bcc1c_row51_col0" class="data row51 col0" >DB-Engines Ranking: Oracle</td>
+      <td id="T_bcc1c_row51_col1" class="data row51 col1" >1157.93</td>
+      <td id="T_bcc1c_row51_col2" class="data row51 col2" >Multi-model Relational</td>
+      <td id="T_bcc1c_row51_col3" class="data row51 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row52_col0" class="data row52 col0" >Programming Languages R​anking - Ratings (%): Python</td>
-      <td id="T_2ceac_row52_col1" class="data row52 col1" >20.97</td>
-      <td id="T_2ceac_row52_col2" class="data row52 col2" >Apr 2025: 1 | Apr 2026: 1</td>
-      <td id="T_2ceac_row52_col3" class="data row52 col3" >-2.11</td>
+      <td id="T_bcc1c_row52_col0" class="data row52 col0" >Programming Languages R​anking - Ratings (%): Python</td>
+      <td id="T_bcc1c_row52_col1" class="data row52 col1" >20.97</td>
+      <td id="T_bcc1c_row52_col2" class="data row52 col2" >Apr 2025: 1 | Apr 2026: 1</td>
+      <td id="T_bcc1c_row52_col3" class="data row52 col3" >-2.11</td>
     </tr>
     <tr>
-      <td id="T_2ceac_row53_col0" class="data row53 col0" >GitHub Ranking: codecrafters-io/build-your-own-x (Markdown)</td>
-      <td id="T_2ceac_row53_col1" class="data row53 col1" >490563</td>
-      <td id="T_2ceac_row53_col2" class="data row53 col2" >2018-05-09</td>
-      <td id="T_2ceac_row53_col3" class="data row53 col3" ></td>
+      <td id="T_bcc1c_row53_col0" class="data row53 col0" >GitHub Ranking: codecrafters-io/build-your-own-x (Markdown)</td>
+      <td id="T_bcc1c_row53_col1" class="data row53 col1" >490811</td>
+      <td id="T_bcc1c_row53_col2" class="data row53 col2" >2018-05-09</td>
+      <td id="T_bcc1c_row53_col3" class="data row53 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row54_col0" class="data row54 col0" >Linux Ranking Distrowatch: CachyOS</td>
-      <td id="T_2ceac_row54_col1" class="data row54 col1" >3433</td>
-      <td id="T_2ceac_row54_col2" class="data row54 col2" ></td>
-      <td id="T_2ceac_row54_col3" class="data row54 col3" ></td>
+      <td id="T_bcc1c_row54_col0" class="data row54 col0" >Linux Ranking Distrowatch: CachyOS</td>
+      <td id="T_bcc1c_row54_col1" class="data row54 col1" >3719</td>
+      <td id="T_bcc1c_row54_col2" class="data row54 col2" ></td>
+      <td id="T_bcc1c_row54_col3" class="data row54 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row55_col0" class="data row55 col0" >Movie - Top Lifetime Grosses: Avatar (USD)</td>
-      <td id="T_2ceac_row55_col1" class="data row55 col1" >2923710708</td>
-      <td id="T_2ceac_row55_col2" class="data row55 col2" >2009</td>
-      <td id="T_2ceac_row55_col3" class="data row55 col3" ></td>
+      <td id="T_bcc1c_row55_col0" class="data row55 col0" >Movie - Top Lifetime Grosses: Avatar (USD)</td>
+      <td id="T_bcc1c_row55_col1" class="data row55 col1" >2923710708</td>
+      <td id="T_bcc1c_row55_col2" class="data row55 col2" >2009</td>
+      <td id="T_bcc1c_row55_col3" class="data row55 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row56_col0" class="data row56 col0" >Arena AI (Text): claude-opus-4-6-thinking</td>
-      <td id="T_2ceac_row56_col1" class="data row56 col1" >1502</td>
-      <td id="T_2ceac_row56_col2" class="data row56 col2" >17219</td>
-      <td id="T_2ceac_row56_col3" class="data row56 col3" ></td>
+      <td id="T_bcc1c_row56_col0" class="data row56 col0" >Arena AI (Text): claude-opus-4-6-thinking</td>
+      <td id="T_bcc1c_row56_col1" class="data row56 col1" >1502</td>
+      <td id="T_bcc1c_row56_col2" class="data row56 col2" >17219</td>
+      <td id="T_bcc1c_row56_col3" class="data row56 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row57_col0" class="data row57 col0" >Arena AI (Code): claude-opus-4-6-thinking</td>
-      <td id="T_2ceac_row57_col1" class="data row57 col1" >1548</td>
-      <td id="T_2ceac_row57_col2" class="data row57 col2" >4237</td>
-      <td id="T_2ceac_row57_col3" class="data row57 col3" ></td>
+      <td id="T_bcc1c_row57_col0" class="data row57 col0" >Arena AI (Code): claude-opus-4-6-thinking</td>
+      <td id="T_bcc1c_row57_col1" class="data row57 col1" >1548</td>
+      <td id="T_bcc1c_row57_col2" class="data row57 col2" >4237</td>
+      <td id="T_bcc1c_row57_col3" class="data row57 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row58_col0" class="data row58 col0" >Arena AI (Image): gemini-3.1-flash-image-preview (nano-banana-2) [web-search]</td>
-      <td id="T_2ceac_row58_col1" class="data row58 col1" >1264</td>
-      <td id="T_2ceac_row58_col2" class="data row58 col2" >34861</td>
-      <td id="T_2ceac_row58_col3" class="data row58 col3" ></td>
+      <td id="T_bcc1c_row58_col0" class="data row58 col0" >Arena AI (Image): gemini-3.1-flash-image-preview (nano-banana-2) [web-search]</td>
+      <td id="T_bcc1c_row58_col1" class="data row58 col1" >1264</td>
+      <td id="T_bcc1c_row58_col2" class="data row58 col2" >34861</td>
+      <td id="T_bcc1c_row58_col3" class="data row58 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row59_col0" class="data row59 col0" >Arena AI (Video): dreamina-seedance-2.0-720p</td>
-      <td id="T_2ceac_row59_col1" class="data row59 col1" >1450</td>
-      <td id="T_2ceac_row59_col2" class="data row59 col2" >2702</td>
-      <td id="T_2ceac_row59_col3" class="data row59 col3" ></td>
+      <td id="T_bcc1c_row59_col0" class="data row59 col0" >Arena AI (Video): dreamina-seedance-2.0-720p</td>
+      <td id="T_bcc1c_row59_col1" class="data row59 col1" >1450</td>
+      <td id="T_bcc1c_row59_col2" class="data row59 col2" >2702</td>
+      <td id="T_bcc1c_row59_col3" class="data row59 col3" ></td>
     </tr>
     <tr>
-      <td id="T_2ceac_row60_col0" class="data row60 col0" >Arena AI (Open Source): glm-5.1</td>
-      <td id="T_2ceac_row60_col1" class="data row60 col1" >1471</td>
-      <td id="T_2ceac_row60_col2" class="data row60 col2" >620</td>
-      <td id="T_2ceac_row60_col3" class="data row60 col3" ></td>
+      <td id="T_bcc1c_row60_col0" class="data row60 col0" >Arena AI (Open Source): glm-5.1</td>
+      <td id="T_bcc1c_row60_col1" class="data row60 col1" >1471</td>
+      <td id="T_bcc1c_row60_col2" class="data row60 col2" >620</td>
+      <td id="T_bcc1c_row60_col3" class="data row60 col3" ></td>
     </tr>
   </tbody>
 </table>
 
-            <!-- ======================================================== -->
-            <!--  RODAPÉ: LinkedIn + Chamada de Contribuição              -->
-            <!-- ======================================================== -->
             <div class="container mt-5 pb-4 text-center">
 
-                <!-- LinkedIn -->
                 <p>
                     <a href="https://www.linkedin.com/in/geanclm/" target="_blank">
-                        <img src="https://geanclm.github.io/projeto-site/img/linkedin.jpg"
-                             alt="LinkedIn" width="50px">
+                        <img src="https://geanclm.github.io/projeto-site/img/LI-In-Bug.png"
+                             alt="LinkedIn" width="50px" style="border-radius: 4px; opacity: 0.9;">
                     </a>
                 </p>
 
-                <!-- Linha separadora suave -->
-                <hr class="mx-auto" style="max-width:400px; border-color:#dee2e6;">
+                <hr class="mx-auto" style="max-width:400px; border-color:#403E3B;">
 
-                <!-- Chamada de contribuição -->
                 <p class="text-muted mb-1" style="font-size:0.9rem;">
                     Este projeto é independente e tem custo real de API para os modelos de IA.
                 </p>
 
-                <!-- ── <p style="font-size:1rem; font-weight:500; color:#343a40;"> ────────── -->
-                <!-- ──    Se o conteúdo foi útil, considere uma contribuição simbólica 🙏 ────────── -->
-                <!-- ── </p> ────────── -->
-
-                <!-- ── OPÇÃO A: botão que revela chave Pix ao clicar ────────── -->
                 <button
                     onclick="document.getElementById('pix-msg').style.display='block';
                         this.style.display='none';
@@ -586,11 +621,12 @@ O insight estratégico reside na necessária gestão de Duration e liquidez: a c
                     ☕ Contribuir com o projeto
                 </button>
 
+
                 <div id="pix-msg" style="display:none; max-width:420px; margin:12px auto 0;">
-                    <div class="card border-success shadow-sm">
+                    <div style="background-color: #2D2C29; border: 1px solid #403E3B; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
                         <div class="card-body py-3 px-4 text-center">
                             <p class="mb-1" style="font-size:1.3rem;">🙏</p>
-                            <p class="mb-2" style="font-size:0.95rem; color:#343a40;">
+                            <p class="mb-2" style="font-size:0.95rem; color:#E6E4DD;">
                                 Muitíssimo obrigado pela boa energia!<br>
                                 Ela é essencial para a continuidade<br>
                                 e evolução deste projeto.<br>
@@ -599,9 +635,9 @@ O insight estratégico reside na necessária gestão de Duration e liquidez: a c
                             </p>
                             <p class="mb-0">
                                 <code
-                                    style="font-size:1rem; background:#f0fff4; padding:6px 14px;
-                                        border-radius:6px; border:1px solid #c3e6cb;
-                                        color:#198754; font-weight:bold; cursor:pointer;"
+                                    style="font-size:1rem; background:#21201D; padding:6px 14px;
+                                        border-radius:6px; border:1px solid #403E3B;
+                                        color:#4ADE80; font-weight:bold; cursor:pointer;"
                                     onclick="navigator.clipboard.writeText('geanclm@yahoo.com').then(()=>{ this.innerText='✅ Copiado!'; });"
                                     title="Clique para copiar">
                                     geanclm@yahoo.com
@@ -614,9 +650,6 @@ O insight estratégico reside na necessária gestão de Duration e liquidez: a c
                     </div>
                 </div>
 
-
-
-                <!-- Citação -->
                 <p class="text-muted mt-3 fst-italic" style="font-size:0.82rem;">
                     "A inteligência artificial é a nova eletricidade." — Andrew Ng
                 </p>
@@ -632,17 +665,17 @@ O insight estratégico reside na necessária gestão de Duration e liquidez: a c
                 width: 34px;
                 height: 34px;
                 border-radius: 50%;
-                background-color: #212121;
-                color: #ececec;
-                border: 1px solid rgba(255,255,255,0.1);
+                background-color: #2D2C29;
+                color: #A09E98;
+                border: 1px solid #403E3B;
                 text-align: center;
                 text-decoration: none;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-                transition: background-color 0.2s ease;
+                transition: background-color 0.2s ease, color 0.2s ease;
                 z-index: 9999;
             "
-            onmouseover="this.style.backgroundColor='#424242'"
-            onmouseout="this.style.backgroundColor='#212121'"
+            onmouseover="this.style.backgroundColor='#403E3B'; this.style.color='#E6E4DD';"
+            onmouseout="this.style.backgroundColor='#2D2C29'; this.style.color='#A09E98';"
             onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 8px;">
                     <line x1="12" y1="19" x2="12" y2="5"></line>
@@ -660,4 +693,4 @@ O insight estratégico reside na necessária gestão de Duration e liquidez: a c
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         </body>
         </html>
-        <h6 class="text-center text-muted">Atualizado na quarta-feira, 15/04/2026, às 13h00. Em 2026, já decorreram 105 dias e restam 260.</h56
+        <h6 class="text-center text-muted mt-4">Atualizado na quinta-feira, 16/04/2026, às 13h50. Em 2026, já decorreram 106 dias e restam 259.</h6>
