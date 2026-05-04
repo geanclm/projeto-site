@@ -11,7 +11,9 @@
                     background-color: #21201D;
                     color: #E6E4DD;
                     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    overflow-x: hidden;
                 }
+
                 h1, h2, h3, h4, h5, h6 {
                     color: #E6E4DD;
                 }
@@ -27,11 +29,12 @@
 
                 /* --- Personalização da Tabela Pandas --- */
                 #indicadores_table {
-                    width: 90%;
-                    margin: auto;
+                    width: 100%;
+                    margin: 0 auto;
                     border-collapse: collapse;
                     color: #E6E4DD;
                 }
+
                 #indicadores_table th {
                     text-align: center;
                     background-color: #2D2C29; /* Cabeçalho mais destacado */
@@ -103,12 +106,13 @@
                 }
             </style>
         </head>
+
         <body>
-            <div class="container">
+            <div class="container-fluid px-3" style="max-width: 1800px;">
         
         <h1>📊 Indicadores |
-        <span class="badge bg-success" style="background-color: #198754 !important; color: #E6E4DD;" title="Quantidade de indicadores em alta">Altas: 23</span> |
-        <span class="badge bg-danger" style="background-color: #dc3545 !important; color: #E6E4DD;" title="Quantidade de indicadores em baixa">Baixas: 12</span>
+        <span class="badge bg-success" style="background-color: #198754 !important; color: #E6E4DD;" title="Quantidade de indicadores em alta">Altas: 18</span> |
+        <span class="badge bg-danger" style="background-color: #dc3545 !important; color: #E6E4DD;" title="Quantidade de indicadores em baixa">Baixas: 19</span>
         </h1>
         <div class="mt-3 mb-3 p-3" style="border: 1px solid #403E3B; border-radius: 6px; background-color: #2D2C29;">
 
@@ -153,19 +157,19 @@
             <div class="tab-content pt-3" id="abasIAContent">
 
                 <div class="tab-pane fade show active" id="aba1" role="tabpanel">
-                    <p class="text-muted">Em 30 de abril de 2026, o cenário macro preserva uma tensão entre juros restritivos, inflação ainda sujeita a choques e maior disposição seletiva ao risco. O VIX em zona normal e o DXY mais brando favorecem fluxos para ativos de risco, mas o Treasury de 10 anos a 4,39% mantém elevada a taxa global de desconto, em linha com um Fed ainda vigilante. A alta das bolsas internacionais, acompanhada pelo avanço do Ibovespa, sugere que o mercado aceita risco, mas de forma condicional: liquidez e crescimento ainda convivem com energia volátil, cadeias fragmentadas e incerteza geopolítica.
+                    <p class="text-muted">O cenário macro combina volatilidade global ainda controlada, com VIX em 17,45, e dólar relativamente neutro, com DXY em 98,31, mas sem sinal claro de afrouxamento das condições financeiras. A taxa americana de 10 anos em 4,42%, acima do juro curto de 3,59%, reforça que o mercado segue exigindo prêmio diante da cautela do Federal Reserve com a inflação, enquanto o crédito high yield permanece em zona de atenção. As bolsas americanas mostram estabilidade seletiva, com melhor desempenho relativo do Nasdaq, coerente com a sustentação estrutural do ciclo de inteligência artificial, ainda que a dispersão entre NVIDIA e TSMC indique que o tema segue forte, porém sensível a valuation, capex e restrições tecnológicas entre EUA e China.
 
-No Brasil, a Selic de 14,50% e o CDI de 14,40% sustentam juro real de 9,85%, reforçando o apelo do carry e oferecendo suporte à moeda, com o dólar em R$ 4,98. A inflação, porém, não permite leitura complacente: o IPCA anual de 4,14% indica convergência parcial, enquanto o IGP-M de abril em 2,73% sinaliza risco de pressão de custos. Com PIB corrente de R$ 3,28 trilhões no 4T25 e dívida líquida em R$ 7,7 trilhões, a resiliência da atividade amplia a base de crescimento, mas torna a consolidação fiscal decisiva para preservar o prêmio de risco doméstico.
+No Brasil, o diferencial de juros continua sendo o principal amortecedor macro: Selic em 14,50%, IPCA em 4,14% e juro real de 9,85% sustentam o real, refletido na queda do dólar para R$ 4,95 e no recuo também de euro, libra e iene contra o BRL. Ao mesmo tempo, a leitura doméstica não é isenta de prêmio de risco: o Ibovespa recua marginalmente, o IMA-B cede e o proxy do IFIX cai, sinalizando sensibilidade a juros reais elevados, execução fiscal e trajetória da dívida líquida, que alcança R$ 7,7 trilhões. O crescimento corrente do PIB, em R$ 3,28 trilhões no quarto trimestre de 2025, sugere atividade ainda positiva, mas dependente da combinação entre consumo, agropecuária e credibilidade institucional.
 
-Nos ativos reais, o recuo do Brent não elimina o risco energético, enquanto cobre, metais preciosos e soja refletem uma combinação de demanda global, proteção contra inflação e estímulos chineses. Criptoativos avançam moderadamente, ainda abaixo das máximas de 2026, indicando beta de liquidez mais seletivo. Em tecnologia, a demanda por infraestrutura de IA permanece estrutural, mas a queda de NVIDIA e a estabilidade relativa de TSMC mostram que valuation e restrições geopolíticas continuam relevantes.
+Nas commodities, o Brent a US$ 110,47, em alta, reflete um prêmio geopolítico e logístico associado a OPEP+, Oriente Médio e Mar Vermelho, enquanto cobre e Vale recuam, reforçando que o impulso de energia não se traduz automaticamente em ciclo industrial amplo, especialmente diante das fragilidades chinesas no setor imobiliário. A soja em alta preserva suporte ao vetor agro, ao passo que ouro e metais preciosos cedem em reais, compatíveis com apreciação cambial e juros reais elevados. Criptoativos avançam moderadamente, e ativos ligados a pagamentos e economia digital mostram variações contidas, sugerindo apetite ao risco seletivo, não eufórico.
 
-O insight integrador é que o mercado opera em regime de “carry com opcionalidade”: juros reais elevados favorecem renda fixa e seletividade em risco, enquanto dólar mais fraco, commodities resilientes e IA sustentam oportunidades globais, desde que inflação de custos e credibilidade fiscal não voltem a dominar a precificação.</p>
+O insight macro integrador é que o mercado opera menos por direção única e mais por qualidade de prêmio: liquidez global suficiente para sustentar tecnologia, consumo digital e cripto, mas ainda condicionada por juros reais altos, risco fiscal, energia cara e incerteza geopolítica. Nesse ambiente, a vantagem estratégica tende a estar em ativos com geração de caixa, exposição estrutural à infraestrutura de IA, proteção contra choques de oferta e disciplina de valuation, enquanto duration longa, crédito frágil e commodities dependentes da China permanecem mais vulneráveis.</p>
                     <p class="text-start text-muted">
                         <small>---<br>
                         API: OpenAI | LLM: gpt-5.5-pro<br>
-                        TOKENS (user prompt): 2479<br>
-                        TOKENS (llm): input_tokens=7061, output_tokens=3944, total_tokens=11005<br>
-                        Tempo de execução (prompt + retorno LLM): 143.25 segundos
+                        TOKENS (user prompt): 2759<br>
+                        TOKENS (llm): input_tokens=7341, output_tokens=3068, total_tokens=10409<br>
+                        Tempo de execução (prompt + retorno LLM): 191.56 segundos
                         </small>
                     </p>
                 </div>
@@ -173,54 +177,58 @@ O insight integrador é que o mercado opera em regime de “carry com opcionalid
                 <div class="tab-pane fade" id="aba2" role="tabpanel">
                     <p class="text-muted">---
 
-## ANÁLISE MACROECONÔMICA INTEGRADA – ABRIL 2026
+## ANÁLISE MACROECONÔMICA INTEGRADA
 
-A economia global transita por um momento de recalibração estratégica marcado pela coexistência de sinais contraditórios. Nos Estados Unidos, o Federal Reserve mantém vigilância sobre a inflação em contexto de normalização gradual das taxas, com o Treasury de dez anos em 4,39% a.a. e expectativas de ajuste monetário moderado refletidas na curva de curto prazo. Este ambiente externo benigno, reforçado por um dólar neutro (DXY 98,14) e volatilidade controlada (VIX 17,39), sustenta o apetite por risco nos mercados globais, evidenciado pela resiliência do S&P 500 em 7.171 pontos e do Ibovespa em 187 mil pontos.
+Os mercados globais navegam um cenário de divergência estrutural, onde a euforia concentrada em inteligência artificial contrasta com sinais de cautela no crédito e fragilidade na demanda real. Nos Estados Unidos, os índices acionários alcançam novos patamares impulsionados pelo capex em infraestrutura de IA—NVIDIA e TSMC, respectivamente primeira e sexta maiores capitalizações globais, refletem a concentração de liquidez no setor de semicondutores—, enquanto o índice de volatilidade permanece em 17,45 pontos e o spread de crédito de alto risco (HYG) apresenta leve pressão negativa. O Federal Reserve mantém a taxa dos Treasury de 10 anos em 4,42% ao ano, sinalizando cautela diante da persistência inflacionária, e o dólar permanece neutro em 98,31 no índice DXY, refletindo uma política monetária ainda restritiva.
 
-No Brasil, a dinâmica é mais complexa. O Banco Central iniciou um ciclo de afrouxamento monetário—a Selic recuou 1,69% para 14,50% a.a.—, porém a inflação de preços no atacado (IGP-M mensal de 2,73%) e a aceleração do IPCA (+8,66% em variação) sinalizam pressões inflacionárias que desafiam a convergência para a meta. Com juro real ainda elevado em 9,85% a.a., o ambiente permanece restritivo, comprimindo a demanda doméstica enquanto o governo consolida o arcabouço fiscal diante de uma dívida pública em R$ 7,7 trilhões. A resiliência do PIB (R$ 3,28 trilhões no quarto trimestre de 2025) reflete a força do setor de serviços e das exportações agrícolas, mas não dissipa a tensão entre sustentabilidade fiscal e estímulo econômico.
+A desconexão entre ativos financeiros e demanda real manifesta-se com clareza nas commodities. O petróleo Brent aprecia para US$110,47 por barril, sustentado pelos prêmios de risco geopolítico no Oriente Médio e pelas decisões de produção da OPEP+, enquanto o cobre cai 0,73% e o minério de ferro via VALE recua 2,07%, sinalizando erosão na demanda chinesa estrutural. Essa bifurcação—energia alta, metais industriais em queda—reflete tanto a interrupção de rotas comerciais marítimas quanto a fragilidade do setor imobiliário chinês, que limita o crescimento de longo prazo.
 
-As commodities revelam uma geografia de risco diferenciada. Petróleo Brent recua 7,18% apesar das tensões geopolíticas no Oriente Médio, sinalizando enfraquecimento da demanda global—particularmente da China, que implementa medidas de estímulo sem conseguir reverter a crise imobiliária. Em contraste, metais industriais (cobre +1,63%) e preciosos (ouro +1,85%, prata +2,86%, platina +4,35%) apreciam-se, refletindo hedge contra incerteza e expectativas de ciclo industrial prolongado. O câmbio em R$ 4,98 por dólar oferece suporte às exportações brasileiras, enquanto o mercado de renda fixa atrelada à inflação (IMA-B) mantém rendimento real estável em 0,27% a.m.
+No Brasil, a dinâmica é igualmente tensionada. A Selic em 14,50% ao ano gera um juro real de 9,85%, oferecendo carry atrativo que sustenta o Ibovespa em 187 mil pontos e a apreciação do real (dólar a R$4,95, queda de 0,36%). Contudo, o IGP-M mensal de 2,73% e o crescimento da dívida líquida do setor público para R$7,7 trilhões indicam pressão inflacionária e fragilidade fiscal que podem limitar a margem de manobra do Banco Central. O crescimento do PIB em 1,3% no quarto trimestre de 2025 permanece moderado, sustentado pelo consumo e agropecuária, mas insuficiente para aliviar a trajetória de endividamento.
 
-A divergência mais crítica emerge no setor de tecnologia. Apesar da narrativa robusta de expansão de inteligência artificial e demanda por infraestrutura de computação, o índice NVIDIA recua 4,18%, sugerindo que o mercado questiona a sustentabilidade do ritmo de capex em data centers e a valorização já incorporada. Bitcoin e Ethereum, embora estáveis em termos diários, permanecem significativamente abaixo de suas máximas históricas (BTC em 76 mil USD versus 124 mil em outubro de 2025), evidenciando cautela sobre ativos de risco especulativo.
-
-O cenário macro integrador aponta para uma **transição de regimes**: de um período de aperto monetário defensivo para uma fase de normalização gradual, mas sem alívio de pressões inflacionárias ou consolidação fiscal garantida. O Brasil enfrenta a tarefa específica de conciliar afrouxamento monetário com expectativas de inflação ainda elevadas, enquanto a economia global navega entre a resiliência do consumo norte-americano, o estímulo chinês incerto e a fragmentação geopolítica das cadeias de suprimentos. Neste contexto, oportunidades emergem em ativos reais (commodities preciosas, exportações) e setores defensivos, enquanto riscos concentram-se em ativos de crescimento especulativo e na sustentabilidade de políticas de estímulo em economias com espaço fiscal limitado.</p>
+A convergência desses eixos aponta para um ambiente de **risco seletivo**: liquidez abundante concentrada em ativos defensivos e de alta tecnologia, contrastando com vulnerabilidade em setores cíclicos e economias emergentes expostas à demanda chinesa. Investidores enfrentam um trade-off entre o carry brasileiro atrativo e o risco fiscal crescente, enquanto a volatilidade contida mascara tensões estruturais que podem se materializar em repricing significativo caso os dados de inflação global não convergissem para as metas dos bancos centrais.</p>
                     <p class="text-start text-muted">
                         <small>---<br>
                         API: Anthropic | LLM (executor): claude-haiku-4-5-20251001 | LLM (advisor) claude-opus-4-7<br>
-                        TOKENS (user prompt): 2479<br>
-                        TOKENS (llm executor): input_tokens=9102, output_tokens=1096, total_tokens=10198<br>
-                        TOKENS (llm advisor): chamadas=1, input=6647, output=3752, total=10399<br>
-                        Tempo de execução (prompt + retorno LLM): 75.95 segundos
+                        TOKENS (user prompt): 2759<br>
+                        TOKENS (llm executor): input_tokens=9636, output_tokens=831, total_tokens=10467<br>
+                        TOKENS (llm advisor): chamadas=1, input=7101, output=4376, total=11477<br>
+                        Tempo de execução (prompt + retorno LLM): 82.33 segundos
                         </small>
                     </p>
                 </div>
 
                 <div class="tab-pane fade" id="aba3" role="tabpanel">
-                    <p class="text-muted">O cenário macroeconômico global apresenta-se em um estágio de transição, caracterizado por uma volatilidade controlada (VIX em 17,39) e um dólar em patamar neutro (DXY 98,14), enquanto o Federal Reserve calibra a trajetória de juros para equilibrar o crescimento e a inflação. No Brasil, a política monetária mantém-se rigorosamente restritiva, com a Selic a 14,50% e o IPCA em 4,14%, resultando em um juro real expressivo de 9,85% ao ano. Essa configuração, somada à busca pela consolidação do arcabouço fiscal, sustenta a resiliência da atividade econômica e a estabilidade cambial, com o dólar cotado a R$ 4,98. No mercado de capitais, o IBOVESPA (187.126,8 pts) e os índices americanos (S&P 500 em 7.171,15) refletem esse otimismo cauteloso, embora o setor de tecnologia enfrente correções técnicas, como evidenciado pela queda de 4,18% na NVIDIA, em meio às tensões geopolíticas e restrições na cadeia de semicondutores entre EUA e China.
+                    <p class="text-muted">O cenário financeiro global opera em um estado de equilíbrio cauteloso, onde a resiliência dos índices de renda variável, como o S&P 500 e o Nasdaq, coexiste com um ambiente monetário rigoroso. A manutenção do US 10Y Treasury em 4,42% reflete a hesitação do Federal Reserve em reduzir taxas diante de uma inflação persistente, sustentando um Dollar Index neutro (98,31) e a volatilidade do VIX em níveis normais (17,45). Esta estabilidade superficial é tensionada por riscos geopolíticos no Oriente Médio e no Mar Vermelho, que elevam o barril de Brent para 110,47 USD, pressionando custos logísticos e a cadeia de suprimentos global.
 
-No segmento de commodities, observa-se uma dicotomia: enquanto o petróleo Brent recua para US$ 109,56 apesar das instabilidades no Oriente Médio, o cobre (US$ 5,97) e o minério de ferro (80,97) sinalizam a manutenção da demanda industrial e a eficácia dos estímulos chineses. Paralelamente, ativos de refúgio e risco, como o ouro (R$ 741,23/g) e o Bitcoin (US$ 76.333,92), continuam a desempenhar papéis centrais na diversificação de portfólios diante da fragmentação das cadeias globais. O insight integrador para este período reside na migração do fluxo de capital: a rentabilidade deixa de ser puramente impulsionada pela liquidez para ser ditada pela eficiência produtiva da IA e pela disciplina fiscal, tornando a gestão de juros reais o principal vetor de preservação de valor e captura de alfa.</p>
+No eixo tecnológico, a expansão da infraestrutura de IA continua a ditar o ritmo do Capex global, com a TSMC e a NVIDIA ancorando a demanda por semicondutores, apesar das restrições comerciais entre EUA e China. Em contrapartida, o ciclo industrial apresenta fragilidades; a queda na cotação da Vale e a volatilidade do Cobre evidenciam a crise estrutural do setor imobiliário chinês. No Brasil, a resposta monetária é severa, com a Selic a 14,50% entregando um juro real expressivo de 9,85% para conter a inflação, especialmente a pressão recente do IGP-M, enquanto o mercado monitora a execução do arcabouço fiscal para estabilizar o fluxo de capital estrangeiro.
+
+A convergência entre juros reais elevados em mercados emergentes, a volatilidade energética e o crescimento concentrado em produtividade artificial cria um ambiente de polarização de ativos. O insight estratégico central reside na migração do capital para a "segurança do rendimento real" e para a "infraestrutura de computação", enquanto a recuperação de ativos cíclicos e de commodities metálicas permanece condicionada à estabilização estrutural da economia chinesa e à previsibilidade fiscal doméstica.</p>
                     <p class="text-start text-muted">
                         <small>---<br>
                         API: Google | LLM: models/gemma-4-31b-it<br>
-                        TOKENS (user prompt): 2479<br>
-                        TOKENS (llm): input_tokens=2889, output_tokens=504, total_tokens=4660<br>
-                        Tempo de execução (prompt + retorno LLM): 50.74 segundos
+                        TOKENS (user prompt): 2759<br>
+                        TOKENS (llm): input_tokens=3179, output_tokens=438, total_tokens=4923<br>
+                        Tempo de execução (prompt + retorno LLM): 49.60 segundos
                         </small>
                     </p>
                 </div>
 
                 <div class="tab-pane fade" id="aba4" role="tabpanel">
-                    <p class="text-muted">
+                    <p class="text-muted">A economia global navega um território de transição em que a normalização monetária convive com focos persistentes de pressão inflacionária. Nos Estados Unidos, o patamar de 4,42% dos títulos do Tesouro de dez anos — acima do carry de curto prazo em 3,59% — sinaliza um prêmio de risco inflacionário que o Federal Reserve hesita em desafiar, ancorado em um mercado de trabalho ainda aquecido. Esse cenário de juros elevados por mais tempo reverbera em um dólar estruturalmente neutro (DXY em 98,31) e mantém o custo de capital global em patamar restritivo, especialmente sensível para economias emergentes que disputam fluxos de investimento.
 
-A normalização monetária global, corroborada pela compressão do yield americano e pela neutralidade do dólar, restabelece contingência de liquidez internacional, embora a persistência das taxas reais brasileiras em patamares elevados (9,85% a.a.) revele a vigilância necessária do Banco Central ante à convergência inflacionária. No mercado interno, a selic restritiva (14,50%) cumpre papel de âncora de expectativas, enquanto a resiliência do PIB e a solidez do setor de serviços sustentam um ambiente de risco moderado, confirmado pela volatilidade contida (VIX 17,39) e pela valorização do Ibovespa. Externamente, a correção do Brent contrapõe-se à expansão do cobre e à estabilidade dos principais ativos cripto, sinalizando uma realocação estratégica de capitais para ativos vinculados à produtividade e às redes de pagamento digital. A fragmentação tecnológica e os atritos logísticos no Mar Vermelho elevam o prêmio de risco geopolítico, mas os pacotes de estímulo chineses e a escalada de capex em infraestrutura de IA atuam como contrapesos cíclicos fundamentais. Diante desse mosaico, a gestão de portfólio exige foco em ativos reais de alta eficiência operacional e soberania energética, pois a sustentabilidade macroeconômica dependerá da capacidade de alinhar o arcabouço fiscal doméstico com a reconfiguração resiliente das cadeias globais de tecnologia e commodities.</p>
+No Brasil, a materialização desse ambiente externo encontra uma política monetária ainda mais contracionista: a Selic a 14,50% projeta um juro real de 9,85% ao ano, nível que impõe disciplina severa a valuations de risco e explica a contração de ativos cíclicos, como a Vale (recuando 2,07% em sintonia com o cobre em baixa de 0,73%), ao mesmo tempo que o petróleo Brent dispara para US$ 110,47 sob o impacto das interrupções logísticas no Mar Vermelho e da gestão cautelosa da oferta pela OPEP+. O crédito corporativo americano, capturado pela contração do HYG e pelo VIX em 17,45, revela um apetite a risco que não se deteriorou, mas permanece seletivo — comportamento que ecoa na estabilidade das grandes plataformas digitais, com o S&P 500 oscilando marginalmente enquanto a TSMC avança 1,46%, refletindo a convicção de que a infraestrutura de inteligência artificial seguirá recebendo alocação de capital mesmo diante de tensões geopolíticas entre Estados Unidos e China e de marcos regulatórios mais rígidos na União Europeia.
+
+O vetor de commodities completa o tripé de forças que molda o momento: a soja em alta de 2,17% expressa a resiliência do consumo global e a potência do agronegócio brasileiro, ao passo que a queda do ouro em reais, apesar do cenário geopolítico instável, sugere que os juros reais elevados estão competindo com sucesso pela preferência de portfólios que tradicionalmente buscariam proteção em metais preciosos. O Bitcoin, ainda 36% abaixo de sua máxima histórica e lateralizado na faixa dos US$ 79 mil, corrobora a leitura de que a liquidez especulativa não encontra, neste ciclo, o combustível farta que a caracterizou nos anos de política ultrafrouxa.
+
+O horizonte desenha, portanto, um regime de maior seletividade e prêmio à qualidade intrínseca dos ativos. A oportunidade reside na correta calibragem entre exposição a setores que se beneficiam da reconfiguração das cadeias de suprimentos e da descarbonização — energia, metais estratégicos e tecnologia de semicondutores — e a disciplina de duration imposta pelo juro real positivo. O risco concentra-se em exposições excessivamente dependentes de uma convergência inflacionária rápida que os dados teimam em não entregar. O insight integrador é que a fragmentação geopolítica e a competição tecnológica estão criando um piso assimétrico para ativos reais e infraestrutura digital, transformando volatilidade episódica em vetor de alocação de longo prazo para quem opera com visão de ciclo completo.</p>
                     <p class="text-start text-muted">
                         <small>---<br>
-                        API: Huggingface ((Open Weights)) | LLM: Qwen/Qwen3.6-35B-A3B:featherless-ai<br>
-                        TOKENS (user prompt): 2479<br>
-                        TOKENS (llm): input_tokens=2854, output_tokens=3401, total_tokens=6255<br>
-                        Performance=56.12 tokens/s | Time=60.599 s<br>
-                        Model Returned: Qwen/Qwen3.6-35B-A3B<br>
-                        Tempo de execução (prompt + retorno LLM): 60.66 segundos
+                        API: Huggingface ((Open Weights)) | LLM: deepseek-ai/DeepSeek-V4-Pro<br>
+                        TOKENS (user prompt): 2759<br>
+                        TOKENS (llm): input_tokens=3087, output_tokens=2149, total_tokens=5236<br>
+                        Performance=50.4 tokens/s | Time=42.635 s<br>
+                        Model Returned: accounts/fireworks/models/deepseek-v4-pro<br>
+                        Tempo de execução (prompt + retorno LLM): 42.67 segundos
                         </small>
                     </p>
                 </div>
@@ -251,518 +259,594 @@ A normalização monetária global, corroborada pela compressão do yield americ
 
             </div>
         </div><style type="text/css">
-#T_fc54e table {
+#T_6e796 table {
   background-color: #2b2b2b;
   color: #d1d1d1;
 }
-#T_fc54e th {
+#T_6e796 th {
   background-color: #343a40;
   color: #ececf1;
   border-color: #454d55;
   font-weight: 600;
 }
-#T_fc54e td {
+#T_6e796 td {
   background-color: #2b2b2b;
   border-color: #454d55;
 }
-#T_fc54e tr:hover td {
+#T_6e796 tr:hover td {
   background-color: #383838;
 }
-#T_fc54e_row0_col0, #T_fc54e_row0_col1, #T_fc54e_row0_col2, #T_fc54e_row1_col0, #T_fc54e_row1_col1, #T_fc54e_row1_col2, #T_fc54e_row2_col0, #T_fc54e_row2_col1, #T_fc54e_row2_col2, #T_fc54e_row3_col0, #T_fc54e_row3_col1, #T_fc54e_row3_col2, #T_fc54e_row4_col0, #T_fc54e_row4_col1, #T_fc54e_row4_col2, #T_fc54e_row5_col0, #T_fc54e_row5_col1, #T_fc54e_row5_col2, #T_fc54e_row6_col0, #T_fc54e_row6_col1, #T_fc54e_row6_col2, #T_fc54e_row7_col0, #T_fc54e_row7_col1, #T_fc54e_row7_col2, #T_fc54e_row8_col0, #T_fc54e_row8_col1, #T_fc54e_row8_col2, #T_fc54e_row9_col0, #T_fc54e_row9_col1, #T_fc54e_row9_col2, #T_fc54e_row10_col0, #T_fc54e_row10_col1, #T_fc54e_row10_col2, #T_fc54e_row11_col0, #T_fc54e_row11_col1, #T_fc54e_row11_col2, #T_fc54e_row12_col0, #T_fc54e_row12_col1, #T_fc54e_row12_col2, #T_fc54e_row13_col0, #T_fc54e_row13_col1, #T_fc54e_row13_col2, #T_fc54e_row14_col0, #T_fc54e_row14_col1, #T_fc54e_row14_col2, #T_fc54e_row15_col0, #T_fc54e_row15_col1, #T_fc54e_row15_col2, #T_fc54e_row16_col0, #T_fc54e_row16_col1, #T_fc54e_row16_col2, #T_fc54e_row17_col0, #T_fc54e_row17_col1, #T_fc54e_row17_col2, #T_fc54e_row18_col0, #T_fc54e_row18_col1, #T_fc54e_row18_col2, #T_fc54e_row19_col0, #T_fc54e_row19_col1, #T_fc54e_row19_col2, #T_fc54e_row20_col0, #T_fc54e_row20_col1, #T_fc54e_row20_col2, #T_fc54e_row21_col0, #T_fc54e_row21_col1, #T_fc54e_row21_col2, #T_fc54e_row22_col0, #T_fc54e_row22_col1, #T_fc54e_row22_col2, #T_fc54e_row23_col0, #T_fc54e_row23_col1, #T_fc54e_row23_col2, #T_fc54e_row24_col0, #T_fc54e_row24_col1, #T_fc54e_row24_col2, #T_fc54e_row25_col0, #T_fc54e_row25_col1, #T_fc54e_row25_col2, #T_fc54e_row26_col0, #T_fc54e_row26_col1, #T_fc54e_row26_col2, #T_fc54e_row27_col0, #T_fc54e_row27_col1, #T_fc54e_row27_col2, #T_fc54e_row28_col0, #T_fc54e_row28_col1, #T_fc54e_row28_col2, #T_fc54e_row29_col0, #T_fc54e_row29_col1, #T_fc54e_row29_col2, #T_fc54e_row30_col0, #T_fc54e_row30_col1, #T_fc54e_row30_col2, #T_fc54e_row31_col0, #T_fc54e_row31_col1, #T_fc54e_row31_col2, #T_fc54e_row32_col0, #T_fc54e_row32_col1, #T_fc54e_row32_col2, #T_fc54e_row33_col0, #T_fc54e_row33_col1, #T_fc54e_row33_col2, #T_fc54e_row34_col0, #T_fc54e_row34_col1, #T_fc54e_row34_col2, #T_fc54e_row35_col0, #T_fc54e_row35_col1, #T_fc54e_row35_col2, #T_fc54e_row36_col0, #T_fc54e_row36_col1, #T_fc54e_row36_col2, #T_fc54e_row37_col0, #T_fc54e_row37_col1, #T_fc54e_row37_col2, #T_fc54e_row38_col0, #T_fc54e_row38_col1, #T_fc54e_row38_col2, #T_fc54e_row39_col0, #T_fc54e_row39_col1, #T_fc54e_row39_col2, #T_fc54e_row40_col0, #T_fc54e_row40_col1, #T_fc54e_row40_col2, #T_fc54e_row41_col0, #T_fc54e_row41_col1, #T_fc54e_row41_col2, #T_fc54e_row42_col0, #T_fc54e_row42_col1, #T_fc54e_row42_col2, #T_fc54e_row43_col0, #T_fc54e_row43_col1, #T_fc54e_row43_col2, #T_fc54e_row44_col0, #T_fc54e_row44_col1, #T_fc54e_row44_col2, #T_fc54e_row45_col0, #T_fc54e_row45_col1, #T_fc54e_row45_col2, #T_fc54e_row46_col0, #T_fc54e_row46_col1, #T_fc54e_row46_col2, #T_fc54e_row47_col0, #T_fc54e_row47_col1, #T_fc54e_row47_col2, #T_fc54e_row48_col0, #T_fc54e_row48_col1, #T_fc54e_row48_col2, #T_fc54e_row49_col0, #T_fc54e_row49_col1, #T_fc54e_row49_col2, #T_fc54e_row50_col0, #T_fc54e_row50_col1, #T_fc54e_row50_col2, #T_fc54e_row51_col0, #T_fc54e_row51_col1, #T_fc54e_row51_col2, #T_fc54e_row52_col0, #T_fc54e_row52_col1, #T_fc54e_row52_col2, #T_fc54e_row53_col0, #T_fc54e_row53_col1, #T_fc54e_row53_col2, #T_fc54e_row54_col0, #T_fc54e_row54_col1, #T_fc54e_row54_col2, #T_fc54e_row55_col0, #T_fc54e_row55_col1, #T_fc54e_row55_col2, #T_fc54e_row56_col0, #T_fc54e_row56_col1, #T_fc54e_row56_col2, #T_fc54e_row57_col0, #T_fc54e_row57_col1, #T_fc54e_row57_col2, #T_fc54e_row58_col0, #T_fc54e_row58_col1, #T_fc54e_row58_col2, #T_fc54e_row59_col0, #T_fc54e_row59_col1, #T_fc54e_row59_col2, #T_fc54e_row60_col0, #T_fc54e_row60_col1, #T_fc54e_row60_col2, #T_fc54e_row61_col0, #T_fc54e_row61_col1, #T_fc54e_row61_col2, #T_fc54e_row62_col0, #T_fc54e_row62_col1, #T_fc54e_row62_col2, #T_fc54e_row63_col0, #T_fc54e_row63_col1, #T_fc54e_row63_col2, #T_fc54e_row64_col0, #T_fc54e_row64_col1, #T_fc54e_row64_col2, #T_fc54e_row65_col0, #T_fc54e_row65_col1, #T_fc54e_row65_col2 {
+#T_6e796_row0_col0, #T_6e796_row0_col1, #T_6e796_row0_col2, #T_6e796_row1_col0, #T_6e796_row1_col1, #T_6e796_row1_col2, #T_6e796_row2_col0, #T_6e796_row2_col1, #T_6e796_row2_col2, #T_6e796_row3_col0, #T_6e796_row3_col1, #T_6e796_row3_col2, #T_6e796_row4_col0, #T_6e796_row4_col1, #T_6e796_row4_col2, #T_6e796_row5_col0, #T_6e796_row5_col1, #T_6e796_row5_col2, #T_6e796_row6_col0, #T_6e796_row6_col1, #T_6e796_row6_col2, #T_6e796_row7_col0, #T_6e796_row7_col1, #T_6e796_row7_col2, #T_6e796_row8_col0, #T_6e796_row8_col1, #T_6e796_row8_col2, #T_6e796_row9_col0, #T_6e796_row9_col1, #T_6e796_row9_col2, #T_6e796_row10_col0, #T_6e796_row10_col1, #T_6e796_row10_col2, #T_6e796_row11_col0, #T_6e796_row11_col1, #T_6e796_row11_col2, #T_6e796_row12_col0, #T_6e796_row12_col1, #T_6e796_row12_col2, #T_6e796_row13_col0, #T_6e796_row13_col1, #T_6e796_row13_col2, #T_6e796_row14_col0, #T_6e796_row14_col1, #T_6e796_row14_col2, #T_6e796_row15_col0, #T_6e796_row15_col1, #T_6e796_row15_col2, #T_6e796_row16_col0, #T_6e796_row16_col1, #T_6e796_row16_col2, #T_6e796_row17_col0, #T_6e796_row17_col1, #T_6e796_row17_col2, #T_6e796_row18_col0, #T_6e796_row18_col1, #T_6e796_row18_col2, #T_6e796_row19_col0, #T_6e796_row19_col1, #T_6e796_row19_col2, #T_6e796_row20_col0, #T_6e796_row20_col1, #T_6e796_row20_col2, #T_6e796_row21_col0, #T_6e796_row21_col1, #T_6e796_row21_col2, #T_6e796_row22_col0, #T_6e796_row22_col1, #T_6e796_row22_col2, #T_6e796_row23_col0, #T_6e796_row23_col1, #T_6e796_row23_col2, #T_6e796_row24_col0, #T_6e796_row24_col1, #T_6e796_row24_col2, #T_6e796_row25_col0, #T_6e796_row25_col1, #T_6e796_row25_col2, #T_6e796_row26_col0, #T_6e796_row26_col1, #T_6e796_row26_col2, #T_6e796_row27_col0, #T_6e796_row27_col1, #T_6e796_row27_col2, #T_6e796_row28_col0, #T_6e796_row28_col1, #T_6e796_row28_col2, #T_6e796_row29_col0, #T_6e796_row29_col1, #T_6e796_row29_col2, #T_6e796_row30_col0, #T_6e796_row30_col1, #T_6e796_row30_col2, #T_6e796_row31_col0, #T_6e796_row31_col1, #T_6e796_row31_col2, #T_6e796_row32_col0, #T_6e796_row32_col1, #T_6e796_row32_col2, #T_6e796_row33_col0, #T_6e796_row33_col1, #T_6e796_row33_col2, #T_6e796_row34_col0, #T_6e796_row34_col1, #T_6e796_row34_col2, #T_6e796_row35_col0, #T_6e796_row35_col1, #T_6e796_row35_col2, #T_6e796_row36_col0, #T_6e796_row36_col1, #T_6e796_row36_col2, #T_6e796_row37_col0, #T_6e796_row37_col1, #T_6e796_row37_col2, #T_6e796_row38_col0, #T_6e796_row38_col1, #T_6e796_row38_col2, #T_6e796_row39_col0, #T_6e796_row39_col1, #T_6e796_row39_col2, #T_6e796_row40_col0, #T_6e796_row40_col1, #T_6e796_row40_col2, #T_6e796_row41_col0, #T_6e796_row41_col1, #T_6e796_row41_col2, #T_6e796_row42_col0, #T_6e796_row42_col1, #T_6e796_row42_col2, #T_6e796_row43_col0, #T_6e796_row43_col1, #T_6e796_row43_col2, #T_6e796_row44_col0, #T_6e796_row44_col1, #T_6e796_row44_col2, #T_6e796_row45_col0, #T_6e796_row45_col1, #T_6e796_row45_col2, #T_6e796_row46_col0, #T_6e796_row46_col1, #T_6e796_row46_col2, #T_6e796_row47_col0, #T_6e796_row47_col1, #T_6e796_row47_col2, #T_6e796_row48_col0, #T_6e796_row48_col1, #T_6e796_row48_col2, #T_6e796_row49_col0, #T_6e796_row49_col1, #T_6e796_row49_col2, #T_6e796_row50_col0, #T_6e796_row50_col1, #T_6e796_row50_col2, #T_6e796_row51_col0, #T_6e796_row51_col1, #T_6e796_row51_col2, #T_6e796_row52_col0, #T_6e796_row52_col1, #T_6e796_row52_col2, #T_6e796_row53_col0, #T_6e796_row53_col1, #T_6e796_row53_col2, #T_6e796_row54_col0, #T_6e796_row54_col1, #T_6e796_row54_col2, #T_6e796_row55_col0, #T_6e796_row55_col1, #T_6e796_row55_col2, #T_6e796_row56_col0, #T_6e796_row56_col1, #T_6e796_row56_col2, #T_6e796_row57_col0, #T_6e796_row57_col1, #T_6e796_row57_col2, #T_6e796_row58_col0, #T_6e796_row58_col1, #T_6e796_row58_col2, #T_6e796_row59_col0, #T_6e796_row59_col1, #T_6e796_row59_col2, #T_6e796_row60_col0, #T_6e796_row60_col1, #T_6e796_row60_col2, #T_6e796_row61_col0, #T_6e796_row61_col1, #T_6e796_row61_col2, #T_6e796_row62_col0, #T_6e796_row62_col1, #T_6e796_row62_col2, #T_6e796_row63_col0, #T_6e796_row63_col1, #T_6e796_row63_col2, #T_6e796_row64_col0, #T_6e796_row64_col1, #T_6e796_row64_col2, #T_6e796_row65_col0, #T_6e796_row65_col1, #T_6e796_row65_col2, #T_6e796_row66_col0, #T_6e796_row66_col1, #T_6e796_row66_col2, #T_6e796_row67_col0, #T_6e796_row67_col1, #T_6e796_row67_col2 {
   color: #d1d1d1;
 }
-#T_fc54e_row0_col3, #T_fc54e_row11_col3, #T_fc54e_row12_col3, #T_fc54e_row13_col3, #T_fc54e_row14_col3, #T_fc54e_row25_col3, #T_fc54e_row26_col3, #T_fc54e_row35_col3, #T_fc54e_row49_col3, #T_fc54e_row50_col3, #T_fc54e_row51_col3, #T_fc54e_row57_col3 {
-  color: #dc3545;
-  font-weight: bold;
-}
-#T_fc54e_row3_col3, #T_fc54e_row4_col3, #T_fc54e_row8_col3, #T_fc54e_row9_col3, #T_fc54e_row10_col3, #T_fc54e_row15_col3, #T_fc54e_row17_col3, #T_fc54e_row18_col3, #T_fc54e_row19_col3, #T_fc54e_row20_col3, #T_fc54e_row27_col3, #T_fc54e_row28_col3, #T_fc54e_row29_col3, #T_fc54e_row30_col3, #T_fc54e_row31_col3, #T_fc54e_row33_col3, #T_fc54e_row34_col3, #T_fc54e_row36_col3, #T_fc54e_row37_col3, #T_fc54e_row43_col3, #T_fc54e_row52_col3, #T_fc54e_row53_col3, #T_fc54e_row54_col3 {
+#T_6e796_row0_col3, #T_6e796_row1_col3, #T_6e796_row2_col3, #T_6e796_row3_col3, #T_6e796_row5_col3, #T_6e796_row6_col3, #T_6e796_row9_col3, #T_6e796_row11_col3, #T_6e796_row12_col3, #T_6e796_row14_col3, #T_6e796_row22_col3, #T_6e796_row23_col3, #T_6e796_row28_col3, #T_6e796_row29_col3, #T_6e796_row37_col3, #T_6e796_row44_col3, #T_6e796_row45_col3, #T_6e796_row51_col3 {
   color: #198754;
   font-weight: bold;
 }
+#T_6e796_row4_col3, #T_6e796_row7_col3, #T_6e796_row8_col3, #T_6e796_row10_col3, #T_6e796_row13_col3, #T_6e796_row15_col3, #T_6e796_row16_col3, #T_6e796_row17_col3, #T_6e796_row18_col3, #T_6e796_row19_col3, #T_6e796_row27_col3, #T_6e796_row30_col3, #T_6e796_row32_col3, #T_6e796_row38_col3, #T_6e796_row39_col3, #T_6e796_row40_col3, #T_6e796_row42_col3, #T_6e796_row43_col3, #T_6e796_row59_col3 {
+  color: #dc3545;
+  font-weight: bold;
+}
 </style>
-<table id="T_fc54e" id="indicadores_table" class="dataframe table table-striped table-hover text-center">
+<table id="T_6e796" id="indicadores_table" class="dataframe table table-striped table-hover text-center">
   <thead>
     <tr>
-      <th id="T_fc54e_level0_col0" class="col_heading level0 col0" >Indicador</th>
-      <th id="T_fc54e_level0_col1" class="col_heading level0 col1" >Valor</th>
-      <th id="T_fc54e_level0_col2" class="col_heading level0 col2" >Contexto</th>
-      <th id="T_fc54e_level0_col3" class="col_heading level0 col3" >Variação (%)</th>
+      <th id="T_6e796_level0_col0" class="col_heading level0 col0" >Indicador</th>
+      <th id="T_6e796_level0_col1" class="col_heading level0 col1" >Valor</th>
+      <th id="T_6e796_level0_col2" class="col_heading level0 col2" >Contexto</th>
+      <th id="T_6e796_level0_col3" class="col_heading level0 col3" >Variação (%)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_fc54e_row0_col0" class="data row0 col0" ><span class="has-sparkline" data-name="SELIC" data-trend="[9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.5]">SELIC (% a.a.)</span></td>
-      <td id="T_fc54e_row0_col1" class="data row0 col1" >14.50</td>
-      <td id="T_fc54e_row0_col2" class="data row0 col2" >2026-04-30</td>
-      <td id="T_fc54e_row0_col3" class="data row0 col3" >-1.69</td>
+      <td id="T_6e796_row0_col0" class="data row0 col0" ><span class="has-sparkline" data-name="Histórico" data-trend="[17.450000762939453, 16.989999771118164, 16.889999389648438, 18.809999465942383, 17.829999923706055, 18.020000457763672, 18.709999084472656, 19.309999465942383, 18.920000076293945, 19.5, 18.8700008392334, 17.479999542236328, 17.940000534057617, 18.170000076293945, 18.360000610351562, 19.1200008392334, 19.229999542236328, 19.489999771118164, 21.040000915527344, 25.780000686645508, 24.170000076293945, 23.8700008392334, 24.540000915527344, 25.25, 30.610000610351562, 31.049999237060547, 27.440000534057617, 25.329999923706055, 26.950000762939453, 26.149999618530273, 26.780000686645508, 24.059999465942383, 25.09000015258789, 22.3700008392334, 23.510000228881836, 27.190000534057617, 27.290000915527344, 24.229999542236328, 24.93000030517578, 25.5, 29.489999771118164, 23.75, 21.149999618530273, 23.56999969482422, 21.440000534057617, 19.860000610351562, 18.6299991607666, 17.93000030517578, 19.549999237060547, 21.010000228881836, 19.09000015258789, 20.229999542236328, 19.6200008392334, 20.290000915527344, 20.600000381469727, 20.81999969482422, 17.649999618530273, 17.790000915527344, 17.360000610351562, 20.3700008392334, 21.770000457763672, 18.639999389648438, 18.0, 16.34000015258789, 17.440000534057617, 16.8799991607666, 16.350000381469727, 16.350000381469727, 16.149999618530273, 16.09000015258789, 15.640000343322754, 16.899999618530273, 20.09000015258789, 15.859999656677246, 15.84000015258789, 16.75, 15.979999542236328, 15.119999885559082, 14.489999771118164, 15.449999809265137, 15.380000114440918, 14.75, 14.899999618530273, 14.510000228881836, 14.949999809265137, 14.329999923706055, 14.199999809265137, 13.600000381469727, 13.470000267028809, 14.0, 14.079999923706055, 14.90999984741211, 16.8700008392334, 17.6200008392334, 16.479999542236328, 16.5, 15.739999771118164, 14.850000381469727, 15.770000457763672, 16.93000030517578, 16.65999984741211, 15.40999984741211, 15.779999732971191, 16.079999923706055, 16.59000015258789, 17.239999771118164, 16.350000381469727, 17.190000534057617, 18.559999465942383, 20.520000457763672, 23.43000030517578, 26.420000076293945, 23.65999984741211, 24.690000534057617, 22.3799991607666, 19.829999923706055, 20.0, 17.510000228881836, 17.280000686645508, 17.600000381469727, 19.079999923706055, 19.5, 18.010000228881836, 19.0, 17.170000076293945, 17.440000534057617, 16.90999984741211, 16.920000076293945, 16.420000076293945, 15.789999961853027, 16.3700008392334, 17.299999237060547, 18.600000381469727, 17.8700008392334, 18.229999542236328, 20.780000686645508, 25.309999465942383, 20.639999389648438, 20.809999465942383, 19.030000686645508, 21.65999984741211, 16.43000030517578, 16.299999237060547, 17.239999771118164, 16.3700008392334, 16.649999618530273, 16.6299991607666, 16.290000915527344, 16.280000686645508, 16.1200008392334, 15.289999961853027, 16.739999771118164, 16.18000030517578, 16.639999389648438, 16.100000381469727, 15.449999809265137, 15.699999809265137, 15.720000267028809, 16.360000610351562, 15.6899995803833, 14.760000228881836, 14.710000038146973, 15.350000381469727, 15.039999961853027, 15.109999656677246, 15.180000305175781, 15.300000190734863, 16.350000381469727, 17.170000076293945, 15.359999656677246, 14.430000305175781, 14.850000381469727, 14.619999885559082, 14.789999961853027, 14.220000267028809, 16.600000381469727, 15.6899995803833, 15.569999694824219, 14.989999771118164, 15.09000015258789, 14.829999923706055, 14.489999771118164, 14.729999542236328, 16.25, 15.149999618530273, 16.56999969482422, 16.770000457763672, 17.850000381469727, 17.520000457763672, 20.3799991607666, 16.719999313354492, 15.479999542236328, 15.979999542236328, 15.029999732971191, 14.930000305175781, 15.390000343322754, 15.369999885559082, 16.5, 16.649999618530273, 16.40999984741211, 16.520000457763672, 17.15999984741211, 17.3799991607666, 17.200000762939453, 16.399999618530273, 15.779999732971191, 15.9399995803833, 16.809999465942383, 17.790000915527344, 16.3799991607666, 16.639999389648438, 16.829999923706055, 16.729999542236328, 16.31999969482422, 16.59000015258789, 16.760000228881836, 17.479999542236328, 19.829999923706055, 20.6200008392334, 20.139999389648438, 21.600000381469727, 19.110000610351562, 20.81999969482422, 18.020000457763672, 17.260000228881836, 16.950000762939453, 17.15999984741211, 16.770000457763672, 18.479999542236328, 17.610000610351562, 17.690000534057617, 18.360000610351562, 18.56999969482422, 19.18000030517578, 19.309999465942383, 18.959999084472656, 22.290000915527344, 20.280000686645508, 20.8700008392334, 18.09000015258789, 18.139999389648438, 17.239999771118164, 17.829999923706055, 18.6200008392334, 18.219999313354492, 18.389999389648438, 21.899999618530273, 22.479999542236328, 23.549999237060547, 24.760000228881836, 23.639999389648438, 22.68000030517578, 24.600000381469727, 24.700000762939453, 24.170000076293945, 25.149999618530273, 24.84000015258789, 26.469999313354492, 28.450000762939453, 30.56999969482422, 33.81999969482422, 29.649999618530273, 32.63999938964844, 30.1200008392334, 30.889999389648438, 37.560001373291016, 40.720001220703125, 33.619998931884766, 52.33000183105469, 46.97999954223633, 45.310001373291016, 30.020000457763672, 21.510000228881836, 21.770000457763672, 22.280000686645508, 21.649999618530273, 18.690000534057617, 18.329999923706055, 17.149999618530273, 17.479999542236328, 19.280000686645508, 19.799999237060547, 19.899999618530273, 21.700000762939453, 20.510000228881836, 21.770000457763672, 24.65999984741211, 24.229999542236328, 26.920000076293945, 27.860000610351562, 23.3700008392334, 24.8700008392334, 21.93000030517578, 23.510000228881836, 22.780000686645508, 19.6299991607666, 21.1299991607666, 19.100000381469727, 19.43000030517578, 18.979999542236328, 18.209999084472656, 15.65999984741211, 15.270000457763672, 15.350000381469727, 14.770000457763672, 15.100000381469727, 15.890000343322754, 16.020000457763672, 15.8100004196167, 16.540000915527344, 15.5, 15.770000457763672, 17.209999084472656, 18.6200008392334, 16.43000030517578, 15.84000015258789, 16.559999465942383, 16.40999984741211, 17.899999618530273, 14.850000381469727, 15.020000457763672, 15.100000381469727, 15.0600004196167, 15.970000267028809, 16.600000381469727, 16.1200008392334, 18.709999084472656, 19.190000534057617, 19.540000915527344, 17.700000762939453, 17.81999969482422, 16.040000915527344, 16.1299991607666, 17.93000030517578, 17.350000381469727, 17.399999618530273, 15.949999809265137, 14.729999542236328, 14.270000457763672, 16.780000686645508, 18.360000610351562, 24.09000015258789, 27.6200008392334, 15.869999885559082, 14.6899995803833, 13.8100004196167, 13.920000076293945, 13.579999923706055, 14.180000305175781, 14.1899995803833, 12.770000457763672, 13.539999961853027, 13.449999809265137, 13.300000190734863, 13.34000015258789, 13.510000228881836, 14.100000381469727, 14.100000381469727, 14.600000381469727, 15.239999771118164, 16.8700008392334, 17.15999984741211, 16.350000381469727, 15.579999923706055, 16.139999389648438, 14.3100004196167, 14.020000457763672, 14.710000038146973, 14.970000267028809, 14.9399995803833, 15.199999809265137, 16.270000457763672, 20.489999771118164, 21.979999542236328, 21.8799991607666, 23.15999984741211, 20.350000381469727, 19.34000015258789, 19.799999237060547, 20.329999923706055, 19.079999923706055, 19.239999771118164, 18.200000762939453, 18.3700008392334, 18.030000686645508, 19.110000610351562, 19.579999923706055, 20.639999389648438, 19.700000762939453, 20.459999084472656, 20.93000030517578, 20.860000610351562, 21.420000076293945, 22.639999389648438, 19.209999084472656, 20.489999771118164, 18.899999618530273, 19.260000228881836, 16.729999542236328, 16.959999084472656, 15.369999885559082, 15.40999984741211, 15.390000343322754, 15.890000343322754, 16.149999618530273, 16.329999923706055, 18.229999542236328, 17.610000610351562, 17.139999389648438, 16.559999465942383, 17.06999969482422, 17.690000534057617, 19.079999923706055, 19.450000762939453, 22.3799991607666, 19.899999618530273, 21.31999969482422, 20.719999313354492, 15.0, 15.649999618530273, 17.110000610351562, 15.430000305175781, 16.149999618530273, 15.859999656677246, 17.549999237060547, 16.270000457763672, 15.880000114440918, 14.649999618530273, 14.800000190734863, 15.229999542236328, 16.190000534057617, 18.1200008392334, 20.709999084472656, 20.3700008392334, 23.790000915527344, 27.850000381469727, 27.709999084472656, 38.56999969482422, 23.389999389648438, 18.59000015258789, 16.360000610351562, 17.690000534057617, 16.600000381469727, 16.389999389648438, 18.459999084472656, 18.040000915527344, 14.720000267028809, 14.90999984741211, 16.520000457763672, 15.930000305175781, 14.479999542236328, 13.1899995803833, 13.119999885559082, 12.460000038146973, 12.920000076293945, 12.850000381469727, 12.510000228881836, 12.369999885559082, 12.479999542236328, 12.09000015258789, 12.029999732971191, 12.220000267028809, 12.4399995803833, 12.239999771118164, 12.550000190734863, 12.84000015258789, 13.329999923706055, 13.199999809265137, 13.279999732971191, 12.300000190734863, 12.75, 12.65999984741211, 11.9399995803833, 12.039999961853027, 12.850000381469727, 12.739999771118164, 12.220000267028809, 12.579999923706055, 12.630000114440918, 13.15999984741211, 13.109999656677246, 12.920000076293945, 14.470000267028809, 14.279999732971191, 12.920000076293945, 11.930000305175781, 12.770000457763672, 12.289999961853027, 11.859999656677246, 12.149999618530273, 11.989999771118164, 12.420000076293945, 12.449999809265137, 13.420000076293945, 13.600000381469727, 12.550000190734863, 12.6899995803833, 13.0, 13.229999542236328, 13.489999771118164, 13.489999771118164, 14.680000305175781, 15.390000343322754, 15.649999618530273, 14.670000076293945, 15.029999732971191, 15.369999885559082, 15.970000267028809, 15.6899995803833, 16.940000534057617, 18.709999084472656, 18.0, 18.209999084472656, 18.399999618530273, 19.229999542236328, 17.309999465942383, 14.90999984741211, 15.800000190734863, 14.979999542236328, 15.1899995803833, 16.030000686645508, 16.350000381469727, 14.329999923706055, 14.609999656677246, 13.649999618530273, 13.010000228881836, 12.779999732971191, 13.239999771118164, 13.1899995803833, 13.0600004196167, 12.920000076293945, 13.039999961853027, 13.819999694824219, 14.329999923706055, 14.40999984741211, 14.399999618530273, 13.75, 13.84000015258789, 15.220000267028809, 14.739999771118164, 14.4399995803833, 14.5, 14.460000038146973, 13.489999771118164, 13.109999656677246, 13.399999618530273, 13.84000015258789, 13.430000305175781, 13.739999771118164, 13.75, 14.539999961853027, 15.34000015258789, 15.420000076293945, 14.239999771118164, 14.010000228881836, 14.380000114440918, 15.850000381469727, 13.930000305175781, 12.930000305175781, 12.789999961853027, 12.829999923706055, 13.0600004196167, 13.670000076293945, 13.850000381469727, 13.880000114440918, 14.350000381469727, 13.3100004196167, 13.600000381469727, 13.260000228881836, 13.449999809265137, 13.140000343322754, 12.550000190734863, 13.1899995803833, 13.300000190734863, 14.130000114440918, 14.789999961853027, 13.84000015258789, 12.699999809265137, 12.4399995803833, 12.6899995803833, 12.760000228881836, 13.079999923706055, 13.350000381469727, 14.130000114440918, 14.039999961853027, 13.199999809265137, 12.449999809265137, 12.470000267028809, 12.430000305175781, 12.989999771118164, 13.029999732971191, 13.649999618530273, 13.670000076293945, 12.529999732971191, 12.5600004196167, 12.279999732971191, 12.479999542236328, 12.1899995803833, 12.069999694824219, 12.630000114440918, 12.350000381469727, 13.0600004196167, 12.970000267028809, 12.850000381469727, 13.079999923706055, 12.630000114440918, 12.920000076293945, 12.979999542236328, 12.6899995803833, 12.6899995803833, 12.460000038146973, 12.850000381469727, 13.350000381469727, 13.40999984741211, 13.800000190734863, 14.319999694824219, 14.180000305175781, 14.15999984741211, 14.760000228881836, 14.170000076293945, 15.289999961853027, 14.449999809265137, 14.8100004196167, 14.890000343322754, 14.90999984741211, 15.65999984741211, 16.8700008392334, 18.139999389648438, 19.75, 21.270000457763672, 20.68000030517578, 20.190000534057617, 18.969999313354492, 20.3700008392334, 21.709999084472656, 21.399999618530273, 19.219999313354492, 17.8799991607666, 17.209999084472656, 19.31999969482422, 16.690000534057617, 16.09000015258789, 17.030000686645508, 17.700000762939453, 17.450000762939453, 18.489999771118164, 18.579999923706055, 19.780000686645508, 17.610000610351562, 17.520000457763672, 17.34000015258789, 18.219999313354492, 18.940000534057617, 16.899999618530273, 17.200000762939453, 17.540000915527344, 15.140000343322754, 14.109999656677246, 14.0, 13.789999961853027, 12.819999694824219, 13.479999542236328, 14.229999542236328, 13.800000190734863, 13.84000015258789, 14.399999618530273, 14.449999809265137, 14.010000228881836, 13.09000015258789, 13.569999694824219, 13.880000114440918, 14.449999809265137, 15.079999923706055, 15.680000305175781, 17.200000762939453, 15.979999542236328, 16.969999313354492, 17.1299991607666, 17.299999237060547, 17.889999389648438, 16.780000686645508, 16.459999084472656, 14.819999694824219, 14.84000015258789, 15.850000381469727, 15.960000038146973, 15.989999771118164, 15.770000457763672, 17.100000381469727, 15.920000076293945, 16.09000015258789, 13.930000305175781, 13.630000114440918, 13.329999923706055, 14.40999984741211, 13.1899995803833, 13.859999656677246, 13.90999984741211, 13.600000381469727, 13.989999771118164, 13.760000228881836, 13.300000190734863, 13.479999542236328, 13.34000015258789, 13.609999656677246, 13.539999961853027, 14.84000015258789, 15.069999694824219, 14.829999923706055, 15.4399995803833, 14.180000305175781, 13.569999694824219, 13.59000015258789, 13.539999961853027, 13.430000305175781, 13.739999771118164, 14.25, 13.4399995803833, 12.90999984741211, 13.199999809265137, 13.880000114440918, 13.539999961853027, 14.5, 13.880000114440918, 14.609999656677246, 15.010000228881836, 13.829999923706055, 13.649999618530273, 13.9399995803833, 13.960000038146973, 14.729999542236328, 14.600000381469727, 15.649999618530273, 17.940000534057617, 17.459999084472656, 17.950000762939453, 19.139999389648438, 20.030000686645508, 18.530000686645508, 17.209999084472656, 16.809999465942383, 16.049999237060547, 16.8700008392334, 17.989999771118164, 17.1200008392334, 17.030000686645508, 16.93000030517578, 16.940000534057617, 17.709999084472656, 16.979999542236328, 17.190000534057617, 20.09000015258789, 18.34000015258789, 17.780000686645508, 16.079999923706055, 15.779999732971191, 17.030000686645508, 18.84000015258789, 18.760000228881836, 16.889999389648438, 16.770000457763672, 17.170000076293945, 16.459999084472656, 16.829999923706055, 16.950000762939453, 17.06999969482422, 17.799999237060547, 19.09000015258789, 19.100000381469727, 18.969999313354492, 18.399999618530273, 19.079999923706055, 19.0, 18.549999237060547, 18.700000762939453, 19.020000457763672, 19.1200008392334, 19.969999313354492, 20.600000381469727, 21.739999771118164, 22.610000610351562, 22.260000228881836, 21.3799991607666, 24.149999618530273, 25.510000228881836, 22.989999771118164, 26.139999389648438, 23.729999542236328, 26.520000457763672, 24.799999237060547, 22.610000610351562, 19.110000610351562, 19.59000015258789, 18.610000610351562, 18.489999771118164, 19.59000015258789, 20.579999923706055, 20.700000762939453, 20.950000762939453, 21.670000076293945, 21.139999389648438, 22.290000915527344, 22.8700008392334, 20.020000457763672, 20.170000076293945, 18.229999542236328, 18.90999984741211, 20.34000015258789, 20.530000686645508, 20.709999084472656, 19.6299991607666, 18.65999984741211, 19.43000030517578, 18.329999923706055, 18.729999542236328, 17.8700008392334, 19.399999618530273, 19.940000534057617, 18.510000228881836, 18.729999542236328, 19.079999923706055, 19.200000762939453, 19.809999465942383, 19.850000381469727, 20.520000457763672, 20.34000015258789, 19.360000610351562, 18.350000381469727, 18.829999923706055, 21.09000015258789, 20.579999923706055, 21.969999313354492, 21.1299991607666, 22.459999084472656, 22.010000228881836, 22.899999618530273, 21.670000076293945, 21.440000534057617, 22.139999389648438, 21.649999618530273, 20.8700008392334, 21.969999313354492, 20.06999969482422, 21.479999542236328, 22.420000076293945, 22.6200008392334, 22.829999923706055, 21.139999389648438, 22.549999237060547, 25.0, 22.829999923706055, 22.290000915527344, 22.68000030517578, 22.170000076293945, 20.75, 19.059999465942383, 19.84000015258789, 20.579999923706055, 21.889999389648438, 22.209999084472656, 20.5, 20.350000381469727, 21.290000915527344, 22.360000610351562, 23.1200008392334, 23.93000030517578, 24.110000610351562, 24.540000915527344, 23.729999542236328, 22.520000457763672, 23.530000686645508, 26.09000015258789, 25.540000915527344, 24.350000381469727, 24.549999237060547, 25.299999237060547, 25.860000610351562, 25.809999465942383, 25.8799991607666, 25.75, 27.389999389648438, 27.280000686645508, 28.459999084472656, 29.850000381469727, 29.690000534057617, 29.979999542236328, 30.760000228881836, 30.5, 31.3700008392334, 32.02000045776367, 31.940000534057617, 33.56999969482422, 33.630001068115234, 32.45000076293945, 31.360000610351562, 30.520000457763672, 28.549999237060547, 29.06999969482422, 30.100000381469727, 31.6200008392334, 31.84000015258789, 30.18000030517578, 32.599998474121094, 32.2599983215332, 29.920000076293945, 27.350000381469727, 27.989999771118164, 27.15999984741211, 25.760000228881836, 26.299999237060547, 26.270000457763672, 26.15999984741211, 27.270000457763672, 23.8700008392334, 22.790000915527344, 23.610000610351562, 24.639999389648438, 26.90999984741211, 25.469999313354492, 25.559999465942383, 25.8700008392334, 26.209999084472656, 26.209999084472656, 25.559999465942383, 21.780000686645508, 22.81999969482422, 24.110000610351562, 23.799999237060547, 20.600000381469727, 19.559999465942383, 19.899999618530273, 19.690000534057617, 19.950000762939453, 19.530000686645508, 20.200000762939453, 19.739999771118164, 21.770000457763672, 21.290000915527344, 21.149999618530273, 21.440000534057617, 21.950000762939453, 23.93000030517578, 22.84000015258789, 21.329999923706055, 22.329999923706055, 23.239999771118164, 24.690000534057617, 23.360000610351562, 23.030000686645508, 23.110000610351562, 23.8799991607666, 24.5, 25.299999237060547, 24.229999542236328, 26.399999618530273, 26.81999969482422, 27.290000915527344, 26.170000076293945, 24.639999389648438, 26.079999923706055, 26.729999542236328, 27.540000915527344, 26.700000762939453, 28.709999084472656, 28.15999984741211, 28.360000610351562, 26.950000762939453, 27.229999542236328, 29.049999237060547, 28.950000762939453, 30.190000534057617, 31.1299991607666, 32.95000076293945, 29.6200008392334, 32.689998626708984, 34.02000045776367, 27.75, 26.09000015258789, 23.959999084472656, 24.020000457763672, 25.06999969482422, 24.790000915527344, 24.719999313354492, 25.690000534057617, 26.190000534057617, 25.719999313354492, 27.5, 28.3700008392334, 29.450000762939453, 28.479999542236328, 29.43000030517578, 29.350000381469727, 30.959999084472656, 26.100000381469727, 27.469999313354492, 28.8700008392334, 31.770000457763672, 32.560001373291016, 32.9900016784668, 34.75, 30.190000534057617, 31.200000762939453, 25.420000076293945, 29.25, 32.34000015258789, 33.400001525878906, 29.989999771118164, 31.600000381469727, 33.52000045776367, 27.020000457763672, 28.209999084472656, 22.68000030517578, 20.31999969482422, 21.3700008392334, 22.170000076293945, 22.700000762939453, 21.81999969482422, 24.260000228881836, 24.3700008392334, 21.15999984741211, 21.549999237060547, 22.100000381469727, 21.030000686645508, 18.56999969482422, 19.6299991607666, 20.559999465942383, 19.329999923706055, 18.899999618530273, 19.6299991607666, 20.809999465942383, 21.670000076293945, 23.56999969482422, 22.940000534057617, 23.530000686645508, 23.8700008392334, 25.670000076293945, 26.670000076293945, 29.829999923706055, 31.770000457763672, 30.75, 30.229999542236328, 32.45000076293945, 35.130001068115234, 36.45000076293945, 31.979999542236328, 30.479999542236328, 30.739999771118164, 33.31999969482422, 30.149999618530273, 27.59000015258789, 30.31999969482422, 31.020000457763672, 28.809999465942383, 27.75, 28.110000610351562, 24.290000915527344, 25.700000762939453, 28.329999923706055, 27.360000610351562, 23.90999984741211, 19.959999084472656, 21.440000534057617, 22.860000610351562, 23.219999313354492, 24.350000381469727, 22.09000015258789, 21.959999084472656, 24.829999923706055, 27.65999984741211, 30.489999771118164, 31.959999084472656, 31.15999984741211, 29.899999618530273, 28.850000381469727, 25.59000015258789, 23.850000381469727, 22.790000915527344, 19.190000534057617, 20.309999465942383, 17.6200008392334, 18.40999984741211, 19.399999618530273, 18.760000228881836, 19.610000610351562, 19.729999542236328, 16.90999984741211, 16.600000381469727]" data-meta='{"periodo": "jan/2022 \u2013 mai/2026", "fonte": "Yahoo Finance"}' ">Índice de Volatilidade (VIX)</span></td>
+      <td id="T_6e796_row0_col1" class="data row0 col1" >17.45</td>
+      <td id="T_6e796_row0_col2" class="data row0 col2" >Normal Volatility</td>
+      <td id="T_6e796_row0_col3" class="data row0 col3" >+2.71</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row1_col0" class="data row1 col0" >CDI</td>
-      <td id="T_fc54e_row1_col1" class="data row1 col1" >14.40</td>
-      <td id="T_fc54e_row1_col2" class="data row1 col2" >% a.a.</td>
-      <td id="T_fc54e_row1_col3" class="data row1 col3" ></td>
+      <td id="T_6e796_row1_col0" class="data row1 col0" >Dollar Index (DXY)</td>
+      <td id="T_6e796_row1_col1" class="data row1 col1" >98.31</td>
+      <td id="T_6e796_row1_col2" class="data row1 col2" >Neutral / Soft Dollar</td>
+      <td id="T_6e796_row1_col3" class="data row1 col3" >+0.11</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row2_col0" class="data row2 col0" >CDI (Eq.)</td>
-      <td id="T_fc54e_row2_col1" class="data row2 col1" >1.1274</td>
-      <td id="T_fc54e_row2_col2" class="data row2 col2" >% a.m.</td>
-      <td id="T_fc54e_row2_col3" class="data row2 col3" ></td>
+      <td id="T_6e796_row2_col0" class="data row2 col0" >US 10Y Treasury (% a.a.)</td>
+      <td id="T_6e796_row2_col1" class="data row2 col1" >4.42</td>
+      <td id="T_6e796_row2_col2" class="data row2 col2" >Monetary Tightening</td>
+      <td id="T_6e796_row2_col3" class="data row2 col3" >+1.01</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row3_col0" class="data row3 col0" >IPCA (% a.a.)</td>
-      <td id="T_fc54e_row3_col1" class="data row3 col1" >4.14</td>
-      <td id="T_fc54e_row3_col2" class="data row3 col2" >2026-03-01</td>
-      <td id="T_fc54e_row3_col3" class="data row3 col3" >+8.66</td>
+      <td id="T_6e796_row3_col0" class="data row3 col0" >US Short-Term Yield (% a.a.)</td>
+      <td id="T_6e796_row3_col1" class="data row3 col1" >3.59</td>
+      <td id="T_6e796_row3_col2" class="data row3 col2" >Monetary Normalization (Fed Expectations)</td>
+      <td id="T_6e796_row3_col3" class="data row3 col3" >+0.36</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row4_col0" class="data row4 col0" >IGP-M (% a.m.)</td>
-      <td id="T_fc54e_row4_col1" class="data row4 col1" >2.73</td>
-      <td id="T_fc54e_row4_col2" class="data row4 col2" >High Inflation (2026-04)</td>
-      <td id="T_fc54e_row4_col3" class="data row4 col3" >+2.21</td>
+      <td id="T_6e796_row4_col0" class="data row4 col0" >US High Yield Credit (HYG ETF)</td>
+      <td id="T_6e796_row4_col1" class="data row4 col1" >79.99</td>
+      <td id="T_6e796_row4_col2" class="data row4 col2" >Credit Stress Elevated / Caution</td>
+      <td id="T_6e796_row4_col3" class="data row4 col3" >-0.09</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row5_col0" class="data row5 col0" >IGP-M Acumulado 12m (%)</td>
-      <td id="T_fc54e_row5_col1" class="data row5 col1" >0.68</td>
-      <td id="T_fc54e_row5_col2" class="data row5 col2" >Acum. ano: 2.93%</td>
-      <td id="T_fc54e_row5_col3" class="data row5 col3" ></td>
+      <td id="T_6e796_row5_col0" class="data row5 col0" >S&P 500</td>
+      <td id="T_6e796_row5_col1" class="data row5 col1" >7236.56</td>
+      <td id="T_6e796_row5_col2" class="data row5 col2" >pts</td>
+      <td id="T_6e796_row5_col3" class="data row5 col3" >+0.09</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row6_col0" class="data row6 col0" >Juro Real</td>
-      <td id="T_fc54e_row6_col1" class="data row6 col1" >9.85</td>
-      <td id="T_fc54e_row6_col2" class="data row6 col2" >% a.a.</td>
-      <td id="T_fc54e_row6_col3" class="data row6 col3" ></td>
+      <td id="T_6e796_row6_col0" class="data row6 col0" >Nasdaq Composite</td>
+      <td id="T_6e796_row6_col1" class="data row6 col1" >27905.25</td>
+      <td id="T_6e796_row6_col2" class="data row6 col2" >pts</td>
+      <td id="T_6e796_row6_col3" class="data row6 col3" >+0.25</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row7_col0" class="data row7 col0" >Juro Real (Eq.)</td>
-      <td id="T_fc54e_row7_col1" class="data row7 col1" >0.79</td>
-      <td id="T_fc54e_row7_col2" class="data row7 col2" >% a.m.</td>
-      <td id="T_fc54e_row7_col3" class="data row7 col3" ></td>
+      <td id="T_6e796_row7_col0" class="data row7 col0" >Dow Jones</td>
+      <td id="T_6e796_row7_col1" class="data row7 col1" >49375.24</td>
+      <td id="T_6e796_row7_col2" class="data row7 col2" >pts</td>
+      <td id="T_6e796_row7_col3" class="data row7 col3" >-0.25</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row8_col0" class="data row8 col0" >Índice de Títulos Públicos Atrelados à Inflação (IMA-B)</td>
-      <td id="T_fc54e_row8_col1" class="data row8 col1" >113.7</td>
-      <td id="T_fc54e_row8_col2" class="data row8 col2" >Stable Real Yield</td>
-      <td id="T_fc54e_row8_col3" class="data row8 col3" >+0.27</td>
+      <td id="T_6e796_row8_col0" class="data row8 col0" >🇺🇸 AI Compute Infrastructure: NVIDIA (NVDA)<br>US$ 4.81 tri | Rank: 1</td>
+      <td id="T_6e796_row8_col1" class="data row8 col1" >197.91</td>
+      <td id="T_6e796_row8_col2" class="data row8 col2" >Global AI Capex / Data Centers</td>
+      <td id="T_6e796_row8_col3" class="data row8 col3" >-0.27</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row9_col0" class="data row9 col0" >PIB - Brasil – Valores correntes trimestrais (R$ trilhões, IBGE)</td>
-      <td id="T_fc54e_row9_col1" class="data row9 col1" >3.28</td>
-      <td id="T_fc54e_row9_col2" class="data row9 col2" >4º trimestre 2025</td>
-      <td id="T_fc54e_row9_col3" class="data row9 col3" >+1.30</td>
+      <td id="T_6e796_row9_col0" class="data row9 col0" >🇹🇼 Advanced Chip Manufacturing: TSMC (TSM)<br>US$ 2.10 tri | Rank: 6</td>
+      <td id="T_6e796_row9_col1" class="data row9 col1" >403.46</td>
+      <td id="T_6e796_row9_col2" class="data row9 col2" >Global Semiconductor Supply / AI HWD</td>
+      <td id="T_6e796_row9_col3" class="data row9 col3" >+1.46</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row10_col0" class="data row10 col0" >DLSP Brasil – Valor absoluto (R$ trilhões, BCB)</td>
-      <td id="T_fc54e_row10_col1" class="data row10 col1" >7.7</td>
-      <td id="T_fc54e_row10_col2" class="data row10 col2" >2026-03-01</td>
-      <td id="T_fc54e_row10_col3" class="data row10 col3" >+2.30</td>
+      <td id="T_6e796_row10_col0" class="data row10 col0" >🇨🇳 China Digital Ecosystem: Tencent (TCEHY)<br>US$ 546.41 bi | Rank: 21</td>
+      <td id="T_6e796_row10_col1" class="data row10 col1" >60.43</td>
+      <td id="T_6e796_row10_col2" class="data row10 col2" >China Tech / Digital Consumption / Regulation & Liquidity</td>
+      <td id="T_6e796_row10_col3" class="data row10 col3" >-1.26</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row11_col0" class="data row11 col0" >Índice de Volatilidade (VIX)</td>
-      <td id="T_fc54e_row11_col1" class="data row11 col1" >17.39</td>
-      <td id="T_fc54e_row11_col2" class="data row11 col2" >Normal Volatility</td>
-      <td id="T_fc54e_row11_col3" class="data row11 col3" >-7.55</td>
+      <td id="T_6e796_row11_col0" class="data row11 col0" >🇸🇦 Oil & Energy Proxy: Saudi Aramco (2222.SR)<br>US$ 1.78 tri | Rank: 8</td>
+      <td id="T_6e796_row11_col1" class="data row11 col1" >27.64</td>
+      <td id="T_6e796_row11_col2" class="data row11 col2" >SAR/ação | USD 7.37</td>
+      <td id="T_6e796_row11_col3" class="data row11 col3" >+0.51</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row12_col0" class="data row12 col0" >Dollar Index (DXY)</td>
-      <td id="T_fc54e_row12_col1" class="data row12 col1" >98.14</td>
-      <td id="T_fc54e_row12_col2" class="data row12 col2" >Neutral / Soft Dollar</td>
-      <td id="T_fc54e_row12_col3" class="data row12 col3" >-0.79</td>
+      <td id="T_6e796_row12_col0" class="data row12 col0" >🇮🇳 Emerging Market: Reliance Industries (RELIANCE.NS)<br>US$ 208.68 bi | Rank: 80</td>
+      <td id="T_6e796_row12_col1" class="data row12 col1" >1463.1</td>
+      <td id="T_6e796_row12_col2" class="data row12 col2" >INR/ação | USD 15.39</td>
+      <td id="T_6e796_row12_col3" class="data row12 col3" >+2.26</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row13_col0" class="data row13 col0" >US 10Y Treasury (% a.a.)</td>
-      <td id="T_fc54e_row13_col1" class="data row13 col1" >4.39</td>
-      <td id="T_fc54e_row13_col2" class="data row13 col2" >Monetary Tightening</td>
-      <td id="T_fc54e_row13_col3" class="data row13 col3" >-0.59</td>
+      <td id="T_6e796_row13_col0" class="data row13 col0" >LATAM Digital Economy: MercadoLibre (MELI)<br>US$ 93.82 bi | Rank: 246</td>
+      <td id="T_6e796_row13_col1" class="data row13 col1" >1848.94</td>
+      <td id="T_6e796_row13_col2" class="data row13 col2" >E-commerce + Fintech / Consumption, Credit & Digitalization in Emerging Markets</td>
+      <td id="T_6e796_row13_col3" class="data row13 col3" >-0.06</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row14_col0" class="data row14 col0" >US Short-Term Yield (% a.a.)</td>
-      <td id="T_fc54e_row14_col1" class="data row14 col1" >3.58</td>
-      <td id="T_fc54e_row14_col2" class="data row14 col2" >Monetary Normalization (Fed Expectations)</td>
-      <td id="T_fc54e_row14_col3" class="data row14 col3" >-0.14</td>
+      <td id="T_6e796_row14_col0" class="data row14 col0" >🇺🇸 Global Payments Network: Visa (V)<br>US$ 625.55 bi | Rank: 19</td>
+      <td id="T_6e796_row14_col1" class="data row14 col1" >328.71</td>
+      <td id="T_6e796_row14_col2" class="data row14 col2" >Global Consumption / Digital Payments / Cross-Border Flow</td>
+      <td id="T_6e796_row14_col3" class="data row14 col3" >+0.21</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row15_col0" class="data row15 col0" >IBOVESPA</td>
-      <td id="T_fc54e_row15_col1" class="data row15 col1" >187126.8</td>
-      <td id="T_fc54e_row15_col2" class="data row15 col2" >pts</td>
-      <td id="T_fc54e_row15_col3" class="data row15 col3" >+1.29</td>
+      <td id="T_6e796_row15_col0" class="data row15 col0" >Dólar</td>
+      <td id="T_6e796_row15_col1" class="data row15 col1" >4.95</td>
+      <td id="T_6e796_row15_col2" class="data row15 col2" >BRL</td>
+      <td id="T_6e796_row15_col3" class="data row15 col3" >-0.36</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row16_col0" class="data row16 col0" >IFIX (Índice B3)</td>
-      <td id="T_fc54e_row16_col1" class="data row16 col1" >3934.73</td>
-      <td id="T_fc54e_row16_col2" class="data row16 col2" >pts</td>
-      <td id="T_fc54e_row16_col3" class="data row16 col3" ></td>
+      <td id="T_6e796_row16_col0" class="data row16 col0" >Euro</td>
+      <td id="T_6e796_row16_col1" class="data row16 col1" >5.8</td>
+      <td id="T_6e796_row16_col2" class="data row16 col2" >BRL</td>
+      <td id="T_6e796_row16_col3" class="data row16 col3" >-0.46</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row17_col0" class="data row17 col0" >IFIX (ETF Proxy - XFIX11)</td>
-      <td id="T_fc54e_row17_col1" class="data row17 col1" >13.84</td>
-      <td id="T_fc54e_row17_col2" class="data row17 col2" >R$/cota (Replica IFIX)</td>
-      <td id="T_fc54e_row17_col3" class="data row17 col3" >+0.22</td>
+      <td id="T_6e796_row17_col0" class="data row17 col0" >Libra Esterlina</td>
+      <td id="T_6e796_row17_col1" class="data row17 col1" >6.71</td>
+      <td id="T_6e796_row17_col2" class="data row17 col2" >BRL</td>
+      <td id="T_6e796_row17_col3" class="data row17 col3" >-0.70</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row18_col0" class="data row18 col0" >Dow Jones</td>
-      <td id="T_fc54e_row18_col1" class="data row18 col1" >49596.22</td>
-      <td id="T_fc54e_row18_col2" class="data row18 col2" >pts</td>
-      <td id="T_fc54e_row18_col3" class="data row18 col3" >+1.50</td>
+      <td id="T_6e796_row18_col0" class="data row18 col0" >Iene Japonês</td>
+      <td id="T_6e796_row18_col1" class="data row18 col1" >0.0314</td>
+      <td id="T_6e796_row18_col2" class="data row18 col2" >BRL</td>
+      <td id="T_6e796_row18_col3" class="data row18 col3" >-0.83</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row19_col0" class="data row19 col0" >Nasdaq Composite</td>
-      <td id="T_fc54e_row19_col1" class="data row19 col1" >27412.0</td>
-      <td id="T_fc54e_row19_col2" class="data row19 col2" >pts</td>
-      <td id="T_fc54e_row19_col3" class="data row19 col3" >+0.32</td>
+      <td id="T_6e796_row19_col0" class="data row19 col0" ><span class="has-sparkline" data-name="Histórico" data-trend="[9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 9.25, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.75, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.75, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.75, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 10.75, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 11.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 12.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 13.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.25, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 15.0, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.75, 14.5, 14.5, 14.5, 14.5, 14.5]" data-meta='{"periodo": "jan/2022 \u2013 mai/2026", "fonte": "BCB"}' ">SELIC (% a.a.)</span></td>
+      <td id="T_6e796_row19_col1" class="data row19 col1" >14.50</td>
+      <td id="T_6e796_row19_col2" class="data row19 col2" >2026-04-30</td>
+      <td id="T_6e796_row19_col3" class="data row19 col3" >-1.69</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row20_col0" class="data row20 col0" >S&P 500</td>
-      <td id="T_fc54e_row20_col1" class="data row20 col1" >7171.15</td>
-      <td id="T_fc54e_row20_col2" class="data row20 col2" >pts</td>
-      <td id="T_fc54e_row20_col3" class="data row20 col3" >+0.49</td>
+      <td id="T_6e796_row20_col0" class="data row20 col0" >CDI (% a.a.)</td>
+      <td id="T_6e796_row20_col1" class="data row20 col1" >14.40</td>
+      <td id="T_6e796_row20_col2" class="data row20 col2" >% a.a.</td>
+      <td id="T_6e796_row20_col3" class="data row20 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row21_col0" class="data row21 col0" >B3 - Composição da carteira: VALE (VALE3)</td>
-      <td id="T_fc54e_row21_col1" class="data row21 col1" >10.97</td>
-      <td id="T_fc54e_row21_col2" class="data row21 col2" >Participação (%)</td>
-      <td id="T_fc54e_row21_col3" class="data row21 col3" ></td>
+      <td id="T_6e796_row21_col0" class="data row21 col0" >CDI (Eq. % a.m.)</td>
+      <td id="T_6e796_row21_col1" class="data row21 col1" >1.1274</td>
+      <td id="T_6e796_row21_col2" class="data row21 col2" >% a.m.</td>
+      <td id="T_6e796_row21_col3" class="data row21 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row22_col0" class="data row22 col0" >B3 - Fundos Imobiliários: FII KINEA RI (KNCR11)</td>
-      <td id="T_fc54e_row22_col1" class="data row22 col1" >7.07</td>
-      <td id="T_fc54e_row22_col2" class="data row22 col2" >Participação (%)</td>
-      <td id="T_fc54e_row22_col3" class="data row22 col3" ></td>
+      <td id="T_6e796_row22_col0" class="data row22 col0" >IPCA (% a.a.)</td>
+      <td id="T_6e796_row22_col1" class="data row22 col1" >4.14</td>
+      <td id="T_6e796_row22_col2" class="data row22 col2" >2026-03-01</td>
+      <td id="T_6e796_row22_col3" class="data row22 col3" >+8.66</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row23_col0" class="data row23 col0" >B3 - Small Caps: ALLOS (ALOS3)</td>
-      <td id="T_fc54e_row23_col1" class="data row23 col1" >4.31</td>
-      <td id="T_fc54e_row23_col2" class="data row23 col2" >Participação (%)</td>
-      <td id="T_fc54e_row23_col3" class="data row23 col3" ></td>
+      <td id="T_6e796_row23_col0" class="data row23 col0" >IGP-M (% a.m.)</td>
+      <td id="T_6e796_row23_col1" class="data row23 col1" >2.73</td>
+      <td id="T_6e796_row23_col2" class="data row23 col2" >High Inflation (2026-04)</td>
+      <td id="T_6e796_row23_col3" class="data row23 col3" >+2.21</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row24_col0" class="data row24 col0" >B3 - Dividendos: PETROBRAS (PETR4)</td>
-      <td id="T_fc54e_row24_col1" class="data row24 col1" >7.24</td>
-      <td id="T_fc54e_row24_col2" class="data row24 col2" >Participação (%)</td>
-      <td id="T_fc54e_row24_col3" class="data row24 col3" ></td>
+      <td id="T_6e796_row24_col0" class="data row24 col0" >IGP-M Acumulado 12m (%)</td>
+      <td id="T_6e796_row24_col1" class="data row24 col1" >0.68</td>
+      <td id="T_6e796_row24_col2" class="data row24 col2" >Acum. ano: 2.93%</td>
+      <td id="T_6e796_row24_col3" class="data row24 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row25_col0" class="data row25 col0" >Dólar</td>
-      <td id="T_fc54e_row25_col1" class="data row25 col1" >4.98</td>
-      <td id="T_fc54e_row25_col2" class="data row25 col2" >BRL</td>
-      <td id="T_fc54e_row25_col3" class="data row25 col3" >-0.28</td>
+      <td id="T_6e796_row25_col0" class="data row25 col0" >Juro Real (% a.a.)</td>
+      <td id="T_6e796_row25_col1" class="data row25 col1" >9.85</td>
+      <td id="T_6e796_row25_col2" class="data row25 col2" >% a.a. (SELIC deflacionada pelo IPCA)</td>
+      <td id="T_6e796_row25_col3" class="data row25 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row26_col0" class="data row26 col0" >Euro</td>
-      <td id="T_fc54e_row26_col1" class="data row26 col1" >5.84</td>
-      <td id="T_fc54e_row26_col2" class="data row26 col2" >BRL</td>
-      <td id="T_fc54e_row26_col3" class="data row26 col3" >-0.12</td>
+      <td id="T_6e796_row26_col0" class="data row26 col0" >Juro Real (Eq. % a.m.)</td>
+      <td id="T_6e796_row26_col1" class="data row26 col1" >0.79</td>
+      <td id="T_6e796_row26_col2" class="data row26 col2" >% a.m.</td>
+      <td id="T_6e796_row26_col3" class="data row26 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row27_col0" class="data row27 col0" >Libra Esterlina</td>
-      <td id="T_fc54e_row27_col1" class="data row27 col1" >6.76</td>
-      <td id="T_fc54e_row27_col2" class="data row27 col2" >BRL</td>
-      <td id="T_fc54e_row27_col3" class="data row27 col3" >+0.12</td>
+      <td id="T_6e796_row27_col0" class="data row27 col0" >Índice de Títulos Públicos<br>Atrelados à Inflação (IMA-B)</td>
+      <td id="T_6e796_row27_col1" class="data row27 col1" >113.61</td>
+      <td id="T_6e796_row27_col2" class="data row27 col2" >Stable Real Yield</td>
+      <td id="T_6e796_row27_col3" class="data row27 col3" >-0.22</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row28_col0" class="data row28 col0" >Iene Japonês</td>
-      <td id="T_fc54e_row28_col1" class="data row28 col1" >0.0317</td>
-      <td id="T_fc54e_row28_col2" class="data row28 col2" >BRL</td>
-      <td id="T_fc54e_row28_col3" class="data row28 col3" >+1.22</td>
+      <td id="T_6e796_row28_col0" class="data row28 col0" >PIB - Brasil - Valores correntes trimestrais<br>(R$ trilhões, IBGE)</td>
+      <td id="T_6e796_row28_col1" class="data row28 col1" >3.28</td>
+      <td id="T_6e796_row28_col2" class="data row28 col2" >4º trimestre 2025</td>
+      <td id="T_6e796_row28_col3" class="data row28 col3" >+1.30</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row29_col0" class="data row29 col0" >🇧🇷 Global Iron Ore Supply: VALE (VALE3) US$ 69.28 bi | Rank: 350</td>
-      <td id="T_fc54e_row29_col1" class="data row29 col1" >80.97</td>
-      <td id="T_fc54e_row29_col2" class="data row29 col2" >China Demand / Industrial Cycle</td>
-      <td id="T_fc54e_row29_col3" class="data row29 col3" >+1.93</td>
+      <td id="T_6e796_row29_col0" class="data row29 col0" >DLSP - Brasil - Valor absoluto<br>(R$ trilhões, BCB)</td>
+      <td id="T_6e796_row29_col1" class="data row29 col1" >7.7</td>
+      <td id="T_6e796_row29_col2" class="data row29 col2" >2026-03-01</td>
+      <td id="T_6e796_row29_col3" class="data row29 col3" >+2.30</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row30_col0" class="data row30 col0" >Soja</td>
-      <td id="T_fc54e_row30_col1" class="data row30 col1" >11.97</td>
-      <td id="T_fc54e_row30_col2" class="data row30 col2" >USD/bushel (27,2 kg)</td>
-      <td id="T_fc54e_row30_col3" class="data row30 col3" >+1.23</td>
+      <td id="T_6e796_row30_col0" class="data row30 col0" >IBOVESPA</td>
+      <td id="T_6e796_row30_col1" class="data row30 col1" >187018.81</td>
+      <td id="T_6e796_row30_col2" class="data row30 col2" >pts</td>
+      <td id="T_6e796_row30_col3" class="data row30 col3" >-0.16</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row31_col0" class="data row31 col0" >Ouro</td>
-      <td id="T_fc54e_row31_col1" class="data row31 col1" >741.23</td>
-      <td id="T_fc54e_row31_col2" class="data row31 col2" >BRL/g</td>
-      <td id="T_fc54e_row31_col3" class="data row31 col3" >+1.85</td>
+      <td id="T_6e796_row31_col0" class="data row31 col0" >IFIX (Índice B3)</td>
+      <td id="T_6e796_row31_col1" class="data row31 col1" >3917.49</td>
+      <td id="T_6e796_row31_col2" class="data row31 col2" >pts</td>
+      <td id="T_6e796_row31_col3" class="data row31 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row32_col0" class="data row32 col0" >Ouro Barra LBMA</td>
-      <td id="T_fc54e_row32_col1" class="data row32 col1" >9221935.55</td>
-      <td id="T_fc54e_row32_col2" class="data row32 col2" >BRL/barra (400 oz t)</td>
-      <td id="T_fc54e_row32_col3" class="data row32 col3" ></td>
+      <td id="T_6e796_row32_col0" class="data row32 col0" >IFIX (ETF Proxy - XFIX11)</td>
+      <td id="T_6e796_row32_col1" class="data row32 col1" >13.75</td>
+      <td id="T_6e796_row32_col2" class="data row32 col2" >R$/cota (Replica IFIX)</td>
+      <td id="T_6e796_row32_col3" class="data row32 col3" >-0.87</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row33_col0" class="data row33 col0" >Prata</td>
-      <td id="T_fc54e_row33_col1" class="data row33 col1" >11.79</td>
-      <td id="T_fc54e_row33_col2" class="data row33 col2" >BRL/g</td>
-      <td id="T_fc54e_row33_col3" class="data row33 col3" >+2.86</td>
+      <td id="T_6e796_row33_col0" class="data row33 col0" >B3 Ibovespa · #1 VALE (VALE3)</td>
+      <td id="T_6e796_row33_col1" class="data row33 col1" >11.02</td>
+      <td id="T_6e796_row33_col2" class="data row33 col2" >% do índice | Top 1 em peso</td>
+      <td id="T_6e796_row33_col3" class="data row33 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row34_col0" class="data row34 col0" >Platina</td>
-      <td id="T_fc54e_row34_col1" class="data row34 col1" >315.00</td>
-      <td id="T_fc54e_row34_col2" class="data row34 col2" >BRL/g</td>
-      <td id="T_fc54e_row34_col3" class="data row34 col3" >+4.35</td>
+      <td id="T_6e796_row34_col0" class="data row34 col0" >B3 IFIX · #1 FII KINEA RI (KNCR11)</td>
+      <td id="T_6e796_row34_col1" class="data row34 col1" >7.02</td>
+      <td id="T_6e796_row34_col2" class="data row34 col2" >% do índice | Top 1 em peso</td>
+      <td id="T_6e796_row34_col3" class="data row34 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row35_col0" class="data row35 col0" >Barril Petróleo Brent</td>
-      <td id="T_fc54e_row35_col1" class="data row35 col1" >109.56</td>
-      <td id="T_fc54e_row35_col2" class="data row35 col2" >USD/bbl (159 litros)</td>
-      <td id="T_fc54e_row35_col3" class="data row35 col3" >-7.18</td>
+      <td id="T_6e796_row35_col0" class="data row35 col0" >B3 Small Caps · #1 TOTVS (TOTS3)</td>
+      <td id="T_6e796_row35_col1" class="data row35 col1" >4.85</td>
+      <td id="T_6e796_row35_col2" class="data row35 col2" >% do índice | Top 1 em peso</td>
+      <td id="T_6e796_row35_col3" class="data row35 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row36_col0" class="data row36 col0" >Copper (USD/lb – Global Growth Proxy)</td>
-      <td id="T_fc54e_row36_col1" class="data row36 col1" >5.97</td>
-      <td id="T_fc54e_row36_col2" class="data row36 col2" >Economic Boom / Inflation Pressure</td>
-      <td id="T_fc54e_row36_col3" class="data row36 col3" >+1.63</td>
+      <td id="T_6e796_row36_col0" class="data row36 col0" >B3 Dividendos · #1 PETROBRAS (PETR4)</td>
+      <td id="T_6e796_row36_col1" class="data row36 col1" >5.58</td>
+      <td id="T_6e796_row36_col2" class="data row36 col2" >% do índice | Top 1 em peso</td>
+      <td id="T_6e796_row36_col3" class="data row36 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row37_col0" class="data row37 col0" >Ethereum</td>
-      <td id="T_fc54e_row37_col1" class="data row37 col1" >2259.67</td>
-      <td id="T_fc54e_row37_col2" class="data row37 col2" >USD</td>
-      <td id="T_fc54e_row37_col3" class="data row37 col3" >+0.28</td>
+      <td id="T_6e796_row37_col0" class="data row37 col0" >Barril Petróleo Brent</td>
+      <td id="T_6e796_row37_col1" class="data row37 col1" >110.47</td>
+      <td id="T_6e796_row37_col2" class="data row37 col2" >USD/bbl (159 litros)</td>
+      <td id="T_6e796_row37_col3" class="data row37 col3" >+2.13</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row38_col0" class="data row38 col0" >Ethereum</td>
-      <td id="T_fc54e_row38_col1" class="data row38 col1" >11253.61</td>
-      <td id="T_fc54e_row38_col2" class="data row38 col2" >BRL</td>
-      <td id="T_fc54e_row38_col3" class="data row38 col3" ></td>
+      <td id="T_6e796_row38_col0" class="data row38 col0" >Copper (USD/lb – Global Growth Proxy)</td>
+      <td id="T_6e796_row38_col1" class="data row38 col1" >5.89</td>
+      <td id="T_6e796_row38_col2" class="data row38 col2" >Economic Boom / Inflation Pressure</td>
+      <td id="T_6e796_row38_col3" class="data row38 col3" >-0.73</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row39_col0" class="data row39 col0" >Ethereum Máxima 2026 (USD)</td>
-      <td id="T_fc54e_row39_col1" class="data row39 col1" >3354.72</td>
-      <td id="T_fc54e_row39_col2" class="data row39 col2" >2026-01-14</td>
-      <td id="T_fc54e_row39_col3" class="data row39 col3" ></td>
+      <td id="T_6e796_row39_col0" class="data row39 col0" >🇧🇷 Global Iron Ore Supply: VALE (VALE3)<br>US$ 68.51 bi | Rank: 357</td>
+      <td id="T_6e796_row39_col1" class="data row39 col1" >79.5</td>
+      <td id="T_6e796_row39_col2" class="data row39 col2" >China Demand / Industrial Cycle</td>
+      <td id="T_6e796_row39_col3" class="data row39 col3" >-2.07</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row40_col0" class="data row40 col0" >Ethereum Mínima 2026 (USD)</td>
-      <td id="T_fc54e_row40_col1" class="data row40 col1" >1821.68</td>
-      <td id="T_fc54e_row40_col2" class="data row40 col2" >2026-02-05</td>
-      <td id="T_fc54e_row40_col3" class="data row40 col3" ></td>
+      <td id="T_6e796_row40_col0" class="data row40 col0" >Ouro</td>
+      <td id="T_6e796_row40_col1" class="data row40 col1" >727.98</td>
+      <td id="T_6e796_row40_col2" class="data row40 col2" >BRL/g</td>
+      <td id="T_6e796_row40_col3" class="data row40 col3" >-1.23</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row41_col0" class="data row41 col0" >Ethereum Máxima Histórica (USD)</td>
-      <td id="T_fc54e_row41_col1" class="data row41 col1" >4831.35</td>
-      <td id="T_fc54e_row41_col2" class="data row41 col2" >2025-08-22</td>
-      <td id="T_fc54e_row41_col3" class="data row41 col3" ></td>
+      <td id="T_6e796_row41_col0" class="data row41 col0" >Ouro Barra LBMA</td>
+      <td id="T_6e796_row41_col1" class="data row41 col1" >9057100.88</td>
+      <td id="T_6e796_row41_col2" class="data row41 col2" >BRL/barra (400 oz t)</td>
+      <td id="T_6e796_row41_col3" class="data row41 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row42_col0" class="data row42 col0" >Ethereum Mínima Histórica (USD)</td>
-      <td id="T_fc54e_row42_col1" class="data row42 col1" >84.31</td>
-      <td id="T_fc54e_row42_col2" class="data row42 col2" >2018-12-14</td>
-      <td id="T_fc54e_row42_col3" class="data row42 col3" ></td>
+      <td id="T_6e796_row42_col0" class="data row42 col0" >Prata</td>
+      <td id="T_6e796_row42_col1" class="data row42 col1" >11.85</td>
+      <td id="T_6e796_row42_col2" class="data row42 col2" >BRL/g</td>
+      <td id="T_6e796_row42_col3" class="data row42 col3" >-2.02</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row43_col0" class="data row43 col0" >Bitcoin</td>
-      <td id="T_fc54e_row43_col1" class="data row43 col1" >76333.92</td>
-      <td id="T_fc54e_row43_col2" class="data row43 col2" >USD</td>
-      <td id="T_fc54e_row43_col3" class="data row43 col3" >+0.74</td>
+      <td id="T_6e796_row43_col0" class="data row43 col0" >Platina</td>
+      <td id="T_6e796_row43_col1" class="data row43 col1" >315.69</td>
+      <td id="T_6e796_row43_col2" class="data row43 col2" >BRL/g</td>
+      <td id="T_6e796_row43_col3" class="data row43 col3" >-0.68</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row44_col0" class="data row44 col0" >Bitcoin</td>
-      <td id="T_fc54e_row44_col1" class="data row44 col1" >380158.20</td>
-      <td id="T_fc54e_row44_col2" class="data row44 col2" >BRL</td>
-      <td id="T_fc54e_row44_col3" class="data row44 col3" ></td>
+      <td id="T_6e796_row44_col0" class="data row44 col0" >Soja</td>
+      <td id="T_6e796_row44_col1" class="data row44 col1" >12.14</td>
+      <td id="T_6e796_row44_col2" class="data row44 col2" >USD/bushel (27,2 kg)</td>
+      <td id="T_6e796_row44_col3" class="data row44 col3" >+2.17</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row45_col0" class="data row45 col0" >Bitcoin Máxima 2026 (USD)</td>
-      <td id="T_fc54e_row45_col1" class="data row45 col1" >96929.33</td>
-      <td id="T_fc54e_row45_col2" class="data row45 col2" >2026-01-14</td>
-      <td id="T_fc54e_row45_col3" class="data row45 col3" ></td>
+      <td id="T_6e796_row45_col0" class="data row45 col0" >Bitcoin (USD)</td>
+      <td id="T_6e796_row45_col1" class="data row45 col1" >79282.00</td>
+      <td id="T_6e796_row45_col2" class="data row45 col2" >USD</td>
+      <td id="T_6e796_row45_col3" class="data row45 col3" >+0.95</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row46_col0" class="data row46 col0" >Bitcoin Mínima 2026 (USD)</td>
-      <td id="T_fc54e_row46_col1" class="data row46 col1" >62702.10</td>
-      <td id="T_fc54e_row46_col2" class="data row46 col2" >2026-02-05</td>
-      <td id="T_fc54e_row46_col3" class="data row46 col3" ></td>
+      <td id="T_6e796_row46_col0" class="data row46 col0" >Bitcoin (BRL)</td>
+      <td id="T_6e796_row46_col1" class="data row46 col1" >392556.89</td>
+      <td id="T_6e796_row46_col2" class="data row46 col2" >BRL</td>
+      <td id="T_6e796_row46_col3" class="data row46 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row47_col0" class="data row47 col0" >Bitcoin Máxima Histórica (USD)</td>
-      <td id="T_fc54e_row47_col1" class="data row47 col1" >124752.53</td>
-      <td id="T_fc54e_row47_col2" class="data row47 col2" >2025-10-06</td>
-      <td id="T_fc54e_row47_col3" class="data row47 col3" ></td>
+      <td id="T_6e796_row47_col0" class="data row47 col0" >Bitcoin – Máxima 2026 (USD)</td>
+      <td id="T_6e796_row47_col1" class="data row47 col1" >96929.33</td>
+      <td id="T_6e796_row47_col2" class="data row47 col2" >2026-01-14</td>
+      <td id="T_6e796_row47_col3" class="data row47 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row48_col0" class="data row48 col0" >Bitcoin Mínima Histórica (USD)</td>
-      <td id="T_fc54e_row48_col1" class="data row48 col1" >178.10</td>
-      <td id="T_fc54e_row48_col2" class="data row48 col2" >2015-01-14</td>
-      <td id="T_fc54e_row48_col3" class="data row48 col3" ></td>
+      <td id="T_6e796_row48_col0" class="data row48 col0" >Bitcoin – Mínima 2026 (USD)</td>
+      <td id="T_6e796_row48_col1" class="data row48 col1" >62702.10</td>
+      <td id="T_6e796_row48_col2" class="data row48 col2" >2026-02-05</td>
+      <td id="T_6e796_row48_col3" class="data row48 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row49_col0" class="data row49 col0" >🇺🇸 AI Compute Infrastructure: NVIDIA (NVDA) US$ 4.87 tri | Rank: 1</td>
-      <td id="T_fc54e_row49_col1" class="data row49 col1" >200.51</td>
-      <td id="T_fc54e_row49_col2" class="data row49 col2" >Global AI Capex / Data Centers</td>
-      <td id="T_fc54e_row49_col3" class="data row49 col3" >-4.18</td>
+      <td id="T_6e796_row49_col0" class="data row49 col0" >Bitcoin – Máxima Histórica (USD)</td>
+      <td id="T_6e796_row49_col1" class="data row49 col1" >124752.53</td>
+      <td id="T_6e796_row49_col2" class="data row49 col2" >2025-10-06</td>
+      <td id="T_6e796_row49_col3" class="data row49 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row50_col0" class="data row50 col0" >🇺🇸 Global Payments Network: Visa (V) US$ 626.56 bi | Rank: 17</td>
-      <td id="T_fc54e_row50_col1" class="data row50 col1" >329.24</td>
-      <td id="T_fc54e_row50_col2" class="data row50 col2" >Global Consumption / Digital Payments / Cross-Border Flow</td>
-      <td id="T_fc54e_row50_col3" class="data row50 col3" >-1.68</td>
+      <td id="T_6e796_row50_col0" class="data row50 col0" >Bitcoin – Mínima Histórica (USD)</td>
+      <td id="T_6e796_row50_col1" class="data row50 col1" >178.10</td>
+      <td id="T_6e796_row50_col2" class="data row50 col2" >2015-01-14</td>
+      <td id="T_6e796_row50_col3" class="data row50 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row51_col0" class="data row51 col0" >🇹🇼 Advanced Chip Manufacturing: TSMC (TSM) US$ 2.04 tri | Rank: 6</td>
-      <td id="T_fc54e_row51_col1" class="data row51 col1" >392.96</td>
-      <td id="T_fc54e_row51_col2" class="data row51 col2" >Global Semiconductor Supply / AI HWD</td>
-      <td id="T_fc54e_row51_col3" class="data row51 col3" >-0.22</td>
+      <td id="T_6e796_row51_col0" class="data row51 col0" >Ethereum (USD)</td>
+      <td id="T_6e796_row51_col1" class="data row51 col1" >2347.49</td>
+      <td id="T_6e796_row51_col2" class="data row51 col2" >USD</td>
+      <td id="T_6e796_row51_col3" class="data row51 col3" >+1.11</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row52_col0" class="data row52 col0" >🇸🇦 Oil & Energy Proxy: Saudi Aramco (2222.SR) US$ 1.79 tri | Rank: 8</td>
-      <td id="T_fc54e_row52_col1" class="data row52 col1" >27.76</td>
-      <td id="T_fc54e_row52_col2" class="data row52 col2" >SAR/ação | USD 7.4</td>
-      <td id="T_fc54e_row52_col3" class="data row52 col3" >+0.65</td>
+      <td id="T_6e796_row52_col0" class="data row52 col0" >Ethereum (BRL)</td>
+      <td id="T_6e796_row52_col1" class="data row52 col1" >11623.36</td>
+      <td id="T_6e796_row52_col2" class="data row52 col2" >BRL</td>
+      <td id="T_6e796_row52_col3" class="data row52 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row53_col0" class="data row53 col0" >🇮🇳 Emerging Market Engine: Reliance Industries (RELIANCE.NS) US$ 204.05 bi | Rank: 84</td>
-      <td id="T_fc54e_row53_col1" class="data row53 col1" >1430.8</td>
-      <td id="T_fc54e_row53_col2" class="data row53 col2" >INR/ação | USD 15.08</td>
-      <td id="T_fc54e_row53_col3" class="data row53 col3" >+0.38</td>
+      <td id="T_6e796_row53_col0" class="data row53 col0" >Ethereum – Máxima 2026 (USD)</td>
+      <td id="T_6e796_row53_col1" class="data row53 col1" >3354.72</td>
+      <td id="T_6e796_row53_col2" class="data row53 col2" >2026-01-14</td>
+      <td id="T_6e796_row53_col3" class="data row53 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row54_col0" class="data row54 col0" >🇨🇳 China Digital Ecosystem: Tencent (TCEHY) US$ 548.04 bi | Rank: 23</td>
-      <td id="T_fc54e_row54_col1" class="data row54 col1" >60.62</td>
-      <td id="T_fc54e_row54_col2" class="data row54 col2" >China Tech / Digital Consumption / Regulation & Liquidity</td>
-      <td id="T_fc54e_row54_col3" class="data row54 col3" >+0.58</td>
+      <td id="T_6e796_row54_col0" class="data row54 col0" >Ethereum – Mínima 2026 (USD)</td>
+      <td id="T_6e796_row54_col1" class="data row54 col1" >1821.68</td>
+      <td id="T_6e796_row54_col2" class="data row54 col2" >2026-02-05</td>
+      <td id="T_6e796_row54_col3" class="data row54 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row55_col0" class="data row55 col0" >Billionaire (networth): Elon Musk</td>
-      <td id="T_fc54e_row55_col1" class="data row55 col1" >816.98</td>
-      <td id="T_fc54e_row55_col2" class="data row55 col2" >2026-03-31</td>
-      <td id="T_fc54e_row55_col3" class="data row55 col3" ></td>
+      <td id="T_6e796_row55_col0" class="data row55 col0" >Ethereum – Máxima Histórica (USD)</td>
+      <td id="T_6e796_row55_col1" class="data row55 col1" >4831.35</td>
+      <td id="T_6e796_row55_col2" class="data row55 col2" >2025-08-22</td>
+      <td id="T_6e796_row55_col3" class="data row55 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row56_col0" class="data row56 col0" >DB-Engines Ranking: Oracle</td>
-      <td id="T_fc54e_row56_col1" class="data row56 col1" >1157.93</td>
-      <td id="T_fc54e_row56_col2" class="data row56 col2" >Multi-model Relational</td>
-      <td id="T_fc54e_row56_col3" class="data row56 col3" ></td>
+      <td id="T_6e796_row56_col0" class="data row56 col0" >Ethereum – Mínima Histórica (USD)</td>
+      <td id="T_6e796_row56_col1" class="data row56 col1" >84.31</td>
+      <td id="T_6e796_row56_col2" class="data row56 col2" >2018-12-14</td>
+      <td id="T_6e796_row56_col3" class="data row56 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row57_col0" class="data row57 col0" >Programming Languages R​anking - Ratings (%): Python</td>
-      <td id="T_fc54e_row57_col1" class="data row57 col1" >20.97</td>
-      <td id="T_fc54e_row57_col2" class="data row57 col2" >Apr 2025: 1 | Apr 2026: 1</td>
-      <td id="T_fc54e_row57_col3" class="data row57 col3" >-2.11</td>
+      <td id="T_6e796_row57_col0" class="data row57 col0" >Billionaire (net worth): Elon Musk</td>
+      <td id="T_6e796_row57_col1" class="data row57 col1" >788.7</td>
+      <td id="T_6e796_row57_col2" class="data row57 col2" >2026-05-02</td>
+      <td id="T_6e796_row57_col3" class="data row57 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row58_col0" class="data row58 col0" >GitHub Ranking: codecrafters-io/build-your-own-x (Markdown)</td>
-      <td id="T_fc54e_row58_col1" class="data row58 col1" >498240</td>
-      <td id="T_fc54e_row58_col2" class="data row58 col2" >2018-05-09</td>
-      <td id="T_fc54e_row58_col3" class="data row58 col3" ></td>
+      <td id="T_6e796_row58_col0" class="data row58 col0" >DB-Engines Ranking: Oracle</td>
+      <td id="T_6e796_row58_col1" class="data row58 col1" >1143.28</td>
+      <td id="T_6e796_row58_col2" class="data row58 col2" >Multi-model Relational</td>
+      <td id="T_6e796_row58_col3" class="data row58 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row59_col0" class="data row59 col0" >Linux Ranking Distrowatch: CachyOS</td>
-      <td id="T_fc54e_row59_col1" class="data row59 col1" >3643</td>
-      <td id="T_fc54e_row59_col2" class="data row59 col2" ></td>
-      <td id="T_fc54e_row59_col3" class="data row59 col3" ></td>
+      <td id="T_6e796_row59_col0" class="data row59 col0" >Programming Languages Ranking<br>Ratings (%): Python</td>
+      <td id="T_6e796_row59_col1" class="data row59 col1" >20.97</td>
+      <td id="T_6e796_row59_col2" class="data row59 col2" >Apr 2025: 1 | Apr 2026: 1</td>
+      <td id="T_6e796_row59_col3" class="data row59 col3" >-2.11</td>
     </tr>
     <tr>
-      <td id="T_fc54e_row60_col0" class="data row60 col0" >Movie - Top Lifetime Grosses: Avatar (USD)</td>
-      <td id="T_fc54e_row60_col1" class="data row60 col1" >2923710708</td>
-      <td id="T_fc54e_row60_col2" class="data row60 col2" >2009</td>
-      <td id="T_fc54e_row60_col3" class="data row60 col3" ></td>
+      <td id="T_6e796_row60_col0" class="data row60 col0" >GitHub Trending:<br>codecrafters-io/build-your-own-x (Markdown)</td>
+      <td id="T_6e796_row60_col1" class="data row60 col1" >498999</td>
+      <td id="T_6e796_row60_col2" class="data row60 col2" >2018-05-09</td>
+      <td id="T_6e796_row60_col3" class="data row60 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row61_col0" class="data row61 col0" >Arena AI (Text): claude-opus-4-7-thinking</td>
-      <td id="T_fc54e_row61_col1" class="data row61 col1" >1503</td>
-      <td id="T_fc54e_row61_col2" class="data row61 col2" >7127</td>
-      <td id="T_fc54e_row61_col3" class="data row61 col3" ></td>
+      <td id="T_6e796_row61_col0" class="data row61 col0" >Linux Ranking Distrowatch: CachyOS</td>
+      <td id="T_6e796_row61_col1" class="data row61 col1" >3628</td>
+      <td id="T_6e796_row61_col2" class="data row61 col2" ></td>
+      <td id="T_6e796_row61_col3" class="data row61 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row62_col0" class="data row62 col0" >Arena AI (Code): claude-opus-4-7-thinking</td>
-      <td id="T_fc54e_row62_col1" class="data row62 col1" >1571</td>
-      <td id="T_fc54e_row62_col2" class="data row62 col2" >1777</td>
-      <td id="T_fc54e_row62_col3" class="data row62 col3" ></td>
+      <td id="T_6e796_row62_col0" class="data row62 col0" >Movie – Top Lifetime Grosses: Avatar (USD)</td>
+      <td id="T_6e796_row62_col1" class="data row62 col1" >2923710708</td>
+      <td id="T_6e796_row62_col2" class="data row62 col2" >2009</td>
+      <td id="T_6e796_row62_col3" class="data row62 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row63_col0" class="data row63 col0" >Arena AI (Image): gpt-image-2 (medium)</td>
-      <td id="T_fc54e_row63_col1" class="data row63 col1" >1507</td>
-      <td id="T_fc54e_row63_col2" class="data row63 col2" >15391</td>
-      <td id="T_fc54e_row63_col3" class="data row63 col3" ></td>
+      <td id="T_6e796_row63_col0" class="data row63 col0" >Arena AI (Text): claude-opus-4-7-thinking</td>
+      <td id="T_6e796_row63_col1" class="data row63 col1" >1503</td>
+      <td id="T_6e796_row63_col2" class="data row63 col2" >7615</td>
+      <td id="T_6e796_row63_col3" class="data row63 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row64_col0" class="data row64 col0" >Arena AI (Video): dreamina-seedance-2.0-720p</td>
-      <td id="T_fc54e_row64_col1" class="data row64 col1" >1460</td>
-      <td id="T_fc54e_row64_col2" class="data row64 col2" >6836</td>
-      <td id="T_fc54e_row64_col3" class="data row64 col3" ></td>
+      <td id="T_6e796_row64_col0" class="data row64 col0" >Arena AI (Code): claude-opus-4-7-thinking</td>
+      <td id="T_6e796_row64_col1" class="data row64 col1" >1571</td>
+      <td id="T_6e796_row64_col2" class="data row64 col2" >2490</td>
+      <td id="T_6e796_row64_col3" class="data row64 col3" ></td>
     </tr>
     <tr>
-      <td id="T_fc54e_row65_col0" class="data row65 col0" >Arena AI (Open): glm-5.1</td>
-      <td id="T_fc54e_row65_col1" class="data row65 col1" >1470</td>
-      <td id="T_fc54e_row65_col2" class="data row65 col2" >930</td>
-      <td id="T_fc54e_row65_col3" class="data row65 col3" ></td>
+      <td id="T_6e796_row65_col0" class="data row65 col0" >Arena AI (Image): gpt-image-2 (medium)</td>
+      <td id="T_6e796_row65_col1" class="data row65 col1" >1507</td>
+      <td id="T_6e796_row65_col2" class="data row65 col2" >15391</td>
+      <td id="T_6e796_row65_col3" class="data row65 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_6e796_row66_col0" class="data row66 col0" >Arena AI (Video): dreamina-seedance-2.0-720p</td>
+      <td id="T_6e796_row66_col1" class="data row66 col1" >1460</td>
+      <td id="T_6e796_row66_col2" class="data row66 col2" >6836</td>
+      <td id="T_6e796_row66_col3" class="data row66 col3" ></td>
+    </tr>
+    <tr>
+      <td id="T_6e796_row67_col0" class="data row67 col0" >Arena AI (Open Source): glm-5.1</td>
+      <td id="T_6e796_row67_col1" class="data row67 col1" >1471</td>
+      <td id="T_6e796_row67_col2" class="data row67 col2" >930</td>
+      <td id="T_6e796_row67_col3" class="data row67 col3" ></td>
     </tr>
   </tbody>
 </table>
 
-        <div id="sparkline-tooltip" style="display: none; position: absolute; background: #2c2c2c; border: 1px solid #4a4a4a; padding: 10px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); z-index: 1000; pointer-events: none; min-width: 180px;">
-            <h6 id="sparkline-title" style="margin: 0 0 8px 0; font-size: 13px; color: #ffffff; font-weight: bold;">Tendência</h6>
-            <canvas id="sparkline-canvas" width="180" height="60"></canvas>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 6px; border-top: 1px solid #4a4a4a; font-size: 11px; color: #ffffff;">
-                <span>Período: 2022:2026</span>
-                <span style="font-weight:;">Fonte: BCB</span>
-            </div>
-        </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const tooltip = document.getElementById('sparkline-tooltip');
-                const titleEl = document.getElementById('sparkline-title');
-                const canvas = document.getElementById('sparkline-canvas');
-                const ctx = canvas.getContext('2d');
+<!-- ── TOOLTIP SPARKLINE — Motor genérico ── -->
+<div id="sparkline-tooltip" style="
+    display: none;
+    position: absolute;
+    background: #2c2c2c;
+    border: 1px solid #4a4a4a;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 1000;
+    pointer-events: none;
+    min-width: 260px;">                                      <!-- era 180px -->
+    <h6 id="sparkline-title"
+        style="margin:0 0 8px 0; font-size:13px; color:#ffffff; font-weight:bold;">
+        Histórico
+    </h6>
+    <canvas id="sparkline-canvas" width="260" height="85"></canvas>   <!-- era 180×60 -->
+    <div id="sparkline-meta"
+        style="
+            display:flex;
+            flex-direction:column;   /* ESSENCIAL */
+            align-items:flex-start;  /* alinhado à esquerda */
+            margin-top:8px;
+            padding-top:6px;
+            border-top:1px solid #4a4a4a;
+            font-size:11px;
+            color:#cccccc;
+        ">
+        <span id="sparkline-periodo"></span>
+        <span id="sparkline-fonte" style="margin-top:2px;"></span>
+    </div>
+</div>
 
-                document.querySelectorAll('.has-sparkline').forEach(el => {
+<script>
+document.addEventListener('DOMContentLoaded', function () {
 
-                    el.addEventListener('mouseenter', function(e) {
-                        const rawData = this.getAttribute('data-trend');
-                        if (!rawData) return;
+    // Elementos fixos do tooltip — buscados uma vez e reutilizados
+    const tooltip  = document.getElementById('sparkline-tooltip');
+    const titleEl  = document.getElementById('sparkline-title');
+    const canvas   = document.getElementById('sparkline-canvas');
+    const ctx      = canvas.getContext('2d');
+    const periodoEl = document.getElementById('sparkline-periodo');
+    const fonteEl   = document.getElementById('sparkline-fonte');
 
-                        const trendData = JSON.parse(rawData);
-                        const name = this.getAttribute('data-name');
-                        titleEl.textContent = 'Histórico';
-                        drawSparkline(ctx, trendData, canvas.width, canvas.height);
-                        tooltip.style.display = 'block';
-                    });
+    // Aplica os listeners em TODOS os elementos com a classe .has-sparkline
+    // Funciona para qualquer indicador injetado via injeta_tooltip()
+    document.querySelectorAll('.has-sparkline').forEach(function (el) {
 
-                    el.addEventListener('mousemove', function(e) {
-                        tooltip.style.top = (e.pageY + 15) + 'px';
-                        tooltip.style.left = (e.pageX + 15) + 'px';
-                    });
+        // Evento: mouse entra na célula → exibe o tooltip
+        el.addEventListener('mouseenter', function (e) {
 
-                    el.addEventListener('mouseleave', function() {
-                        tooltip.style.display = 'none';
-                    });
-                });
+            // Lê os dados do atributo data-trend (série numérica em JSON)
+            const rawData = this.getAttribute('data-trend');
+            if (!rawData) return;
+            const trendData = JSON.parse(rawData);
 
-                function drawSparkline(ctx, data, width, height) {
-                    ctx.clearRect(0, 0, width, height);
-                    if (data.length === 0) return;
+            // Lê o nome do indicador para exibir como título
+            const nome = this.getAttribute('data-name') || 'Histórico';
+            titleEl.textContent = nome;
 
-                    const min = Math.min(...data);
-                    const max = Math.max(...data);
-                    const range = max - min || 1;
-                    const stepX = width / (data.length - 1);
-
-                    ctx.beginPath();
-                    ctx.strokeStyle = '#c2a800'; // Linha principal em dourado
-                    ctx.lineWidth = 2.5;
-                    ctx.lineJoin = 'round';
-
-                    data.forEach((val, i) => {
-                        const x = i * stepX;
-                        const y = height - (((val - min) / range) * (height - 12)) - 6;
-                        if (i === 0) ctx.moveTo(x, y);
-                        else ctx.lineTo(x, y);
-                    });
-                    ctx.stroke();
-
-                    // Ajuste do gradiente para #c2a800 (rgba(194, 168, 0))
-                    const gradient = ctx.createLinearGradient(0, 0, 0, height);
-                    gradient.addColorStop(0, 'rgba(194, 168, 0, 0.4)'); // Início do gradiente
-                    gradient.addColorStop(1, 'rgba(194, 168, 0, 0.0)'); // Fim transparente
-
-                    ctx.lineTo(width, height);
-                    ctx.lineTo(0, height);
-                    ctx.closePath();
-                    ctx.fillStyle = gradient;
-                    ctx.fill();
+            // Lê os metadados (período e fonte) do atributo data-meta
+            // data-meta é opcional — se ausente, exibe strings vazias
+            const rawMeta = this.getAttribute('data-meta');
+            if (rawMeta) {
+                try {
+                    const meta = JSON.parse(rawMeta);
+                    periodoEl.textContent = 'Período: ' + (meta.periodo || '');
+                    fonteEl.textContent   = 'Fonte: '   + (meta.fonte   || '');
+                } catch (err) {
+                    periodoEl.textContent = '';
+                    fonteEl.textContent   = '';
                 }
-            });
-        </script>
-        
+            } else {
+                periodoEl.textContent = '';
+                fonteEl.textContent   = '';
+            }
+
+            // Desenha o sparkline com os dados da série
+            drawSparkline(ctx, trendData, canvas.width, canvas.height);
+            tooltip.style.display = 'block';
+        });
+
+        // Evento: mouse se move → reposiciona o tooltip próximo ao cursor
+        el.addEventListener('mousemove', function (e) {
+            // Offset de 15px para não sobrepor o cursor
+            tooltip.style.top  = (e.pageY + 15) + 'px';
+            tooltip.style.left = (e.pageX + 15) + 'px';
+        });
+
+        // Evento: mouse sai → oculta o tooltip
+        el.addEventListener('mouseleave', function () {
+            tooltip.style.display = 'none';
+        });
+    });
+
+    // ── Função de desenho do sparkline ──────────────────────────────── //
+    function drawSparkline(ctx, data, width, height) {
+        ctx.clearRect(0, 0, width, height);
+        if (!data || data.length < 2) return;
+
+        const min    = Math.min(...data);
+        const max    = Math.max(...data);
+        const range  = max - min || 1;          // evita divisão por zero
+        const stepX  = width / (data.length - 1);
+        const padY   = 6;                       // padding vertical interno
+
+        // ── Linha principal ──
+        ctx.beginPath();
+        ctx.strokeStyle = '#c2a800';            // dourado — cor padrão
+        ctx.lineWidth   = 2.5;
+        ctx.lineJoin    = 'round';
+
+        data.forEach(function (val, i) {
+            const x = i * stepX;
+            const y = height - (((val - min) / range) * (height - padY * 2)) - padY;
+            if (i === 0) ctx.moveTo(x, y);
+            else         ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+
+        // ── Área preenchida sob a linha (gradiente) ──
+        const lastX = (data.length - 1) * stepX;
+        const lastY = height - (((data[data.length - 1] - min) / range) * (height - padY * 2)) - padY;
+
+        ctx.lineTo(lastX, height);
+        ctx.lineTo(0,     height);
+        ctx.closePath();
+
+        const gradient = ctx.createLinearGradient(0, 0, 0, height);
+        gradient.addColorStop(0, 'rgba(194, 168, 0, 0.4)');
+        gradient.addColorStop(1, 'rgba(194, 168, 0, 0.0)');
+        ctx.fillStyle = gradient;
+        ctx.fill();
+    }
+
+});
+</script>
+
             <div class="container mt-5 pb-4 text-center">
 
                 <p>
@@ -858,4 +942,4 @@ A normalização monetária global, corroborada pela compressão do yield americ
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         </body>
         </html>
-        <h6 class="text-center text-muted mt-4">Atualizado na quinta-feira, 30/04/2026, às 13h33. Em 2026, já decorreram 120 dias e restam 245.</h6>
+        <h6 class="text-center text-muted mt-4">Atualizado na segunda-feira, 04/05/2026, às 11h38. Em 2026, já decorreram 124 dias e restam 241.</h6>
