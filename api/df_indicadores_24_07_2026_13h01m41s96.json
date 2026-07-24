@@ -1,0 +1,482 @@
+[
+    {
+        "Indicador":"Índice de Volatilidade (VIX)",
+        "Valor":17.5,
+        "Contexto":"Volatilidade Normal",
+        "Variação (%)":-6.42
+    },
+    {
+        "Indicador":"Dollar Index (DXY)",
+        "Valor":101.35,
+        "Contexto":"Dólar Forte",
+        "Variação (%)":-0.08
+    },
+    {
+        "Indicador":"US Fed Funds Target (% a.a.)",
+        "Valor":3.75,
+        "Contexto":"Normalização Monetária (Current Fed Policy) (Official Fed Rate)",
+        "Variação (%)":-0.25
+    },
+    {
+        "Indicador":"US Short-Term Yield (% a.a.)",
+        "Valor":3.79,
+        "Contexto":"Normalização Monetária (Current Fed Policy)",
+        "Variação (%)":-0.18
+    },
+    {
+        "Indicador":"US 2Y Treasury (% a.a.)",
+        "Valor":4.31,
+        "Contexto":"Expectativas de FED Mais Restritivo (Fed Expectations 1–2Y)",
+        "Variação (%)":1.17
+    },
+    {
+        "Indicador":"US 10Y Treasury (% a.a.)",
+        "Valor":4.66,
+        "Contexto":"Condições Financeiras Restritivas",
+        "Variação (%)":-0.98
+    },
+    {
+        "Indicador":"US Yield Curve (10Y - 2Y)",
+        "Valor":0.35,
+        "Contexto":"Curva Achatando \/ Alerta de Fim de Ciclo",
+        "Variação (%)":-5.41
+    },
+    {
+        "Indicador":"US High Yield Credit (HYG ETF)",
+        "Valor":79.25,
+        "Contexto":"Estresse de Crédito Elevado \/ Atenção",
+        "Variação (%)":0.02
+    },
+    {
+        "Indicador":"S&P 500",
+        "Valor":7452.6,
+        "Contexto":"pts | Ações Large Caps dos EUA \/ Referência Global de Risco<br>Acompanha as 500 maiores empresas americanas em todos os principais setores da economia<br>Principal indicador institucional para avaliar apetite global por risco e expectativas de resultados corporativos",
+        "Variação (%)":0.6
+    },
+    {
+        "Indicador":"Nasdaq Composite",
+        "Valor":28507.5,
+        "Contexto":"pts | Tecnologia \/ Ativos de Crescimento \/ Exposição à IA<br>Alta concentração em empresas de tecnologia, semicondutores e companhias relacionadas à inteligência artificial<br>Maior sensibilidade às taxas de juros, condições de liquidez e expectativas de crescimento econômico",
+        "Variação (%)":-0.4
+    },
+    {
+        "Indicador":"Dow Jones",
+        "Valor":52065.8,
+        "Contexto":"pts | Blue Chips dos EUA \/ Referência da Economia Real<br>Acompanha empresas maduras de grande capitalização ligadas à economia real<br>Frequentemente utilizado para avaliar atividade industrial, resiliência econômica e rotação defensiva de ativos",
+        "Variação (%)":0.68
+    },
+    {
+        "Indicador":"🇺🇸 Infraestrutura Computacional de IA Global: NVIDIA (NVDA)<br>US$ 5.08 tri | Ranking: 1",
+        "Valor":209.99,
+        "Contexto":"USD\/ação | Computação Global de IA \/ Investimentos em Data Centers<br>Projeta as principais GPUs de IA do mundo e o ecossistema CUDA<br>Depende da fabricação avançada de semicondutores da TSMC",
+        "Variação (%)":0.59
+    },
+    {
+        "Indicador":"🇹🇼 Fabricação Avançada de Chips: TSMC (TSM)<br>US$ 2.11 tri | Ranking: 6",
+        "Valor":407.42,
+        "Contexto":"USD\/ação | Cadeia Global de Semicondutores \/ Hardware de IA<br>Fabrica os chips de IA mais avançados do mundo (3nm\/5nm)<br>Depende dos sistemas de litografia EUV da ASML",
+        "Variação (%)":-1.96
+    },
+    {
+        "Indicador":"🇳🇱 Monopólio de Litografia EUV: ASML (ASML)<br>US$ 686.10 bi | Ranking: 20",
+        "Valor":1791.47,
+        "Contexto":"USD\/ação | Gargalo Global de Semicondutores \/ Infraestrutura EUV<br>Fornecedor exclusivo de máquinas de litografia EUV para chips avançados<br>Depende dos sistemas ópticos de ultra precisão da 🇩🇪 ZEISS e<br>da tecnologia de fonte laser da 🇺🇸 Cymer",
+        "Variação (%)":-0.64
+    },
+    {
+        "Indicador":"🇺🇸 Infraestrutura Espacial e Conectividade Global: SpaceX (SPCX)<br>US$ 1.49 tri | Ranking: 10",
+        "Valor":113.39,
+        "Contexto":"USD\/ação | Conectividade Global via Starlink \/ Exploração Espacial<br>Rede de satélites para internet de alta velocidade e lançadores reutilizáveis<br>Referência em inovação aeroespacial e infraestrutura tecnológica de longo prazo",
+        "Variação (%)":-4.11
+    },
+    {
+        "Indicador":"🇨🇳 Ecossistema Digital da China: Tencent (TCEHY)<br>US$ 501.21 bi | Ranking: 24",
+        "Valor":55.61,
+        "Contexto":"USD\/ação | Tecnologia Chinesa \/ Consumo Digital \/<br>Regulação e Liquidez",
+        "Variação (%)":0.45
+    },
+    {
+        "Indicador":"🇸🇦 Referência de Petróleo e Energia: Saudi Aramco (2222.SR)<br>US$ 1.73 tri | Ranking: 8",
+        "Valor":26.84,
+        "Contexto":"SAR\/ação | USD 7.15 | Preços do Petróleo \/<br>Política da OPEP \/ Geopolítica do Oriente Médio",
+        "Variação (%)":0.98
+    },
+    {
+        "Indicador":"🇮🇳 Mercado Emergente: Reliance Industries (RELIANCE.NS)<br>US$ 179.12 bi | Ranking: 112",
+        "Valor":1278.0,
+        "Contexto":"INR\/ação | USD 13.24 | Demanda Doméstica da Índia \/<br>Transição Energética \/ Expansão Digital e Varejo",
+        "Variação (%)":0.46
+    },
+    {
+        "Indicador":"🇦🇷 Comércio Digital e Fintech da América Latina: MercadoLibre (MELI)<br>US$ 92.32 bi | Ranking: 256",
+        "Valor":1823.2,
+        "Contexto":"USD\/ação | Comércio Eletrônico + Fintech \/ Consumo, Crédito e<br>Digitalização em Mercados Emergentes<br>Ecossistema Mercado Pago e expansão de crédito ao varejo na América Latina<br><span style='font-size:13px; opacity=0.95;'>Estudo de rentabilidade efetiva observada (Cofrinho): CDI anunciado 120% | Rentabilidade média acompanhada: 101.46% CDI<\/span><br><span style='font-size:11px; opacity=0.68;'>Metodologia: indicador empírico baseado no acompanhamento contínuo da rentabilidade líquida efetiva<\/span>",
+        "Variação (%)":1.36
+    },
+    {
+        "Indicador":"🇧🇷 Bancos Digitais e Fintechs da América Latina: Nu Holdings (NU)<br>US$ 68.89 bi | Ranking: 368",
+        "Valor":14.28,
+        "Contexto":"USD\/ação | Banco Digital \/ Expansão de Crédito \/ Fintech LATAM<br>Principal plataforma de banco digital no Brasil, México e Colômbia<br>Indicador de inclusão financeira, crédito ao varejo e serviços bancários mobile-first<br><span style='font-size:13px; opacity:0.95;'>Estudo de rentabilidade efetiva observada (Caixinha): CDI anunciado 120% | Rentabilidade média acompanhada: 118.31% CDI<\/span><br><span style='font-size:11px; opacity:0.68;'>Metodologia: indicador empírico baseado no acompanhamento contínuo da rentabilidade líquida efetiva<\/span>",
+        "Variação (%)":0.67
+    },
+    {
+        "Indicador":"🇺🇸 Rede Global de Pagamentos: Visa (V)<br>US$ 674.23 bi | Ranking: 21",
+        "Valor":354.39,
+        "Contexto":"USD\/ação | Consumo Global \/ Pagamentos Digitais \/<br>Fluxos Transfronteiriços",
+        "Variação (%)":0.79
+    },
+    {
+        "Indicador":"Dólar",
+        "Valor":5.06,
+        "Contexto":"BRL",
+        "Variação (%)":-0.02
+    },
+    {
+        "Indicador":"Euro",
+        "Valor":5.76,
+        "Contexto":"BRL",
+        "Variação (%)":-0.24
+    },
+    {
+        "Indicador":"Libra Esterlina",
+        "Valor":6.75,
+        "Contexto":"BRL",
+        "Variação (%)":-0.35
+    },
+    {
+        "Indicador":"Iene Japonês",
+        "Valor":0.0308,
+        "Contexto":"BRL",
+        "Variação (%)":-0.78
+    },
+    {
+        "Indicador":"SELIC (% a.a.)",
+        "Valor":14.25,
+        "Contexto":"2026-06-18",
+        "Variação (%)":-1.72
+    },
+    {
+        "Indicador":"CDI",
+        "Valor":14.15,
+        "Contexto":"% a.a.",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"CDI (Eq.)",
+        "Valor":1.109,
+        "Contexto":"% a.m.",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Atividade Econômica (IBC-Br)",
+        "Valor":109.53,
+        "Contexto":"pts | Forte Contração Econômica \/ Risco de Recessão (Indicador de Atividade Real)",
+        "Variação (%)":-3.92
+    },
+    {
+        "Indicador":"IPCA (% a.a.)",
+        "Valor":4.64,
+        "Contexto":"2026-06-01",
+        "Variação (%)":-1.69
+    },
+    {
+        "Indicador":"IGP-M (% a.m.)",
+        "Valor":-0.5,
+        "Contexto":"Deflação Moderada (2026-06)",
+        "Variação (%)":-1.34
+    },
+    {
+        "Indicador":"IGP-M Acumulado 12m (%)",
+        "Valor":3.18,
+        "Contexto":"Acum. ano: 3.27%",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Juro Real (% a.a.)",
+        "Valor":9.09,
+        "Contexto":"SELIC deflacionada pelo IPCA",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Juro Real (Eq.)",
+        "Valor":0.73,
+        "Contexto":"% a.m.",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"🇧🇷 IMA-B<br>Índice de Títulos Públicos Atrelados à Inflação<br>Fonte: ETF IMAB11 (Yahoo Finance)",
+        "Valor":113.39,
+        "Contexto":"R$\/cota | Estabilidade dos juros reais.<br>Mercado equilibrado sem mudança relevante de prêmio.",
+        "Variação (%)":0.28
+    },
+    {
+        "Indicador":"PIB - Brasil - Valores correntes trimestrais<br>(R$ trilhões, IBGE)",
+        "Valor":3.25,
+        "Contexto":"1º trimestre 2026",
+        "Variação (%)":-0.82
+    },
+    {
+        "Indicador":"DLSP - Brasil - Valor absoluto<br>(R$ trilhões, BCB)",
+        "Valor":7.9,
+        "Contexto":"2026-05-01",
+        "Variação (%)":1.9
+    },
+    {
+        "Indicador":"IBOVESPA_",
+        "Valor":174939.91,
+        "Contexto":"pts",
+        "Variação (%)":-1.01
+    },
+    {
+        "Indicador":"IFIX (Índice B3)",
+        "Valor":3805.06,
+        "Contexto":"pts",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"IFIX (ETF Proxy - XFIX11)",
+        "Valor":13.45,
+        "Contexto":"R$\/cota (Replica IFIX)",
+        "Variação (%)":0.37
+    },
+    {
+        "Indicador":"B3 Ibovespa · #1 VALE (VALE3)",
+        "Valor":10.9,
+        "Contexto":"% do índice | Top 1 em peso",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"B3 IFIX · #1 FII KINEA RI (KNCR11)",
+        "Valor":7.47,
+        "Contexto":"% do índice | Top 1 em peso",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"B3 Small Caps · #1 COPASA (CSMG3)",
+        "Valor":7.03,
+        "Contexto":"% do índice | Top 1 em peso",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"B3 Dividendos · #1 BBSEGURIDADE (BBSE3)",
+        "Valor":5.86,
+        "Contexto":"% do índice | Top 1 em peso",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"🌊 Risco Climático Global:<br>Oceanic Niño Index (ONI)",
+        "Valor":1.5,
+        "Contexto":"°C | Anomalia Térmica do Pacífico Equatorial (Região Niño 3.4)<br>Impacto direto na segurança hídrica, geração de energia e produtividade do Agronegócio<br>Fator antecedente para dinâmica de preços de soft commodities (Açúcar, Soja, Café)<br>Status Macroeconômico do Clima: El Niño Moderado \/ Alerta de Inflação de Custos no Agro",
+        "Variação (%)":0.49
+    },
+    {
+        "Indicador":"Barril Petróleo Brent",
+        "Valor":96.03,
+        "Contexto":"USD\/bbl (159 litros)",
+        "Variação (%)":-4.63
+    },
+    {
+        "Indicador":"Dr. Copper: Global Industrial Cycle Proxy",
+        "Valor":6.36,
+        "Contexto":"USD\/lb | Global Industry \/ Infrastructure \/ Electrification<br>USD 14020.31\/ton | Dr. Copper Signal: Boom Econômico \/ Pressão Inflacionária",
+        "Variação (%)":0.86
+    },
+    {
+        "Indicador":"Baltic Dry Index (BDI)",
+        "Valor":2725.0,
+        "Contexto":"pts | Mercado de Fretes Aquecido | Forte demanda por transporte marítimo | Possível pressão sobre custos logísticos globais",
+        "Variação (%)":0.37
+    },
+    {
+        "Indicador":"🇧🇷 Oferta Global de Minério de Ferro: VALE (VALE3)<br>US$ 63.26 bi | Ranking: 396",
+        "Valor":75.41,
+        "Contexto":"BRL\/ação | Demanda Chinesa \/ Ciclo Industrial",
+        "Variação (%)":-0.36
+    },
+    {
+        "Indicador":"Ouro",
+        "Valor":663.16,
+        "Contexto":"BRL\/g",
+        "Variação (%)":0.71
+    },
+    {
+        "Indicador":"Ouro Barra LBMA",
+        "Valor":8250689.4699999997,
+        "Contexto":"BRL\/barra (400 oz t)",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Prata",
+        "Valor":9.61,
+        "Contexto":"BRL\/g",
+        "Variação (%)":2.17
+    },
+    {
+        "Indicador":"Platina",
+        "Valor":260.76,
+        "Contexto":"BRL\/g",
+        "Variação (%)":0.21
+    },
+    {
+        "Indicador":"🇧🇷 Comércio Global de Soja",
+        "Valor":12.5,
+        "Contexto":"USD\/bushel | USD 459.10\/ton | BRL 2,323.71\/ton<br>O Brasil é um dos maiores produtores e exportadores de soja do mundo<br>Indicador da demanda chinesa, cadeias globais de alimentos e exportações agrícolas<br>Ciclo Agrícola: Ciclo Favorável",
+        "Variação (%)":0.97
+    },
+    {
+        "Indicador":"🇧🇷 Complexo Açúcar e Etanol",
+        "Valor":0.1463,
+        "Contexto":"USD\/lb | Agronegócio \/ Biocombustíveis \/ Comércio Global de Açúcar<br>O Brasil lidera as exportações globais de açúcar e a produção de cana-de-açúcar<br>Indicador da economia do etanol, exportações agrícolas e energia renovável<br>Ciclo do Açúcar: Setor Pressionado",
+        "Variação (%)":-0.41
+    },
+    {
+        "Indicador":"Bitcoin_(USD)",
+        "Valor":63925.97,
+        "Contexto":"USD | Reserva Digital de Valor \/ Rede Monetária<br>Tendência de Referência EMA7 D-1: 65,212.70<br>Abaixo da referência de tendência de curto prazo<br>Volume Estimado de BTC: 394,127.70",
+        "Variação (%)":-1.72
+    },
+    {
+        "Indicador":"Bitcoin (BRL)",
+        "Valor":323554.9,
+        "Contexto":"BRL",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Bitcoin – Máxima 2026 (USD)",
+        "Valor":96929.33,
+        "Contexto":"2026-01-14",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Bitcoin – Mínima 2026 (USD)",
+        "Valor":58558.86,
+        "Contexto":"2026-06-30",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Bitcoin – Máxima Histórica (USD)",
+        "Valor":124752.53,
+        "Contexto":"2025-10-06",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Bitcoin – Mínima Histórica (USD)",
+        "Valor":178.1,
+        "Contexto":"2015-01-14",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Ethereum_(USD)",
+        "Valor":1848.24,
+        "Contexto":"USD | Contratos Inteligentes \/ Infraestrutura Layer-1<br>Tendência de Referência EMA7 D-1: 1,889.69<br>Abaixo da referência de tendência de curto prazo<br>Volume Estimado de ETH: 5,202,822.23",
+        "Variação (%)":-1.54
+    },
+    {
+        "Indicador":"Ethereum (BRL)",
+        "Valor":9354.68,
+        "Contexto":"BRL",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Ethereum – Máxima 2026 (USD)",
+        "Valor":3354.72,
+        "Contexto":"2026-01-14",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Ethereum – Mínima 2026 (USD)",
+        "Valor":1564.82,
+        "Contexto":"2026-06-25",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Ethereum – Máxima Histórica (USD)",
+        "Valor":4831.35,
+        "Contexto":"2025-08-22",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Ethereum – Mínima Histórica (USD)",
+        "Valor":84.31,
+        "Contexto":"2018-12-14",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Billionaire (net worth): Elon Musk",
+        "Valor":789.91,
+        "Contexto":"2026-05-04",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"DB-Engines Ranking: Oracle",
+        "Valor":1132.37,
+        "Contexto":"Multi-model Relational",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Programming Languages Ranking<br>Ratings (%): Python",
+        "Valor":18.94,
+        "Contexto":"Jul 2025: 1 | Jul 2026: 1",
+        "Variação (%)":-8.03
+    },
+    {
+        "Indicador":"GitHub Trending:<br>codecrafters-io\/build-your-own-x (Markdown)",
+        "Valor":531173.0,
+        "Contexto":"Created: 2018-05-09 | Updated: 2026-07-24",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Linux Ranking Distrowatch: CachyOS",
+        "Valor":2766.0,
+        "Contexto":"",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Movie – Top Lifetime Grosses: Avatar (USD)",
+        "Valor":2923710708.0,
+        "Contexto":"2009",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"⚽ FIFA Men's World Ranking:<br>1º 🇪🇸 Spain",
+        "Valor":1995.98,
+        "Contexto":"2º 🇦🇷 Argentina | 3º 🇫🇷 France | 4º ENG England | 5º 🇧🇷 Brazil<br>next update: 7 October 2026",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Arena AI (Text): claude-fable-5",
+        "Valor":1507.0,
+        "Contexto":"14646",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Arena AI (Code): kimi-k3",
+        "Valor":1678.0,
+        "Contexto":"1828",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Arena AI (Image): gpt-image-2 (medium)",
+        "Valor":1385.0,
+        "Contexto":"60382",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Arena AI (Video): gemini-omni-flash",
+        "Valor":1527.0,
+        "Contexto":"5449",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Arena AI (Open Source): glm-5.1",
+        "Valor":1470.0,
+        "Contexto":"1542",
+        "Variação (%)":0.0
+    },
+    {
+        "Indicador":"Arena AI (Agent): Claude Fable 5 (High)",
+        "Valor":10.67,
+        "Contexto":" % (Confirmed Success) | Praise: 23.94% | Complaint: 7.42%",
+        "Variação (%)":0.0
+    }
+]
