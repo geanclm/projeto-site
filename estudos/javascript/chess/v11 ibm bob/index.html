@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chess XI · IBM Bob</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="app-header">
+    <div class="header-brand">
+      <span class="brand-icon">♟</span>
+      <span class="brand-name">Chess <span class="brand-version">XI</span></span>
+    </div>
+    <div id="datetime" class="header-datetime"></div>
+  </header>
+
+  <!-- ── MAIN LAYOUT ── -->
+  <main class="game-area">
+
+    <!-- ── LEFT PANEL ── -->
+    <aside class="side-panel left-panel">
+
+      <!-- Game Status -->
+      <section class="card status-card">
+        <div class="status-row">
+          <span class="label">Turno</span>
+          <span id="current-player" class="player-badge white-badge">Brancas</span>
+        </div>
+        <div id="game-message" class="game-message" role="alert" aria-live="polite"></div>
+        <div class="timer-row">
+          <div class="timer-block" id="timer-white">
+            <span class="timer-label">♔</span>
+            <span class="timer-value" id="timer-white-val">10:00</span>
+          </div>
+          <div class="timer-sep">vs</div>
+          <div class="timer-block" id="timer-black">
+            <span class="timer-label">♚</span>
+            <span class="timer-value" id="timer-black-val">10:00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mode Panel -->
+      <section class="card mode-card">
+        <h3 class="card-title">Modo de Jogo</h3>
+        <div class="btn-group" role="group">
+          <button id="btn-pvp" class="toggle-btn active" aria-pressed="true">👥 2 Jogadores</button>
+          <button id="btn-pvc" class="toggle-btn" aria-pressed="false">🤖 vs IA</button>
+        </div>
+        <div id="ai-options" class="ai-options hidden">
+          <label class="option-label">Dificuldade</label>
+          <div class="btn-group" role="group" id="diff-group">
+            <button class="diff-btn active" data-depth="1" aria-pressed="true">Fácil</button>
+            <button class="diff-btn" data-depth="2" aria-pressed="false">Médio</button>
+            <button class="diff-btn" data-depth="3" aria-pressed="false">Difícil</button>
+            <button class="diff-btn" data-depth="4" aria-pressed="false">Mestre</button>
+          </div>
+          <label class="option-label">Jogar como</label>
+          <div class="btn-group" role="group" id="color-group">
+            <button class="color-btn active" data-color="white" aria-pressed="true">♔ Brancas</button>
+            <button class="color-btn" data-color="black" aria-pressed="false">♚ Pretas</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Controls -->
+      <section class="card controls-card">
+        <h3 class="card-title">Controles</h3>
+        <div class="controls-grid">
+          <button id="restart-button" class="ctrl-btn primary" title="Nova partida (N)">↺ Nova</button>
+          <button id="undo-button"    class="ctrl-btn secondary" title="Desfazer (Ctrl+Z)">↶ Desfazer</button>
+          <button id="flip-board-button" class="ctrl-btn secondary" title="Inverter tabuleiro (F)">⇄ Inverter</button>
+          <button id="toggle-notation"   class="ctrl-btn ghost" title="Notação (Ctrl+N)">Notação</button>
+        </div>
+      </section>
+
+      <!-- Move History -->
+      <section class="card history-card">
+        <div class="history-header">
+          <h3 class="card-title">Histórico</h3>
+          <button id="save-history-btn" class="save-btn" title="Salvar histórico em .txt" aria-label="Salvar histórico em arquivo texto">
+            ⬇ Salvar .txt
+          </button>
+        </div>
+        <ol id="move-history" class="move-history" aria-label="Histórico de movimentos"></ol>
+      </section>
+
+    </aside>
+
+    <!-- ── CENTER: BOARD ── -->
+    <div class="board-area">
+      <div id="captured-pieces-top" class="captured-bar">
+        <div class="captured-piece-container" id="cap-top"></div>
+        <span class="material-score" id="score-top"></span>
+      </div>
+
+      <div class="board-frame">
+        <div id="thinking-overlay" class="thinking-overlay hidden" role="status" aria-live="polite">
+          <div class="thinking-ring"></div>
+          <span>IA pensando…</span>
+        </div>
+        <div class="rank-labels" id="rank-labels"></div>
+        <div id="board" class="board" role="grid" aria-label="Tabuleiro de xadrez"></div>
+        <div class="file-labels" id="file-labels"></div>
+      </div>
+
+      <div id="captured-pieces-bottom" class="captured-bar">
+        <div class="captured-piece-container" id="cap-bot"></div>
+        <span class="material-score" id="score-bot"></span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── PROMOTION MODAL ── -->
+  <div id="promotion-modal" class="modal" role="dialog" aria-modal="true" aria-label="Promoção de peão" style="display:none">
+    <div class="modal-card">
+      <h4 class="modal-title">Promover Peão</h4>
+      <div class="promo-options">
+        <button class="promo-btn" data-piece="queen"><span class="promo-icon" id="promo-queen"></span><span>Rainha</span></button>
+        <button class="promo-btn" data-piece="rook"><span class="promo-icon" id="promo-rook"></span><span>Torre</span></button>
+        <button class="promo-btn" data-piece="bishop"><span class="promo-icon" id="promo-bishop"></span><span>Bispo</span></button>
+        <button class="promo-btn" data-piece="knight"><span class="promo-icon" id="promo-knight"></span><span>Cavalo</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GAME OVER MODAL ── -->
+  <div id="gameover-modal" class="modal" role="dialog" aria-modal="true" aria-label="Fim de jogo" style="display:none">
+    <div class="modal-card gameover-card">
+      <div class="gameover-trophy" id="gameover-icon">🏆</div>
+      <h2 class="gameover-title" id="gameover-title">Fim de Jogo</h2>
+      <p class="gameover-msg" id="gameover-msg"></p>
+      <button id="gameover-restart" class="ctrl-btn primary gameover-btn">Jogar Novamente</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
