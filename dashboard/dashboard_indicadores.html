@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Indicadores Estratégicos — 04/09/2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<style>
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --bg3: #1c2333;
+  --bg4: #21262d;
+  --border: #30363d;
+  --border2: #3d4451;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --text3: #6e7681;
+  --accent: #58a6ff;
+  --accent2: #388bfd;
+  --green: #3fb950;
+  --green2: #238636;
+  --red: #f85149;
+  --red2: #da3633;
+  --yellow: #d29922;
+  --yellow2: #e3b341;
+  --purple: #8b5cf6;
+  --purple2: #a78bfa;
+  --orange: #f97316;
+  --teal: #2dd4bf;
+  --pink: #ec4899;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --shadow2: 0 2px 8px rgba(0,0,0,0.3);
+  --radius: 12px;
+  --radius2: 8px;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+[data-theme="light"] {
+  --bg: #f0f2f5;
+  --bg2: #ffffff;
+  --bg3: #f6f8fa;
+  --bg4: #eaeef2;
+  --border: #d0d7de;
+  --border2: #c2c8cf;
+  --text: #1f2328;
+  --text2: #656d76;
+  --text3: #9198a1;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow2: 0 2px 8px rgba(0,0,0,0.06);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.5;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#0d1117 0%,#161b22 50%,#1c2333 100%);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+[data-theme="light"] .header{background:linear-gradient(135deg,#1e2a3a 0%,#243447 50%,#1a2535 100%)}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;gap:16px}
+.header-left{display:flex;flex-direction:column;gap:3px;min-width:0}
+.header-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(88,166,255,0.12);border:1px solid rgba(88,166,255,0.25);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--accent);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;width:fit-content}
+.header-badge span{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
+.header-title{font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-subtitle{font-size:11px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-controls{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.header-time{font-size:12px;color:var(--text2);background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:var(--radius2);padding:5px 11px;white-space:nowrap}
+.btn-theme{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:var(--radius2);padding:6px 13px;color:var(--text);cursor:pointer;font-size:12px;display:flex;align-items:center;gap:5px;transition:all .2s;white-space:nowrap}
+.btn-theme:hover{background:var(--bg4);border-color:var(--border2)}
+/* NAVBAR */
+.header-nav{border-top:1px solid rgba(255,255,255,0.06);padding:0 32px;display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none}
+.header-nav::-webkit-scrollbar{display:none}
+.nav-anchor{display:inline-flex;align-items:center;padding:8px 14px;font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;user-select:none}
+.nav-anchor:hover{color:var(--text);border-bottom-color:var(--accent2)}
+.nav-anchor.active{color:var(--accent);border-bottom-color:var(--accent)}
+.btn-section{background:transparent;border:1px solid var(--border);border-radius:var(--radius2);padding:6px 12px;color:var(--text2);cursor:pointer;font-size:12px;transition:all .2s}
+.btn-section:hover,.btn-section.active{background:var(--accent2);border-color:var(--accent2);color:#fff}
+
+/* LAYOUT */
+.main{max-width:1600px;margin:0 auto;padding:24px 24px 48px}
+.section{margin-bottom:32px}
+.section-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--text2);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';width:3px;height:16px;background:var(--accent);border-radius:2px;display:inline-block}
+
+/* GRID */
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.col-span-2{grid-column:span 2}
+.col-span-3{grid-column:span 3}
+
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:all .25s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--accent));opacity:0.6}
+.card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--shadow)}
+.card-sm{padding:14px 16px}
+.card-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--text2);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.card-value{font-size:26px;font-weight:700;color:var(--text);letter-spacing:-0.5px;line-height:1.1}
+.card-unit{font-size:13px;font-weight:400;color:var(--text2);margin-left:4px}
+.card-context{font-size:11px;color:var(--text3);margin-top:4px;line-height:1.4}
+.card-variation{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;border-radius:4px;padding:2px 7px;margin-top:8px}
+.var-up{background:rgba(63,185,80,0.12);color:var(--green)}
+.var-down{background:rgba(248,81,73,0.12);color:var(--red)}
+.var-neutral{background:rgba(139,148,158,0.12);color:var(--text2)}
+
+/* KPI ROW */
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+
+/* CHART CARD */
+.chart-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:border-color .25s}
+.chart-card:hover{border-color:var(--border2)}
+.chart-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.chart-sub{font-size:11px;color:var(--text2);margin-bottom:16px}
+.chart-wrap{position:relative;width:100%}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead tr{background:var(--bg3)}
+thead th{padding:10px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;color:var(--text2);white-space:nowrap;cursor:pointer;user-select:none;border-bottom:1px solid var(--border)}
+thead th:hover{color:var(--accent)}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--bg3)}
+tbody td{padding:10px 14px;vertical-align:middle}
+.td-name{font-weight:500;color:var(--text)}
+.td-val{font-weight:600;color:var(--text);white-space:nowrap}
+.td-ctx{color:var(--text2);font-size:12px}
+.search-bar{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius2);padding:9px 14px;color:var(--text);font-size:13px;margin-bottom:12px;outline:none;transition:border-color .2s}
+.search-bar:focus{border-color:var(--accent)}
+.search-bar::placeholder{color:var(--text3)}
+
+/* INSIGHT CARDS */
+.insight-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;display:flex;gap:14px;align-items:flex-start;transition:all .25s}
+.insight-card:hover{border-color:var(--border2);transform:translateY(-1px)}
+.insight-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.insight-body{}
+.insight-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.insight-text{font-size:12px;color:var(--text2);line-height:1.5}
+
+/* GAUGE / PROGRESS */
+.gauge-bar{height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;margin-top:8px}
+.gauge-fill{height:100%;border-radius:3px;transition:width .6s ease}
+
+/* TABS */
+.tab-bar{display:flex;gap:4px;margin-bottom:16px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius2);padding:4px}
+.tab-btn{flex:1;padding:7px 12px;border:none;background:transparent;color:var(--text2);cursor:pointer;border-radius:6px;font-size:12px;font-weight:600;transition:all .2s;text-align:center}
+.tab-btn.active{background:var(--bg2);color:var(--text);box-shadow:var(--shadow2);border:1px solid var(--border)}
+
+/* RADAR / SPECIAL */
+.anomaly-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.badge-warn{background:rgba(210,153,34,0.15);color:var(--yellow2);border:1px solid rgba(210,153,34,0.3)}
+.badge-ok{background:rgba(63,185,80,0.1);color:var(--green);border:1px solid rgba(63,185,80,0.25)}
+.badge-alert{background:rgba(248,81,73,0.1);color:var(--red);border:1px solid rgba(248,81,73,0.25)}
+
+/* FOOTER */
+.footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px 32px;margin-top:32px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:1600px;margin:0 auto}
+.footer-section h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text2);margin-bottom:8px}
+.footer-section p,.footer-section li{font-size:12px;color:var(--text3);line-height:1.6}
+.footer-section ul{list-style:none;padding:0}
+
+/* RESPONSIVE */
+@media(max-width:1200px){.grid-5{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}.col-span-2,.col-span-3{grid-column:span 1}.header-top{padding:12px 16px}.header-nav{padding:0 16px}.header-title{font-size:16px}.header-subtitle{display:none}.main{padding:14px 12px}.card-value{font-size:20px}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.kpi-row{grid-template-columns:1fr}.tab-bar{flex-wrap:wrap}.header-right{gap:8px}}
+
+/* ANIMATIONS */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fadeInUp .4s ease forwards}
+.card,.chart-card,.insight-card{animation:fadeInUp .35s ease both}
+
+/* TOOLTIP CUSTOM */
+.tt{position:relative;cursor:help}
+.tt::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1c2333;border:1px solid var(--border2);color:var(--text);font-size:11px;padding:5px 9px;border-radius:6px;white-space:nowrap;z-index:999;opacity:0;pointer-events:none;transition:opacity .2s}
+.tt:hover::after{opacity:1}
+
+/* SPARKLINE */
+.sparkline-val{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:24px 0}
+
+/* CRYPTO RANGE */
+.range-bar{height:4px;background:var(--bg4);border-radius:2px;margin-top:6px;position:relative}
+.range-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);position:absolute;top:-2px;transform:translateX(-50%)}
+.range-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--text3);margin-top:2px}
+
+/* INDEX WEIGHT BAR */
+.weight-bar{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.weight-label{font-size:12px;color:var(--text);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.weight-val{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap}
+.weight-track{width:80px;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden;flex-shrink:0}
+.weight-fill{height:100%;border-radius:3px}
+</style>
+</head>
+<body data-theme="dark">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-top">
+    <div class="header-left">
+      <div class="header-badge"><span></span>Live Snapshot</div>
+      <h1 class="header-title">📊 Dashboard de Indicadores Estratégicos</h1>
+      <p class="header-subtitle">Snapshot: sexta-feira, 04/09/2026 · 11h00m08s58 · Dados exclusivamente da base .md</p>
+    </div>
+    <div class="header-controls">
+      <div class="header-time" id="clock">⏱ 04/09/2026 · 11h00</div>
+      <button class="btn-theme" onclick="toggleTheme()" id="themeBtn">🌙 Escuro</button>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <span class="nav-anchor" onclick="navClick(this,'#sec-kpi')">Visão Geral</span>
+    <span class="nav-anchor" onclick="navClick(this,'#sec-macro')">Macro EUA</span>
+    <span class="nav-anchor" onclick="navClick(this,'#sec-brasil')">Brasil</span>
+    <span class="nav-anchor" onclick="navClick(this,'#sec-acoes')">Ações Globais</span>
+    <span class="nav-anchor" onclick="navClick(this,'#sec-cripto')">Cripto</span>
+    <span class="nav-anchor" onclick="navClick(this,'#sec-commodities')">Commodities</span>
+    <span class="nav-anchor" onclick="navClick(this,'#sec-tech')">Tech & AI</span>
+    <span class="nav-anchor" onclick="navClick(this,'#sec-tabela')">Tabela</span>
+    <span class="nav-anchor" onclick="navClick(this,'#sec-insights')">Insights</span>
+    <span class="nav-anchor" onclick="navClick(this,'#sec-anomalias')">Anomalias</span>
+  </nav>
+</header>
+
+<main class="main">
+
+<!-- RESUMO KPI -->
+<section class="section" id="sec-kpi">
+  <div class="section-title">Visão Geral — Principais Indicadores</div>
+  <div class="kpi-row">
+    <div class="card card-sm" style="--card-accent:var(--accent)">
+      <div class="card-label">S&P 500</div>
+      <div class="card-value">7.738<span class="card-unit">pts</span></div>
+      <div class="card-variation var-down">▼ -0,12%</div>
+    </div>
+    <div class="card card-sm" style="--card-accent:var(--purple)">
+      <div class="card-label">Nasdaq</div>
+      <div class="card-value">29.626<span class="card-unit">pts</span></div>
+      <div class="card-variation var-up">▲ +0,34%</div>
+    </div>
+    <div class="card card-sm" style="--card-accent:var(--teal)">
+      <div class="card-label">IBOVESPA</div>
+      <div class="card-value">183.853<span class="card-unit">pts</span></div>
+      <div class="card-variation var-down">▼ -0,72%</div>
+    </div>
+    <div class="card card-sm" style="--card-accent:var(--yellow)">
+      <div class="card-label">Dólar / BRL</div>
+      <div class="card-value">R$ 5,12</div>
+      <div class="card-variation var-up">▲ +0,60%</div>
+    </div>
+    <div class="card card-sm" style="--card-accent:var(--orange)">
+      <div class="card-label">Bitcoin (USD)</div>
+      <div class="card-value">79.524<span class="card-unit">USD</span></div>
+      <div class="card-variation var-down">▼ -2,15%</div>
+    </div>
+    <div class="card card-sm" style="--card-accent:var(--green)">
+      <div class="card-label">SELIC</div>
+      <div class="card-value">14,00<span class="card-unit">% a.a.</span></div>
+      <div class="card-variation var-down">▼ -1,75%</div>
+    </div>
+    <div class="card card-sm" style="--card-accent:var(--red)">
+      <div class="card-label">VIX</div>
+      <div class="card-value">14,08</div>
+      <div class="card-variation var-down">▼ -1,68%</div>
+    </div>
+    <div class="card card-sm" style="--card-accent:var(--pink)">
+      <div class="card-label">Petróleo Brent</div>
+      <div class="card-value">93,65<span class="card-unit">USD/bbl</span></div>
+      <div class="card-variation var-down">▼ -1,96%</div>
+    </div>
+    <div class="card card-sm" style="--card-accent:#ffd700">
+      <div class="card-label">Ouro</div>
+      <div class="card-value">733,83<span class="card-unit">BRL/g</span></div>
+      <div class="card-variation var-down">▼ -0,81%</div>
+    </div>
+    <div class="card card-sm" style="--card-accent:var(--teal)">
+      <div class="card-label">IPCA</div>
+      <div class="card-value">4,44<span class="card-unit">% a.a.</span></div>
+      <div class="card-variation var-down">▼ -4,31%</div>
+    </div>
+  </div>
+</section>
+
+<!-- MACRO USA -->
+<section class="section" id="sec-macro">
+  <div class="section-title">Macroeconomia — EUA e Global</div>
+  <div class="grid-3">
+    <div class="card" style="--card-accent:var(--accent)">
+      <div class="card-label tt" data-tip="Federal Funds Target Rate">Fed Funds Target</div>
+      <div class="card-value">3,75<span class="card-unit">% a.a.</span></div>
+      <div class="card-context">Normalização Monetária · Taxa Oficial do Fed</div>
+      <div class="card-variation var-down">▼ -0,25%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--teal)">
+      <div class="card-label tt" data-tip="Short-Term Yield">US Short-Term Yield</div>
+      <div class="card-value">3,77<span class="card-unit">% a.a.</span></div>
+      <div class="card-context">Normalização Monetária · Fed Policy Atual</div>
+      <div class="card-variation var-up">▲ +0,67%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--purple)">
+      <div class="card-label tt" data-tip="Dollar Index">DXY — Dollar Index</div>
+      <div class="card-value">99,12</div>
+      <div class="card-context">Neutro / Dólar Enfraquecido</div>
+      <div class="card-variation var-up">▲ +0,12%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--yellow)">
+      <div class="card-label">US 2Y Treasury</div>
+      <div class="card-value">4,39<span class="card-unit">% a.a.</span></div>
+      <div class="card-context">Expectativas de FED Mais Restritivo (1–2Y)</div>
+      <div class="card-variation var-neutral">— 0,00%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--orange)">
+      <div class="card-label">US 10Y Treasury</div>
+      <div class="card-value">4,77<span class="card-unit">% a.a.</span></div>
+      <div class="card-context">Condições Financeiras Restritivas</div>
+      <div class="card-variation var-up">▲ +0,21%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--red)">
+      <div class="card-label tt" data-tip="10Y menos 2Y">Yield Curve (10Y–2Y)</div>
+      <div class="card-value">0,41<span class="card-unit">pp</span></div>
+      <div class="card-context">Curva Achatando / Alerta de Fim de Ciclo</div>
+      <div class="card-variation var-neutral">— 0,00%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--green)">
+      <div class="card-label tt" data-tip="Índice de Volatilidade Implícita">VIX — Volatilidade</div>
+      <div class="card-value">14,08</div>
+      <div class="card-context">Baixa Volatilidade</div>
+      <div class="card-variation var-down">▼ -1,68%</div>
+      <div class="gauge-bar"><div class="gauge-fill" style="width:28%;background:var(--green)"></div></div>
+    </div>
+    <div class="card" style="--card-accent:var(--pink)">
+      <div class="card-label tt" data-tip="High Yield Credit ETF">HYG ETF — High Yield</div>
+      <div class="card-value">79,20<span class="card-unit">USD</span></div>
+      <div class="card-context">Estresse de Crédito Elevado / Atenção</div>
+      <div class="card-variation var-down">▼ -0,01%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--teal)">
+      <div class="card-label">Baltic Dry Index (BDI)</div>
+      <div class="card-value">3.488<span class="card-unit">pts</span></div>
+      <div class="card-context">Mercado de Fretes Aquecido · Forte demanda por transporte marítimo</div>
+      <div class="card-variation var-up">▲ +4,71%</div>
+    </div>
+  </div>
+
+  <!-- Gráfico Juros USA -->
+  <div class="grid-2" style="margin-top:16px">
+    <div class="chart-card">
+      <div class="chart-title">Estrutura de Juros dos EUA</div>
+      <div class="chart-sub">Fed Funds · Short-Term · 2Y · 10Y (% a.a.) — snapshot 04/09/2026</div>
+      <div class="chart-wrap" style="height:220px">
+        <canvas id="chartYieldCurve"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Índices de Renda Variável EUA</div>
+      <div class="chart-sub">S&P 500 · Nasdaq · Dow Jones — variação diária (%)</div>
+      <div class="chart-wrap" style="height:220px">
+        <canvas id="chartUsEquity"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRASIL -->
+<section class="section" id="sec-brasil">
+  <div class="section-title">Brasil — Macroeconomia e Mercados</div>
+  <div class="grid-4">
+    <div class="card" style="--card-accent:var(--green)">
+      <div class="card-label">SELIC</div>
+      <div class="card-value">14,00<span class="card-unit">% a.a.</span></div>
+      <div class="card-context">Vigente desde 2026-08-06</div>
+      <div class="card-variation var-down">▼ -1,75%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--teal)">
+      <div class="card-label">CDI</div>
+      <div class="card-value">13,90<span class="card-unit">% a.a.</span></div>
+      <div class="card-context">Equivalente: 1,0905% a.m.</div>
+      <div class="card-variation var-neutral">— 0,00%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--orange)">
+      <div class="card-label">IPCA</div>
+      <div class="card-value">4,44<span class="card-unit">% a.a.</span></div>
+      <div class="card-context">Referência: jul/2026</div>
+      <div class="card-variation var-down">▼ -4,31%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--red)">
+      <div class="card-label">Juro Real</div>
+      <div class="card-value">9,06<span class="card-unit">% a.a.</span></div>
+      <div class="card-context">SELIC deflacionada pelo IPCA · 0,73% a.m.</div>
+      <div class="card-variation var-neutral">— 0,00%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--purple)">
+      <div class="card-label">IBOVESPA</div>
+      <div class="card-value">183.853<span class="card-unit">pts</span></div>
+      <div class="card-variation var-down">▼ -0,72%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--accent)">
+      <div class="card-label">IFIX (B3)</div>
+      <div class="card-value">3.760,1<span class="card-unit">pts</span></div>
+      <div class="card-context">ETF Proxy XFIX11: R$ 13,34/cota ▲ +0,45%</div>
+      <div class="card-variation var-neutral">— 0,00%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--yellow)">
+      <div class="card-label">IGP-M (ago/2026)</div>
+      <div class="card-value">-0,22<span class="card-unit">% a.m.</span></div>
+      <div class="card-context">Deflação Moderada · Acum. 12m: 2,21% · Acum. ano: 1,89%</div>
+      <div class="card-variation var-up">▲ +0,94%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--teal)">
+      <div class="card-label">IBC-Br (Atividade)</div>
+      <div class="card-value">109,89<span class="card-unit">pts</span></div>
+      <div class="card-context">Crescimento Moderado / Atividade Saudável</div>
+      <div class="card-variation var-up">▲ +0,33%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--green)">
+      <div class="card-label">PIB — Brasil (2º tri 2026)</div>
+      <div class="card-value">R$ 3,43<span class="card-unit">tri</span></div>
+      <div class="card-context">Valores correntes trimestrais — IBGE</div>
+      <div class="card-variation var-up">▲ +5,38%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--red)">
+      <div class="card-label">DLSP — Brasil (jul/2026)</div>
+      <div class="card-value">R$ 8,10<span class="card-unit">tri</span></div>
+      <div class="card-context">Dívida Líquida do Setor Público — BCB</div>
+      <div class="card-variation var-up">▲ +0,97%</div>
+    </div>
+    <div class="card" style="--card-accent:#58a6ff">
+      <div class="card-label">IMA-B (ETF IMAB11)</div>
+      <div class="card-value">R$ 116,48<span class="card-unit">/cota</span></div>
+      <div class="card-context">Títulos Atrelados à Inflação · Ambiente favorável renda fixa longa</div>
+      <div class="card-variation var-up">▲ +0,32%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--yellow)">
+      <div class="card-label">Dólar</div>
+      <div class="card-value">R$ 5,12</div>
+      <div class="card-variation var-up">▲ +0,60%</div>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-top:16px">
+    <!-- Câmbio -->
+    <div class="chart-card">
+      <div class="chart-title">Câmbio vs BRL</div>
+      <div class="chart-sub">Cotação em Reais · snapshot 04/09/2026</div>
+      <div class="chart-wrap" style="height:220px">
+        <canvas id="chartCambio"></canvas>
+      </div>
+    </div>
+    <!-- Juros Brasil -->
+    <div class="chart-card">
+      <div class="chart-title">Juros e Inflação — Brasil</div>
+      <div class="chart-sub">SELIC · CDI · IPCA · Juro Real (% a.a.)</div>
+      <div class="chart-wrap" style="height:220px">
+        <canvas id="chartBrJuros"></canvas>
+      </div>
+    </div>
+    <!-- Pesos Indices B3 -->
+    <div class="chart-card">
+      <div class="chart-title">Top 1 por Índice B3</div>
+      <div class="chart-sub">Maior peso em cada índice (%)</div>
+      <div style="margin-top:8px">
+        <div class="weight-bar">
+          <span class="weight-label">Ibovespa — VALE3</span>
+          <div class="weight-track"><div class="weight-fill" style="width:100%;background:var(--accent)"></div></div>
+          <span class="weight-val">10,85%</span>
+        </div>
+        <div class="weight-bar">
+          <span class="weight-label">IFIX — KNCR11</span>
+          <div class="weight-track"><div class="weight-fill" style="width:70%;background:var(--teal)"></div></div>
+          <span class="weight-val">7,59%</span>
+        </div>
+        <div class="weight-bar">
+          <span class="weight-label">Small Caps — CSMG3</span>
+          <div class="weight-track"><div class="weight-fill" style="width:56%;background:var(--purple)"></div></div>
+          <span class="weight-val">6,08%</span>
+        </div>
+        <div class="weight-bar">
+          <span class="weight-label">Dividendos — BBSE3</span>
+          <div class="weight-track"><div class="weight-fill" style="width:52%;background:var(--yellow)"></div></div>
+          <span class="weight-val">5,60%</span>
+        </div>
+      </div>
+      <div style="margin-top:14px">
+        <div class="chart-sub" style="margin-bottom:8px">Rentabilidade Efetiva Observada (CDI Anunciado: 120%)</div>
+        <div class="weight-bar">
+          <span class="weight-label">MercadoLibre (Cofrinho)</span>
+          <div class="weight-track"><div class="weight-fill" style="width:83%;background:var(--orange)"></div></div>
+          <span class="weight-val">100,17% CDI</span>
+        </div>
+        <div class="weight-bar">
+          <span class="weight-label">Nu Holdings (Caixinha)</span>
+          <div class="weight-track"><div class="weight-fill" style="width:99%;background:var(--green)"></div></div>
+          <span class="weight-val">118,71% CDI</span>
+        </div>
+        <div style="font-size:10px;color:var(--text3);margin-top:4px">Metodologia: indicador empírico baseado no acompanhamento contínuo da rentabilidade líquida efetiva</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AÇÕES GLOBAIS -->
+<section class="section" id="sec-acoes">
+  <div class="section-title">Ações — Referências Globais</div>
+  <div class="grid-3">
+    <div class="card" style="--card-accent:var(--green)">
+      <div class="card-label">🇺🇸 NVIDIA (NVDA)</div>
+      <div class="card-value">$ 233,79<span class="card-unit">USD/ação</span></div>
+      <div class="card-context">Market Cap: US$ 5,64 tri · Ranking Global: #1<br>Computação Global de IA / GPUs / CUDA / Data Centers<br>Depende da fabricação TSMC</div>
+      <div class="card-variation var-up">▲ +2,34%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--teal)">
+      <div class="card-label">🇹🇼 TSMC (TSM)</div>
+      <div class="card-value">$ 425,80<span class="card-unit">USD/ação</span></div>
+      <div class="card-context">Market Cap: US$ 2,21 tri · Ranking Global: #6<br>Fabricação avançada 3nm/5nm / Semicondutores<br>Depende dos sistemas EUV da ASML</div>
+      <div class="card-variation var-up">▲ +2,11%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--purple)">
+      <div class="card-label">🇳🇱 ASML</div>
+      <div class="card-value">$ 1.709,63<span class="card-unit">USD/ação</span></div>
+      <div class="card-context">Market Cap: US$ 657,16 bi · Ranking Global: #23<br>Monopólio de Litografia EUV · Gargalo Global de Semicondutores<br>Depende de ZEISS (🇩🇪) e Cymer (🇺🇸)</div>
+      <div class="card-variation var-up">▲ +3,85%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--accent)">
+      <div class="card-label">🇺🇸 SpaceX (SPCX)</div>
+      <div class="card-value">$ 147,62<span class="card-unit">USD/ação</span></div>
+      <div class="card-context">Market Cap: US$ 1,95 tri · Ranking Global: #7<br>Conectividade Global via Starlink / Exploração Espacial</div>
+      <div class="card-variation var-down">▼ -1,42%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--red)">
+      <div class="card-label">🇨🇳 CXMT (688825.SS)</div>
+      <div class="card-value">$ 56,45<span class="card-unit">USD/ação</span></div>
+      <div class="card-context">Market Cap: US$ 578,31 bi · Ranking Global: #24<br>Tecnologia Chinesa / Consumo Digital / Regulação e Liquidez</div>
+      <div class="card-variation var-up">▲ +1,07%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--yellow)">
+      <div class="card-label">🇸🇦 Saudi Aramco (2222.SR)</div>
+      <div class="card-value">25,96<span class="card-unit">SAR / USD 6,91</span></div>
+      <div class="card-context">Market Cap: US$ 1,67 tri · Ranking Global: #9<br>Petróleo / Política da OPEP / Geopolítica Oriente Médio</div>
+      <div class="card-variation var-down">▼ -0,23%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--orange)">
+      <div class="card-label">🇮🇳 Reliance Industries (RELIANCE.NS)</div>
+      <div class="card-value">₹ 1.322<span class="card-unit">INR / USD 13,99</span></div>
+      <div class="card-context">Market Cap: US$ 186,57 bi · Ranking Global: #114<br>Mercado Emergente / Transição Energética / Expansão Digital</div>
+      <div class="card-variation var-up">▲ +1,50%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--pink)">
+      <div class="card-label">🇦🇷 MercadoLibre (MELI)</div>
+      <div class="card-value">$ 1.971,35<span class="card-unit">USD/ação</span></div>
+      <div class="card-context">Market Cap: US$ 99,87 bi · Ranking Global: #244<br>e-Commerce + Fintech / Mercado Pago / LATAM</div>
+      <div class="card-variation var-down">▼ -0,99%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--purple2)">
+      <div class="card-label">🇧🇷 Nu Holdings (NU)</div>
+      <div class="card-value">$ 15,28<span class="card-unit">USD/ação</span></div>
+      <div class="card-context">Market Cap: US$ 73,72 bi · Ranking Global: #343<br>Banco Digital / Crédito ao Varejo / Fintech LATAM</div>
+      <div class="card-variation var-down">▼ -2,52%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--accent)">
+      <div class="card-label">🇺🇸 Visa (V)</div>
+      <div class="card-value">$ 375,57<span class="card-unit">USD/ação</span></div>
+      <div class="card-context">Market Cap: US$ 701,25 bi · Ranking Global: #20<br>Pagamentos Digitais / Fluxos Transfronteiriços</div>
+      <div class="card-variation var-down">▼ -0,84%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--teal)">
+      <div class="card-label">🇧🇷 VALE (VALE3)</div>
+      <div class="card-value">R$ 77,92<span class="card-unit">BRL/ação</span></div>
+      <div class="card-context">Market Cap: US$ 64,94 bi · Ranking Global: #397<br>Oferta Global de Minério de Ferro / Demanda Chinesa</div>
+      <div class="card-variation var-down">▼ -0,68%</div>
+    </div>
+  </div>
+
+  <!-- Gráfico variações ações -->
+  <div style="margin-top:16px">
+    <div class="chart-card">
+      <div class="chart-title">Variação Diária — Ações Globais (%)</div>
+      <div class="chart-sub">Comparativo de variação percentual no snapshot de 04/09/2026</div>
+      <div class="chart-wrap" style="height:280px">
+        <canvas id="chartAcoes"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRIPTOMOEDAS -->
+<section class="section" id="sec-cripto">
+  <div class="section-title">Criptomoedas</div>
+  <div class="grid-2">
+    <div class="card" style="--card-accent:var(--orange)">
+      <div class="card-label">₿ Bitcoin (USD)</div>
+      <div class="card-value">$ 79.523,90</div>
+      <div class="card-context">BRL: R$ 407.425 · EMA7 D-1: US$ 78.566,01 · Momentum de alta no curto prazo<br>Volume Estimado: 610.603,37 BTC</div>
+      <div class="card-variation var-down">▼ -2,15%</div>
+      <div style="margin-top:12px">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:4px">Faixa 2026: Mín US$ 58.558,90 (30/06) → Máx US$ 96.929,30 (14/01)</div>
+        <div class="range-bar">
+          <div class="range-dot" style="left:52%"></div>
+        </div>
+        <div class="range-labels"><span>Mín 2026: 58.559</span><span>Atual: 79.524</span><span>Máx 2026: 96.929</span></div>
+        <div style="font-size:11px;color:var(--text3);margin-top:8px">Máxima Histórica: US$ 124.753 (06/10/2025) · Mínima Histórica: US$ 178,10 (14/01/2015)</div>
+      </div>
+    </div>
+    <div class="card" style="--card-accent:var(--purple)">
+      <div class="card-label">Ξ Ethereum (USD)</div>
+      <div class="card-value">$ 2.455,28</div>
+      <div class="card-context">BRL: R$ 12.579,10 · EMA7 D-1: US$ 2.445,68 · Momentum de alta no curto prazo<br>Volume Estimado: 9.718.206,27 ETH</div>
+      <div class="card-variation var-down">▼ -2,10%</div>
+      <div style="margin-top:12px">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:4px">Faixa 2026: Mín US$ 1.564,82 (25/06) → Máx US$ 3.354,72 (14/01)</div>
+        <div class="range-bar">
+          <div class="range-dot" style="left:47%"></div>
+        </div>
+        <div class="range-labels"><span>Mín 2026: 1.565</span><span>Atual: 2.455</span><span>Máx 2026: 3.355</span></div>
+        <div style="font-size:11px;color:var(--text3);margin-top:8px">Máxima Histórica: US$ 4.831,35 (22/08/2025) · Mínima Histórica: US$ 84,31 (14/12/2018)</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:16px">
+    <div class="chart-card">
+      <div class="chart-title">Bitcoin — Faixa de Preços 2026</div>
+      <div class="chart-sub">Mínima, preço atual e máxima do ano (USD)</div>
+      <div class="chart-wrap" style="height:200px">
+        <canvas id="chartCripto"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMODITIES -->
+<section class="section" id="sec-commodities">
+  <div class="section-title">Commodities e Metais</div>
+  <div class="grid-4">
+    <div class="card" style="--card-accent:var(--orange)">
+      <div class="card-label">Petróleo Brent</div>
+      <div class="card-value">93,65<span class="card-unit">USD/bbl</span></div>
+      <div class="card-context">159 litros por barril</div>
+      <div class="card-variation var-down">▼ -1,96%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--teal)">
+      <div class="card-label">Dr. Copper</div>
+      <div class="card-value">6,67<span class="card-unit">USD/lb</span></div>
+      <div class="card-context">USD 14.694,92/ton · Boom Econômico / Pressão Inflacionária</div>
+      <div class="card-variation var-up">▲ +1,35%</div>
+    </div>
+    <div class="card" style="--card-accent:#ffd700">
+      <div class="card-label">Ouro</div>
+      <div class="card-value">733,83<span class="card-unit">BRL/g</span></div>
+      <div class="card-context">Barra LBMA (400 oz t): R$ 9.129.930</div>
+      <div class="card-variation var-down">▼ -0,81%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--text2)">
+      <div class="card-label">Prata</div>
+      <div class="card-value">10,88<span class="card-unit">BRL/g</span></div>
+      <div class="card-variation var-down">▼ -1,35%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--purple)">
+      <div class="card-label">Platina</div>
+      <div class="card-value">298,21<span class="card-unit">BRL/g</span></div>
+      <div class="card-variation var-down">▼ -0,98%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--green)">
+      <div class="card-label">🇧🇷 Soja</div>
+      <div class="card-value">13,10<span class="card-unit">USD/bushel</span></div>
+      <div class="card-context">USD 481,52/ton · BRL 2.466,96/ton · Ciclo Favorável</div>
+      <div class="card-variation var-up">▲ +0,33%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--yellow)">
+      <div class="card-label">🇧🇷 Açúcar/Etanol</div>
+      <div class="card-value">0,184<span class="card-unit">USD/lb</span></div>
+      <div class="card-context">Agronegócio / Biocombustíveis · Mercado Equilibrado</div>
+      <div class="card-variation var-up">▲ +1,83%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--accent)">
+      <div class="card-label">🌊 ONI — Risco Climático</div>
+      <div class="card-value">1,5<span class="card-unit">°C</span></div>
+      <div class="card-context">El Niño Moderado / Alerta de Inflação de Custos no Agro<br>Anomalia Térmica Pacífico Equatorial (Niño 3.4)</div>
+      <div class="card-variation var-up">▲ +0,49%</div>
+    </div>
+  </div>
+  <div style="margin-top:16px">
+    <div class="chart-card">
+      <div class="chart-title">Commodities — Variação Diária (%)</div>
+      <div class="chart-sub">Petróleo · Cobre · Ouro · Prata · Platina · Soja · Açúcar · BDI</div>
+      <div class="chart-wrap" style="height:240px">
+        <canvas id="chartCommodities"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH & AI -->
+<section class="section" id="sec-tech">
+  <div class="section-title">Tecnologia, IA & Cultura Digital</div>
+  <div class="grid-3">
+    <div class="card" style="--card-accent:var(--accent)">
+      <div class="card-label">DB-Engines Ranking — Oracle</div>
+      <div class="card-value">1.122,27<span class="card-unit">pts</span></div>
+      <div class="card-context">Multi-model Relational</div>
+      <div class="card-variation var-neutral">— 0,00%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--yellow)">
+      <div class="card-label">Programming Languages — Python</div>
+      <div class="card-value">18,53<span class="card-unit">%</span></div>
+      <div class="card-context">Ranking: #1 (ago/2025 → ago/2026)</div>
+      <div class="card-variation var-down">▼ -7,61%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--purple)">
+      <div class="card-label">Linux Ranking — CachyOS</div>
+      <div class="card-value">2.477<span class="card-unit">pts</span></div>
+      <div class="card-context">Distrowatch</div>
+      <div class="card-variation var-neutral">— 0,00%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--teal)">
+      <div class="card-label">GitHub Trending — build-your-own-x</div>
+      <div class="card-value">545.149<span class="card-unit">⭐</span></div>
+      <div class="card-context">codecrafters-io/build-your-own-x · Markdown<br>Criado: 09/05/2018 · Atualizado: 04/09/2026</div>
+      <div class="card-variation var-neutral">— 0,00%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--orange)">
+      <div class="card-label">Movie — Top Lifetime Grosses</div>
+      <div class="card-value">$ 2,92<span class="card-unit">bi USD</span></div>
+      <div class="card-context">Avatar (2009)</div>
+      <div class="card-variation var-neutral">— 0,00%</div>
+    </div>
+    <div class="card" style="--card-accent:var(--green)">
+      <div class="card-label">Billionaire — Elon Musk</div>
+      <div class="card-value">$ 891,91<span class="card-unit">bi USD</span></div>
+      <div class="card-context">Patrimônio líquido · Ref.: 31/08/2026</div>
+      <div class="card-variation var-neutral">— 0,00%</div>
+    </div>
+  </div>
+
+  <!-- Arena AI -->
+  <div style="margin-top:16px">
+    <div class="chart-card">
+      <div class="chart-title">Arena AI — Rankings de Modelos (Elo Score)</div>
+      <div class="chart-sub">Text · Code · Image · Video · Open Source · Agent (Confirmed Success %)</div>
+      <div class="grid-3" style="gap:12px;margin-top:8px">
+        <div style="background:var(--bg3);border-radius:8px;padding:12px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:6px">Text</div>
+          <div style="font-size:16px;font-weight:700;color:var(--text)">claude-fable-5</div>
+          <div style="font-size:12px;color:var(--accent);margin-top:2px">Elo: 1.507 · Votos: 27.189</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:8px;padding:12px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:6px">Code</div>
+          <div style="font-size:16px;font-weight:700;color:var(--text)">claude-fable-5.1-max</div>
+          <div style="font-size:12px;color:var(--accent);margin-top:2px">Elo: 1.765 · Votos: 1.106</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:8px;padding:12px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:6px">Image</div>
+          <div style="font-size:16px;font-weight:700;color:var(--text)">gpt-image-2 (medium)</div>
+          <div style="font-size:12px;color:var(--accent);margin-top:2px">Elo: 1.382 · Votos: 75.014</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:8px;padding:12px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:6px">Video</div>
+          <div style="font-size:16px;font-weight:700;color:var(--text)">gemini-omni-1.1-flash</div>
+          <div style="font-size:12px;color:var(--accent);margin-top:2px">Elo: 1.515 · Votos: 1.762</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:8px;padding:12px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:6px">Open Source</div>
+          <div style="font-size:16px;font-weight:700;color:var(--text)">kimi-k3-max</div>
+          <div style="font-size:12px;color:var(--accent);margin-top:2px">Elo: 1.489 · Votos: 524</div>
+        </div>
+        <div style="background:var(--bg3);border-radius:8px;padding:12px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:6px">Agent</div>
+          <div style="font-size:16px;font-weight:700;color:var(--text)">Claude Opus 5 (High)</div>
+          <div style="font-size:12px;color:var(--green);margin-top:2px">✓ 14,96% Confirmed Success</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:2px">Praise: 21,82% · Complaint: 6,81%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIFA -->
+  <div style="margin-top:16px">
+    <div class="chart-card">
+      <div class="chart-title">⚽ FIFA Men's World Ranking — Top 5</div>
+      <div class="chart-sub">Atualização atual · Próxima: 07/10/2026</div>
+      <div class="chart-wrap" style="height:200px">
+        <canvas id="chartFifa"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABELA GERAL -->
+<section class="section" id="sec-tabela">
+  <div class="section-title">Tabela Completa de Indicadores</div>
+  <input type="text" class="search-bar" id="searchBar" placeholder="🔍 Pesquisar indicador..." oninput="filterTable()">
+  <div class="table-wrap">
+    <table id="mainTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Indicador ↕</th>
+          <th onclick="sortTable(1)">Valor ↕</th>
+          <th onclick="sortTable(2)">Contexto</th>
+          <th onclick="sortTable(3)">Variação (%) ↕</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="section" id="sec-insights">
+  <div class="section-title">Insights — Derivados dos Dados</div>
+  <div class="grid-3">
+    <div class="insight-card">
+      <div class="insight-icon" style="background:rgba(63,185,80,0.15);color:var(--green)">📈</div>
+      <div class="insight-body">
+        <div class="insight-title">BDI lidera as maiores altas do dia</div>
+        <div class="insight-text">Os dados mostram que o Baltic Dry Index registrou a maior variação positiva do snapshot: +4,71%. O indicador sinaliza mercado de fretes aquecido e forte demanda por transporte marítimo, com possível pressão sobre custos logísticos globais.</div>
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon" style="background:rgba(248,81,73,0.12);color:var(--red)">📉</div>
+      <div class="insight-body">
+        <div class="insight-title">Nu Holdings lidera as quedas</div>
+        <div class="insight-text">Observa-se que NU registrou a maior queda entre as ações acompanhadas: -2,52%, seguida por Bitcoin (-2,15%) e Ethereum (-2,10%). Os indicadores sugerem pressão sobre ativos de maior risco no período.</div>
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon" style="background:rgba(139,92,246,0.15);color:var(--purple)">⚡</div>
+      <div class="insight-body">
+        <div class="insight-title">ASML lidera as altas em ações</div>
+        <div class="insight-text">Os dados mostram que ASML registrou a maior alta entre as ações: +3,85%, seguida por NVIDIA (+2,34%) e TSMC (+2,11%). Há uma associação aparente entre os três ativos da cadeia de semicondutores, que se movimentaram conjuntamente no período.</div>
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon" style="background:rgba(45,212,191,0.12);color:var(--teal)">🏦</div>
+      <div class="insight-body">
+        <div class="insight-title">Juro Real elevado no Brasil</div>
+        <div class="insight-text">O período apresenta juro real de 9,06% a.a. (SELIC de 14% deflacionada por IPCA de 4,44%), um dos mais elevados. Os dados mostram também IMA-B em alta (+0,32%), sugerindo ambiente favorável para renda fixa longa.</div>
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon" style="background:rgba(249,115,22,0.12);color:var(--orange)">🛢️</div>
+      <div class="insight-body">
+        <div class="insight-title">Petróleo e metais preciosos recuam</div>
+        <div class="insight-text">Observa-se que Brent (-1,96%), Prata (-1,35%), Platina (-0,98%) e Ouro (-0,81%) recuaram simultaneamente. Os indicadores sugerem possível movimento de realização em commodities no período.</div>
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon" style="background:rgba(88,166,255,0.12);color:var(--accent)">🌦️</div>
+      <div class="insight-body">
+        <div class="insight-title">El Niño Moderado ativo</div>
+        <div class="insight-text">O ONI registra 1,5°C, indicando El Niño Moderado. Os dados apontam que este índice climático tem impacto direto na segurança hídrica, geração de energia e produtividade do agronegócio, sendo fator antecedente para preços de açúcar, soja e café.</div>
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon" style="background:rgba(210,153,34,0.15);color:var(--yellow2)">📊</div>
+      <div class="insight-body">
+        <div class="insight-title">PIB Brasil acelera no 2º trimestre</div>
+        <div class="insight-text">Os dados mostram PIB Brasil de R$ 3,43 tri no 2º trimestre de 2026, com variação de +5,38%, a maior variação positiva observada entre os indicadores macroeconômicos brasileiros do snapshot.</div>
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon" style="background:rgba(236,72,153,0.12);color:var(--pink)">🪙</div>
+      <div class="insight-body">
+        <div class="insight-title">Bitcoin abaixo da máxima de 2026</div>
+        <div class="insight-text">O período apresenta Bitcoin a US$ 79.524, distante 17,9% da máxima de 2026 (US$ 96.929 em 14/01) e 35,9% abaixo da máxima histórica (US$ 124.753 em 06/10/2025). EMA7 D-1 de US$ 78.566 indica momentum de alta no curto prazo.</div>
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon" style="background:rgba(63,185,80,0.12);color:var(--green)">💹</div>
+      <div class="insight-body">
+        <div class="insight-title">Cobre sinaliza expansão industrial</div>
+        <div class="insight-text">Os dados mostram Cobre (Dr. Copper) a US$ 6,67/lb com variação de +1,35%, no sinal de "Boom Econômico / Pressão Inflacionária". Há uma associação aparente com o avanço do BDI (+4,71%), sugerindo aquecimento da atividade industrial e logística global.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNCIONALIDADE SURPRESA: PAINEL DE ANOMALIAS -->
+<section class="section" id="sec-anomalias">
+  <div class="section-title">🔍 Painel de Anomalias — Destaques Extremos</div>
+  <div class="chart-card" style="margin-bottom:16px">
+    <div class="chart-title">Radar de Intensidade — Variações por Categoria</div>
+    <div class="chart-sub">Visualização da magnitude das variações diárias agrupadas por categoria (% absoluto)</div>
+    <div class="chart-wrap" style="height:320px">
+      <canvas id="chartRadar"></canvas>
+    </div>
+  </div>
+  <div class="grid-4" id="anomaliaCards"></div>
+  <div style="margin-top:16px">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchAnomalia('altas',this)">🚀 Maiores Altas</button>
+      <button class="tab-btn" onclick="switchAnomalia('baixas',this)">📉 Maiores Baixas</button>
+      <button class="tab-btn" onclick="switchAnomalia('neutros',this)">➖ Sem Variação</button>
+    </div>
+    <div id="anomaliaList"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+</main>
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-section">
+      <h4>Fonte dos Dados</h4>
+      <p>Base estruturada de indicadores estratégicos para análise de cenários e geração de insights.</p>
+      <p style="margin-top:4px">Arquivo: <code style="font-size:11px;background:var(--bg3);padding:1px 4px;border-radius:3px">df_indicadores_04_09_2026_11h00m08s58.md</code></p>
+    </div>
+    <div class="footer-section">
+      <h4>Período de Referência</h4>
+      <p>Data: sexta-feira, 04/09/2026</p>
+      <p>Horário: 11h00m08s62</p>
+      <p style="margin-top:4px">Snapshot temporal de mercado</p>
+    </div>
+    <div class="footer-section">
+      <h4>Observações Metodológicas</h4>
+      <ul>
+        <li>Todos os valores correspondem a um snapshot temporal do mercado</li>
+        <li>Os dados refletem exclusivamente as condições observadas na data e horário de referência</li>
+        <li>Rentabilidade CDI: indicador empírico baseado em acompanhamento contínuo da rentabilidade líquida efetiva</li>
+        <li>Próxima atualização FIFA: 07/10/2026</li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Fontes Identificadas no Arquivo</h4>
+      <ul>
+        <li>ETF IMAB11 — Yahoo Finance</li>
+        <li>BCB (Banco Central do Brasil)</li>
+        <li>IBGE</li>
+        <li>B3</li>
+        <li>DB-Engines</li>
+        <li>Distrowatch</li>
+        <li>LBMA (London Bullion Market)</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DADOS — EXCLUSIVAMENTE DO ARQUIVO .md
+// ═══════════════════════════════════════════════════════
+const DADOS = [
+  { nome: "VIX — Volatilidade", valor: 14.08, unidade: "", contexto: "Baixa Volatilidade", variacao: -1.68, categoria: "Macro EUA" },
+  { nome: "Dollar Index (DXY)", valor: 99.12, unidade: "", contexto: "Neutro / Dólar Enfraquecido", variacao: 0.12, categoria: "Macro EUA" },
+  { nome: "Fed Funds Target", valor: 3.75, unidade: "% a.a.", contexto: "Normalização Monetária (Current Fed Policy) (Official Fed Rate)", variacao: -0.25, categoria: "Macro EUA" },
+  { nome: "US Short-Term Yield", valor: 3.77, unidade: "% a.a.", contexto: "Normalização Monetária (Current Fed Policy)", variacao: 0.67, categoria: "Macro EUA" },
+  { nome: "US 2Y Treasury", valor: 4.39, unidade: "% a.a.", contexto: "Expectativas de FED Mais Restritivo (Fed Expectations 1–2Y)", variacao: 0, categoria: "Macro EUA" },
+  { nome: "US 10Y Treasury", valor: 4.77, unidade: "% a.a.", contexto: "Condições Financeiras Restritivas", variacao: 0.21, categoria: "Macro EUA" },
+  { nome: "US Yield Curve (10Y–2Y)", valor: 0.41, unidade: "pp", contexto: "Curva Achatando / Alerta de Fim de Ciclo", variacao: 0, categoria: "Macro EUA" },
+  { nome: "HYG ETF — High Yield Credit", valor: 79.2, unidade: "USD", contexto: "Estresse de Crédito Elevado / Atenção", variacao: -0.01, categoria: "Macro EUA" },
+  { nome: "S&P 500", valor: 7738.56, unidade: "pts", contexto: "Ações Large Caps dos EUA / Referência Global de Risco", variacao: -0.12, categoria: "Renda Variável EUA" },
+  { nome: "Nasdaq Composite", valor: 29626.2, unidade: "pts", contexto: "Tecnologia / Ativos de Crescimento / Exposição à IA", variacao: 0.34, categoria: "Renda Variável EUA" },
+  { nome: "Dow Jones", valor: 53555.9, unidade: "pts", contexto: "Blue Chips dos EUA / Referência da Economia Real", variacao: -0.24, categoria: "Renda Variável EUA" },
+  { nome: "NVIDIA (NVDA)", valor: 233.79, unidade: "USD/ação", contexto: "Infraestrutura Computacional de IA Global | US$ 5,64 tri | Ranking: #1", variacao: 2.34, categoria: "Ações Globais" },
+  { nome: "TSMC (TSM)", valor: 425.8, unidade: "USD/ação", contexto: "Fabricação Avançada de Chips | US$ 2,21 tri | Ranking: #6", variacao: 2.11, categoria: "Ações Globais" },
+  { nome: "ASML", valor: 1709.63, unidade: "USD/ação", contexto: "Monopólio de Litografia EUV | US$ 657,16 bi | Ranking: #23", variacao: 3.85, categoria: "Ações Globais" },
+  { nome: "SpaceX (SPCX)", valor: 147.62, unidade: "USD/ação", contexto: "Infraestrutura Espacial e Conectividade Global | US$ 1,95 tri | Ranking: #7", variacao: -1.42, categoria: "Ações Globais" },
+  { nome: "CXMT (688825.SS)", valor: 56.45, unidade: "USD/ação", contexto: "Ecossistema Digital da China | US$ 578,31 bi | Ranking: #24", variacao: 1.07, categoria: "Ações Globais" },
+  { nome: "Saudi Aramco (2222.SR)", valor: 25.96, unidade: "SAR/ação", contexto: "Referência de Petróleo e Energia | US$ 1,67 tri | Ranking: #9 | USD 6,91", variacao: -0.23, categoria: "Ações Globais" },
+  { nome: "Reliance Industries (RELIANCE.NS)", valor: 1322, unidade: "INR/ação", contexto: "Mercado Emergente: Índia | US$ 186,57 bi | Ranking: #114 | USD 13,99", variacao: 1.5, categoria: "Ações Globais" },
+  { nome: "MercadoLibre (MELI)", valor: 1971.35, unidade: "USD/ação", contexto: "Comércio Digital e Fintech da América Latina | US$ 99,87 bi | Ranking: #244", variacao: -0.99, categoria: "Ações Globais" },
+  { nome: "Nu Holdings (NU)", valor: 15.28, unidade: "USD/ação", contexto: "Bancos Digitais e Fintechs LATAM | US$ 73,72 bi | Ranking: #343", variacao: -2.52, categoria: "Ações Globais" },
+  { nome: "Visa (V)", valor: 375.57, unidade: "USD/ação", contexto: "Rede Global de Pagamentos | US$ 701,25 bi | Ranking: #20", variacao: -0.84, categoria: "Ações Globais" },
+  { nome: "Dólar", valor: 5.12, unidade: "BRL", contexto: "USD/BRL", variacao: 0.6, categoria: "Câmbio" },
+  { nome: "Euro", valor: 5.95, unidade: "BRL", contexto: "EUR/BRL", variacao: 0.86, categoria: "Câmbio" },
+  { nome: "Libra Esterlina", valor: 6.92, unidade: "BRL", contexto: "GBP/BRL", variacao: 0.78, categoria: "Câmbio" },
+  { nome: "Iene Japonês", valor: 0.0328, unidade: "BRL", contexto: "JPY/BRL", variacao: 2.23, categoria: "Câmbio" },
+  { nome: "SELIC", valor: 14, unidade: "% a.a.", contexto: "Vigente desde 2026-08-06", variacao: -1.75, categoria: "Brasil — Juros" },
+  { nome: "CDI", valor: 13.9, unidade: "% a.a.", contexto: "Taxa CDI anualizada", variacao: 0, categoria: "Brasil — Juros" },
+  { nome: "CDI (Eq.)", valor: 1.0905, unidade: "% a.m.", contexto: "Equivalente mensal do CDI", variacao: 0, categoria: "Brasil — Juros" },
+  { nome: "Juro Real", valor: 9.06, unidade: "% a.a.", contexto: "SELIC deflacionada pelo IPCA", variacao: 0, categoria: "Brasil — Juros" },
+  { nome: "Juro Real (Eq.)", valor: 0.73, unidade: "% a.m.", contexto: "Juro real mensal equivalente", variacao: 0, categoria: "Brasil — Juros" },
+  { nome: "IPCA", valor: 4.44, unidade: "% a.a.", contexto: "Referência: jul/2026", variacao: -4.31, categoria: "Brasil — Inflação" },
+  { nome: "IGP-M", valor: -0.22, unidade: "% a.m.", contexto: "Deflação Moderada (ago/2026)", variacao: 0.94, categoria: "Brasil — Inflação" },
+  { nome: "IGP-M Acumulado 12m", valor: 2.21, unidade: "%", contexto: "Acum. ano: 1,89%", variacao: 0, categoria: "Brasil — Inflação" },
+  { nome: "IBC-Br (Atividade Econômica)", valor: 109.89, unidade: "pts", contexto: "Crescimento Moderado / Atividade Saudável", variacao: 0.33, categoria: "Brasil — Macro" },
+  { nome: "PIB — Brasil (2º tri 2026)", valor: 3.43, unidade: "R$ tri", contexto: "Valores correntes trimestrais — IBGE", variacao: 5.38, categoria: "Brasil — Macro" },
+  { nome: "DLSP — Brasil (jul/2026)", valor: 8.1, unidade: "R$ tri", contexto: "Dívida Líquida do Setor Público — BCB", variacao: 0.97, categoria: "Brasil — Macro" },
+  { nome: "IMA-B (ETF IMAB11)", valor: 116.48, unidade: "R$/cota", contexto: "Índice de Títulos Públicos Atrelados à Inflação | Fonte: ETF IMAB11 (Yahoo Finance)", variacao: 0.32, categoria: "Brasil — Renda Fixa" },
+  { nome: "IBOVESPA", valor: 183853, unidade: "pts", contexto: "Índice da B3", variacao: -0.72, categoria: "Brasil — Bolsa" },
+  { nome: "IFIX (Índice B3)", valor: 3760.1, unidade: "pts", contexto: "Índice de Fundos Imobiliários B3", variacao: 0, categoria: "Brasil — Bolsa" },
+  { nome: "IFIX ETF Proxy (XFIX11)", valor: 13.34, unidade: "R$/cota", contexto: "Replica IFIX", variacao: 0.45, categoria: "Brasil — Bolsa" },
+  { nome: "B3 Ibovespa #1 — VALE3", valor: 10.85, unidade: "% do índice", contexto: "Top 1 em peso no Ibovespa", variacao: 0, categoria: "Brasil — Bolsa" },
+  { nome: "B3 IFIX #1 — KNCR11", valor: 7.59, unidade: "% do índice", contexto: "Top 1 em peso no IFIX", variacao: 0, categoria: "Brasil — Bolsa" },
+  { nome: "B3 Small Caps #1 — CSMG3", valor: 6.08, unidade: "% do índice", contexto: "Top 1 em peso no Small Caps", variacao: 0, categoria: "Brasil — Bolsa" },
+  { nome: "B3 Dividendos #1 — BBSE3", valor: 5.6, unidade: "% do índice", contexto: "Top 1 em peso no Dividendos", variacao: 0, categoria: "Brasil — Bolsa" },
+  { nome: "VALE (VALE3)", valor: 77.92, unidade: "BRL/ação", contexto: "Oferta Global de Minério de Ferro | US$ 64,94 bi | Ranking: #397", variacao: -0.68, categoria: "Brasil — Bolsa" },
+  { nome: "Oceanic Niño Index (ONI)", valor: 1.5, unidade: "°C", contexto: "El Niño Moderado / Alerta de Inflação de Custos no Agro", variacao: 0.49, categoria: "Risco Climático" },
+  { nome: "Petróleo Brent", valor: 93.65, unidade: "USD/bbl", contexto: "USD/bbl (159 litros)", variacao: -1.96, categoria: "Commodities" },
+  { nome: "Dr. Copper (Cobre)", valor: 6.67, unidade: "USD/lb", contexto: "USD 14.694,92/ton | Boom Econômico / Pressão Inflacionária", variacao: 1.35, categoria: "Commodities" },
+  { nome: "Baltic Dry Index (BDI)", valor: 3488, unidade: "pts", contexto: "Mercado de Fretes Aquecido | Forte demanda por transporte marítimo", variacao: 4.71, categoria: "Commodities" },
+  { nome: "Ouro", valor: 733.83, unidade: "BRL/g", contexto: "Ouro spot em BRL por grama", variacao: -0.81, categoria: "Metais" },
+  { nome: "Ouro Barra LBMA", valor: 9129930, unidade: "BRL/barra", contexto: "BRL/barra (400 oz t) — LBMA", variacao: 0, categoria: "Metais" },
+  { nome: "Prata", valor: 10.88, unidade: "BRL/g", contexto: "Prata spot em BRL por grama", variacao: -1.35, categoria: "Metais" },
+  { nome: "Platina", valor: 298.21, unidade: "BRL/g", contexto: "Platina spot em BRL por grama", variacao: -0.98, categoria: "Metais" },
+  { nome: "Soja", valor: 13.1, unidade: "USD/bushel", contexto: "USD 481,52/ton | BRL 2.466,96/ton | Ciclo Favorável", variacao: 0.33, categoria: "Agronegócio" },
+  { nome: "Açúcar/Etanol", valor: 0.184, unidade: "USD/lb", contexto: "Agronegócio / Biocombustíveis / Comércio Global de Açúcar | Mercado Equilibrado", variacao: 1.83, categoria: "Agronegócio" },
+  { nome: "Bitcoin (USD)", valor: 79523.9, unidade: "USD", contexto: "Reserva Digital de Valor / Rede Monetária | EMA7 D-1: 78.566,01 | Momentum de alta", variacao: -2.15, categoria: "Criptomoedas" },
+  { nome: "Bitcoin (BRL)", valor: 407425, unidade: "BRL", contexto: "Bitcoin em Reais", variacao: 0, categoria: "Criptomoedas" },
+  { nome: "Bitcoin – Máxima 2026", valor: 96929.3, unidade: "USD", contexto: "2026-01-14", variacao: 0, categoria: "Criptomoedas" },
+  { nome: "Bitcoin – Mínima 2026", valor: 58558.9, unidade: "USD", contexto: "2026-06-30", variacao: 0, categoria: "Criptomoedas" },
+  { nome: "Bitcoin – Máxima Histórica", valor: 124753, unidade: "USD", contexto: "2025-10-06", variacao: 0, categoria: "Criptomoedas" },
+  { nome: "Bitcoin – Mínima Histórica", valor: 178.1, unidade: "USD", contexto: "2015-01-14", variacao: 0, categoria: "Criptomoedas" },
+  { nome: "Ethereum (USD)", valor: 2455.28, unidade: "USD", contexto: "Contratos Inteligentes / Infraestrutura Layer-1 | EMA7 D-1: 2.445,68 | Momentum de alta", variacao: -2.1, categoria: "Criptomoedas" },
+  { nome: "Ethereum (BRL)", valor: 12579.1, unidade: "BRL", contexto: "Ethereum em Reais", variacao: 0, categoria: "Criptomoedas" },
+  { nome: "Ethereum – Máxima 2026", valor: 3354.72, unidade: "USD", contexto: "2026-01-14", variacao: 0, categoria: "Criptomoedas" },
+  { nome: "Ethereum – Mínima 2026", valor: 1564.82, unidade: "USD", contexto: "2026-06-25", variacao: 0, categoria: "Criptomoedas" },
+  { nome: "Ethereum – Máxima Histórica", valor: 4831.35, unidade: "USD", contexto: "2025-08-22", variacao: 0, categoria: "Criptomoedas" },
+  { nome: "Ethereum – Mínima Histórica", valor: 84.31, unidade: "USD", contexto: "2018-12-14", variacao: 0, categoria: "Criptomoedas" },
+  { nome: "Billionaire — Elon Musk (net worth)", valor: 891.91, unidade: "bi USD", contexto: "2026-08-31", variacao: 0, categoria: "Cultura & Referências" },
+  { nome: "DB-Engines Ranking — Oracle", valor: 1122.27, unidade: "pts", contexto: "Multi-model Relational", variacao: 0, categoria: "Tecnologia" },
+  { nome: "Python — Programming Languages Rating", valor: 18.53, unidade: "%", contexto: "Aug 2025: #1 | Aug 2026: #1", variacao: -7.61, categoria: "Tecnologia" },
+  { nome: "GitHub Trending — build-your-own-x", valor: 545149, unidade: "⭐", contexto: "codecrafters-io/build-your-own-x | Criado: 2018-05-09 | Atualizado: 2026-09-04", variacao: 0, categoria: "Tecnologia" },
+  { nome: "Linux Ranking — CachyOS (Distrowatch)", valor: 2477, unidade: "pts", contexto: "Distrowatch", variacao: 0, categoria: "Tecnologia" },
+  { nome: "Movie — Avatar (Top Lifetime Grosses)", valor: 2923710000, unidade: "USD", contexto: "Avatar (2009)", variacao: 0, categoria: "Cultura & Referências" },
+  { nome: "FIFA World Ranking — Spain", valor: 1995.98, unidade: "pts", contexto: "1º lugar | Próxima atualização: 07/10/2026", variacao: 0, categoria: "Cultura & Referências" },
+  { nome: "Arena AI Text — claude-fable-5", valor: 1507, unidade: "Elo", contexto: "Votos: 27.189", variacao: 0, categoria: "Arena AI" },
+  { nome: "Arena AI Code — claude-fable-5.1-max", valor: 1765, unidade: "Elo", contexto: "Votos: 1.106", variacao: 0, categoria: "Arena AI" },
+  { nome: "Arena AI Image — gpt-image-2 (medium)", valor: 1382, unidade: "Elo", contexto: "Votos: 75.014", variacao: 0, categoria: "Arena AI" },
+  { nome: "Arena AI Video — gemini-omni-1.1-flash", valor: 1515, unidade: "Elo", contexto: "Votos: 1.762", variacao: 0, categoria: "Arena AI" },
+  { nome: "Arena AI Open Source — kimi-k3-max", valor: 1489, unidade: "Elo", contexto: "Votos: 524", variacao: 0, categoria: "Arena AI" },
+  { nome: "Arena AI Agent — Claude Opus 5 (High)", valor: 14.96, unidade: "% Confirmed Success", contexto: "Praise: 21,82% | Complaint: 6,81%", variacao: 0, categoria: "Arena AI" }
+];
+
+// ═══════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════
+function fmtVal(v, u) {
+  if (Math.abs(v) >= 1e9) return (v/1e9).toFixed(2) + ' bi ' + u;
+  if (Math.abs(v) >= 1e6) return (v/1e6).toFixed(2) + ' mi ' + u;
+  if (Math.abs(v) >= 1000) return v.toLocaleString('pt-BR') + ' ' + u;
+  return v.toLocaleString('pt-BR', {maximumFractionDigits:5}) + ' ' + u;
+}
+function varClass(v) {
+  if (v > 0) return 'var-up';
+  if (v < 0) return 'var-down';
+  return 'var-neutral';
+}
+function varSymbol(v) {
+  if (v > 0) return '▲ +' + v.toFixed(2) + '%';
+  if (v < 0) return '▼ ' + v.toFixed(2) + '%';
+  return '— 0,00%';
+}
+
+// ═══════════════════════════════════════════════════════
+// TABELA
+// ═══════════════════════════════════════════════════════
+let sortDir = [1,1,1,1];
+function renderTable(dados) {
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = dados.map(d => `
+    <tr>
+      <td class="td-name">${d.nome}</td>
+      <td class="td-val">${fmtVal(d.valor, d.unidade)}</td>
+      <td class="td-ctx">${d.contexto}</td>
+      <td><span class="card-variation ${varClass(d.variacao)}">${varSymbol(d.variacao)}</span></td>
+    </tr>
+  `).join('');
+}
+function filterTable() {
+  const q = document.getElementById('searchBar').value.toLowerCase();
+  const filtered = DADOS.filter(d =>
+    d.nome.toLowerCase().includes(q) ||
+    d.contexto.toLowerCase().includes(q) ||
+    d.categoria.toLowerCase().includes(q)
+  );
+  renderTable(filtered);
+}
+let tableData = [...DADOS];
+function sortTable(col) {
+  sortDir[col] *= -1;
+  tableData.sort((a,b) => {
+    const vals = [a.nome, a.valor, a.contexto, a.variacao];
+    const valb = [b.nome, b.valor, b.contexto, b.variacao];
+    if (vals[col] < valb[col]) return -1 * sortDir[col];
+    if (vals[col] > valb[col]) return 1 * sortDir[col];
+    return 0;
+  });
+  renderTable(tableData);
+}
+renderTable(DADOS);
+
+// ═══════════════════════════════════════════════════════
+// PAINEL DE ANOMALIAS
+// ═══════════════════════════════════════════════════════
+const comVar = DADOS.filter(d => d.variacao !== 0);
+const sorted = [...comVar].sort((a,b) => b.variacao - a.variacao);
+const altas = sorted.filter(d => d.variacao > 0).slice(0,8);
+const baixas = [...sorted].reverse().filter(d => d.variacao < 0).slice(0,8);
+const neutros = DADOS.filter(d => d.variacao === 0).slice(0,8);
+
+// Extremos cards
+const topAlta = altas[0];
+const topBaixa = baixas[0];
+const cards = [
+  {
+    icon:'🚀', bg:'rgba(63,185,80,0.12)', color:'var(--green)',
+    titulo: '🏆 Maior Alta do Dia',
+    nome: topAlta ? topAlta.nome : '—',
+    val: topAlta ? varSymbol(topAlta.variacao) : '—',
+    badge: 'badge-ok'
+  },
+  {
+    icon:'📉', bg:'rgba(248,81,73,0.10)', color:'var(--red)',
+    titulo: '⚠ Maior Queda do Dia',
+    nome: topBaixa ? topBaixa.nome : '—',
+    val: topBaixa ? varSymbol(topBaixa.variacao) : '—',
+    badge: 'badge-alert'
+  },
+  {
+    icon:'🌊', bg:'rgba(45,212,191,0.10)', color:'var(--teal)',
+    titulo: '🌡 Risco Climático',
+    nome: 'ONI — El Niño Moderado',
+    val: '1,5°C | +0,49%',
+    badge: 'badge-warn'
+  },
+  {
+    icon:'🔗', bg:'rgba(139,92,246,0.12)', color:'var(--purple)',
+    titulo: '⚡ Cadeia Semicondutores',
+    nome: 'ASML + TSMC + NVDA',
+    val: '+3,85% / +2,11% / +2,34%',
+    badge: 'badge-ok'
+  }
+];
+const acCards = document.getElementById('anomaliaCards');
+acCards.innerHTML = cards.map(c => `
+  <div class="card card-sm" style="--card-accent:${c.color}">
+    <div style="font-size:24px;margin-bottom:6px">${c.icon}</div>
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;color:var(--text2);margin-bottom:4px">${c.titulo}</div>
+    <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px">${c.nome}</div>
+    <span class="anomaly-badge ${c.badge}">${c.val}</span>
+  </div>
+`).join('');
+
+function renderAnomaliaList(tipo) {
+  let arr;
+  if (tipo === 'altas') arr = altas;
+  else if (tipo === 'baixas') arr = baixas;
+  else arr = neutros;
+  const el = document.getElementById('anomaliaList');
+  el.innerHTML = `<div class="table-wrap"><table style="width:100%;border-collapse:collapse;font-size:13px">
+    <thead><tr style="background:var(--bg3)">
+      <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;color:var(--text2);border-bottom:1px solid var(--border)">Indicador</th>
+      <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;color:var(--text2);border-bottom:1px solid var(--border)">Valor</th>
+      <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;color:var(--text2);border-bottom:1px solid var(--border)">Categoria</th>
+      <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;color:var(--text2);border-bottom:1px solid var(--border)">Variação</th>
+    </tr></thead>
+    <tbody>
+    ${arr.map(d => `<tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:9px 14px;font-weight:500;color:var(--text)">${d.nome}</td>
+      <td style="padding:9px 14px;font-weight:600;color:var(--text)">${fmtVal(d.valor, d.unidade)}</td>
+      <td style="padding:9px 14px;color:var(--text2);font-size:12px">${d.categoria}</td>
+      <td style="padding:9px 14px"><span class="card-variation ${varClass(d.variacao)}">${varSymbol(d.variacao)}</span></td>
+    </tr>`).join('')}
+    </tbody></table></div>`;
+}
+renderAnomaliaList('altas');
+
+function switchAnomalia(tipo, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAnomaliaList(tipo);
+}
+
+// ═══════════════════════════════════════════════════════
+// MODO CLARO / ESCURO
+// ═══════════════════════════════════════════════════════
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeBtn');
+  if (body.dataset.theme === 'dark') {
+    body.dataset.theme = 'light';
+    btn.textContent = '☀️ Claro';
+    updateChartTheme('light');
+  } else {
+    body.dataset.theme = 'dark';
+    btn.textContent = '🌙 Escuro';
+    updateChartTheme('dark');
+  }
+}
+function updateChartTheme(t) {
+  const color = t === 'dark' ? '#8b949e' : '#656d76';
+  const grid = t === 'dark' ? 'rgba(48,54,61,0.6)' : 'rgba(200,210,220,0.5)';
+  Chart.helpers.each(Chart.instances, chart => {
+    if (chart.options.scales) {
+      Object.values(chart.options.scales).forEach(s => {
+        if (s.ticks) s.ticks.color = color;
+        if (s.grid) s.grid.color = grid;
+      });
+    }
+    if (chart.options.plugins && chart.options.plugins.legend) {
+      chart.options.plugins.legend.labels.color = color;
+    }
+    chart.update();
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// NAVEGAÇÃO SUAVE
+// ═══════════════════════════════════════════════════════
+function scrollTo(id) {
+  const el = document.querySelector(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function navClick(anchor, id) {
+  document.querySelectorAll('.nav-anchor').forEach(a => a.classList.remove('active'));
+  anchor.classList.add('active');
+  scrollTo(id);
+}
+// Highlight da nav ao fazer scroll
+const _navSections = ['#sec-kpi','#sec-macro','#sec-brasil','#sec-acoes','#sec-cripto','#sec-commodities','#sec-tech','#sec-tabela','#sec-insights','#sec-anomalias'];
+const _navAnchors = document.querySelectorAll('.nav-anchor');
+const _observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = '#' + entry.target.id;
+      const idx = _navSections.indexOf(id);
+      if (idx >= 0) {
+        _navAnchors.forEach(a => a.classList.remove('active'));
+        _navAnchors[idx] && _navAnchors[idx].classList.add('active');
+      }
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+_navSections.forEach(id => {
+  const el = document.querySelector(id);
+  if (el) _observer.observe(el);
+});
+
+// ═══════════════════════════════════════════════════════
+// CHART DEFAULTS
+// ═══════════════════════════════════════════════════════
+const CD = {
+  color: '#8b949e',
+  grid: 'rgba(48,54,61,0.6)',
+  bg2: '#161b22',
+  fontFamily: "'Inter', -apple-system, sans-serif"
+};
+Chart.defaults.color = CD.color;
+Chart.defaults.font.family = CD.fontFamily;
+Chart.defaults.font.size = 11;
+
+function baseScales(xLabel, yLabel) {
+  return {
+    x: {
+      ticks: { color: CD.color, maxRotation: 45 },
+      grid: { color: CD.grid },
+      ...(xLabel ? { title: { display: true, text: xLabel, color: CD.color } } : {})
+    },
+    y: {
+      ticks: { color: CD.color },
+      grid: { color: CD.grid },
+      ...(yLabel ? { title: { display: true, text: yLabel, color: CD.color } } : {})
+    }
+  };
+}
+
+// ═══════════════════════════════════════════════════════
+// GRÁFICO 1: ESTRUTURA DE JUROS EUA
+// ═══════════════════════════════════════════════════════
+new Chart(document.getElementById('chartYieldCurve'), {
+  type: 'bar',
+  data: {
+    labels: ['Fed Funds\nTarget', 'Short-Term\nYield', '2Y\nTreasury', '10Y\nTreasury'],
+    datasets: [{
+      label: '% a.a.',
+      data: [3.75, 3.77, 4.39, 4.77],
+      backgroundColor: ['rgba(88,166,255,0.7)', 'rgba(45,212,191,0.7)', 'rgba(210,153,34,0.7)', 'rgba(249,115,22,0.7)'],
+      borderColor: ['#58a6ff', '#2dd4bf', '#d29922', '#f97316'],
+      borderWidth: 2,
+      borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: {
+      callbacks: { label: ctx => ' ' + ctx.raw.toFixed(2) + '% a.a.' }
+    }},
+    scales: {
+      x: { ticks: { color: CD.color }, grid: { color: CD.grid } },
+      y: {
+        ticks: { color: CD.color, callback: v => v.toFixed(2) + '%' },
+        grid: { color: CD.grid },
+        min: 3, max: 5.2
+      }
+    }
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+// GRÁFICO 2: ÍNDICES EUA — VARIAÇÃO
+// ═══════════════════════════════════════════════════════
+new Chart(document.getElementById('chartUsEquity'), {
+  type: 'bar',
+  data: {
+    labels: ['S&P 500', 'Nasdaq', 'Dow Jones'],
+    datasets: [{
+      label: 'Variação (%)',
+      data: [-0.12, 0.34, -0.24],
+      backgroundColor: d => d.raw >= 0 ? 'rgba(63,185,80,0.75)' : 'rgba(248,81,73,0.75)',
+      borderColor: d => d.raw >= 0 ? '#3fb950' : '#f85149',
+      borderWidth: 2, borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: {
+      callbacks: { label: ctx => (ctx.raw >= 0 ? ' +' : ' ') + ctx.raw.toFixed(2) + '%' }
+    }},
+    scales: {
+      x: { ticks: { color: CD.color }, grid: { color: CD.grid } },
+      y: {
+        ticks: { color: CD.color, callback: v => v.toFixed(2) + '%' },
+        grid: { color: CD.grid }
+      }
+    }
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+// GRÁFICO 3: CÂMBIO
+// ═══════════════════════════════════════════════════════
+new Chart(document.getElementById('chartCambio'), {
+  type: 'bar',
+  data: {
+    labels: ['Dólar', 'Euro', 'Libra\nEsterlina', 'Iene (x100)'],
+    datasets: [{
+      label: 'BRL',
+      data: [5.12, 5.95, 6.92, 3.28],
+      backgroundColor: ['rgba(88,166,255,0.75)', 'rgba(45,212,191,0.75)', 'rgba(139,92,246,0.75)', 'rgba(249,115,22,0.75)'],
+      borderColor: ['#58a6ff', '#2dd4bf', '#8b5cf6', '#f97316'],
+      borderWidth: 2, borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: (ctx, i) => {
+        const labels = ['R$ 5,12 (USD)', 'R$ 5,95 (EUR)', 'R$ 6,92 (GBP)', 'R$ 0,0328 (JPY)'];
+        return labels[ctx.dataIndex];
+      }}}
+    },
+    scales: {
+      x: { ticks: { color: CD.color }, grid: { color: CD.grid } },
+      y: { ticks: { color: CD.color, callback: v => 'R$ ' + v.toFixed(2) }, grid: { color: CD.grid } }
+    }
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+// GRÁFICO 4: JUROS BRASIL
+// ═══════════════════════════════════════════════════════
+new Chart(document.getElementById('chartBrJuros'), {
+  type: 'bar',
+  data: {
+    labels: ['SELIC', 'CDI', 'IPCA', 'Juro Real'],
+    datasets: [{
+      label: '% a.a.',
+      data: [14, 13.9, 4.44, 9.06],
+      backgroundColor: ['rgba(63,185,80,0.75)', 'rgba(45,212,191,0.75)', 'rgba(249,115,22,0.75)', 'rgba(248,81,73,0.75)'],
+      borderColor: ['#3fb950', '#2dd4bf', '#f97316', '#f85149'],
+      borderWidth: 2, borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: {
+      callbacks: { label: ctx => ' ' + ctx.raw.toFixed(2) + '% a.a.' }
+    }},
+    scales: {
+      x: { ticks: { color: CD.color }, grid: { color: CD.grid } },
+      y: { ticks: { color: CD.color, callback: v => v.toFixed(1) + '%' }, grid: { color: CD.grid } }
+    }
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+// GRÁFICO 5: AÇÕES GLOBAIS — VARIAÇÃO
+// ═══════════════════════════════════════════════════════
+const acoesLabels = ['ASML', 'NVDA', 'TSMC', 'Reliance', 'CXMT', 'Soja', 'Açúcar', 'MELI', 'Visa', 'Aramco', 'VALE3', 'SpaceX', 'NU'];
+const acoesVals = [3.85, 2.34, 2.11, 1.5, 1.07, 0.33, 1.83, -0.99, -0.84, -0.23, -0.68, -1.42, -2.52];
+new Chart(document.getElementById('chartAcoes'), {
+  type: 'bar',
+  data: {
+    labels: acoesLabels,
+    datasets: [{
+      label: 'Variação (%)',
+      data: acoesVals,
+      backgroundColor: acoesVals.map(v => v >= 0 ? 'rgba(63,185,80,0.8)' : 'rgba(248,81,73,0.8)'),
+      borderColor: acoesVals.map(v => v >= 0 ? '#3fb950' : '#f85149'),
+      borderWidth: 2, borderRadius: 5
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: {
+      callbacks: { label: ctx => (ctx.raw >= 0 ? ' +' : ' ') + ctx.raw.toFixed(2) + '%' }
+    }},
+    scales: {
+      x: { ticks: { color: CD.color, callback: v => v.toFixed(1) + '%' }, grid: { color: CD.grid } },
+      y: { ticks: { color: CD.color, font: { size: 11 } }, grid: { color: CD.grid } }
+    }
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+// GRÁFICO 6: CRIPTO — FAIXA DE PREÇOS 2026
+// ═══════════════════════════════════════════════════════
+new Chart(document.getElementById('chartCripto'), {
+  type: 'bar',
+  data: {
+    labels: ['Bitcoin (BTC)', 'Ethereum (ETH)'],
+    datasets: [
+      {
+        label: 'Mínima 2026', data: [58558.9, 1564.82],
+        backgroundColor: 'rgba(248,81,73,0.6)', borderColor: '#f85149', borderWidth: 2, borderRadius: 5
+      },
+      {
+        label: 'Preço Atual', data: [79523.9, 2455.28],
+        backgroundColor: 'rgba(88,166,255,0.75)', borderColor: '#58a6ff', borderWidth: 2, borderRadius: 5
+      },
+      {
+        label: 'Máxima 2026', data: [96929.3, 3354.72],
+        backgroundColor: 'rgba(63,185,80,0.6)', borderColor: '#3fb950', borderWidth: 2, borderRadius: 5
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: true, labels: { color: CD.color, boxWidth: 12 } },
+      tooltip: { callbacks: { label: ctx => ' US$ ' + ctx.raw.toLocaleString('pt-BR') } }
+    },
+    scales: {
+      x: { ticks: { color: CD.color }, grid: { color: CD.grid } },
+      y: { ticks: { color: CD.color, callback: v => 'US$ ' + (v/1000).toFixed(0) + 'k' }, grid: { color: CD.grid } }
+    }
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+// GRÁFICO 7: COMMODITIES — VARIAÇÃO
+// ═══════════════════════════════════════════════════════
+const commLabels = ['BDI', 'Açúcar', 'Cobre', 'Soja', 'ONI', 'Ouro', 'Platina', 'Prata', 'Brent'];
+const commVals = [4.71, 1.83, 1.35, 0.33, 0.49, -0.81, -0.98, -1.35, -1.96];
+new Chart(document.getElementById('chartCommodities'), {
+  type: 'bar',
+  data: {
+    labels: commLabels,
+    datasets: [{
+      label: 'Variação (%)',
+      data: commVals,
+      backgroundColor: commVals.map(v => v >= 0 ? 'rgba(45,212,191,0.8)' : 'rgba(248,81,73,0.75)'),
+      borderColor: commVals.map(v => v >= 0 ? '#2dd4bf' : '#f85149'),
+      borderWidth: 2, borderRadius: 5
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: {
+      callbacks: { label: ctx => (ctx.raw >= 0 ? ' +' : ' ') + ctx.raw.toFixed(2) + '%' }
+    }},
+    scales: {
+      x: { ticks: { color: CD.color }, grid: { color: CD.grid } },
+      y: { ticks: { color: CD.color, callback: v => v.toFixed(2) + '%' }, grid: { color: CD.grid } }
+    }
+  }
+});
+
+// ═══════════════════════════════════════════════════════
+// GRÁFICO 8: FIFA TOP 5
+// ═══════════════════════════════════════════════════════
+new Chart(document.getElementById('chartFifa'), {
+  type: 'bar',
+  data: {
+    labels: ['🇪🇸 Spain', '🇦🇷 Argentina', '🇫🇷 France', '🏴󠁧󠁢󠁥󠁮󠁧󠁿 England', '🇧🇷 Brazil'],
+    datasets: [{
+      label: 'Pontos FIFA',
+      data: [1995.98, null, null, null, null],
+      backgroundColor: ['rgba(88,166,255,0.8)', 'rgba(45,212,191,0.7)', 'rgba(139,92,246,0.7)', 'rgba(249,115,22,0.7)', 'rgba(63,185,80,0.7)'],
+      borderColor: ['#58a6ff', '#2dd4bf', '#8b5cf6', '#f97316', '#3fb950'],
+      borderWidth: 2, borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const notas = ['1.995,98 pts (dado disponível no arquivo)', 'posição 2 (pts não disponíveis no arquivo)', 'posição 3 (pts não disponíveis no arquivo)', 'posição 4 (pts não disponíveis no arquivo)', 'posição 5 (pts não disponíveis no arquivo)'];
+            return notas[ctx.dataIndex];
+          }
+        }
+      },
+      annotation: {}
+    },
+    scales: {
+      x: { ticks: { color: CD.color }, grid: { color: CD.grid } },
+      y: { ticks: { color: CD.color }, grid: { color: CD.grid }, beginAtZero: true }
+    }
+  }
+});
+
+// Atualizar barras da FIFA com os dados que temos
+// Apenas Spain tem pontos no arquivo; os demais são ranking sem pontos explícitos
+// Não inventar dados: mostrar apenas Spain com valor disponível, os demais como 0/null
+// Já implementado corretamente acima.
+
+// ═══════════════════════════════════════════════════════
+// GRÁFICO 9: RADAR DE ANOMALIAS
+// ═══════════════════════════════════════════════════════
+const radarCats = ['Macro EUA', 'Renda Variável EUA', 'Ações Globais', 'Câmbio', 'Brasil Juros', 'Brasil Bolsa', 'Commodities', 'Criptomoedas'];
+function avgAbsVar(cat) {
+  const items = DADOS.filter(d => {
+    if (cat === 'Brasil Juros') return d.categoria.includes('Brasil — Juros') || d.categoria.includes('Brasil — Inflação');
+    if (cat === 'Brasil Bolsa') return d.categoria.includes('Brasil — Bolsa') || d.categoria.includes('Brasil — Macro');
+    return d.categoria.toLowerCase().replace(/ /g,'').includes(cat.toLowerCase().replace(/ /g,''));
+  });
+  if (!items.length) return 0;
+  return items.reduce((s,d) => s + Math.abs(d.variacao), 0) / items.length;
+}
+const radarData = [
+  parseFloat(avgAbsVar('Macro EUA').toFixed(2)),
+  parseFloat(avgAbsVar('Renda Variável EUA').toFixed(2)),
+  parseFloat(avgAbsVar('Ações Globais').toFixed(2)),
+  parseFloat(avgAbsVar('Câmbio').toFixed(2)),
+  parseFloat(avgAbsVar('Brasil Juros').toFixed(2)),
+  parseFloat(avgAbsVar('Brasil Bolsa').toFixed(2)),
+  parseFloat(avgAbsVar('Commodities').toFixed(2)),
+  parseFloat(avgAbsVar('Criptomoedas').toFixed(2))
+];
+new Chart(document.getElementById('chartRadar'), {
+  type: 'radar',
+  data: {
+    labels: radarCats,
+    datasets: [{
+      label: 'Variação Média Absoluta (%)',
+      data: radarData,
+      backgroundColor: 'rgba(88,166,255,0.15)',
+      borderColor: '#58a6ff',
+      borderWidth: 2,
+      pointBackgroundColor: '#58a6ff',
+      pointRadius: 4,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: true, labels: { color: CD.color, boxWidth: 12 } },
+      tooltip: { callbacks: { label: ctx => ' ' + ctx.raw.toFixed(2) + '% variação média absoluta' } }
+    },
+    scales: {
+      r: {
+        ticks: { color: CD.color, backdropColor: 'transparent', callback: v => v.toFixed(1) + '%' },
+        grid: { color: CD.grid },
+        angleLines: { color: CD.grid },
+        pointLabels: { color: CD.color, font: { size: 11 } }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

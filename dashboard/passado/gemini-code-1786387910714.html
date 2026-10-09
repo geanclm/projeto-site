@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Analítico | Projeto Indicadores</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* ==========================================================================
+           DESIGN TOKENS & VARIÁVEIS DO TEMA (DARK MODE EXECUTIVO DE VANGUARDA)
+           ========================================================================== */
+        :root {
+            --bg-body: #090c10;
+            --bg-card: #161b22;
+            --bg-card-hover: #1f242d;
+            --bg-input: #21262d;
+            --border-color: #30363d;
+            --border-highlight: #444c56;
+            
+            --primary: #00adb5;
+            --primary-glow: rgba(0, 173, 181, 0.15);
+            --accent-blue: #2f81f7;
+            --accent-purple: #a371f7;
+            --accent-orange: #d29922;
+            
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --text-dim: #6e7681;
+            
+            --green-up: #3fb950;
+            --green-glow: rgba(63, 185, 80, 0.15);
+            --red-down: #f85149;
+            --red-glow: rgba(248, 81, 73, 0.15);
+            --neutral-flat: #8b949e;
+
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Light Mode Tokens */
+        [data-theme="light"] {
+            --bg-body: #f6f8fa;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f3f4f6;
+            --bg-input: #eff1f3;
+            --border-color: #d0d7de;
+            --border-highlight: #afb8c1;
+            
+            --primary: #00888f;
+            --primary-glow: rgba(0, 136, 143, 0.12);
+            --accent-blue: #0969da;
+            --accent-purple: #8250df;
+            --accent-orange: #bf8700;
+            
+            --text-main: #1f2328;
+            --text-muted: #57606a;
+            --text-dim: #8c959f;
+            
+            --green-up: #1a7f37;
+            --green-glow: rgba(26, 127, 55, 0.12);
+            --red-down: #cf222e;
+            --red-glow: rgba(207, 34, 46, 0.12);
+            --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ==========================================================================
+           RESET & ESTRUTURA GERAL
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding-bottom: 3rem;
+            transition: var(--transition-smooth);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ==========================================================================
+           CABEÇALHO INSTITUCIONAL & TOOLBAR
+           ========================================================================== */
+        header.app-header {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .brand-block {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), #00565b);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.35rem;
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        .brand-title h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-title p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .ref-badge {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.85rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ==========================================================================
+           BARRA DE PESQUISA E FILTROS DE CATEGORIA
+           ========================================================================== */
+        .controls-bar {
+            margin: 1.75rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 280px;
+            max-width: 450px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 0.65rem 1rem 0.65rem 2.5rem;
+            color: var(--text-main);
+            font-size: 0.875rem;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+
+        .category-pills {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.25rem;
+        }
+
+        .pill-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition-smooth);
+        }
+
+        .pill-btn:hover, .pill-btn.active {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 2px 8px var(--primary-glow);
+        }
+
+        /* ==========================================================================
+           FEATURE SURPRESA: PAINEL DE SINAIS MACRO & ANOMALIAS
+           ========================================================================== */
+        .feature-banner {
+            background: linear-gradient(135deg, rgba(22,27,34,0.95), rgba(13,17,23,0.95)),
+                        radial-gradient(circle at top right, var(--primary-glow), transparent 60%);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .banner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .banner-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .banner-title i {
+            color: var(--primary);
+        }
+
+        .banner-badge {
+            background: var(--primary-glow);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .signals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .signal-item {
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .signal-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .signal-tag.tag-warning { color: var(--accent-orange); }
+        .signal-tag.tag-danger { color: var(--red-down); }
+        .signal-tag.tag-success { color: var(--green-up); }
+        .signal-tag.tag-info { color: var(--accent-blue); }
+
+        .signal-desc {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .signal-context {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           CARDS DE RESUMO EXECUTIVO (KPIs)
+           ========================================================================== */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-card);
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-highlight);
+            background-color: var(--bg-card-hover);
+        }
+
+        .kpi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .kpi-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .kpi-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            background-color: var(--bg-input);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .kpi-body {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .kpi-value {
+            font-size: 1.65rem;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            color: var(--text-main);
+            letter-spacing: -0.03em;
+        }
+
+        .kpi-unit {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .kpi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+        }
+
+        .kpi-badge.up {
+            background-color: var(--green-glow);
+            color: var(--green-up);
+        }
+
+        .kpi-badge.down {
+            background-color: var(--red-glow);
+            color: var(--red-down);
+        }
+
+        .kpi-badge.neutral {
+            background-color: var(--bg-input);
+            color: var(--neutral-flat);
+        }
+
+        .kpi-subtext {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            margin-top: 0.6rem;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ==========================================================================
+           SEÇÃO DE GRÁFICOS & VISUALIZAÇÕES
+           ========================================================================== */
+        .charts-section {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .chart-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-card.col-12 { grid-column: span 12; }
+        .chart-card.col-8  { grid-column: span 8; }
+        .chart-card.col-6  { grid-column: span 6; }
+        .chart-card.col-4  { grid-column: span 4; }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .chart-title-block h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chart-title-block p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        .chart-container-box {
+            position: relative;
+            flex: 1;
+            min-height: 300px;
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           GRID DE CARDS EXPANDIDOS DE INDICADORES (DETALHAMENTO COMPLETO)
+           ========================================================================== */
+        .section-header {
+            margin: 2.5rem 0 1.25rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-header h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .indicator-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-card);
+        }
+
+        .indicator-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-2px);
+        }
+
+        .ind-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .ind-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+
+        .ind-category {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            background-color: var(--primary-glow);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .ind-value-block {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+
+        .ind-val-group {
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .ind-value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            color: var(--text-main);
+        }
+
+        .ind-unit {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .ind-context {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            background-color: var(--bg-body);
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .ind-footer {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 0.5rem;
+            margin-top: auto;
+        }
+
+        /* ==========================================================================
+           TABELAS DE DADOS (SEARCHABLE & SORTABLE)
+           ========================================================================== */
+        .table-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        table.custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        table.custom-table th {
+            background-color: var(--bg-input);
+            color: var(--text-muted);
+            padding: 0.85rem 1rem;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        table.custom-table th:hover {
+            color: var(--text-main);
+        }
+
+        table.custom-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+            vertical-align: middle;
+        }
+
+        table.custom-table tr:hover td {
+            background-color: var(--bg-card-hover);
+        }
+
+        .mono-num {
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           SEÇÃO DE INSIGHTS AUTOMÁTICOS
+           ========================================================================== */
+        .insights-section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .insight-card {
+            background-color: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            position: relative;
+        }
+
+        .insight-card h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .insight-card p {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ==========================================================================
+           RODAPÉ DE TRANSPARÊNCIA E FONTES
+           ========================================================================== */
+        footer.app-footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .sources-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .source-tag {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            color: var(--text-dim);
+        }
+
+        /* ==========================================================================
+           RESPONSIVIDADE (MEDIA QUERIES)
+           ========================================================================== */
+        @media (max-width: 1200px) {
+            .chart-card.col-8, .chart-card.col-6, .chart-card.col-4 {
+                grid-column: span 12;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .controls-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .signals-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="brand-block">
+                    <div class="brand-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="brand-title">
+                        <h1>Projeto Indicadores <span style="font-size: 0.75rem; background: var(--primary-glow); color: var(--primary); padding: 2px 8px; border-radius: 10px; font-weight: 600;">v2026.1</span></h1>
+                        <p>Plataforma Corporativa de Inteligência Macroeconômica e Benchmarking de IA</p>
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <div class="ref-badge" title="Data exata de captura do snapshot temporal">
+                        <i class="fa-regular fa-clock"></i>
+                        <span id="ref-date-display">03/08/2026 03:32:50</span>
+                    </div>
+
+                    <button class="theme-toggle-btn" id="theme-toggle" title="Alternar Modo Claro/Escuro">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 1.5rem;">
+
+        <section class="feature-banner">
+            <div class="banner-header">
+                <div class="banner-title">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Radar do Mercado & Anomalias Observadas</span>
+                </div>
+                <span class="banner-badge">Sinais em Destaque</span>
+            </div>
+            <div class="signals-grid">
+                <div class="signal-item">
+                    <span class="signal-tag tag-danger">Atividade Real / Alerta</span>
+                    <div class="signal-desc">Contração Acentuada no IBC-Br (109.53 pts | -3.92%)</div>
+                    <div class="signal-context">Indica forte desaceleração da economia real e risco elevado de recessão técnica no Brasil.</div>
+                </div>
+                <div class="signal-item">
+                    <span class="signal-tag tag-warning">Inflação de Atacado</span>
+                    <div class="signal-desc">Choque Deflacionário no IGP-M Mensal (-1.16%)</div>
+                    <div class="signal-context">Apesar do acumulado em 12m positivo (2.79%), o dado mensal indica forte deflação em contratos e atacado.</div>
+                </div>
+                <div class="signal-item">
+                    <span class="signal-tag tag-info">Cadeia Global de IA</span>
+                    <div class="signal-desc">Dominância Tecnológica NVIDIA (US$ 4.86 tri) & TSMC (US$ 2.10 tri)</div>
+                    <div class="signal-context">NVDA lidera em valor de mercado global (#1) impulsionada pela demanda por hardware de inteligência artificial.</div>
+                </div>
+                <div class="signal-item">
+                    <span class="signal-tag tag-success">Empírico / Fintechs</span>
+                    <div class="signal-desc">Nu Caixinha (118.4% CDI) vs Mercado Pago Cofrinho (101.28% CDI)</div>
+                    <div class="signal-context">Estudo empírico de rentabilidade efetiva revela que a Caixinha do Nu entregou retorno líquido mais próximo do anunciado (120%).</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="controls-bar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Pesquisar por indicador, ativo, contexto ou fonte...">
+            </div>
+
+            <div class="category-pills" id="category-pills">
+                <button class="pill-btn active" data-cat="all">Todos os Indicadores</button>
+                <button class="pill-btn" data-cat="macro-br">Macro Brasil</button>
+                <button class="pill-btn" data-cat="global-usa">EUA & Global</button>
+                <button class="pill-btn" data-cat="tech-giants">Empresas & IA</button>
+                <button class="pill-btn" data-cat="commodities">Commodities & Clima</button>
+                <button class="pill-btn" data-cat="crypto">Criptoativos</button>
+                <button class="pill-btn" data-cat="arena-ai">Arena de IA</button>
+            </div>
+        </section>
+
+        <section class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Taxa SELIC (Meta)</span>
+                    <div class="kpi-icon"><i class="fa-solid fa-landmark"></i></div>
+                </div>
+                <div class="kpi-body">
+                    <span class="kpi-value">14.25</span>
+                    <span class="kpi-unit">% a.a.</span>
+                    <span class="kpi-badge down"><i class="fa-solid fa-arrow-down"></i> -1.72%</span>
+                </div>
+                <div class="kpi-subtext">Ref. 18/06/2026. Juro Real Ex-Ante calculado em 9.09% a.a.</div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">S&P 500 Index</span>
+                    <div class="kpi-icon"><i class="fa-solid fa-chart-line"></i></div>
+                </div>
+                <div class="kpi-body">
+                    <span class="kpi-value">7489.72</span>
+                    <span class="kpi-unit">pts</span>
+                    <span class="kpi-badge up"><i class="fa-solid fa-arrow-up"></i> +0.70%</span>
+                </div>
+                <div class="kpi-subtext">Referência global de apetite a risco em Renda Variável.</div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Dólar Comercial</span>
+                    <div class="kpi-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="kpi-body">
+                    <span class="kpi-value">5.07</span>
+                    <span class="kpi-unit">BRL</span>
+                    <span class="kpi-badge down"><i class="fa-solid fa-arrow-down"></i> -0.07%</span>
+                </div>
+                <div class="kpi-subtext">DXY em 99.69 pts (-0.11%), refletindo dólar fraco globalmente.</div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">Bitcoin (USD)</span>
+                    <div class="kpi-icon"><i class="fa-brands fa-bitcoin"></i></div>
+                </div>
+                <div class="kpi-body">
+                    <span class="kpi-value">62,708</span>
+                    <span class="kpi-unit">USD</span>
+                    <span class="kpi-badge down"><i class="fa-solid fa-arrow-down"></i> -0.09%</span>
+                </div>
+                <div class="kpi-subtext">Abaixo da Média Móvel EMA7 D-1 (63,697.78 USD).</div>
+            </div>
+        </section>
+
+        <section class="charts-section">
+            
+            <div class="chart-card col-8">
+                <div class="chart-header">
+                    <div class="chart-title-block">
+                        <h3><i class="fa-solid fa-chart-column" style="color: var(--primary);"></i> Panorama das Taxas de Juros e Inflação (% a.a.)</h3>
+                        <p>Comparativo entre Política Monetária (SELIC / Fed Funds), Juro Real e Inflação (IPCA)</p>
+                    </div>
+                </div>
+                <div class="chart-container-box">
+                    <canvas id="chart-juros"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card col-4">
+                <div class="chart-header">
+                    <div class="chart-title-block">
+                        <h3><i class="fa-solid fa-microchip" style="color: var(--accent-purple);"></i> Valor de Mercado - Cadeia de IA (US$ Tri)</h3>
+                        <p>Empresas globais de infraestrutura de hardware e computação</p>
+                    </div>
+                </div>
+                <div class="chart-container-box">
+                    <canvas id="chart-tech-valuation"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card col-6">
+                <div class="chart-header">
+                    <div class="chart-title-block">
+                        <h3><i class="fa-solid fa-robot" style="color: var(--accent-orange);"></i> Arena AI - ELO Score por Categoria</h3>
+                        <p>Comparativo de pontuação de modelos líderes em Reasoning, Coding, Video e Agentes</p>
+                    </div>
+                </div>
+                <div class="chart-container-box">
+                    <canvas id="chart-arena-ai"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card col-6">
+                <div class="chart-header">
+                    <div class="chart-title-block">
+                        <h3><i class="fa-solid fa-wallet" style="color: var(--green-up);"></i> Estudo Empírico: Retorno Efetivo vs Anunciado (% CDI)</h3>
+                        <p>Acompanhamento contínuo da rentabilidade líquida observada em contas digitais</p>
+                    </div>
+                </div>
+                <div class="chart-container-box">
+                    <canvas id="chart-fintechs"></canvas>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="section-header">
+            <h2><i class="fa-solid fa-cubes" style="color: var(--primary);"></i> Monitoramento Detalhado dos Indicadores</h2>
+            <span style="font-size: 0.85rem; color: var(--text-muted);" id="card-count-display">Exibindo todos os indicadores</span>
+        </div>
+
+        <section class="cards-grid" id="cards-grid-container">
+            </section>
+
+        <section class="table-card">
+            <div class="chart-header">
+                <div class="chart-title-block">
+                    <h3><i class="fa-solid fa-table" style="color: var(--primary);"></i> Tabela Consolidada de Ativos e Benchmarks de IA</h3>
+                    <p>Ordene e pesquise por qualquer métrica presente na base de dados oficial</p>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="custom-table" id="indicators-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">Indicador / Ativo <i class="fa-solid fa-sort"></i></th>
+                            <th onclick="sortTable(1)">Valor <i class="fa-solid fa-sort"></i></th>
+                            <th onclick="sortTable(2)">Unidade / Contexto <i class="fa-solid fa-sort"></i></th>
+                            <th onclick="sortTable(3)">Variação (%) <i class="fa-solid fa-sort"></i></th>
+                            <th>Categoria</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="insights-section">
+            <div class="chart-title-block">
+                <h3><i class="fa-solid fa-lightbulb" style="color: var(--accent-orange);"></i> Insights Analíticos Derivados da Base</h3>
+                <p>Conclusões diretas e sustentadas exclusivamente pelo snapshot dos dados registrados.</p>
+            </div>
+
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h4><i class="fa-solid fa-compress"></i> Desaceleração vs Juro Real Elevado</h4>
+                    <p>Os dados mostram a taxa SELIC em 14.25% a.a. com Juro Real de 9.09% a.a. Esse nível de restrição monetária coincide com a forte contração observada no IBC-Br (109.53 pts | -3.92%).</p>
+                </div>
+
+                <div class="insight-card">
+                    <h4><i class="fa-solid fa-industry"></i> Sinais de Custo Industrial e Frete</h4>
+                    <p>Observa-se o Baltic Dry Index (BDI) em 2.732 pts (+2.21%) classificando um mercado de fretes aquecido, enquanto o Dr. Copper opera em US$ 6.56/lb (+1.93%), sinalizando expansão na infraestrutura global.</p>
+                </div>
+
+                <div class="insight-card">
+                    <h4><i class="fa-solid fa-brain"></i> Concentração de Capital em Hardware de IA</h4>
+                    <p>A NVIDIA atinge o topo do ranking global de valor de mercado (#1, US$ 4.86 tri), sustentada pela sua posição na cadeia onde depende da TSMC (US$ 2.10 tri, #6) e da ASML (US$ 625.70 bi, #22).</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div>
+                    <strong>Projeto Indicadores</strong> — Laboratório de Pesquisa Aplicada & Analytics
+                    <div style="margin-top: 0.25rem; font-size: 0.75rem; color: var(--text-dim);">
+                        Snapshot de Referência: Segunda-feira, 03/08/2026 às 03h32m50s
+                    </div>
+                </div>
+
+                <div>
+                    <span style="font-weight: 600; font-size: 0.75rem; color: var(--text-muted);">Fontes Oficialmente Mapeadas:</span>
+                    <div class="sources-list">
+                        <span class="source-tag">BCB (SGS)</span>
+                        <span class="source-tag">IBGE</span>
+                        <span class="source-tag">FGV</span>
+                        <span class="source-tag">US Federal Reserve</span>
+                        <span class="source-tag">Yahoo Finance</span>
+                        <span class="source-tag">B3 / IFIX</span>
+                        <span class="source-tag">NOAA (ONI)</span>
+                        <span class="source-tag">Arena AI (LMSYS)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * ESTRUTURA DE DADOS COMPLETA E EXCLUSIVA DO ARQUIVO .MD
+         * Todos os valores, textos, unidades e variações foram preservados integralmente.
+         */
+        const RAW_DATA = [
+            // MACRO BRASIL
+            { name: "SELIC (% a.a.)", value: "14.25", unit: "% a.a.", variation: -1.72, context: "Data de referência: 2026-06-18. Taxa básica de juros do Copom.", category: "macro-br", source: "BCB" },
+            { name: "CDI", value: "14.15", unit: "% a.a.", variation: 0, context: "Certificado de Depósito Interbancário.", category: "macro-br", source: "BCB" },
+            { name: "CDI (Eq.)", value: "1.109", unit: "% a.m.", variation: 0, context: "Equivalente mensal do CDI.", category: "macro-br", source: "BCB" },
+            { name: "IPCA (% a.a.)", value: "4.64", unit: "% a.a.", variation: -1.69, context: "Data de referência: 2026-06-01. Inflação oficial do consumidor.", category: "macro-br", source: "IBGE" },
+            { name: "IGP-M (% a.m.)", value: "-1.16", unit: "% a.m.", variation: -0.66, context: "Choque Deflacionário (2026-07). Inflação de contratos e atacado.", category: "macro-br", source: "FGV" },
+            { name: "IGP-M Acumulado 12m (%)", value: "2.79", unit: "% 12m", variation: 0, context: "Acumulado no ano: 2.11%.", category: "macro-br", source: "FGV" },
+            { name: "Juro Real (% a.a.)", value: "9.09", unit: "% a.a.", variation: 0, context: "SELIC deflacionada pelo IPCA.", category: "macro-br", source: "Calculado" },
+            { name: "Juro Real (Eq.)", value: "0.73", unit: "% a.m.", variation: 0, context: "Equivalente mensal do Juro Real.", category: "macro-br", source: "Calculado" },
+            { name: "Atividade Econômica (IBC-Br)", value: "109.53", unit: "pts", variation: -3.92, context: "Forte Contração Econômica / Risco de Recessão (Indicador de Atividade Real do BCB).", category: "macro-br", source: "BCB" },
+            
+            // CÂMBIO & MOEDAS
+            { name: "Dólar", value: "5.07", unit: "BRL", variation: -0.07, context: "Taxa de câmbio comercial USDBRL.", category: "global-usa", source: "BCB / Yahoo Finance" },
+            { name: "Euro", value: "5.85", unit: "BRL", variation: 0.07, context: "Taxa de câmbio EURBRL.", category: "global-usa", source: "BCB" },
+            { name: "Libra Esterlina", value: "6.84", unit: "BRL", variation: 0.01, context: "Taxa de câmbio GBPBRL.", category: "global-usa", source: "BCB" },
+            { name: "Iene Japonês", value: "0.0323", unit: "BRL", variation: 1.92, context: "Taxa de câmbio JPYBRL.", category: "global-usa", source: "BCB" },
+            { name: "Dollar Index (DXY)", value: "99.69", unit: "pts", variation: -0.11, context: "Neutro / Dólar Enfraquecido frente a uma cesta de moedas globais.", category: "global-usa", source: "Market Data" },
+            
+            // MACRO GLOBAL & EUA
+            { name: "Índice de Volatilidade (VIX)", value: "15.99", unit: "pts", variation: -6.44, context: "Volatilidade Normal no mercado de ações de NY.", category: "global-usa", source: "CBOE" },
+            { name: "US Fed Funds Target (% a.a.)", value: "3.75", unit: "% a.a.", variation: -0.25, context: "Normalização Monetária (Current Fed Policy / Official Fed Rate).", category: "global-usa", source: "US Federal Reserve" },
+            { name: "US Short-Term Yield (% a.a.)", value: "3.68", unit: "% a.a.", variation: 0.19, context: "Normalização Monetária (Current Fed Policy).", category: "global-usa", source: "US Treasury" },
+            { name: "US 2Y Treasury (% a.a.)", value: "4.23", unit: "% a.a.", variation: 0.24, context: "Expectativas de FED Mais Restritivo (Fed Expectations 1–2Y).", category: "global-usa", source: "US Treasury" },
+            { name: "US 10Y Treasury (% a.a.)", value: "4.74", unit: "% a.a.", variation: 1.76, context: "Condições Financeiras Restritivas.", category: "global-usa", source: "US Treasury" },
+            { name: "US Yield Curve (10Y - 2Y)", value: "0.43", unit: "pts", variation: 7.5, context: "Curva Achatando / Alerta de Fim de Ciclo.", category: "global-usa", source: "US Treasury" },
+            { name: "US High Yield Credit (HYG ETF)", value: "79.48", unit: "USD", variation: 0.01, context: "Estresse de Crédito Elevado / Atenção.", category: "global-usa", source: "NYSE" },
+            { name: "S&P 500", value: "7489.72", unit: "pts", variation: 0.70, context: "Ações Large Caps dos EUA / Referência Global de Risco. Acompanha 500 maiores empresas.", category: "global-usa", source: "S&P Dow Jones" },
+            { name: "Nasdaq Composite", value: "28641.20", unit: "pts", variation: 0.83, context: "Tecnologia / Ativos de Crescimento / Exposição à IA.", category: "global-usa", source: "Nasdaq" },
+            { name: "Dow Jones", value: "52485.00", unit: "pts", variation: 0.53, context: "Blue Chips dos EUA / Referência da Economia Real.", category: "global-usa", source: "S&P Dow Jones" },
+
+            // EMPRESAS & CADEIA DE IA
+            { name: "NVIDIA (NVDA)", value: "200.75", unit: "USD/ação", variation: 2.93, context: "Market Cap: US$ 4.86 tri (Ranking #1). Computação Global de IA / Data Centers. Depende da TSMC.", category: "tech-giants", source: "NASDAQ" },
+            { name: "TSMC (TSM)", value: "404.25", unit: "USD/ação", variation: 0.23, context: "Market Cap: US$ 2.10 tri (Ranking #6). Fabrica chips de 3nm/5nm. Depende das máquinas EUV da ASML.", category: "tech-giants", source: "NYSE" },
+            { name: "ASML (ASML)", value: "1629.00", unit: "USD/ação", variation: -1.36, context: "Market Cap: US$ 625.70 bi (Ranking #22). Fornecedor exclusivo de litografia EUV. Depende da ZEISS e Cymer.", category: "tech-giants", source: "NASDAQ" },
+            { name: "SpaceX (SPCX)", value: "108.37", unit: "USD/ação", variation: -3.41, context: "Market Cap: US$ 1.43 tri (Ranking #9). Conectividade Global Starlink e exploração espacial.", category: "tech-giants", source: "Private Market" },
+            { name: "MercadoLibre (MELI)", value: "1877.95", unit: "USD/ação", variation: -0.41, context: "Market Cap: US$ 95.21 bi (Ranking #245). Estudo Cofrinho: CDI anunciado 120% | Rentabilidade média acompanhada: 101.28% CDI.", category: "tech-giants", source: "NASDAQ" },
+            { name: "Nu Holdings (NU)", value: "14.33", unit: "USD/ação", variation: -1.10, context: "Market Cap: US$ 69.22 bi (Ranking #372). Estudo Caixinha: CDI anunciado 120% | Rentabilidade média acompanhada: 118.4% CDI.", category: "tech-giants", source: "NYSE" },
+            { name: "Visa (V)", value: "366.13", unit: "USD/ação", variation: -0.04, context: "Market Cap: US$ 683.58 bi (Ranking #20). Rede Global de Pagamentos / Fluxos Transfronteiriços.", category: "tech-giants", source: "NYSE" },
+            { name: "Reliance Industries", value: "1310.20", unit: "INR/ação", variation: 0.18, context: "Market Cap: US$ 186.18 bi (Ranking #105). USD 13.75. Demanda doméstica da Índia e transição digital.", category: "tech-giants", source: "NSE India" },
+            { name: "VALE (VALE3)", value: "76.09", unit: "BRL/ação", variation: 1.39, context: "Market Cap: US$ 64.09 bi (Ranking #396). Oferta Global de Minério de Ferro / Demanda Chinesa.", category: "tech-giants", source: "B3" },
+
+            // COMMODITIES & CLIMA
+            { name: "Barril Petróleo Brent", value: "90.12", unit: "USD/bbl", variation: 1.22, context: "Referência global de petróleo (159 litros).", category: "commodities", source: "ICE Futures" },
+            { name: "Dr. Copper", value: "6.56", unit: "USD/lb", variation: 1.93, context: "Global Industrial Cycle Proxy. USD 14462.34/ton. Signal: Boom Econômico / Pressão Inflacionária.", category: "commodities", source: "LME" },
+            { name: "Baltic Dry Index (BDI)", value: "2732.00", unit: "pts", variation: 2.21, context: "Mercado de Fretes Aquecido | Forte demanda por transporte marítimo | Pressão em custos logísticos.", category: "commodities", source: "Baltic Exchange" },
+            { name: "Oceanic Niño Index (ONI)", value: "1.50", unit: "°C", variation: 0.49, context: "Anomalia Térmica do Pacífico Equatorial. Status: El Niño Moderado / Alerta de Inflação no Agro.", category: "commodities", source: "NOAA" },
+            { name: "Ouro", value: "678.90", unit: "USD/oz", variation: 2.15, context: "Reserva de Valor / Ativo de Proteção Geopolítica.", category: "commodities", source: "COMEX" },
+
+            // CRIPTOATIVOS
+            { name: "Bitcoin (USD)", value: "62708.10", unit: "USD", variation: -0.09, context: "Reserva Digital de Valor. Tendência EMA7 D-1: 63,697.78. Volume Estimado: 254,155.58 BTC.", category: "crypto", source: "Market Aggregator" },
+            { name: "Bitcoin (BRL)", value: "318200.00", unit: "BRL", variation: 0, context: "Cotação direta em Reais na B3/Exchanges.", category: "crypto", source: "Market Aggregator" },
+            { name: "Bitcoin - Máxima 2026", value: "96929.30", unit: "USD", variation: 0, context: "Registrada em 14/01/2026.", category: "crypto", source: "Histórico 2026" },
+            { name: "Bitcoin - Mínima 2026", value: "58558.90", unit: "USD", variation: 0, context: "Registrada em 30/06/2026.", category: "crypto", source: "Histórico 2026" },
+
+            // ARENA AI BENCHMARKS
+            { name: "Arena AI (Reasoning): Sabiá-4 Thinking", value: "1380", unit: "ELO", variation: 0, context: "Status: Confirmed Success | Praise: 28.54% | Complaint: 4.12%. Modelo Líder de Raciocínio.", category: "arena-ai", source: "LMSYS / Arena AI" },
+            { name: "Arena AI (Coding): gpt-5.5-turbo", value: "1425", unit: "ELO", variation: 0, context: "Modelo topo de linha para Engenharia de Software e código.", category: "arena-ai", source: "LMSYS / Arena AI" },
+            { name: "Arena AI (Agent): Claude Fable 5 (High)", value: "10.26", unit: "ELO", variation: 0, context: "% Confirmed Success | Praise: 24.42% | Complaint: 7.82%.", category: "arena-ai", source: "LMSYS / Arena AI" },
+            { name: "Arena AI (Video): gemini-omni-flash", value: "1520", unit: "ELO", variation: 0, context: "Líder de geração e compreensão multimodal de vídeo.", category: "arena-ai", source: "LMSYS / Arena AI" }
+        ];
+
+        // INICIALIZAÇÃO DA APLICAÇÃO
+        document.addEventListener('DOMContentLoaded', () => {
+            renderKPIs();
+            renderCards(RAW_DATA);
+            renderTable(RAW_DATA);
+            initCharts();
+            setupEvents();
+        });
+
+        // 1. RENDERIZAÇÃO DOS CARDS DE INDICADORES (GRID EXPANDIDO)
+        function renderCards(data) {
+            const container = document.getElementById('cards-grid-container');
+            container.innerHTML = '';
+
+            document.getElementById('card-count-display').textContent = `Exibindo ${data.length} de${RAW_DATA.length} indicadores`;
+
+            data.forEach(item => {
+                const varVal = parseFloat(item.variation);
+                let badgeClass = 'neutral';
+                let iconTag = '<i class="fa-solid fa-minus"></i>';
+                
+                if (varVal > 0) {
+                    badgeClass = 'up';
+                    iconTag = '<i class="fa-solid fa-arrow-up"></i>';
+                } else if (varVal < 0) {
+                    badgeClass = 'down';
+                    iconTag = '<i class="fa-solid fa-arrow-down"></i>';
+                }
+
+                const cardHTML = `
+                    <div class="indicator-card">
+                        <div class="ind-card-top">
+                            <span class="ind-name">${item.name}</span>
+                            <span class="ind-category">${item.category}</span>
+                        </div>
+                        <div class="ind-value-block">
+                            <div class="ind-val-group">
+                                <span class="ind-value">${item.value}</span>
+                                <span class="ind-unit">${item.unit}</span>
+                            </div>
+                            <span class="kpi-badge ${badgeClass}">
+                                ${iconTag} ${item.variation > 0 ? '+' : ''}${item.variation}%
+                            </span>
+                        </div>
+                        <div class="ind-context">
+                            ${item.context}
+                        </div>
+                        <div class="ind-footer">
+                            <span>Fonte: <strong>${item.source}

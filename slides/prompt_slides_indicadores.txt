@@ -1,0 +1,641 @@
+Atue como um especialista sênior em Data Storytelling, Data Visualization, UX/UI, Front-end e comunicação executiva de dados.
+
+Sua missão é transformar EXCLUSIVAMENTE os dados do arquivo:
+
+"df_indicadores_04_09_2026_11h00m08s58.md"
+
+em uma experiência de apresentação interativa, sofisticada e visualmente memorável.
+
+==================================================
+1. FONTE DE DADOS — REGRA ABSOLUTA
+==================================================
+
+O arquivo "df_indicadores_04_09_2026_11h00m08s58.md" é a ÚNICA fonte de dados permitida.
+
+Leia e interprete integralmente o arquivo antes de construir a apresentação.
+
+NÃO invente dados.
+NÃO complemente dados ausentes com conhecimento externo.
+NÃO altere valores.
+NÃO arredonde números.
+NÃO normalize ou reescale valores sem deixar isso explicitamente identificado.
+NÃO altere unidades.
+NÃO substitua informações presentes no arquivo.
+
+Preserve exatamente os valores, nomes, datas, unidades e demais informações fornecidas na fonte.
+
+Se uma informação não estiver disponível no arquivo, não invente.
+
+A precisão dos dados é mais importante que a quantidade de conteúdo.
+
+==================================================
+2. OBJETIVO
+==================================================
+
+Crie uma sequência de aproximadamente 10 a 14 slides que conte uma história coerente sobre os indicadores apresentados no arquivo.
+
+Não crie simplesmente uma coleção de gráficos.
+
+Construa uma narrativa:
+
+CONTEXTO
+→ CENÁRIO
+→ MOVIMENTOS RELEVANTES
+→ CONEXÕES ENTRE INDICADORES
+→ TENSÕES E SINAIS
+→ INSIGHTS
+→ CONCLUSÃO
+
+Cada slide deve possuir uma função narrativa clara.
+
+Se determinado conteúdo não justificar um slide próprio, combine-o com outro.
+
+Não crie slides artificiais apenas para atingir a quantidade solicitada.
+
+==================================================
+3. STORYTELLING COM DADOS
+==================================================
+
+Utilize como referência conceitual as boas práticas apresentadas no livro:
+
+"Storytelling com Dados: um guia sobre visualização de dados para profissionais de negócios"
+— Cole Nussbaumer Knaflic.
+
+Aplique princípios como:
+
+- eliminar elementos visuais desnecessários;
+- destacar o que realmente importa;
+- criar hierarquia visual;
+- utilizar títulos orientados à mensagem;
+- escolher o gráfico adequado à pergunta;
+- reduzir carga cognitiva;
+- utilizar cores com propósito;
+- conduzir o olhar do usuário;
+- evitar gráficos decorativos;
+- privilegiar clareza sobre ornamentação.
+
+Não reproduza literalmente o conteúdo ou o design do livro.
+
+Aplique seus princípios de forma original.
+
+==================================================
+4. STORYTELLING — NARRATIVA
+==================================================
+
+Antes de implementar os slides, identifique internamente:
+
+- quais são os indicadores mais relevantes;
+- quais apresentam maior movimento;
+- quais apresentam estabilidade;
+- quais apresentam mudanças relevantes;
+- quais indicadores possuem relações ou contrastes interessantes;
+- quais informações merecem maior destaque;
+- quais conclusões podem ser sustentadas pelos dados.
+
+A apresentação deve responder progressivamente:
+
+"O que estamos observando?"
+
+"O que mudou?"
+
+"Quais movimentos chamam atenção?"
+
+"Quais indicadores apresentam comportamento semelhante ou divergente?"
+
+"O que esses movimentos sugerem?"
+
+"Qual é a principal mensagem que os dados permitem sustentar?"
+
+Não transforme correlação visual em causalidade.
+
+Quando uma relação não puder ser comprovada pelos dados, apresente-a apenas como associação, contraste ou hipótese interpretativa.
+
+==================================================
+5. TÍTULOS DOS SLIDES
+==================================================
+
+Evite títulos genéricos como:
+
+"Indicadores"
+"Gráfico 1"
+"Economia"
+"Dados"
+"Conclusão"
+
+Prefira títulos que expressem a mensagem principal do slide.
+
+Exemplo conceitual:
+
+"Juros permanecem em patamar elevado enquanto..."
+
+Somente utilize afirmações que possam ser sustentadas pelos dados do arquivo.
+
+O título deve ajudar o usuário a compreender imediatamente o significado do visual.
+
+==================================================
+6. VISUALIZAÇÃO DE DADOS
+==================================================
+
+Escolha o tipo de visualização de acordo com a natureza de cada informação.
+
+Utilize, quando apropriado:
+
+- séries temporais;
+- linhas;
+- barras;
+- áreas;
+- comparações;
+- rankings;
+- cartões de indicadores;
+- timelines;
+- pequenas múltiplas;
+- diagramas de relação;
+- tabelas compactas;
+- destaques numéricos.
+
+Não utilize gráficos apenas para preencher espaço.
+
+Cada visualização deve responder a uma pergunta analítica.
+
+Quando múltiplas séries possuírem escalas incompatíveis, NÃO altere silenciosamente os dados para fazê-las parecer comparáveis.
+
+Se for necessário utilizar normalização, índice ou escala relativa para fins exclusivamente visuais, deixe isso explicitamente identificado no próprio slide e preserve também os valores originais.
+
+==================================================
+7. INTEGRIDADE DOS NÚMEROS
+==================================================
+
+Esta regra é CRÍTICA.
+
+Os valores exibidos devem corresponder exatamente aos valores existentes no arquivo.
+
+Exemplo:
+
+Se a fonte apresentar:
+
+14,25%
+
+não apresente:
+
+14,3%
+14%
+0,1425
+≈14%
+
+a menos que a transformação seja explicitamente necessária e claramente identificada.
+
+Não faça arredondamento automático.
+
+Não faça conversões silenciosas.
+
+Não altere separadores decimais de maneira que modifique o significado.
+
+==================================================
+8. INSIGHTS
+==================================================
+
+Extraia insights somente quando houver evidência suficiente nos dados.
+
+Um insight deve representar uma conexão ou interpretação útil, e não apenas repetir um número.
+
+Priorize:
+
+- mudanças relevantes;
+- tendências;
+- divergências;
+- convergências;
+- máximas e mínimas;
+- períodos de inflexão;
+- comportamentos persistentes;
+- relações temporais;
+- contrastes entre indicadores.
+
+Não invente causalidade.
+
+Não faça previsões futuras como se fossem fatos.
+
+Quando uma interpretação for inferencial, utilize linguagem adequada:
+
+"indica"
+"sugere"
+"pode sinalizar"
+"há uma associação observável"
+"o comportamento é compatível com"
+
+==================================================
+9. DESIGN VISUAL
+==================================================
+
+Crie uma experiência editorial contemporânea, elegante e sofisticada.
+
+Use como inspiração estética o caráter autoral, elegante, editorial e criativo do site:
+
+https://www.carollbulcao.com/
+
+IMPORTANTE:
+
+A referência é apenas INSPIRAÇÃO.
+
+Não copie identidade visual, código, imagens, textos ou elementos proprietários do site.
+
+Extraia apenas princípios de:
+
+- composição;
+- elegância;
+- minimalismo;
+- uso de espaço;
+- tipografia;
+- ritmo visual;
+- narrativa;
+- sofisticação editorial.
+
+Combine esses princípios com uma linguagem visual própria para análise de dados.
+
+O resultado deve parecer uma publicação digital premium sobre dados.
+
+==================================================
+10. DIREÇÃO DE ARTE
+==================================================
+
+Priorize:
+
+- composição editorial;
+- excelente uso de espaço negativo;
+- tipografia sofisticada;
+- hierarquia visual;
+- contraste;
+- paleta de cores consistente;
+- gráficos limpos;
+- elementos visuais discretos;
+- microanimações;
+- transições elegantes.
+
+Evite:
+
+- excesso de gradientes;
+- excesso de sombras;
+- excesso de cores;
+- aparência de dashboard corporativo convencional;
+- excesso de cards;
+- poluição visual;
+- gráficos 3D desnecessários;
+- efeitos que prejudiquem a leitura.
+
+A estética deve apoiar a informação.
+
+Não competir com ela.
+
+==================================================
+11. EXPERIÊNCIA INTERATIVA
+==================================================
+
+A apresentação deve ser realmente interativa.
+
+Implemente:
+
+- navegação anterior/próximo;
+- navegação por teclado;
+- indicador de progresso;
+- contador de slides;
+- navegação por toque;
+- suporte a swipe no celular;
+- transições suaves;
+- microinterações;
+- elementos interativos nos gráficos quando fizer sentido.
+
+Utilize pelo menos 3 recursos interativos relevantes além dos controles básicos de navegação.
+
+Exemplos:
+
+- tooltip contextual;
+- destaque de séries;
+- seleção de indicadores;
+- filtros temporais;
+- exploração de dados;
+- comparação entre indicadores;
+- elementos expansíveis.
+
+Não implemente interações artificiais apenas para cumprir requisito.
+
+==================================================
+12. ANIMAÇÕES
+==================================================
+
+Utilize animações para conduzir a narrativa.
+
+As animações devem:
+
+- revelar informações progressivamente;
+- destacar mudanças;
+- reforçar relações;
+- facilitar a compreensão;
+- criar sensação de continuidade entre os slides.
+
+Evite animações excessivas.
+
+Priorize movimentos suaves, rápidos e elegantes.
+
+Implemente suporte a:
+
+prefers-reduced-motion
+
+para usuários que preferem reduzir animações.
+
+==================================================
+13. RESPONSIVIDADE
+==================================================
+
+A aplicação deve funcionar adequadamente em:
+
+- notebook;
+- desktop;
+- tablet;
+- smartphone;
+- Smart TV.
+
+Não apenas reduza o tamanho da interface.
+
+Adapte a composição para cada formato.
+
+No celular:
+
+- reorganize elementos;
+- preserve a hierarquia;
+- evite textos pequenos;
+- evite overflow horizontal;
+- mantenha controles acessíveis;
+- permita navegação por toque.
+
+Em Smart TV:
+
+- priorize legibilidade à distância;
+- utilize tamanhos de fonte adequados;
+- mantenha alto contraste;
+- evite informações excessivamente pequenas.
+
+==================================================
+14. TECNOLOGIA
+==================================================
+
+Utilize:
+
+HTML5
+CSS3
+JavaScript moderno
+
+Toda a implementação deve estar contida em UM ÚNICO ARQUIVO HTML.
+
+O arquivo deve conter:
+
+- HTML;
+- CSS;
+- JavaScript.
+
+Evite dependências externas desnecessárias.
+
+Se uma biblioteca externa for indispensável, minimize sua utilização e explique sua necessidade apenas se isso não comprometer a execução.
+
+O arquivo deve abrir diretamente no navegador e funcionar.
+
+==================================================
+15. ARQUITETURA DO CÓDIGO
+==================================================
+
+Organize o código de maneira profissional.
+
+Separe conceitualmente:
+
+- dados;
+- configuração;
+- estrutura;
+- estilos;
+- componentes;
+- navegação;
+- visualizações;
+- interações.
+
+Utilize funções reutilizáveis.
+
+Evite código duplicado.
+
+Utilize nomes claros para variáveis e funções.
+
+Facilite futuras atualizações do arquivo de dados.
+
+==================================================
+16. ACESSIBILIDADE
+==================================================
+
+Implemente boas práticas de acessibilidade:
+
+- HTML semântico;
+- foco visível;
+- navegação por teclado;
+- contraste adequado;
+- aria-label quando necessário;
+- textos legíveis;
+- suporte a prefers-reduced-motion.
+
+Nenhuma informação essencial deve depender exclusivamente de cor.
+
+==================================================
+17. ESTRUTURA SUGERIDA DOS SLIDES
+==================================================
+
+Utilize aproximadamente 10–14 slides, adaptando a quantidade ao conteúdo real do arquivo.
+
+Uma estrutura possível:
+
+SLIDE 01
+Abertura editorial.
+Título + período + mensagem principal.
+
+SLIDE 02
+Panorama geral dos indicadores.
+
+SLIDE 03
+Movimentos mais relevantes.
+
+SLIDE 04
+Primeiro grande eixo analítico.
+
+SLIDE 05
+Segundo grande eixo analítico.
+
+SLIDE 06
+Contrastes ou divergências entre indicadores.
+
+SLIDE 07
+Séries temporais e pontos de inflexão.
+
+SLIDE 08
+Conexões relevantes entre indicadores.
+
+SLIDE 09
+Indicadores que merecem atenção.
+
+SLIDE 10
+Insight central.
+
+SLIDE 11
+Síntese dos principais sinais.
+
+SLIDE 12
+Conclusão editorial.
+
+Não siga essa estrutura cegamente.
+
+Use somente os slides que forem justificados pelos dados.
+
+==================================================
+18. ABERTURA
+==================================================
+
+O primeiro slide deve funcionar como uma capa editorial.
+
+Não sobrecarregue a abertura.
+
+Utilize:
+
+- título forte;
+- subtítulo contextual;
+- período analisado;
+- elemento visual relacionado aos dados.
+
+A primeira tela deve despertar curiosidade e estabelecer o contexto.
+
+==================================================
+19. CONCLUSÃO
+==================================================
+
+O último slide deve sintetizar a história construída.
+
+Apresente:
+
+- principal descoberta;
+- principais sinais;
+- pontos de atenção;
+- mensagem final.
+
+Não simplesmente repita os indicadores.
+
+A conclusão deve responder:
+
+"Depois de observar todos esses dados, qual é a principal mensagem que permanece?"
+
+A conclusão deve ser sustentada exclusivamente pelos dados disponíveis.
+
+==================================================
+20. PERFORMANCE
+==================================================
+
+A aplicação deve ser fluida.
+
+Evite:
+
+- animações pesadas;
+- processamento desnecessário;
+- excesso de elementos simultâneos;
+- bibliotecas desnecessárias;
+- imagens pesadas sem necessidade.
+
+O objetivo é uma experiência visual sofisticada sem sacrificar desempenho.
+
+==================================================
+21. VALIDAÇÃO FINAL DOS DADOS
+==================================================
+
+Antes de entregar, faça uma auditoria interna.
+
+Verifique:
+
+[ ] Todos os indicadores apresentados existem no arquivo.
+[ ] Todos os valores estão corretos.
+[ ] Nenhum número foi arredondado.
+[ ] Nenhum número foi inventado.
+[ ] Nenhuma unidade foi alterada.
+[ ] Nenhuma data foi alterada.
+[ ] Nenhum dado externo foi incorporado.
+[ ] Os gráficos representam corretamente os dados.
+[ ] Os insights são sustentados pelos dados.
+[ ] Nenhuma causalidade foi inventada.
+[ ] Os títulos são coerentes com os gráficos.
+[ ] A narrativa possui começo, desenvolvimento e conclusão.
+[ ] Cada slide possui uma função.
+[ ] Não existe excesso de informação.
+[ ] O conteúdo permanece legível em telas menores.
+
+Se houver dúvida sobre qualquer dado:
+
+NÃO INVENTE.
+
+Preserve a informação original ou omita o elemento.
+
+==================================================
+22. VALIDAÇÃO FINAL DA EXPERIÊNCIA
+==================================================
+
+Antes da entrega, teste:
+
+[ ] Navegação anterior/próximo.
+[ ] Navegação por teclado.
+[ ] Navegação por toque.
+[ ] Swipe no mobile.
+[ ] Indicador de progresso.
+[ ] Transições.
+[ ] Interações.
+[ ] Gráficos.
+[ ] Tooltips.
+[ ] Responsividade.
+[ ] Smart TV.
+[ ] Mobile.
+[ ] Ausência de overflow horizontal.
+[ ] Ausência de erros JavaScript.
+[ ] Ausência de elementos cortados.
+[ ] Legibilidade.
+[ ] Acessibilidade.
+
+Corrija os problemas encontrados antes da entrega.
+
+==================================================
+23. CRITÉRIO DE EXCELÊNCIA
+==================================================
+
+Não entregue apenas uma apresentação tecnicamente funcional.
+
+Entregue uma experiência que demonstre simultaneamente:
+
+ANÁLISE DE DADOS
++
+STORYTELLING
++
+DESIGN EDITORIAL
++
+DATA VISUALIZATION
++
+UX/UI
++
+FRONT-END
++
+INTERATIVIDADE
++
+RESPONSIVIDADE
++
+PRECISÃO.
+
+O resultado final deve parecer uma experiência digital editorial produzida por uma equipe especializada em dados, design e tecnologia.
+
+A sofisticação visual deve estar a serviço da compreensão.
+
+A criatividade deve estar a serviço da narrativa.
+
+E a narrativa deve estar a serviço dos dados.
+
+A regra máxima é:
+
+NÃO INVENTAR.
+NÃO DISTORCER.
+NÃO ARREDONDAR.
+NÃO COMPLICAR DESNECESSARIAMENTE.
+
+Transforme os dados em uma história visual clara, elegante, inteligente e memorável.

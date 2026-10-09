@@ -1,0 +1,343 @@
+Atue como um engenheiro de software front-end sênior, especialista em Data Visualization, UX/UI, dashboards analíticos e desenvolvimento de aplicações web modernas.
+
+Leia e interprete cuidadosamente o arquivo Markdown (.md) fornecido. Esse arquivo é a ÚNICA fonte de dados autorizada para construir o dashboard.
+
+OBJETIVO
+
+Transforme os dados do arquivo .md em um dashboard analítico moderno, sofisticado, responsivo, interativo e visualmente impressionante, utilizando HTML5, CSS3 e JavaScript moderno.
+
+O resultado deve ter aparência de uma aplicação profissional de inteligência de dados, e não de uma página HTML convencional.
+
+==================================================
+1. REGRA ABSOLUTA SOBRE OS DADOS
+==================================================
+
+Utilize EXCLUSIVAMENTE os dados presentes no arquivo .md fornecido.
+
+É PROIBIDO:
+
+- inventar indicadores;
+- inventar valores;
+- criar números estimados;
+- completar informações ausentes com conhecimento externo;
+- alterar valores existentes;
+- criar datas que não estejam no arquivo;
+- atribuir fontes que não estejam presentes no arquivo;
+- gerar conclusões factuais que não possam ser sustentadas pelos dados.
+
+Preserve rigorosamente:
+- nomes dos indicadores;
+- valores;
+- unidades;
+- datas;
+- períodos;
+- variações;
+- categorias;
+- fontes;
+- observações existentes no arquivo.
+
+Se determinada informação não estiver disponível no .md, simplesmente não a apresente.
+
+Antes de construir a interface, faça uma interpretação estruturada do conteúdo do arquivo e identifique automaticamente:
+- indicadores disponíveis;
+- valores;
+- unidades;
+- datas/períodos;
+- categorias;
+- séries históricas;
+- variações;
+- relações existentes entre os dados.
+
+==================================================
+2. ARQUITETURA DO DASHBOARD
+==================================================
+
+Organize o dashboard em uma hierarquia visual clara.
+
+Priorize, quando os dados disponíveis permitirem:
+
+1. Cabeçalho institucional
+2. Visão geral / resumo dos principais indicadores
+3. Cards de indicadores
+4. Gráficos e séries históricas
+5. Comparações relevantes
+6. Indicadores de tendência ou variação
+7. Insights derivados exclusivamente dos dados
+8. Fontes e período de atualização
+
+A organização deve ser determinada pelo conteúdo real do arquivo, e não por uma estrutura fixa.
+
+Não crie seções vazias apenas para preencher espaço.
+
+==================================================
+3. DESIGN VISUAL — ESTADO DA ARTE
+==================================================
+
+Crie uma experiência visual comparável a dashboards profissionais de empresas de tecnologia, inteligência de mercado e análise financeira.
+
+Utilize:
+
+- design editorial premium;
+- excelente hierarquia tipográfica;
+- grid responsivo;
+- cards modernos;
+- espaçamento consistente;
+- contraste adequado;
+- microinterações;
+- animações discretas;
+- indicadores visuais de tendência;
+- ícones coerentes;
+- bordas e sombras sutis;
+- uso sofisticado de cores;
+- excelente aproveitamento do espaço.
+
+Evite:
+- excesso de cores;
+- efeitos exagerados;
+- excesso de sombras;
+- poluição visual;
+- gráficos desnecessários;
+- elementos decorativos sem função analítica.
+
+O design deve privilegiar a informação.
+
+==================================================
+4. VISUALIZAÇÃO DE DADOS
+==================================================
+
+Escolha automaticamente o tipo de visualização mais adequado para cada conjunto de dados.
+
+Exemplos:
+
+- séries temporais → gráficos de linha;
+- comparação entre categorias → barras;
+- composição → donut/pizza somente quando realmente apropriado;
+- evolução percentual → cards com tendência;
+- distribuição → gráficos apropriados;
+- múltiplas séries → gráficos comparativos;
+- dados tabulares → tabelas pesquisáveis e ordenáveis.
+
+Não utilize gráficos apenas por estética.
+
+Cada visualização deve responder a uma pergunta analítica clara.
+
+Sempre que possível, disponibilize:
+- tooltip;
+- legenda clara;
+- unidade de medida;
+- período;
+- valor;
+- variação;
+- eixo adequadamente identificado.
+
+==================================================
+5. INTERATIVIDADE
+==================================================
+
+Implemente recursos modernos de interação, como:
+
+- filtros;
+- seleção de indicadores;
+- alternância entre períodos;
+- tooltips;
+- zoom quando fizer sentido;
+- ordenação de tabelas;
+- pesquisa;
+- alternância entre diferentes visualizações;
+- modo claro/escuro;
+- navegação suave entre seções.
+
+Os recursos devem ser funcionais, não apenas decorativos.
+
+==================================================
+6. INSIGHTS AUTOMÁTICOS
+==================================================
+
+Quando os dados permitirem, apresente uma seção de "Insights".
+
+Os insights devem ser derivados SOMENTE dos dados presentes no arquivo.
+
+Procure identificar:
+
+- maiores altas;
+- maiores quedas;
+- tendências;
+- pontos de inflexão;
+- extremos;
+- correlações aparentes;
+- divergências;
+- mudanças relevantes;
+- indicadores que se movimentam conjuntamente.
+
+IMPORTANTE:
+
+Não confunda correlação visual com causalidade.
+
+Não afirme que um indicador causou outro quando o arquivo não fornecer evidência para essa conclusão.
+
+Utilize linguagem apropriada, como:
+
+"Os dados mostram..."
+"Observa-se..."
+"Há uma associação aparente..."
+"O período apresenta..."
+"Os indicadores sugerem..."
+
+==================================================
+7. FUNCIONALIDADE SURPRESA
+==================================================
+
+Implemente pelo menos UMA funcionalidade diferenciada que agregue valor analítico real ao usuário.
+
+A funcionalidade deve ser coerente com os dados disponíveis.
+
+Exemplos possíveis:
+
+- "Radar dos Indicadores";
+- "Mapa de Tendências";
+- "Modo Comparativo";
+- "Linha do Tempo Interativa";
+- "Painel de Anomalias";
+- "Visão Executiva";
+- "Indicadores em Destaque".
+
+Não invente dados para implementar essa funcionalidade.
+
+==================================================
+8. TECNOLOGIA
+==================================================
+
+Utilize:
+
+- HTML5 semântico;
+- CSS3 moderno;
+- JavaScript ES6+;
+- CSS Grid e Flexbox;
+- variáveis CSS;
+- animações CSS/JS discretas;
+- arquitetura de código organizada.
+
+Quando necessário, utilize bibliotecas JavaScript apropriadas para visualização de dados, preferencialmente por CDN, sem comprometer a portabilidade.
+
+Caso seja possível, entregue tudo em um único arquivo HTML funcional.
+
+==================================================
+9. RESPONSIVIDADE
+==================================================
+
+O dashboard deve funcionar corretamente em:
+
+- desktop;
+- notebook;
+- tablet;
+- smartphone.
+
+Não permita:
+- overflow horizontal indevido;
+- gráficos cortados;
+- textos sobrepostos;
+- cards quebrados;
+- tabelas inutilizáveis em telas pequenas.
+
+Adapte automaticamente o layout conforme a largura da tela.
+
+==================================================
+10. ACESSIBILIDADE
+==================================================
+
+Implemente boas práticas de acessibilidade:
+
+- contraste adequado;
+- hierarquia correta de títulos;
+- textos legíveis;
+- estados de foco;
+- navegação por teclado quando aplicável;
+- uso semântico de HTML;
+- não depender exclusivamente de cores para comunicar informação.
+
+==================================================
+11. PERFORMANCE
+==================================================
+
+Priorize carregamento rápido e execução eficiente.
+
+Evite:
+- scripts desnecessários;
+- animações pesadas;
+- processamento redundante;
+- componentes excessivamente complexos.
+
+==================================================
+12. VALIDAÇÃO DOS DADOS
+==================================================
+
+Antes de finalizar, faça uma validação interna comparando os dados utilizados no dashboard com o arquivo .md.
+
+Verifique especialmente:
+
+- nomes;
+- valores;
+- unidades;
+- datas;
+- percentuais;
+- séries históricas;
+- quantidade de registros.
+
+Nenhum valor deve ser alterado durante a transformação dos dados.
+
+==================================================
+13. TRANSPARÊNCIA
+==================================================
+
+Inclua no dashboard uma área discreta de:
+
+"Fonte dos dados"
+
+utilizando exatamente as informações de fonte existentes no arquivo .md.
+
+Também apresente, quando disponível:
+
+- período de referência;
+- data de atualização;
+- observações metodológicas.
+
+Não invente fontes.
+
+==================================================
+14. QUALIDADE FINAL
+==================================================
+
+Antes de entregar o resultado, verifique:
+
+[ ] Todos os dados vieram exclusivamente do arquivo .md.
+[ ] Nenhum valor foi inventado.
+[ ] Nenhum indicador inexistente foi criado.
+[ ] Datas e unidades foram preservadas.
+[ ] Os gráficos representam corretamente os dados.
+[ ] Os títulos correspondem ao conteúdo apresentado.
+[ ] Não existem elementos visualmente quebrados.
+[ ] O dashboard é responsivo.
+[ ] Os filtros e interações funcionam.
+[ ] Os tooltips funcionam quando aplicáveis.
+[ ] O modo claro/escuro funciona, se implementado.
+[ ] Não existem erros JavaScript no console.
+[ ] O layout possui aparência profissional.
+[ ] A leitura dos indicadores é rápida e intuitiva.
+[ ] Os insights são sustentados pelos dados.
+[ ] Não foram feitas afirmações causais sem evidência.
+[ ] As fontes foram preservadas.
+[ ] O dashboard está pronto para apresentação profissional.
+
+==================================================
+ENTREGA
+==================================================
+
+Entregue o dashboard completo e funcional.
+
+Não entregue apenas um protótipo ou wireframe.
+
+O resultado deve ser uma aplicação web pronta para execução, com HTML, CSS e JavaScript implementados, visual profissional, interatividade funcional e todos os dados provenientes exclusivamente do arquivo .md fornecido.
+
+Priorize precisão dos dados, qualidade da visualização, experiência do usuário e sofisticação visual.
+
+O conteúdo deve ser apresentado de maneira que um usuário consiga compreender rapidamente o cenário representado pelos dados, sem sacrificar a profundidade analítica.

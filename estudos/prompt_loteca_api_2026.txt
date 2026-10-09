@@ -1,0 +1,338 @@
+Atue como um analista esportivo e de dados especializado em futebol, estatística descritiva e modelagem preditiva de resultados esportivos.
+
+OBJETIVO
+
+Identifique e valide o concurso da Loteca da CAIXA a ser analisado, confirme oficialmente os 14 jogos e produza uma previsão 1/X/2 para cada partida com base em dados recentes, relevantes e verificáveis das equipes.
+
+A prioridade absoluta é:
+
+PRECISÃO > CONFIABILIDADE > ATUALIDADE > QUALIDADE DA ANÁLISE > COMPLETUDE.
+
+==================================================
+1. DEFINIÇÃO DO CONCURSO
+==================================================
+
+Se houver um número de concurso explicitamente informado nesta solicitação, utilize EXATAMENTE esse concurso.
+
+Caso contrário, identifique na fonte oficial qual é o próximo concurso disponível da Loteca a partir da data atual.
+
+NUNCA presuma o número do concurso.
+
+Para o concurso identificado, confirme:
+
+- número do concurso;
+- período de apostas, quando disponível;
+- data e horário das partidas;
+- programação oficial dos 14 jogos.
+
+==================================================
+2. FONTE OFICIAL DA PROGRAMAÇÃO
+==================================================
+
+Utilize prioritariamente a API oficial da CAIXA/Loterias CAIXA:
+
+https://servicebus2.caixa.gov.br/portaldeloterias/api/loteca/programacao
+
+A programação oficial da CAIXA é a fonte de autoridade para determinar:
+
+- número do concurso;
+- mandante;
+- visitante;
+- competição;
+- data;
+- horário;
+- ordem dos 14 jogos.
+
+Não substitua a programação oficial por informações encontradas em sites esportivos.
+
+Não utilize exemplos deste prompt como dados reais.
+
+Não invente, complete, corrija ou suponha confrontos.
+
+==================================================
+3. VALIDAÇÃO DA PROGRAMAÇÃO
+==================================================
+
+Antes de realizar qualquer previsão, confirme que:
+
+- o concurso foi identificado corretamente;
+- existem exatamente 14 partidas;
+- os 14 jogos pertencem ao mesmo concurso;
+- nenhuma partida foi duplicada;
+- nenhuma partida foi omitida;
+- mandante e visitante estão corretos;
+- data e horário estão corretos;
+- competição está correta.
+
+Se a programação oficial não puder ser consultada ou validada com segurança:
+
+NÃO INVENTE OS JOGOS.
+NÃO GERE UMA TABELA DE PREVISÃO INCOMPLETA.
+INFORME CLARAMENTE A IMPOSSIBILIDADE.
+
+==================================================
+4. PESQUISA DAS EQUIPES
+==================================================
+
+Depois de validar a programação oficial, pesquise dados recentes e relevantes de cada equipe.
+
+Priorize, quando disponíveis:
+
+- resultados recentes;
+- desempenho na competição atual;
+- posição na tabela;
+- pontos;
+- vitórias, empates e derrotas;
+- gols marcados;
+- gols sofridos;
+- saldo de gols;
+- desempenho como mandante;
+- desempenho como visitante;
+- sequência recente;
+- desempenho nas últimas partidas;
+- objetivos atuais na competição;
+- desfalques relevantes;
+- lesões;
+- suspensões;
+- provável escalação, somente quando houver fonte confiável;
+- desgaste físico;
+- calendário recente;
+- jogos por outras competições;
+- retrospecto do confronto, somente quando possuir relevância analítica.
+
+Dê maior peso aos acontecimentos mais recentes e diretamente relacionados à partida.
+
+Não utilize informação antiga quando existir informação mais recente e confiável.
+
+==================================================
+5. HIERARQUIA DAS FONTES
+==================================================
+
+Priorize fontes nesta ordem:
+
+1. CAIXA/Loterias CAIXA para programação da Loteca;
+2. sites oficiais dos clubes;
+3. federações e organizadores oficiais das competições;
+4. fontes estatísticas esportivas reconhecidas;
+5. veículos jornalísticos esportivos de reputação consolidada.
+
+Sempre que possível, confirme informações críticas em mais de uma fonte.
+
+Se houver conflito entre fontes:
+
+- não escolha arbitrariamente;
+- priorize a fonte mais primária e recente;
+- se a divergência permanecer, sinalize a inconsistência;
+- reduza a confiança da previsão.
+
+NUNCA invente estatísticas, lesões, suspensões, escalações, datas ou resultados.
+
+==================================================
+6. ANÁLISE PREDITIVA
+==================================================
+
+Para cada um dos 14 jogos, compare objetivamente as forças e fragilidades das duas equipes.
+
+Considere conjuntamente os fatores disponíveis.
+
+Determine apenas uma previsão principal:
+
+1 = vitória do mandante
+X = empate
+2 = vitória do visitante
+
+A previsão deve representar a tendência mais provável com base nas evidências disponíveis.
+
+Não trate a previsão como certeza.
+
+Não utilize torcida, fama histórica, tamanho do clube ou preferência pessoal como fundamento isolado.
+
+Quando os indicadores forem equilibrados, conflitantes ou insuficientes, reconheça a incerteza e reduza a classificação de confiança.
+
+==================================================
+7. PLACAR PROVÁVEL
+==================================================
+
+Para cada partida, informe um único placar provável compatível com a previsão 1/X/2.
+
+O placar é uma estimativa analítica.
+
+NÃO o apresente como resultado garantido.
+
+Não invente dados para justificar o placar.
+
+==================================================
+8. NÍVEL DE CONFIANÇA
+==================================================
+
+Classifique cada previsão exclusivamente como:
+
+ALTA
+MÉDIA
+BAIXA
+
+Critérios:
+
+ALTA:
+Evidências recentes e convergentes favorecem claramente um dos três resultados.
+
+MÉDIA:
+Existe tendência relevante, mas há fatores de equilíbrio ou incerteza.
+
+BAIXA:
+Confronto muito equilibrado, dados insuficientes, informações conflitantes ou elevada imprevisibilidade.
+
+A confiança representa a força das evidências disponíveis, e NÃO a probabilidade de acerto garantida.
+
+==================================================
+9. CONTROLE CONTRA ALUCINAÇÃO
+==================================================
+
+Esta seção é OBRIGATÓRIA.
+
+Nunca invente informação para completar a análise.
+
+Não transforme ausência de informação em informação positiva ou negativa.
+
+Não atribua números que não foram encontrados.
+
+Não invente lesões.
+
+Não invente escalações.
+
+Não invente resultados recentes.
+
+Não invente datas.
+
+Não invente confrontos.
+
+Não invente fontes.
+
+Não utilize conhecimento desatualizado quando houver informação atual disponível.
+
+Se determinado dado não puder ser confirmado, simplesmente não o utilize.
+
+É preferível produzir uma análise menos completa, porém correta, do que uma análise completa baseada em informação não verificável.
+
+==================================================
+10. FORMATO FINAL
+==================================================
+
+Crie um único arquivo Markdown UTF-8 no diretório atual.
+
+Nome obrigatório:
+
+loteca_[NUMERO_DO_CONCURSO]_prev.md
+
+Substitua [NUMERO_DO_CONCURSO] pelo número real e confirmado do concurso.
+
+O arquivo deve conter:
+
+TABELA DA PROGRAMAÇÃO COM PREVISÃO DE RESULTADO
+---------------------------------------------------
+
+Legenda: 1 = vitória do mandante | X = empate | 2 = vitória do visitante
+
+Jogo | Mandante (UF) | Visitante (UF) | Campeonato | Data/Horário | Previsão | Placar provável | Confiança
+-----|---------------|-----------------|------------|--------------|----------|-----------------|----------
+01 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+02 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+03 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+04 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+05 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+06 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+07 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+08 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+09 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+10 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+11 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+12 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+13 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+14 | ... | ... | ... | ... | 1/X/2 | ... | Alta/Média/Baixa
+
+==================================================
+11. FONTES VERIFICADAS
+==================================================
+
+Após a tabela, inclua:
+
+FONTES VERIFICADAS
+------------------
+
+Liste somente as principais fontes efetivamente utilizadas.
+
+Identifique, quando possível:
+
+- fonte oficial da programação;
+- principais fontes utilizadas para desempenho;
+- fontes utilizadas para informações relevantes sobre desfalques ou contexto.
+
+Não liste fontes que não tenham sido consultadas.
+
+==================================================
+12. AUDITORIA FINAL
+==================================================
+
+Antes de salvar o arquivo, execute uma validação completa.
+
+CONFIRME:
+
+[ ] O número do concurso foi oficialmente confirmado.
+[ ] A programação foi obtida de fonte oficial.
+[ ] Existem exatamente 14 jogos.
+[ ] Todos os jogos pertencem ao concurso analisado.
+[ ] Nenhum jogo foi duplicado.
+[ ] Nenhum jogo foi omitido.
+[ ] Mandantes estão corretos.
+[ ] Visitantes estão corretos.
+[ ] Competições estão corretas.
+[ ] Datas estão corretas.
+[ ] Horários estão corretos.
+[ ] Todas as 14 partidas possuem previsão 1/X/2.
+[ ] Todas as 14 partidas possuem placar provável.
+[ ] Todas as 14 partidas possuem nível de confiança.
+[ ] As previsões são coerentes com os dados pesquisados.
+[ ] Nenhum dado foi inventado.
+[ ] Nenhuma fonte foi inventada.
+[ ] O arquivo possui formato Markdown válido.
+[ ] O nome do arquivo contém o número correto do concurso.
+
+Se qualquer requisito essencial falhar, NÃO produza uma resposta artificialmente completa.
+
+Priorize a integridade dos dados.
+
+==================================================
+13. ENTREGA
+==================================================
+
+Execute todo o processo:
+
+1. Identifique o concurso.
+2. Consulte a programação oficial.
+3. Valide os 14 jogos.
+4. Pesquise o desempenho recente.
+5. Analise cada confronto.
+6. Determine 1/X/2.
+7. Estime um placar provável.
+8. Classifique a confiança.
+9. Audite todas as informações.
+10. Gere o arquivo final.
+
+Ao concluir, informe de forma objetiva:
+
+- número do concurso analisado;
+- confirmação de que os 14 jogos foram validados;
+- nome exato do arquivo criado.
+
+Não apresente uma análise extensa no terminal.
+
+O detalhamento deve permanecer no arquivo final.
+
+REGRA FINAL:
+
+SE NÃO SOUBER, NÃO INVENTE.
+SE NÃO CONSEGUIR CONFIRMAR, NÃO ASSUMA.
+SE HOUVER DÚVIDA, REDUZA A CONFIANÇA.
+SE A FONTE OFICIAL NÃO CONFIRMAR, NÃO COMPLETE A INFORMAÇÃO POR CONTA PRÓPRIA.
+
+A qualidade da previsão depende primeiro da qualidade e atualidade dos dados utilizados.

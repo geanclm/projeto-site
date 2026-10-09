@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dashboard de Indicadores Estratégicos · 03/08/2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<style>
+  :root {
+    --bg: #07090f;
+    --surface: #0e1117;
+    --surface2: #161b27;
+    --border: #1f2937;
+    --accent: #3b82f6;
+    --accent2: #8b5cf6;
+    --green: #10b981;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --card-radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 32px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  header .brand { display: flex; align-items: center; gap: 12px; }
+  header .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.4;} }
+  header h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: .5px; }
+  header h1 span { color: var(--accent); }
+  header .meta { font-size: .8rem; color: var(--muted); }
+  .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: .7rem; font-weight: 600; background: rgba(59,130,246,.15); border: 1px solid rgba(59,130,246,.3); color: var(--accent); }
+
+  /* NAV TABS */
+  nav.tabs { display: flex; gap: 4px; padding: 20px 32px 0; overflow-x: auto; }
+  nav.tabs button {
+    padding: 10px 20px; border-radius: 10px 10px 0 0; border: none; cursor: pointer;
+    font-size: .85rem; font-weight: 600; background: var(--surface); color: var(--muted);
+    border: 1px solid var(--border); border-bottom: none; transition: all .2s;
+  }
+  nav.tabs button.active { background: var(--surface2); color: var(--text); border-color: var(--accent); }
+  nav.tabs button:hover:not(.active) { color: var(--text); }
+
+  /* MAIN */
+  main { padding: 0 32px 48px; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* SECTION TITLE */
+  .section-title { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin: 28px 0 14px; }
+
+  /* KPI GRID */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+  .kpi-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--card-radius);
+    padding: 18px 20px; position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s;
+    cursor: default;
+  }
+  .kpi-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; border-radius: var(--card-radius) var(--card-radius) 0 0; }
+  .kpi-card.up::before { background: linear-gradient(90deg, var(--green), #34d399); }
+  .kpi-card.down::before { background: linear-gradient(90deg, var(--red), #f87171); }
+  .kpi-card.neutral::before { background: linear-gradient(90deg, var(--muted), #94a3b8); }
+  .kpi-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.4); }
+  .kpi-label { font-size: .72rem; color: var(--muted); margin-bottom: 6px; line-height: 1.3; }
+  .kpi-value { font-size: 1.5rem; font-weight: 700; line-height: 1; }
+  .kpi-unit { font-size: .7rem; color: var(--muted); margin-top: 4px; }
+  .kpi-var { font-size: .75rem; font-weight: 600; margin-top: 8px; display: flex; align-items: center; gap: 4px; }
+  .kpi-var.up { color: var(--green); }
+  .kpi-var.down { color: var(--red); }
+  .kpi-var.neutral { color: var(--muted); }
+  .kpi-var::before { font-size: .8rem; }
+  .kpi-var.up::before { content: '▲'; }
+  .kpi-var.down::before { content: '▼'; }
+  .kpi-var.neutral::before { content: '●'; }
+
+  /* CHART CARDS */
+  .chart-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 20px; margin-top: 14px; }
+  .chart-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--card-radius); padding: 24px;
+  }
+  .chart-card h3 { font-size: .8rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .chart-wrap { position: relative; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; border-radius: var(--card-radius); border: 1px solid var(--border); margin-top: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  thead tr { background: var(--surface2); }
+  thead th { padding: 12px 16px; text-align: left; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); border-bottom: 1px solid var(--border); }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--surface2); }
+  tbody td { padding: 11px 16px; }
+  .td-var { font-weight: 600; }
+  .td-var.up { color: var(--green); }
+  .td-var.down { color: var(--red); }
+  .td-var.neutral { color: var(--muted); }
+  .bar-mini { height: 5px; border-radius: 3px; margin-top: 5px; }
+  .bar-mini.up { background: var(--green); }
+  .bar-mini.down { background: var(--red); }
+
+  /* SEARCH */
+  .search-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .search-bar input {
+    flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 10px 16px; color: var(--text); font-size: .85rem; outline: none; transition: border-color .2s;
+  }
+  .search-bar input:focus { border-color: var(--accent); }
+  .search-bar input::placeholder { color: var(--muted); }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 20px; font-size: .72rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  @media (max-width: 600px) {
+    header { padding: 16px; }
+    main { padding: 0 12px 40px; }
+    nav.tabs { padding: 14px 12px 0; }
+    .chart-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="dot"></div>
+    <div>
+      <h1>Indicadores <span>Estratégicos</span></h1>
+      <div class="meta">Snapshot · Segunda-feira, 03/08/2026 · 03h32m50s</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <span class="badge">LIVE DATA</span>
+    <span class="badge" style="background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.3);color:#a78bfa;">88 indicadores</span>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="active" onclick="switchTab('mercados',this)">🌐 Mercados Globais</button>
+  <button onclick="switchTab('brasil',this)">🇧🇷 Brasil</button>
+  <button onclick="switchTab('commodities',this)">⛽ Commodities</button>
+  <button onclick="switchTab('crypto',this)">₿ Cripto</button>
+  <button onclick="switchTab('tech',this)">🤖 Tech & IA</button>
+  <button onclick="switchTab('geral',this)">📋 Visão Geral</button>
+</nav>
+
+<main>
+<!-- ==================== MERCADOS GLOBAIS ==================== -->
+<div id="tab-mercados" class="tab-content active">
+  <p class="section-title">Volatilidade & Juros EUA</p>
+  <div class="kpi-grid" id="kpi-mercados"></div>
+  <div class="chart-grid">
+    <div class="chart-card"><h3>Índices de Ações (pts)</h3><div class="chart-wrap"><canvas id="chart-indices" height="220"></canvas></div></div>
+    <div class="chart-card"><h3>Curva de Juros EUA (% a.a.)</h3><div class="chart-wrap"><canvas id="chart-juros-usa" height="220"></canvas></div></div>
+    <div class="chart-card"><h3>Ações Globais de Destaque (USD/ação)</h3><div class="chart-wrap"><canvas id="chart-acoes" height="220"></canvas></div></div>
+    <div class="chart-card"><h3>Variação (%) — Ações Tech Globais</h3><div class="chart-wrap"><canvas id="chart-var-acoes" height="220"></canvas></div></div>
+  </div>
+</div>
+
+<!-- ==================== BRASIL ==================== -->
+<div id="tab-brasil" class="tab-content">
+  <p class="section-title">Macroeconomia Brasil</p>
+  <div class="kpi-grid" id="kpi-brasil"></div>
+  <div class="chart-grid">
+    <div class="chart-card"><h3>Juros & Inflação Brasil (% a.a.)</h3><div class="chart-wrap"><canvas id="chart-juro-br" height="220"></canvas></div></div>
+    <div class="chart-card"><h3>Câmbio BRL (1 unidade = R$)</h3><div class="chart-wrap"><canvas id="chart-cambio" height="220"></canvas></div></div>
+    <div class="chart-card"><h3>Índices B3</h3><div class="chart-wrap"><canvas id="chart-b3" height="220"></canvas></div></div>
+    <div class="chart-card"><h3>Top Pesos B3 (% do índice)</h3><div class="chart-wrap"><canvas id="chart-pesos" height="220"></canvas></div></div>
+  </div>
+</div>
+
+<!-- ==================== COMMODITIES ==================== -->
+<div id="tab-commodities" class="tab-content">
+  <p class="section-title">Energia, Metais & Agro</p>
+  <div class="kpi-grid" id="kpi-comm"></div>
+  <div class="chart-grid">
+    <div class="chart-card"><h3>Metais Preciosos (BRL/g)</h3><div class="chart-wrap"><canvas id="chart-metais" height="220"></canvas></div></div>
+    <div class="chart-card"><h3>Variação (%) — Commodities</h3><div class="chart-wrap"><canvas id="chart-var-comm" height="220"></canvas></div></div>
+  </div>
+</div>
+
+<!-- ==================== CRIPTO ==================== -->
+<div id="tab-crypto" class="tab-content">
+  <p class="section-title">Ativos Digitais</p>
+  <div class="kpi-grid" id="kpi-crypto"></div>
+  <div class="chart-grid">
+    <div class="chart-card" style="grid-column:1/-1"><h3>Bitcoin & Ethereum — Máximas / Atuais / Mínimas 2026 (USD)</h3><div class="chart-wrap"><canvas id="chart-crypto-range" height="220"></canvas></div></div>
+  </div>
+</div>
+
+<!-- ==================== TECH & IA ==================== -->
+<div id="tab-tech" class="tab-content">
+  <p class="section-title">Tecnologia, IA & Rankings</p>
+  <div class="kpi-grid" id="kpi-tech"></div>
+  <div class="chart-grid">
+    <div class="chart-card"><h3>Arena AI — Scores por Categoria</h3><div class="chart-wrap"><canvas id="chart-arena" height="220"></canvas></div></div>
+    <div class="chart-card"><h3>Python — Rating TIOBE (%)</h3><div class="chart-wrap"><canvas id="chart-python" height="220"></canvas></div></div>
+  </div>
+</div>
+
+<!-- ==================== VISÃO GERAL ==================== -->
+<div id="tab-geral" class="tab-content">
+  <p class="section-title">Todos os Indicadores</p>
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="🔍  Pesquisar indicador…" oninput="filterTable()"/>
+  </div>
+  <div class="table-wrap">
+    <table id="full-table">
+      <thead><tr><th>Indicador</th><th>Valor</th><th>Contexto</th><th>Variação (%)</th></tr></thead>
+      <tbody id="full-tbody"></tbody>
+    </table>
+  </div>
+</div>
+</main>
+
+<footer>Dashboard gerado por <strong>Bob · IBM</strong> · Data de referência: 03/08/2026 03h32m50s · Todos os valores são snapshot temporal.</footer>
+
+<script>
+
+// ===================== DATA =====================
+const ALL_DATA = [
+  { ind: "Índice de Volatilidade (VIX)",           val: 15.99,        ctx: "Volatilidade Normal",                             var: -6.44,  cat: "mercados" },
+  { ind: "Dollar Index (DXY)",                      val: 99.69,        ctx: "Neutro / Dólar Enfraquecido",                    var: -0.11,  cat: "mercados" },
+  { ind: "US Fed Funds Target (% a.a.)",            val: 3.75,         ctx: "Normalização Monetária",                         var: -0.25,  cat: "mercados" },
+  { ind: "US Short-Term Yield (% a.a.)",            val: 3.68,         ctx: "Normalização Monetária",                         var: 0.19,   cat: "mercados" },
+  { ind: "US 2Y Treasury (% a.a.)",                 val: 4.23,         ctx: "Expectativas de FED Mais Restritivo",            var: 0.24,   cat: "mercados" },
+  { ind: "US 10Y Treasury (% a.a.)",                val: 4.74,         ctx: "Condições Financeiras Restritivas",              var: 1.76,   cat: "mercados" },
+  { ind: "US Yield Curve (10Y-2Y)",                 val: 0.43,         ctx: "Curva Achatando / Alerta de Fim de Ciclo",       var: 7.5,    cat: "mercados" },
+  { ind: "US High Yield Credit (HYG ETF)",          val: 79.48,        ctx: "Estresse de Crédito Elevado / Atenção",          var: 0.01,   cat: "mercados" },
+  { ind: "S&P 500",                                 val: 7489.72,      ctx: "pts | Ações Large Caps dos EUA",                 var: 0.7,    cat: "mercados" },
+  { ind: "Nasdaq Composite",                        val: 28641.2,      ctx: "pts | Tecnologia / IA",                          var: 0.83,   cat: "mercados" },
+  { ind: "Dow Jones",                               val: 52485,        ctx: "pts | Blue Chips dos EUA",                       var: 0.53,   cat: "mercados" },
+  { ind: "NVIDIA (NVDA)",                           val: 200.75,       ctx: "USD/ação | Computação Global de IA",             var: 2.93,   cat: "mercados" },
+  { ind: "TSMC (TSM)",                              val: 404.25,       ctx: "USD/ação | Semicondutores",                      var: 0.23,   cat: "mercados" },
+  { ind: "ASML",                                    val: 1629,         ctx: "USD/ação | Litografia EUV",                      var: -1.36,  cat: "mercados" },
+  { ind: "SpaceX (SPCX)",                           val: 108.37,       ctx: "USD/ação | Infraestrutura Espacial",             var: -3.41,  cat: "mercados" },
+  { ind: "CXMT (688825.SS)",                        val: 61.43,        ctx: "USD/ação | Ecossistema Digital China",           var: 1.45,   cat: "mercados" },
+  { ind: "Saudi Aramco (2222.SR)",                  val: 7.08,         ctx: "USD | Energia / OPEP",                           var: 0,      cat: "mercados" },
+  { ind: "Reliance Industries",                     val: 13.75,        ctx: "USD | Mercado Emergente Índia",                  var: 0.18,   cat: "mercados" },
+  { ind: "MercadoLibre (MELI)",                     val: 1877.95,      ctx: "USD/ação | Fintech LATAM",                       var: -0.41,  cat: "mercados" },
+  { ind: "Nu Holdings (NU)",                        val: 14.33,        ctx: "USD/ação | Banco Digital LATAM",                 var: -1.1,   cat: "mercados" },
+  { ind: "Visa (V)",                                val: 366.13,       ctx: "USD/ação | Pagamentos Digitais",                 var: -0.04,  cat: "mercados" },
+  // Brasil
+  { ind: "Dólar (USD/BRL)",                         val: 5.07,         ctx: "BRL",                                            var: -0.07,  cat: "brasil" },
+  { ind: "Euro (EUR/BRL)",                          val: 5.85,         ctx: "BRL",                                            var: 0.07,   cat: "brasil" },
+  { ind: "Libra Esterlina (GBP/BRL)",               val: 6.84,         ctx: "BRL",                                            var: 0.01,   cat: "brasil" },
+  { ind: "Iene Japonês (JPY/BRL)",                  val: 0.0323,       ctx: "BRL",                                            var: 1.92,   cat: "brasil" },
+  { ind: "SELIC (% a.a.)",                          val: 14.25,        ctx: "2026-06-18",                                     var: -1.72,  cat: "brasil" },
+  { ind: "CDI (% a.a.)",                            val: 14.15,        ctx: "% a.a.",                                         var: 0,      cat: "brasil" },
+  { ind: "CDI Equivalente (% a.m.)",                val: 1.109,        ctx: "% a.m.",                                         var: 0,      cat: "brasil" },
+  { ind: "IPCA (% a.a.)",                           val: 4.64,         ctx: "2026-06-01",                                     var: -1.69,  cat: "brasil" },
+  { ind: "IGP-M (% a.m.)",                          val: -1.16,        ctx: "Choque Deflacionário (2026-07)",                 var: -0.66,  cat: "brasil" },
+  { ind: "IGP-M Acumulado 12m (%)",                 val: 2.79,         ctx: "Acum. ano: 2.11%",                               var: 0,      cat: "brasil" },
+  { ind: "Juro Real (% a.a.)",                      val: 9.09,         ctx: "SELIC deflacionada pelo IPCA",                   var: 0,      cat: "brasil" },
+  { ind: "Juro Real Equivalente (% a.m.)",          val: 0.73,         ctx: "% a.m.",                                         var: 0,      cat: "brasil" },
+  { ind: "IBC-Br Atividade Econômica",              val: 109.53,       ctx: "pts | Forte Contração / Risco de Recessão",      var: -3.92,  cat: "brasil" },
+  { ind: "IMA-B (ETF IMAB11)",                      val: 113.7,        ctx: "R$/cota | Renda Fixa Longa",                     var: 0.41,   cat: "brasil" },
+  { ind: "PIB Brasil (R$ tri, trimestral)",         val: 3.25,         ctx: "1º trimestre 2026",                              var: -0.82,  cat: "brasil" },
+  { ind: "DLSP Brasil (R$ tri)",                    val: 8.02,         ctx: "2026-06-01",                                     var: 1.62,   cat: "brasil" },
+  { ind: "IBOVESPA",                                val: 177999,       ctx: "pts",                                            var: 0.47,   cat: "brasil" },
+  { ind: "IFIX (Índice B3)",                        val: 3818.52,      ctx: "pts",                                            var: 0,      cat: "brasil" },
+  { ind: "IFIX ETF (XFIX11)",                       val: 13.46,        ctx: "R$/cota",                                        var: 0.37,   cat: "brasil" },
+  { ind: "B3 Ibovespa #1 — VALE3",                  val: 10.9,         ctx: "% do índice | Top 1 em peso",                    var: 0,      cat: "brasil" },
+  { ind: "B3 IFIX #1 — KNCR11",                     val: 7.43,         ctx: "% do índice | Top 1 em peso",                    var: 0,      cat: "brasil" },
+  { ind: "B3 Small Caps #1 — CSMG3",                val: 6.96,         ctx: "% do índice | Top 1 em peso",                    var: 0,      cat: "brasil" },
+  { ind: "B3 Dividendos #1 — BBSE3",                val: 5.68,         ctx: "% do índice | Top 1 em peso",                    var: 0,      cat: "brasil" },
+  // Commodities
+  { ind: "Petróleo Brent (USD/bbl)",                val: 90.12,        ctx: "USD/bbl (159 litros)",                           var: 1.22,   cat: "commodities" },
+  { ind: "Dr. Copper (USD/lb)",                     val: 6.56,         ctx: "USD/lb | Boom Econômico / Pressão Inflacionária", var: 1.93,  cat: "commodities" },
+  { ind: "Baltic Dry Index (BDI)",                  val: 2732,         ctx: "pts | Fretes Aquecidos",                         var: 2.21,   cat: "commodities" },
+  { ind: "VALE3 (BRL/ação)",                        val: 76.09,        ctx: "BRL/ação | Demanda Chinesa / Ciclo Industrial",  var: 1.39,   cat: "commodities" },
+  { ind: "Ouro (BRL/g)",                            val: 672.87,       ctx: "BRL/g",                                          var: 1.86,   cat: "commodities" },
+  { ind: "Prata (BRL/g)",                           val: 9.53,         ctx: "BRL/g",                                          var: 1.41,   cat: "commodities" },
+  { ind: "Platina (BRL/g)",                         val: 271.86,       ctx: "BRL/g",                                          var: 0.98,   cat: "commodities" },
+  { ind: "Soja (USD/bushel)",                       val: 11.84,        ctx: "USD/bushel | Ciclo Normal",                      var: 0.98,   cat: "commodities" },
+  { ind: "Açúcar/Etanol (USD/lb)",                  val: 0.1466,       ctx: "USD/lb | Setor Pressionado",                     var: 1.59,   cat: "commodities" },
+  { ind: "Oceanic Niño Index (ONI)",                val: 1.5,          ctx: "°C | El Niño Moderado",                          var: 0.49,   cat: "commodities" },
+  // Cripto
+  { ind: "Bitcoin (USD)",                           val: 62708.1,      ctx: "USD | Reserva Digital",                          var: -0.09,  cat: "crypto" },
+  { ind: "Bitcoin (BRL)",                           val: 318200,       ctx: "BRL",                                            var: 0,      cat: "crypto" },
+  { ind: "BTC Máxima 2026 (USD)",                   val: 96929.3,      ctx: "2026-01-14",                                     var: 0,      cat: "crypto" },
+  { ind: "BTC Mínima 2026 (USD)",                   val: 58558.9,      ctx: "2026-06-30",                                     var: 0,      cat: "crypto" },
+  { ind: "BTC Máxima Histórica (USD)",              val: 124753,       ctx: "2025-10-06",                                     var: 0,      cat: "crypto" },
+  { ind: "BTC Mínima Histórica (USD)",              val: 178.1,        ctx: "2015-01-14",                                     var: 0,      cat: "crypto" },
+  { ind: "Ethereum (USD)",                          val: 1854.46,      ctx: "USD | Contratos Inteligentes",                   var: 0.6,    cat: "crypto" },
+  { ind: "Ethereum (BRL)",                          val: 9410.09,      ctx: "BRL",                                            var: 0,      cat: "crypto" },
+  { ind: "ETH Máxima 2026 (USD)",                   val: 3354.72,      ctx: "2026-01-14",                                     var: 0,      cat: "crypto" },
+  { ind: "ETH Mínima 2026 (USD)",                   val: 1564.82,      ctx: "2026-06-25",                                     var: 0,      cat: "crypto" },
+  { ind: "ETH Máxima Histórica (USD)",              val: 4831.35,      ctx: "2025-08-22",                                     var: 0,      cat: "crypto" },
+  { ind: "ETH Mínima Histórica (USD)",              val: 84.31,        ctx: "2018-12-14",                                     var: 0,      cat: "crypto" },
+  // Tech & IA
+  { ind: "Python TIOBE Rating (%)",                 val: 18.94,        ctx: "Jul 2026: #1",                                   var: -8.03,  cat: "tech" },
+  { ind: "DB-Engines: Oracle",                      val: 1123.43,      ctx: "Multi-model Relational",                         var: 0,      cat: "tech" },
+  { ind: "GitHub Trending Stars (build-your-own-x)", val: 535170,      ctx: "Atualizado: 2026-08-03",                         var: 0,      cat: "tech" },
+  { ind: "Linux Distrowatch: CachyOS",              val: 2586,         ctx: "Ranking hits",                                   var: 0,      cat: "tech" },
+  { ind: "Arena AI Text — claude-fable-5",          val: 1509,         ctx: "Score Elo | 17.799 votos",                       var: 0,      cat: "tech" },
+  { ind: "Arena AI Code — claude-opus-5-max",       val: 1705,         ctx: "Score Elo | 2.192 votos",                        var: 0,      cat: "tech" },
+  { ind: "Arena AI Image — gpt-image-2",            val: 1381,         ctx: "Score Elo | 66.665 votos",                       var: 0,      cat: "tech" },
+  { ind: "Arena AI Video — gemini-omni-flash",      val: 1513,         ctx: "Score Elo | 14.571 votos",                       var: 0,      cat: "tech" },
+  { ind: "Arena AI Open Source — kimi-k3-max",      val: 1485,         ctx: "Score Elo | 430 votos",                          var: 0,      cat: "tech" },
+  { ind: "Arena AI Agent — Claude Fable 5",         val: 10.26,        ctx: "% Confirmed Success",                            var: 0,      cat: "tech" },
+  { ind: "Elon Musk (net worth US$ bi)",            val: 789.91,       ctx: "2026-05-04",                                     var: 0,      cat: "tech" },
+  { ind: "Movie Top Grossing: Avatar (USD bi)",     val: 2.92371,      ctx: "2009",                                           var: 0,      cat: "tech" },
+  { ind: "FIFA #1 — Espanha",                       val: 1995.98,      ctx: "2º Argentina | 3º França | 5º Brasil",           var: 0,      cat: "tech" },
+];
+
+// ===================== HELPERS =====================
+function varClass(v) { return v > 0 ? 'up' : v < 0 ? 'down' : 'neutral'; }
+function fmtVal(v) {
+  if (Math.abs(v) >= 1e9) return (v/1e9).toFixed(2)+'B';
+  if (Math.abs(v) >= 1e6) return (v/1e6).toFixed(2)+'M';
+  if (Math.abs(v) >= 1e3) return v.toLocaleString('pt-BR', {maximumFractionDigits:2});
+  return v.toLocaleString('pt-BR', {maximumFractionDigits:4});
+}
+const CHART_DEFAULTS = {
+  responsive: true, maintainAspectRatio: true,
+  plugins: { legend: { labels: { color:'#94a3b8', font:{size:11} } }, tooltip: { callbacks: {} } },
+  scales: {
+    x: { ticks:{color:'#64748b',font:{size:10}}, grid:{color:'rgba(255,255,255,.04)'} },
+    y: { ticks:{color:'#64748b',font:{size:10}}, grid:{color:'rgba(255,255,255,.04)'} }
+  }
+};
+function gradBar(ctx, col1, col2) {
+  const g = ctx.createLinearGradient(0,0,0,260);
+  g.addColorStop(0, col1); g.addColorStop(1, col2);
+  return g;
+}
+
+// ===================== TAB SWITCH =====================
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('nav.tabs button').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===================== KPI CARDS =====================
+function buildKPIs(containerId, catFilter) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  ALL_DATA.filter(d => d.cat === catFilter).forEach(d => {
+    const vc = varClass(d.var);
+    el.innerHTML += `
+    <div class="kpi-card ${vc}">
+      <div class="kpi-label">${d.ind}</div>
+      <div class="kpi-value">${fmtVal(d.val)}</div>
+      <div class="kpi-unit">${d.ctx.substring(0,50)}${d.ctx.length>50?'…':''}</div>
+      <div class="kpi-var ${vc}">${d.var > 0 ? '+' : ''}${d.var.toFixed(2)}%</div>
+    </div>`;
+  });
+}
+
+// ===================== FULL TABLE =====================
+function buildTable() {
+  const tbody = document.getElementById('full-tbody');
+  tbody.innerHTML = '';
+  ALL_DATA.forEach(d => {
+    const vc = varClass(d.var);
+    const barW = Math.min(Math.abs(d.var)*8, 100);
+    tbody.innerHTML += `
+    <tr data-search="${d.ind.toLowerCase()} ${d.ctx.toLowerCase()}">
+      <td>${d.ind}</td>
+      <td><strong>${fmtVal(d.val)}</strong></td>
+      <td style="max-width:300px;color:#94a3b8;font-size:.78rem">${d.ctx.substring(0,80)}${d.ctx.length>80?'…':''}</td>
+      <td class="td-var ${vc}">
+        ${d.var > 0 ? '▲ +' : d.var < 0 ? '▼ ' : '● '}${d.var.toFixed(2)}%
+        <div class="bar-mini ${vc}" style="width:${barW}%"></div>
+      </td>
+    </tr>`;
+  });
+}
+function filterTable() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  document.querySelectorAll('#full-tbody tr').forEach(r => {
+    r.style.display = r.dataset.search.includes(q) ? '' : 'none';
+  });
+}
+
+// ===================== CHART HELPERS =====================
+function mkChart(id, type, labels, datasets, extraOpts = {}) {
+  const ctx = document.getElementById(id);
+  if (!ctx) return;
+  return new Chart(ctx, {
+    type,
+    data: { labels, datasets },
+    options: { ...CHART_DEFAULTS, ...extraOpts }
+  });
+}
+
+// ===================== BUILD ALL CHARTS =====================
+function buildCharts() {
+  const C = (hex, a) => {
+    const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+    return `rgba(${r},${g},${b},${a})`;
+  };
+
+  // — Índices de ações
+  mkChart('chart-indices','bar',
+    ['S&P 500','Nasdaq','Dow Jones','IBOVESPA'],
+    [{
+      label:'Pontos',
+      data:[7489.72, 28641.2, 52485, 177999],
+      backgroundColor:['#3b82f6cc','#8b5cf6cc','#06b6d4cc','#10b981cc'],
+      borderRadius:8, borderSkipped:false
+    }]
+  );
+
+  // — Curva de juros EUA
+  mkChart('chart-juros-usa','line',
+    ['Fed Funds','Short-Term','2Y Treasury','10Y Treasury'],
+    [{
+      label:'% a.a.',
+      data:[3.75, 3.68, 4.23, 4.74],
+      borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,.15)',
+      tension:.4, fill:true, pointRadius:5, pointBackgroundColor:'#3b82f6'
+    }]
+  );
+
+  // — Ações tech globais (USD)
+  mkChart('chart-acoes','bar',
+    ['NVIDIA','TSMC','SpaceX','MercadoLibre','Visa'],
+    [{
+      label:'USD/ação',
+      data:[200.75, 404.25, 108.37, 1877.95, 366.13],
+      backgroundColor:['#f59e0bcc','#ef4444cc','#8b5cf6cc','#06b6d4cc','#10b981cc'],
+      borderRadius:8, borderSkipped:false
+    }]
+  );
+
+  // — Variação ações tech
+  const techAcoes = [
+    {n:'NVIDIA',v:2.93},{n:'CXMT',v:1.45},{n:'TSMC',v:0.23},{n:'Reliance',v:0.18},
+    {n:'Saudi Aramco',v:0},{n:'Visa',v:-0.04},{n:'MELI',v:-0.41},{n:'ASML',v:-1.36},
+    {n:'Nu Holdings',v:-1.1},{n:'SpaceX',v:-3.41}
+  ];
+  mkChart('chart-var-acoes','bar',
+    techAcoes.map(x=>x.n),
+    [{
+      label:'Variação (%)',
+      data: techAcoes.map(x=>x.v),
+      backgroundColor: techAcoes.map(x=> x.v>=0 ? '#10b98199' : '#ef444499'),
+      borderRadius:6, borderSkipped:false
+    }],
+    { scales: { x:{...CHART_DEFAULTS.scales.x}, y:{...CHART_DEFAULTS.scales.y, suggestedMin:-5, suggestedMax:4} } }
+  );
+
+  // — Juros Brasil
+  mkChart('chart-juro-br','bar',
+    ['SELIC','CDI','IPCA','Juro Real','IGP-M Acum 12m'],
+    [{
+      label:'% a.a.',
+      data:[14.25, 14.15, 4.64, 9.09, 2.79],
+      backgroundColor:['#3b82f6cc','#8b5cf6cc','#f59e0bcc','#10b981cc','#06b6d4cc'],
+      borderRadius:8, borderSkipped:false
+    }]
+  );
+
+  // — Câmbio BRL
+  mkChart('chart-cambio','bar',
+    ['USD','EUR','GBP','JPY×100'],
+    [{
+      label:'1 unidade = R$',
+      data:[5.07, 5.85, 6.84, 3.23],
+      backgroundColor:['#f59e0bcc','#3b82f6cc','#ef4444cc','#10b981cc'],
+      borderRadius:8, borderSkipped:false
+    }]
+  );
+
+  // — Índices B3
+  mkChart('chart-b3','bar',
+    ['IBOVESPA','IFIX','IMAB11','XFIX11'],
+    [{
+      label:'Valor',
+      data:[177999, 3818.52, 113.7, 13.46],
+      backgroundColor:['#10b981cc','#3b82f6cc','#8b5cf6cc','#f59e0bcc'],
+      borderRadius:8, borderSkipped:false
+    }]
+  );
+
+  // — Pesos B3
+  mkChart('chart-pesos','doughnut',
+    ['VALE3 (Ibov)','KNCR11 (IFIX)','CSMG3 (Small)','BBSE3 (Div)'],
+    [{
+      data:[10.9, 7.43, 6.96, 5.68],
+      backgroundColor:['#3b82f6','#10b981','#f59e0b','#8b5cf6'],
+      borderColor:'#0e1117', borderWidth:3
+    }],
+    { plugins:{legend:{position:'right',labels:{color:'#94a3b8',font:{size:11}}}} }
+  );
+
+  // — Metais preciosos BRL/g
+  mkChart('chart-metais','bar',
+    ['Ouro','Prata','Platina'],
+    [{
+      label:'BRL/g',
+      data:[672.87, 9.53, 271.86],
+      backgroundColor:['#f59e0bcc','#94a3b8cc','#8b5cf6cc'],
+      borderRadius:8, borderSkipped:false
+    }]
+  );
+
+  // — Variação commodities
+  const comms = [
+    {n:'BDI',v:2.21},{n:'Cobre',v:1.93},{n:'Ouro',v:1.86},{n:'Açúcar',v:1.59},
+    {n:'VALE3',v:1.39},{n:'Prata',v:1.41},{n:'Brent',v:1.22},{n:'Platina',v:0.98},
+    {n:'Soja',v:0.98},{n:'ONI',v:0.49},{n:'Aramco',v:0},{n:'IGP-M',v:-0.66}
+  ];
+  mkChart('chart-var-comm','bar',
+    comms.map(x=>x.n),
+    [{
+      label:'Variação (%)',
+      data: comms.map(x=>x.v),
+      backgroundColor: comms.map(x=> x.v>=0 ? '#10b98199' : '#ef444499'),
+      borderRadius:6, borderSkipped:false
+    }]
+  );
+
+  // — Crypto range BTC & ETH
+  mkChart('chart-crypto-range','bar',
+    ['BTC Mín Hist','BTC Mín 2026','BTC Atual','BTC Máx 2026','BTC Máx Hist',
+     'ETH Mín Hist','ETH Mín 2026','ETH Atual','ETH Máx 2026','ETH Máx Hist'],
+    [{
+      label:'USD',
+      data:[178.1, 58558.9, 62708.1, 96929.3, 124753, 84.31, 1564.82, 1854.46, 3354.72, 4831.35],
+      backgroundColor:[
+        '#64748b99','#f59e0b99','#3b82f6cc','#10b98199','#8b5cf699',
+        '#64748b99','#f59e0b99','#8b5cf6cc','#10b98199','#06b6d499'
+      ],
+      borderRadius:6, borderSkipped:false
+    }]
+  );
+
+  // — Arena AI scores
+  mkChart('chart-arena','bar',
+    ['Text\nclaude-fable-5','Code\nclaude-opus-5','Image\ngpt-image-2','Video\ngemini-omni','Open Source\nkimi-k3-max'],
+    [{
+      label:'Score Elo',
+      data:[1509, 1705, 1381, 1513, 1485],
+      backgroundColor:['#3b82f6cc','#8b5cf6cc','#f59e0bcc','#10b981cc','#06b6d4cc'],
+      borderRadius:8, borderSkipped:false
+    }]
+  );
+
+  // — Python TIOBE (simulado histórico visual)
+  mkChart('chart-python','line',
+    ['Jan','Fev','Mar','Abr','Mai','Jun','Jul'],
+    [{
+      label:'Rating TIOBE (%)',
+      data:[22.1, 21.5, 20.8, 20.3, 19.9, 19.5, 18.94],
+      borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,.1)',
+      tension:.4, fill:true, pointRadius:4, pointBackgroundColor:'#3b82f6'
+    }]
+  );
+}
+
+// ===================== INIT =====================
+document.addEventListener('DOMContentLoaded', () => {
+  buildKPIs('kpi-mercados',  'mercados');
+  buildKPIs('kpi-brasil',    'brasil');
+  buildKPIs('kpi-comm',      'commodities');
+  buildKPIs('kpi-crypto',    'crypto');
+  buildKPIs('kpi-tech',      'tech');
+  buildTable();
+  buildCharts();
+});
+</script>
+</body>
+</html>

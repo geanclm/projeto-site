@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crônica Financeira 04/09/2026 — Painel de Indicadores Estratégicos</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --ink:        #1A1A2E;
+    --ink2:       #2D2D4E;
+    --paper:      #F7F4EE;
+    --paper2:     #EFEBE2;
+    --gold:       #B8860B;
+    --gold-lt:    #D4A843;
+    --cyan:       #1A6B8A;
+    --cyan-lt:    #2AA4CC;
+    --green:      #1E7A3A;
+    --green-lt:   #27AE60;
+    --red:        #B03030;
+    --red-lt:     #E74C3C;
+    --rule:       rgba(26,26,46,0.12);
+    --rule-gold:  rgba(184,134,11,0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    width: 1600px;
+    background: var(--paper);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    padding: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 22px 48px 18px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--gold);
+  }
+  .masthead-left { flex: 1; }
+  .edition-tag {
+    font-size: 10px;
+    letter-spacing: .12em;
+    color: var(--gold-lt);
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .edition-tag::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold-lt);
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 700;
+    color: #fff;
+  }
+  .masthead h1 em {
+    color: var(--gold-lt);
+    font-style: normal;
+  }
+  .masthead-sub {
+    font-size: 12.5px;
+    color: rgba(247,244,238,.55);
+    margin-top: 7px;
+    font-weight: 300;
+    max-width: 640px;
+    line-height: 1.5;
+  }
+  .masthead-right {
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 40px;
+  }
+  .masthead-meta {
+    font-size: 11px;
+    color: rgba(247,244,238,.45);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .masthead-meta strong { color: var(--gold-lt); font-weight: 600; }
+  .kpi-strip {
+    display: flex;
+    gap: 28px;
+    margin-top: 10px;
+  }
+  .kpi-item { text-align: center; }
+  .kpi-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+  .kpi-lbl {
+    font-size: 9.5px;
+    color: rgba(247,244,238,.45);
+    margin-top: 3px;
+    letter-spacing: .06em;
+    font-weight: 400;
+  }
+  .kpi-div { width: 1px; background: rgba(255,255,255,.15); align-self: stretch; }
+
+  /* ── BODY GRID ── */
+  .body {
+    display: grid;
+    grid-template-columns: 370px 1fr 310px;
+    gap: 0;
+    min-height: 820px;
+  }
+
+  /* ── COLUMN STYLES ── */
+  .col {
+    padding: 24px 22px;
+    border-right: 1px solid var(--rule);
+  }
+  .col:last-child { border-right: none; }
+  .col-center { background: var(--paper); }
+  .col-left { background: var(--paper2); }
+  .col-right { background: var(--paper2); }
+
+  /* ── SECTION LABELS ── */
+  .col-head {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 14px;
+    padding-bottom: 9px;
+    border-bottom: 1.5px solid var(--rule-gold);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .col-head .flag { font-size: 17px; }
+  .col-eyebrow {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* ── METRIC ROW ── */
+  .m-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .m-row:last-child { border-bottom: none; }
+  .m-label {
+    font-size: 11.5px;
+    color: var(--ink2);
+    font-weight: 400;
+    max-width: 195px;
+    line-height: 1.4;
+  }
+  .m-label small {
+    display: block;
+    font-size: 10px;
+    color: rgba(26,26,46,.45);
+    margin-top: 1px;
+  }
+  .m-right {
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+  .m-val {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .m-var {
+    font-size: 10px;
+    font-weight: 600;
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-top: 2px;
+  }
+  .up   { background: rgba(30,122,58,.1);  color: var(--green); }
+  .dn   { background: rgba(176,48,48,.1);  color: var(--red);   }
+  .neu  { background: rgba(26,26,46,.07);  color: rgba(26,26,46,.5); }
+
+  /* ── FEATURE CARD ── */
+  .feat-card {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .feat-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 4px; height: 100%;
+    background: var(--gold);
+  }
+  .feat-card .fc-label {
+    font-size: 9px;
+    letter-spacing: .1em;
+    color: var(--gold-lt);
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .feat-card .fc-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+  .feat-card .fc-name {
+    font-size: 11px;
+    color: rgba(255,255,255,.6);
+    margin-top: 4px;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+  .feat-card .fc-var {
+    position: absolute;
+    top: 14px; right: 18px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* ── DUAL CARD ── */
+  .dual { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+  .mini-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 10px 12px;
+  }
+  .mini-card .mc-label {
+    font-size: 9.5px;
+    color: rgba(26,26,46,.5);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .mini-card .mc-val {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+  .mini-card .mc-sub {
+    font-size: 9.5px;
+    color: rgba(26,26,46,.45);
+    margin-top: 3px;
+  }
+
+  /* ── CENTER — BIG LAYOUT ── */
+  .center-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .big-block {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .big-block.accent-cyan { border-top: 3px solid var(--cyan); }
+  .big-block.accent-gold { border-top: 3px solid var(--gold); }
+  .bb-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: var(--cyan);
+    margin-bottom: 7px;
+  }
+  .bb-label.gold { color: var(--gold); }
+  .bb-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .bb-name {
+    font-size: 11px;
+    color: rgba(26,26,46,.5);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* ── RANKING TABLE ── */
+  .rank-table { width: 100%; }
+  .rank-table thead th {
+    font-size: 9px;
+    letter-spacing: .1em;
+    font-weight: 600;
+    color: rgba(26,26,46,.4);
+    padding: 0 0 6px;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+  }
+  .rank-table thead th:last-child { text-align: right; }
+  .rank-table tbody td {
+    font-size: 11.5px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: middle;
+    color: var(--ink2);
+  }
+  .rank-table tbody tr:last-child td { border-bottom: none; }
+  .rank-table td.td-val {
+    text-align: right;
+    font-weight: 700;
+    font-size: 12.5px;
+    color: var(--ink);
+  }
+  .rank-table td.td-var { text-align: right; width: 56px; }
+  .rank-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 700;
+    background: var(--ink);
+    color: var(--paper);
+    margin-right: 6px;
+    flex-shrink: 0;
+  }
+  .rank-num.gold-bg { background: var(--gold); }
+
+  /* ── INSIGHT BOX ── */
+  .insight {
+    background: rgba(26,107,138,.07);
+    border-left: 3px solid var(--cyan);
+    border-radius: 0 5px 5px 0;
+    padding: 9px 12px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--ink2);
+    line-height: 1.55;
+  }
+  .insight.gold-ins {
+    background: rgba(184,134,11,.07);
+    border-color: var(--gold);
+  }
+
+  /* ── ARENA AI TABLE ── */
+  .arena-row {
+    display: flex;
+    align-items: center;
+    padding: 6.5px 0;
+    border-bottom: 1px solid var(--rule);
+    gap: 10px;
+  }
+  .arena-row:last-child { border-bottom: none; }
+  .arena-cat {
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--gold);
+    width: 54px;
+    flex-shrink: 0;
+    letter-spacing: .05em;
+  }
+  .arena-model {
+    font-size: 11px;
+    color: var(--ink2);
+    flex: 1;
+    font-weight: 500;
+  }
+  .arena-score {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    flex-shrink: 0;
+    min-width: 38px;
+    text-align: right;
+  }
+  .arena-votes {
+    font-size: 9px;
+    color: rgba(26,26,46,.4);
+    text-align: right;
+    min-width: 40px;
+  }
+
+  /* ── CRYPTO BLOCK ── */
+  .crypto-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .crypto-card {
+    background: var(--ink);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: #fff;
+  }
+  .cc-label { font-size: 9px; color: rgba(255,255,255,.45); letter-spacing: .08em; font-weight: 500; margin-bottom: 4px; }
+  .cc-val { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; line-height: 1; color: #fff; }
+  .cc-sub { font-size: 9.5px; color: rgba(255,255,255,.45); margin-top: 3px; }
+  .cc-range { margin-top: 8px; }
+  .cc-range-row { display: flex; justify-content: space-between; font-size: 9.5px; color: rgba(255,255,255,.5); margin-top: 3px; }
+  .cc-range-row span:last-child { color: var(--gold-lt); }
+
+  /* ── FOOTER STRIP ── */
+  .footer-strip {
+    background: var(--ink2);
+    padding: 10px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+  .footer-strip p {
+    font-size: 10px;
+    color: rgba(247,244,238,.35);
+    line-height: 1.6;
+  }
+  .footer-strip p strong { color: rgba(247,244,238,.65); font-weight: 500; }
+  .footer-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .fdot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ MASTHEAD ═══ -->
+<header class="masthead">
+  <div class="masthead-left">
+    <div class="edition-tag">PAINEL DE INDICADORES ESTRATÉGICOS &nbsp;·&nbsp; EDIÇÃO 04/09/2026</div>
+    <h1>Crônica Financeira 2026<br><em>Convergência entre Capital Global, IA e a Realidade Macroeconômica Brasileira</em></h1>
+    <p class="masthead-sub">Análise integrada de mercados, tecnologia e economia real — do Fed ao Ibovespa, dos semicondutores ao Bitcoin. Snapshot de sexta-feira, 04 de setembro de 2026 às 11h00.</p>
+  </div>
+  <div class="masthead-right">
+    <div class="masthead-meta">
+      <strong>Referência:</strong> 04/09/2026 · 11h00m08s<br>
+      <strong>Fonte:</strong> df_indicadores.md<br>
+      <strong>Regime:</strong> VIX 14,08 · Baixa volatilidade
+    </div>
+    <div class="kpi-strip">
+      <div class="kpi-item"><div class="kpi-val">7.738</div><div class="kpi-lbl">S&P 500</div></div>
+      <div class="kpi-div"></div>
+      <div class="kpi-item"><div class="kpi-val">183.853</div><div class="kpi-lbl">Ibovespa</div></div>
+      <div class="kpi-div"></div>
+      <div class="kpi-item"><div class="kpi-val">R$ 5,12</div><div class="kpi-lbl">USD/BRL</div></div>
+      <div class="kpi-div"></div>
+      <div class="kpi-item"><div class="kpi-val">14%</div><div class="kpi-lbl">SELIC a.a.</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ BODY ═══ -->
+<div class="body">
+
+  <!-- ══ COLUNA ESQUERDA — Brasil ══ -->
+  <div class="col col-left">
+    <span class="col-eyebrow">retrato econômico</span>
+    <div class="col-head"><span class="flag">🇧🇷</span> Brasil — Macro & Mercado</div>
+
+    <!-- Juros & Inflação -->
+    <div class="feat-card">
+      <div class="fc-label">POLÍTICA MONETÁRIA</div>
+      <div class="fc-val">14,00%</div>
+      <div class="fc-name">SELIC · Juro real de 9,06% a.a.<br>CDI 13,9% a.a. · 1,0905% a.m.</div>
+      <div class="fc-var dn">−1,75%</div>
+    </div>
+
+    <div class="dual">
+      <div class="mini-card">
+        <div class="mc-label">IPCA (% a.a.)</div>
+        <div class="mc-val">4,44%</div>
+        <div class="mc-sub up">+6,31% var.</div>
+      </div>
+      <div class="mini-card">
+        <div class="mc-label">IGP-M (% a.m.)</div>
+        <div class="mc-val">−0,22%</div>
+        <div class="mc-sub neu">Deflação moderada</div>
+      </div>
+    </div>
+
+    <!-- Atividade -->
+    <div class="m-row">
+      <div class="m-label">PIB Trimestral (R$ tri)<small>2º trim. 2026 · IBGE</small></div>
+      <div class="m-right"><div class="m-val">3,43</div><span class="m-var up">+5,38%</span></div>
+    </div>
+    <div class="m-row">
+      <div class="m-label">Atividade Econômica (IBC-Br)<small>Crescimento moderado / saudável</small></div>
+      <div class="m-right"><div class="m-val">109,89</div><span class="m-var up">+0,33%</span></div>
+    </div>
+    <div class="m-row">
+      <div class="m-label">DLSP — Dívida Líquida (R$ tri)<small>Banco Central · Jul/2026</small></div>
+      <div class="m-right"><div class="m-val">8,10</div><span class="m-var dn">+0,97%</span></div>
+    </div>
+    <div class="m-row">
+      <div class="m-label">IMA-B (ETF IMAB11)<small>Renda fixa longa · inflação</small></div>
+      <div class="m-right"><div class="m-val">116,48</div><span class="m-var up">+0,32%</span></div>
+    </div>
+
+    <!-- B3 -->
+    <div style="margin-top:14px;margin-bottom:8px">
+      <span class="col-eyebrow">b3 — bolsa brasileira</span>
+    </div>
+    <div class="feat-card" style="background:var(--ink2)">
+      <div class="fc-label">IBOVESPA</div>
+      <div class="fc-val">183.853</div>
+      <div class="fc-name">Top peso: VALE3 · 10,85% do índice</div>
+      <div class="fc-var dn">−0,72%</div>
+    </div>
+    <div class="dual">
+      <div class="mini-card">
+        <div class="mc-label">IFIX (Índice B3)</div>
+        <div class="mc-val">3.760</div>
+        <div class="mc-sub neu">KNCR11 top 7,59%</div>
+      </div>
+      <div class="mini-card">
+        <div class="mc-label">IFIX ETF (XFIX11)</div>
+        <div class="mc-val">R$ 13,34</div>
+        <div class="mc-sub up">+0,45%</div>
+      </div>
+    </div>
+
+    <table class="rank-table" style="margin-top:4px">
+      <thead><tr><th>Índice B3</th><th>Top holding</th><th style="text-align:right">Peso</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-num">1</span>Small Caps</td>
+          <td style="color:var(--ink);font-weight:600">CSMG3</td>
+          <td class="td-val">6,08%</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">2</span>Dividendos</td>
+          <td style="color:var(--ink);font-weight:600">BBSE3</td>
+          <td class="td-val">5,60%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Câmbio -->
+    <div style="margin-top:14px;margin-bottom:8px">
+      <span class="col-eyebrow">câmbio (em BRL)</span>
+    </div>
+    <div class="m-row">
+      <div class="m-label">Dólar (USD)</div>
+      <div class="m-right"><div class="m-val">R$ 5,12</div><span class="m-var dn">+0,60%</span></div>
+    </div>
+    <div class="m-row">
+      <div class="m-label">Euro (EUR)</div>
+      <div class="m-right"><div class="m-val">R$ 5,95</div><span class="m-var dn">+0,86%</span></div>
+    </div>
+    <div class="m-row">
+      <div class="m-label">Libra Esterlina</div>
+      <div class="m-right"><div class="m-val">R$ 6,92</div><span class="m-var dn">+0,78%</span></div>
+    </div>
+    <div class="m-row">
+      <div class="m-label">Iene Japonês</div>
+      <div class="m-right"><div class="m-val">R$ 0,0328</div><span class="m-var dn">+2,23%</span></div>
+    </div>
+  </div>
+
+  <!-- ══ COLUNA CENTRAL ══ -->
+  <div class="col col-center">
+
+    <!-- EUA — Mercados Globais -->
+    <span class="col-eyebrow">eixo do capital global</span>
+    <div class="col-head">🇺🇸 Mercados EUA &amp; Política Monetária</div>
+
+    <div class="center-top">
+      <div class="big-block accent-cyan">
+        <div class="bb-label">S&P 500 — LARGE CAPS EUA</div>
+        <div class="bb-val">7.738,56</div>
+        <div class="bb-name">Principal referência institucional de apetite por risco global</div>
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <span class="m-var dn" style="font-size:10px">−0,12%</span>
+          <span style="font-size:10px;color:rgba(26,26,46,.4)">Nasdaq 29.626 <span class="m-var up" style="font-size:9px">+0,34%</span></span>
+        </div>
+      </div>
+      <div class="big-block accent-gold">
+        <div class="bb-label gold">FED FUNDS TARGET — POLÍTICA MONETÁRIA</div>
+        <div class="bb-val">3,75%</div>
+        <div class="bb-name">Normalização monetária em curso · US Short-Term Yield 3,77%</div>
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <span class="m-var dn" style="font-size:10px">−0,25%</span>
+          <span style="font-size:10px;color:rgba(26,26,46,.4)">VIX 14,08 <span class="m-var up" style="font-size:9px">−1,68%</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Treasuries & Curva -->
+    <table class="rank-table" style="margin-bottom:14px">
+      <thead><tr><th>Indicador de renda fixa EUA</th><th style="text-align:right">Valor</th><th>Contexto</th><th style="text-align:right">Var.</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>US 2Y Treasury (% a.a.)</td>
+          <td class="td-val">4,39%</td>
+          <td style="font-size:10px;color:rgba(26,26,46,.45)">Fed mais restritivo</td>
+          <td class="td-var"><span class="m-var neu">0,00%</span></td>
+        </tr>
+        <tr>
+          <td>US 10Y Treasury (% a.a.)</td>
+          <td class="td-val">4,77%</td>
+          <td style="font-size:10px;color:rgba(26,26,46,.45)">Condições restritivas</td>
+          <td class="td-var"><span class="m-var dn">+0,21%</span></td>
+        </tr>
+        <tr>
+          <td>Yield Curve (10Y − 2Y)</td>
+          <td class="td-val">0,41</td>
+          <td style="font-size:10px;color:rgba(26,26,46,.45)">Achatamento · Alerta fim de ciclo</td>
+          <td class="td-var"><span class="m-var neu">—</span></td>
+        </tr>
+        <tr>
+          <td>HYG ETF (High Yield Credit)</td>
+          <td class="td-val">79,20</td>
+          <td style="font-size:10px;color:rgba(26,26,46,.45)">Estresse de crédito · atenção</td>
+          <td class="td-var"><span class="m-var dn">−0,01%</span></td>
+        </tr>
+        <tr>
+          <td>Dollar Index (DXY)</td>
+          <td class="td-val">99,12</td>
+          <td style="font-size:10px;color:rgba(26,26,46,.45)">Neutro · Dólar enfraquecido</td>
+          <td class="td-var"><span class="m-var up">+0,12%</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Titãs de IA & Tech -->
+    <span class="col-eyebrow">infraestrutura de ia &amp; tecnologia global</span>
+    <div class="col-head">Os Titãs da Nova Economia</div>
+
+    <table class="rank-table" style="margin-bottom:14px">
+      <thead><tr><th colspan="2">Empresa · Capitalização</th><th style="text-align:right">Preço</th><th style="text-align:right">Var.</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-num gold-bg" style="color:#fff">1</span></td>
+          <td>
+            <span style="font-weight:600">NVIDIA (NVDA)</span>
+            <small style="display:block;color:rgba(26,26,46,.45);font-size:9.5px">US$ 5,64 tri · Computação IA global · CUDA</small>
+          </td>
+          <td class="td-val">USD 233,79</td>
+          <td class="td-var"><span class="m-var up">+2,34%</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num" style="background:var(--cyan)">6</span></td>
+          <td>
+            <span style="font-weight:600">🇹🇼 TSMC (TSM)</span>
+            <small style="display:block;color:rgba(26,26,46,.45);font-size:9.5px">US$ 2,21 tri · Fabricação avançada 3nm/5nm</small>
+          </td>
+          <td class="td-val">USD 425,80</td>
+          <td class="td-var"><span class="m-var up">+2,11%</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">7</span></td>
+          <td>
+            <span style="font-weight:600">🇺🇸 SpaceX (SPCX)</span>
+            <small style="display:block;color:rgba(26,26,46,.45);font-size:9.5px">US$ 1,95 tri · Starlink · Conectividade global</small>
+          </td>
+          <td class="td-val">USD 147,62</td>
+          <td class="td-var"><span class="m-var dn">−1,42%</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">20</span></td>
+          <td>
+            <span style="font-weight:600">🇺🇸 Visa (V)</span>
+            <small style="display:block;color:rgba(26,26,46,.45);font-size:9.5px">US$ 701,25 bi · Pagamentos digitais globais</small>
+          </td>
+          <td class="td-val">USD 375,57</td>
+          <td class="td-var"><span class="m-var dn">−0,84%</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">23</span></td>
+          <td>
+            <span style="font-weight:600">🇳🇱 ASML</span>
+            <small style="display:block;color:rgba(26,26,46,.45);font-size:9.5px">US$ 657,16 bi · Monopólio litografia EUV</small>
+          </td>
+          <td class="td-val">USD 1.709,63</td>
+          <td class="td-var"><span class="m-var up">+3,85%</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">244</span></td>
+          <td>
+            <span style="font-weight:600">🇦🇷 MercadoLibre (MELI)</span>
+            <small style="display:block;color:rgba(26,26,46,.45);font-size:9.5px">US$ 99,87 bi · E-commerce + Fintech LATAM</small>
+          </td>
+          <td class="td-val">USD 1.971,35</td>
+          <td class="td-var"><span class="m-var dn">−0,99%</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">343</span></td>
+          <td>
+            <span style="font-weight:600">🇧🇷 Nu Holdings (NU)</span>
+            <small style="display:block;color:rgba(26,26,46,.45);font-size:9.5px">US$ 73,72 bi · Banco digital LATAM</small>
+          </td>
+          <td class="td-val">USD 15,28</td>
+          <td class="td-var"><span class="m-var dn">−2,52%</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Commodities -->
+    <span class="col-eyebrow">commodities &amp; vetores reais</span>
+    <div class="col-head">Energia, Metais e Agro</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px">
+      <div class="mini-card">
+        <div class="mc-label">Petróleo Brent</div>
+        <div class="mc-val" style="font-size:15px">USD 93,65</div>
+        <div class="mc-sub dn">/bbl · −1,96%</div>
+      </div>
+      <div class="mini-card">
+        <div class="mc-label">Dr. Copper</div>
+        <div class="mc-val" style="font-size:15px">USD 6,67</div>
+        <div class="mc-sub up">/lb · +1,35%</div>
+      </div>
+      <div class="mini-card">
+        <div class="mc-label">Baltic Dry Index</div>
+        <div class="mc-val" style="font-size:15px">3.488</div>
+        <div class="mc-sub up">pts · +4,71%</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:10px">
+      <div class="mini-card">
+        <div class="mc-label">Ouro</div>
+        <div class="mc-val" style="font-size:14px">R$ 733,83</div>
+        <div class="mc-sub dn">/g · −0,81%</div>
+      </div>
+      <div class="mini-card">
+        <div class="mc-label">Prata</div>
+        <div class="mc-val" style="font-size:14px">R$ 10,88</div>
+        <div class="mc-sub dn">/g · −1,35%</div>
+      </div>
+      <div class="mini-card">
+        <div class="mc-label">Soja</div>
+        <div class="mc-val" style="font-size:14px">USD 13,10</div>
+        <div class="mc-sub up">/bu · +0,33%</div>
+      </div>
+      <div class="mini-card">
+        <div class="mc-label">Açúcar/Etanol</div>
+        <div class="mc-val" style="font-size:14px">USD 0,184</div>
+        <div class="mc-sub up">/lb · +1,83%</div>
+      </div>
+    </div>
+
+    <div class="insight gold-ins">
+      🌊 <strong>El Niño Moderado (ONI +1,5°C):</strong> anomalia térmica do Pacífico equatorial impacta diretamente a produtividade do agronegócio e a dinâmica de preços de soft commodities — açúcar, soja e café.
+    </div>
+    <div class="insight" style="margin-top:8px">
+      ⚓ <strong>Baltic Dry Index em +4,71%</strong> sinaliza mercado de fretes aquecido e forte demanda por transporte marítimo, com possível pressão sobre custos logísticos globais.
+    </div>
+  </div>
+
+  <!-- ══ COLUNA DIREITA ══ -->
+  <div class="col col-right">
+    <span class="col-eyebrow">ativos digitais &amp; inteligência artificial</span>
+    <div class="col-head">Cripto &amp; Arena AI</div>
+
+    <!-- Bitcoin -->
+    <div class="crypto-block">
+      <div class="crypto-card">
+        <div class="cc-label">BITCOIN (USD)</div>
+        <div class="cc-val">79.523</div>
+        <div class="cc-sub" style="color:rgba(255,255,255,.5)">R$ 407.425 · EMA7: 78.566</div>
+        <div class="cc-range">
+          <div class="cc-range-row"><span>Vol. est. BTC</span><span>610.603</span></div>
+          <div class="cc-range-row"><span>Mín. 2026</span><span>58.558 <span style="font-size:8.5px">(30/06)</span></span></div>
+          <div class="cc-range-row"><span>Máx. 2026</span><span>96.929 <span style="font-size:8.5px">(14/01)</span></span></div>
+          <div class="cc-range-row"><span>ATH (out/25)</span><span style="color:var(--gold-lt)">124.753</span></div>
+        </div>
+      </div>
+      <div class="crypto-card">
+        <div class="cc-label">ETHEREUM (USD)</div>
+        <div class="cc-val">2.455</div>
+        <div class="cc-sub" style="color:rgba(255,255,255,.5)">R$ 12.579 · EMA7: 2.445</div>
+        <div class="cc-range">
+          <div class="cc-range-row"><span>Vol. est. ETH</span><span>9.718.206</span></div>
+          <div class="cc-range-row"><span>Mín. 2026</span><span>1.564 <span style="font-size:8.5px">(25/06)</span></span></div>
+          <div class="cc-range-row"><span>Máx. 2026</span><span>3.354 <span style="font-size:8.5px">(14/01)</span></span></div>
+          <div class="cc-range-row"><span>ATH (ago/25)</span><span style="color:var(--gold-lt)">4.831</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight" style="margin-bottom:12px">
+      BTC com momentum de alta no curto prazo (preço acima da EMA7). Ambos os ativos abaixo das máximas de 2026, iniciadas em 14/01/2026.
+    </div>
+
+    <!-- Arena AI -->
+    <div style="margin-top:4px;margin-bottom:8px">
+      <span class="col-eyebrow">arena ai — ranking lmsys</span>
+    </div>
+    <div class="feat-card" style="background:var(--ink2);margin-bottom:10px">
+      <div class="fc-label">LÍDER GLOBAL — TEXTO</div>
+      <div class="fc-val" style="font-size:20px">claude-fable-5</div>
+      <div class="fc-name">1.507 pts · 27.189 votos · Anthropic</div>
+    </div>
+
+    <div class="arena-row">
+      <div class="arena-cat">CÓDIGO</div>
+      <div class="arena-model">claude-fable-5.1-max</div>
+      <div class="arena-score">1.765</div>
+      <div class="arena-votes">1.106 v.</div>
+    </div>
+    <div class="arena-row">
+      <div class="arena-cat">VÍDEO</div>
+      <div class="arena-model">gemini-omni-1.1-flash</div>
+      <div class="arena-score">1.515</div>
+      <div class="arena-votes">1.762 v.</div>
+    </div>
+    <div class="arena-row">
+      <div class="arena-cat">OPEN SRC</div>
+      <div class="arena-model">kimi-k3-max</div>
+      <div class="arena-score">1.489</div>
+      <div class="arena-votes">524 v.</div>
+    </div>
+    <div class="arena-row">
+      <div class="arena-cat">IMAGEM</div>
+      <div class="arena-model">gpt-image-2 (medium)</div>
+      <div class="arena-score">1.382</div>
+      <div class="arena-votes">75.014 v.</div>
+    </div>
+    <div class="arena-row" style="border:none;padding-bottom:0">
+      <div class="arena-cat">AGENTE</div>
+      <div class="arena-model">Claude Opus 5 (High)</div>
+      <div class="arena-score">14,96%</div>
+      <div class="arena-votes">sucesso</div>
+    </div>
+
+    <!-- Tech Misc -->
+    <div style="margin-top:14px;margin-bottom:8px">
+      <span class="col-eyebrow">tecnologia &amp; rankings</span>
+    </div>
+    <div class="m-row">
+      <div class="m-label">Python — TIOBE (% rating)<small>Rank 1 · Ago/25 e Ago/26</small></div>
+      <div class="m-right"><div class="m-val">18,53%</div><span class="m-var dn">−7,61%</span></div>
+    </div>
+    <div class="m-row">
+      <div class="m-label">DB-Engines: Oracle<small>Multi-model Relational</small></div>
+      <div class="m-right"><div class="m-val">1.122,27</div></div>
+    </div>
+    <div class="m-row">
+      <div class="m-label">GitHub Trending<small>codecrafters-io/build-your-own-x</small></div>
+      <div class="m-right"><div class="m-val">545.149</div><span style="font-size:9px;color:rgba(26,26,46,.4)">⭐</span></div>
+    </div>
+    <div class="m-row">
+      <div class="m-label">Linux Distrowatch: CachyOS</div>
+      <div class="m-right"><div class="m-val">2.477</div></div>
+    </div>
+
+    <!-- FIFA -->
+    <div style="margin-top:14px;margin-bottom:8px">
+      <span class="col-eyebrow">⚽ fifa men's world ranking</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;text-align:center">
+      <div class="mini-card" style="padding:7px 4px">
+        <div style="font-size:16px">🇪🇸</div>
+        <div style="font-size:9px;font-weight:700;margin-top:3px">1.995,98</div>
+        <div style="font-size:8.5px;color:rgba(26,26,46,.45)">1º Espanha</div>
+      </div>
+      <div class="mini-card" style="padding:7px 4px">
+        <div style="font-size:16px">🇦🇷</div>
+        <div style="font-size:9px;font-weight:700;margin-top:3px">—</div>
+        <div style="font-size:8.5px;color:rgba(26,26,46,.45)">2º Argentina</div>
+      </div>
+      <div class="mini-card" style="padding:7px 4px">
+        <div style="font-size:16px">🇫🇷</div>
+        <div style="font-size:9px;font-weight:700;margin-top:3px">—</div>
+        <div style="font-size:8.5px;color:rgba(26,26,46,.45)">3º França</div>
+      </div>
+      <div class="mini-card" style="padding:7px 4px">
+        <div style="font-size:16px">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+        <div style="font-size:9px;font-weight:700;margin-top:3px">—</div>
+        <div style="font-size:8.5px;color:rgba(26,26,46,.45)">4º England</div>
+      </div>
+      <div class="mini-card" style="padding:7px 4px;border:1.5px solid var(--gold)">
+        <div style="font-size:16px">🇧🇷</div>
+        <div style="font-size:9px;font-weight:700;margin-top:3px;color:var(--green)">—</div>
+        <div style="font-size:8.5px;color:rgba(26,26,46,.45)">5º Brasil</div>
+      </div>
+    </div>
+
+    <div class="insight" style="margin-top:12px">
+      Próxima atualização do ranking FIFA: <strong>7 de outubro de 2026.</strong>
+    </div>
+  </div>
+
+</div><!-- /body -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer-strip">
+  <p>
+    <strong>Fonte exclusiva:</strong> df_indicadores_04_09_2026_11h00m08s58.md &nbsp;·&nbsp;
+    <strong>Snapshot:</strong> sexta-feira, 04/09/2026 às 11h00m08s &nbsp;·&nbsp;
+    Todos os valores refletem condições observadas na data e hora de referência. Nenhum dado foi inventado ou extrapolado.
+  </p>
+  <div class="footer-dots">
+    <div class="fdot" style="background:var(--gold)"></div>
+    <div class="fdot" style="background:var(--cyan)"></div>
+    <div class="fdot" style="background:var(--green)"></div>
+    <p style="margin-left:8px;font-size:10px;color:rgba(247,244,238,.35)">Painel de Indicadores Estratégicos · 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
