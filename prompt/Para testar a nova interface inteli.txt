@@ -1,0 +1,17 @@
+Olá!
+Quero testar as novas funcionalidade do ChatGPT-6 Luna,
+e para isso preparei o seguinte Prompt de forma a verificar a novidade
+da interface inteligente do ChatGPT.
+
+
+Prompt:
+
+Para testar a nova interface inteligente da OpenAI ChatGPT-6 Luna
+
+1 - Análise os dados do arquivo que segue em anexo: "df_indicadores_09_10_2026_12h48m25s18.md";
+2 - Crie um dashboard interativo com KPIs, gráficos e filtros em apenas um arquivo com as versões
+mais modernas e atualizadas de html, css e java script;
+3 - Transformar os principais insights em uma apresentação executiva, por exemplo, 15 slides,
+com base em boas práticas e storytelling profissional.
+
+Lembro de que estou em uma conta ChatGPT GO e quero verificar os limites desse tipo de conta e também com base nos resultados obtidos aqui posso aplicar também no projeto "indicadores" para verificar novos insights. Agora entre em ação e apresente o seu melhor!
